@@ -1,0 +1,62 @@
+@prefix activity: <http://rdf.geohistoricaldata.org/id/codes/cadastre/activity/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix source: <http://rdf.geohistoricaldata.org/id/source/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+activity:0001 a prov:Activity ;
+    rdfs:label "Classification manuelle des pages de registres"^^xsd:string ;
+    prov:wasAssociatedWith [ a prov:Agent,
+                foaf:Person ;
+            rdfs:label "Solenn Tual"^^xsd:string ;
+            foaf:familyName "Tual"^^xsd:string ;
+            foaf:firstName "Solenn"^^xsd:string ] .
+
+activity:0002 a prov:Activity ;
+    rdfs:label "Transcription manuelle des registres"^^xsd:string ;
+    prov:endedAtTime "2024-03-29T00:00:00"^^xsd:dateTimeStamp ;
+    prov:startedAtTime "2024-03-04T00:00:00"^^xsd:dateTimeStamp ;
+    prov:wasAssociatedWith [ a prov:Agent,
+                foaf:Person ;
+            rdfs:label "Solenn Tual"^^xsd:string ;
+            foaf:familyName "Tual"^^xsd:string ;
+            foaf:firstName "Solenn"^^xsd:string ] .
+
+activity:0003 a prov:Activity ;
+    rdfs:label "Recallage de plans parcellaires géoréférencés"^^xsd:string ;
+    prov:endedAtTime "2024-04-15T00:00:00"^^xsd:dateTimeStamp ;
+    prov:startedAtTime "2024-04-15T00:00:00"^^xsd:dateTimeStamp ;
+    prov:used source:FRAD094_3P_001041_georef ;
+    prov:wasAssociatedWith [ a prov:Agent,
+                foaf:Person ;
+            rdfs:label "Solenn Tual"^^xsd:string ;
+            foaf:familyName "Tual"^^xsd:string ;
+            foaf:firstName "Solenn"^^xsd:string ] .
+
+activity:0004 a prov:Activity ;
+    rdfs:label "Géoréférencement des plans du cadastre napoléonien du 94"^^xsd:string ;
+    prov:endedAtTime "2015-03-17T00:00:00"^^xsd:dateTimeStamp ;
+    prov:used source:FRAD094_3P_001041 ;
+    prov:wasAssociatedWith [ a prov:Agent ;
+            rdfs:label "Service départemental d'Archéologie du Val-de-Marne"^^xsd:string ] .
+
+activity:0005 a prov:Activity ;
+    rdfs:label "Géoréférencement des plans du cadastre napoléonien des communes annexées"^^xsd:string ;
+    prov:endedAtTime "2023-05-16T00:00:00"^^xsd:dateTimeStamp ;
+    prov:used source:CN80 ;
+    prov:wasAssociatedWith [ a prov:Agent ;
+            rdfs:label "Paris Time Machine"^^xsd:string ] .
+
+activity:0006 a prov:Activity ;
+    rdfs:label "Vectorisation manuelle des plans parcellaires"^^xsd:string ;
+    prov:endedAtTime "2024-06-19T00:00:00"^^xsd:dateTimeStamp ;
+    prov:startedAtTime "2024-06-19T00:00:00"^^xsd:dateTimeStamp ;
+    prov:used source:FRAD094_3P_001041_georef_2,
+        source:digit_CN80_georef ;
+    prov:wasAssociatedWith [ a prov:Agent,
+                foaf:Person ;
+            rdfs:label "Solenn Tual"^^xsd:string ;
+            foaf:familyName "Tual"^^xsd:string ;
+            foaf:firstName "Solenn"^^xsd:string ] .
+

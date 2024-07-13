@@ -1,0 +1,856 @@
+@prefix cad: <http://rdf.geohistoricaldata.org/def/cadastre#> .
+@prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
+@prefix source: <http://rdf.geohistoricaldata.org/id/source/> .
+@prefix srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+source:94_Gentilly_MAT_B_NB_1813_107bis a rico:RecordPart ;
+    cad:hasNumFolio "107bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0125_page .
+
+<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_B_NB_1813_107↑2↓> a rico:RecordPart ;
+    cad:hasNumFolio "107↑2↓"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_B_NB_1813_108 a rico:RecordPart ;
+    cad:hasNumFolio "108"^^xsd:string ;
+    cad:isSourceType srctype:FolioBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0586_page .
+
+source:94_Gentilly_MAT_B_NB_1813_11 a rico:RecordPart ;
+    cad:hasNumFolio "11"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0015_page .
+
+source:94_Gentilly_MAT_B_NB_1813_114 a rico:RecordPart ;
+    cad:hasNumFolio "114"^^xsd:string ;
+    cad:isSourceType srctype:FolioBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0588_page .
+
+source:94_Gentilly_MAT_B_NB_1813_122bis a rico:RecordPart ;
+    cad:hasNumFolio "122bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0146_page .
+
+source:94_Gentilly_MAT_B_NB_1813_124bis a rico:RecordPart ;
+    cad:hasNumFolio "124bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0148_page .
+
+source:94_Gentilly_MAT_B_NB_1813_138 a rico:RecordPart ;
+    cad:hasNumFolio "138"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0165_page .
+
+source:94_Gentilly_MAT_B_NB_1813_156 a rico:RecordPart ;
+    cad:hasNumFolio "156"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0186_page .
+
+source:94_Gentilly_MAT_B_NB_1813_163 a rico:RecordPart ;
+    cad:hasNumFolio "163"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0196_page .
+
+source:94_Gentilly_MAT_B_NB_1813_166 a rico:RecordPart ;
+    cad:hasNumFolio "166"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0199_page .
+
+source:94_Gentilly_MAT_B_NB_1813_192bis a rico:RecordPart ;
+    cad:hasNumFolio "192bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0224_page .
+
+source:94_Gentilly_MAT_B_NB_1813_211 a rico:RecordPart ;
+    cad:hasNumFolio "211"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0245_page .
+
+source:94_Gentilly_MAT_B_NB_1813_211bis a rico:RecordPart ;
+    cad:hasNumFolio "211bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0245_page .
+
+source:94_Gentilly_MAT_B_NB_1813_220 a rico:RecordPart ;
+    cad:hasNumFolio "220"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0259_page .
+
+source:94_Gentilly_MAT_B_NB_1813_228 a rico:RecordPart ;
+    cad:hasNumFolio "228"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_B_NB_1813_228ter a rico:RecordPart ;
+    cad:hasNumFolio "228ter"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0270_page .
+
+source:94_Gentilly_MAT_B_NB_1813_235bis a rico:RecordPart ;
+    cad:hasNumFolio "235bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0278_page .
+
+<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_B_NB_1813_235↑2↓> a rico:RecordPart ;
+    cad:hasNumFolio "235↑2↓"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_B_NB_1813_236 a rico:RecordPart ;
+    cad:hasNumFolio "236"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0279_page .
+
+source:94_Gentilly_MAT_B_NB_1813_236ter a rico:RecordPart ;
+    cad:hasNumFolio "236ter"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0281_page .
+
+<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_B_NB_1813_236↑4↓> a rico:RecordPart ;
+    cad:hasNumFolio "236↑4↓"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0281_page .
+
+source:94_Gentilly_MAT_B_NB_1813_238 a rico:RecordPart ;
+    cad:hasNumFolio "238"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_B_NB_1813_23bis a rico:RecordPart ;
+    cad:hasNumFolio "23bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0032_page .
+
+source:94_Gentilly_MAT_B_NB_1813_247 a rico:RecordPart ;
+    cad:hasNumFolio "247"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0294_page .
+
+source:94_Gentilly_MAT_B_NB_1813_247ter a rico:RecordPart ;
+    cad:hasNumFolio "247ter"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_B_NB_1813_251bis a rico:RecordPart ;
+    cad:hasNumFolio "251bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0301_page .
+
+source:94_Gentilly_MAT_B_NB_1813_258 a rico:RecordPart ;
+    cad:hasNumFolio "258"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0310_page .
+
+source:94_Gentilly_MAT_B_NB_1813_260 a rico:RecordPart ;
+    cad:hasNumFolio "260"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0313_page .
+
+source:94_Gentilly_MAT_B_NB_1813_268 a rico:RecordPart ;
+    cad:hasNumFolio "268"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0324_page .
+
+<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_B_NB_1813_269²> a rico:RecordPart ;
+    cad:hasNumFolio "269↑2↓"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0325_page .
+
+<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_B_NB_1813_269↑2↓> a rico:RecordPart ;
+    cad:hasNumFolio "269↑2↓"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_B_NB_1813_274↑2↓> a rico:RecordPart ;
+    cad:hasNumFolio "274↑2↓"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_B_NB_1813_280bis a rico:RecordPart ;
+    cad:hasNumFolio "280bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0333_page .
+
+source:94_Gentilly_MAT_B_NB_1813_281 a rico:RecordPart ;
+    cad:hasNumFolio "281"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0334_page .
+
+source:94_Gentilly_MAT_B_NB_1813_293 a rico:RecordPart ;
+    cad:hasNumFolio "293"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0350_page .
+
+source:94_Gentilly_MAT_B_NB_1813_295 a rico:RecordPart ;
+    cad:hasNumFolio "295"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0352_page .
+
+source:94_Gentilly_MAT_B_NB_1813_298bis a rico:RecordPart ;
+    cad:hasNumFolio "298bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0355_page .
+
+source:94_Gentilly_MAT_B_NB_1813_302 a rico:RecordPart ;
+    cad:hasNumFolio "302"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0359_page .
+
+source:94_Gentilly_MAT_B_NB_1813_34ter a rico:RecordPart ;
+    cad:hasNumFolio "34ter"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0044_page .
+
+<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_B_NB_1813_351↑4↓> a rico:RecordPart ;
+    cad:hasNumFolio "351↑4↓"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0414_page .
+
+source:94_Gentilly_MAT_B_NB_1813_357 a rico:RecordPart ;
+    cad:hasNumFolio "357"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0420_page .
+
+source:94_Gentilly_MAT_B_NB_1813_361 a rico:RecordPart ;
+    cad:hasNumFolio "361"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0424_page .
+
+source:94_Gentilly_MAT_B_NB_1813_373bis a rico:RecordPart ;
+    cad:hasNumFolio "373bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0440_page .
+
+source:94_Gentilly_MAT_B_NB_1813_383 a rico:RecordPart ;
+    cad:hasNumFolio "383"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0451_page .
+
+source:94_Gentilly_MAT_B_NB_1813_397ter a rico:RecordPart ;
+    cad:hasNumFolio "397ter"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0465_page .
+
+source:94_Gentilly_MAT_B_NB_1813_440 a rico:RecordPart ;
+    cad:hasNumFolio "440"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0509_page .
+
+source:94_Gentilly_MAT_B_NB_1813_446 a rico:RecordPart ;
+    cad:hasNumFolio "446"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0516_page .
+
+source:94_Gentilly_MAT_B_NB_1813_455 a rico:RecordPart ;
+    cad:hasNumFolio "455"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0526_page .
+
+source:94_Gentilly_MAT_B_NB_1813_46bis a rico:RecordPart ;
+    cad:hasNumFolio "46bis"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0057_page .
+
+source:94_Gentilly_MAT_B_NB_1813_46ter a rico:RecordPart ;
+    cad:hasNumFolio "46ter"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_B_NB_1813_64 a rico:RecordPart ;
+    cad:hasNumFolio "64"^^xsd:string ;
+    cad:isSourceType srctype:FolioBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0571_page .
+
+source:94_Gentilly_MAT_B_NB_1813_82 a rico:RecordPart ;
+    cad:hasNumFolio "82"^^xsd:string ;
+    cad:isSourceType srctype:FolioBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000255_01_0579_page .
+
+source:94_Gentilly_MAT_NB_1836_126 a rico:RecordPart ;
+    cad:hasNumFolio "126"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_NB_1836_240 a rico:RecordPart ;
+    cad:hasNumFolio "240"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0293_page .
+
+source:94_Gentilly_MAT_NB_1836_247 a rico:RecordPart ;
+    cad:hasNumFolio "247"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0300_page .
+
+source:94_Gentilly_MAT_NB_1836_248 a rico:RecordPart ;
+    cad:hasNumFolio "248"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0301_page .
+
+source:94_Gentilly_MAT_NB_1836_249 a rico:RecordPart ;
+    cad:hasNumFolio "249"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0302_page .
+
+<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_NB_1836_249↑16↓> a rico:RecordPart ;
+    cad:hasNumFolio "249↑16↓"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_NB_1836_250 a rico:RecordPart ;
+    cad:hasNumFolio "250"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0303_page .
+
+source:94_Gentilly_MAT_NB_1836_286 a rico:RecordPart ;
+    cad:hasNumFolio "286"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0339_page .
+
+source:94_Gentilly_MAT_NB_1836_287 a rico:RecordPart ;
+    cad:hasNumFolio "287"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0340_page .
+
+source:94_Gentilly_MAT_NB_1836_288 a rico:RecordPart ;
+    cad:hasNumFolio "288"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0341_page .
+
+source:94_Gentilly_MAT_NB_1836_289 a rico:RecordPart ;
+    cad:hasNumFolio "289"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0342_page .
+
+source:94_Gentilly_MAT_NB_1836_290 a rico:RecordPart ;
+    cad:hasNumFolio "290"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0343_page .
+
+source:94_Gentilly_MAT_NB_1836_291 a rico:RecordPart ;
+    cad:hasNumFolio "291"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0344_page .
+
+source:94_Gentilly_MAT_NB_1836_292 a rico:RecordPart ;
+    cad:hasNumFolio "292"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0345_page .
+
+source:94_Gentilly_MAT_NB_1836_319 a rico:RecordPart ;
+    cad:hasNumFolio "319"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0372_page .
+
+source:94_Gentilly_MAT_NB_1836_432 a rico:RecordPart ;
+    cad:hasNumFolio "432"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0485_page .
+
+source:94_Gentilly_MAT_NB_1836_433 a rico:RecordPart ;
+    cad:hasNumFolio "433"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0486_page .
+
+source:94_Gentilly_MAT_NB_1836_434 a rico:RecordPart ;
+    cad:hasNumFolio "434"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0487_page .
+
+source:94_Gentilly_MAT_NB_1836_435 a rico:RecordPart ;
+    cad:hasNumFolio "435"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0488_page .
+
+source:94_Gentilly_MAT_NB_1836_436 a rico:RecordPart ;
+    cad:hasNumFolio "436"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0489_page .
+
+source:94_Gentilly_MAT_NB_1836_437 a rico:RecordPart ;
+    cad:hasNumFolio "437"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0490_page .
+
+source:94_Gentilly_MAT_NB_1836_439 a rico:RecordPart ;
+    cad:hasNumFolio "439"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0492_page .
+
+source:94_Gentilly_MAT_NB_1836_440 a rico:RecordPart ;
+    cad:hasNumFolio "440"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0493_page .
+
+source:94_Gentilly_MAT_NB_1836_441 a rico:RecordPart ;
+    cad:hasNumFolio "441"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0494_page .
+
+source:94_Gentilly_MAT_NB_1836_442 a rico:RecordPart ;
+    cad:hasNumFolio "442"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0495_page .
+
+source:94_Gentilly_MAT_NB_1836_443 a rico:RecordPart ;
+    cad:hasNumFolio "443"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0496_page .
+
+source:94_Gentilly_MAT_NB_1836_444 a rico:RecordPart ;
+    cad:hasNumFolio "444"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0497_page .
+
+source:94_Gentilly_MAT_NB_1836_445 a rico:RecordPart ;
+    cad:hasNumFolio "445"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0498_page .
+
+source:94_Gentilly_MAT_NB_1836_446 a rico:RecordPart ;
+    cad:hasNumFolio "446"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0499_page .
+
+source:94_Gentilly_MAT_NB_1836_447 a rico:RecordPart ;
+    cad:hasNumFolio "447"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0500_page .
+
+source:94_Gentilly_MAT_NB_1836_448 a rico:RecordPart ;
+    cad:hasNumFolio "448"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0501_page .
+
+source:94_Gentilly_MAT_NB_1836_449 a rico:RecordPart ;
+    cad:hasNumFolio "449"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0502_page .
+
+<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_NB_1836_449↑1↓> a rico:RecordPart ;
+    cad:hasNumFolio "449↑1↓"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_NB_1836_450 a rico:RecordPart ;
+    cad:hasNumFolio "450"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0503_page .
+
+source:94_Gentilly_MAT_NB_1836_451 a rico:RecordPart ;
+    cad:hasNumFolio "451"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0504_page .
+
+source:94_Gentilly_MAT_NB_1836_452 a rico:RecordPart ;
+    cad:hasNumFolio "452"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0505_page .
+
+source:94_Gentilly_MAT_NB_1836_453 a rico:RecordPart ;
+    cad:hasNumFolio "453"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0506_page .
+
+source:94_Gentilly_MAT_NB_1836_533 a rico:RecordPart ;
+    cad:hasNumFolio "533"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_NB_1836_617 a rico:RecordPart ;
+    cad:hasAlternativeNumFolio "77"^^xsd:string ;
+    cad:hasNumFolio "617"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000257_01_0137_page .
+
+source:94_Gentilly_MAT_NB_1836_669 a rico:RecordPart ;
+    cad:hasAlternativeNumFolio "129"^^xsd:string ;
+    cad:hasNumFolio "669"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000257_01_0189_page .
+
+source:94_Gentilly_MAT_NB_1836_707 a rico:RecordPart ;
+    cad:hasAlternativeNumFolio "167"^^xsd:string ;
+    cad:hasNumFolio "707"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000257_01_0227_page .
+
+source:94_Gentilly_MAT_NB_1836_708 a rico:RecordPart ;
+    cad:hasAlternativeNumFolio "168"^^xsd:string ;
+    cad:hasNumFolio "708"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000257_01_0228_page .
+
+source:94_Gentilly_MAT_NB_1836_777 a rico:RecordPart ;
+    cad:hasAlternativeNumFolio "235"^^xsd:string ;
+    cad:hasNumFolio "777"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000257_01_0295_page .
+
+source:94_Gentilly_MAT_NB_1836_788 a rico:RecordPart ;
+    cad:hasAlternativeNumFolio "248"^^xsd:string ;
+    cad:hasNumFolio "788"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000257_01_0308_page .
+
+source:94_Gentilly_MAT_NB_1836_968 a rico:RecordPart ;
+    cad:hasAlternativeNumFolio "428"^^xsd:string ;
+    cad:hasNumFolio "968"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000257_01_0488_page .
+
+source:94_Gentilly_MAT_NB_1848_1213 a rico:RecordPart ;
+    cad:hasNumFolio "1213"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0213_page .
+
+source:94_Gentilly_MAT_NB_1848_1214 a rico:RecordPart ;
+    cad:hasNumFolio "1214"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0214_page .
+
+source:94_Gentilly_MAT_NB_1848_1215 a rico:RecordPart ;
+    cad:hasNumFolio "1215"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0215_page .
+
+source:94_Gentilly_MAT_NB_1848_1216 a rico:RecordPart ;
+    cad:hasNumFolio "1216"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0216_page .
+
+source:94_Gentilly_MAT_NB_1848_1217 a rico:RecordPart ;
+    cad:hasNumFolio "1217"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0217_page .
+
+source:94_Gentilly_MAT_NB_1848_1218 a rico:RecordPart ;
+    cad:hasNumFolio "1218"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0218_page .
+
+source:94_Gentilly_MAT_NB_1848_1219 a rico:RecordPart ;
+    cad:hasNumFolio "1219"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0219_page .
+
+source:94_Gentilly_MAT_NB_1848_1220 a rico:RecordPart ;
+    cad:hasNumFolio "1220"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0220_page .
+
+source:94_Gentilly_MAT_NB_1848_1221 a rico:RecordPart ;
+    cad:hasNumFolio "1221"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0221_page .
+
+source:94_Gentilly_MAT_NB_1848_1222 a rico:RecordPart ;
+    cad:hasNumFolio "1222"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000264_01_0222_page .
+
+source:94_Gentilly_MAT_NB_1848_2115 a rico:RecordPart ;
+    cad:hasNumFolio "2115"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_NB_1848_2430 a rico:RecordPart ;
+    cad:hasNumFolio "2430"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati .
+
+source:94_Gentilly_MAT_NB_1848_392 a rico:RecordPart ;
+    cad:hasNumFolio "392"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0445_page .
+
+source:94_Gentilly_MAT_NB_1848_393 a rico:RecordPart ;
+    cad:hasNumFolio "393"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0446_page .
+
+source:94_Gentilly_MAT_NB_1848_394 a rico:RecordPart ;
+    cad:hasNumFolio "394"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0447_page .
+
+source:94_Gentilly_MAT_NB_1848_395 a rico:RecordPart ;
+    cad:hasNumFolio "395"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0448_page .
+
+source:94_Gentilly_MAT_NB_1848_396 a rico:RecordPart ;
+    cad:hasAlternativeNumFolio "496"^^xsd:string ;
+    cad:hasNumFolio "396"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0449_page .
+
+source:94_Gentilly_MAT_NB_1848_397 a rico:RecordPart ;
+    cad:hasAlternativeNumFolio "497"^^xsd:string ;
+    cad:hasNumFolio "397"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0450_page .
+
+source:94_Gentilly_MAT_NB_1848_398 a rico:RecordPart ;
+    cad:hasNumFolio "398"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0451_page .
+
+source:94_Gentilly_MAT_NB_1848_399 a rico:RecordPart ;
+    cad:hasNumFolio "399"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0452_page .
+
+source:94_Gentilly_MAT_NB_1848_400 a rico:RecordPart ;
+    cad:hasNumFolio "400"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0453_page .
+
+source:94_Gentilly_MAT_NB_1848_401 a rico:RecordPart ;
+    cad:hasNumFolio "401"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0454_page .
+
+source:94_Gentilly_MAT_NB_1848_402 a rico:RecordPart ;
+    cad:hasNumFolio "402"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0455_page .
+
+source:94_Gentilly_MAT_NB_1848_403 a rico:RecordPart ;
+    cad:hasNumFolio "403"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0456_page .
+
+source:94_Gentilly_MAT_NB_1848_465 a rico:RecordPart ;
+    cad:hasNumFolio "465"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000259_01_0518_page .
+
+source:94_Gentilly_MAT_NB_1848_513 a rico:RecordPart ;
+    cad:hasNumFolio "513"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0013_page .
+
+source:94_Gentilly_MAT_NB_1848_827 a rico:RecordPart ;
+    cad:hasNumFolio "827"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0329_page .
+
+source:94_Gentilly_MAT_NB_1848_828 a rico:RecordPart ;
+    cad:hasNumFolio "828"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0330_page .
+
+source:94_Gentilly_MAT_NB_1848_829 a rico:RecordPart ;
+    cad:hasNumFolio "829"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0331_page .
+
+source:94_Gentilly_MAT_NB_1848_830 a rico:RecordPart ;
+    cad:hasNumFolio "830"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0332_page .
+
+source:94_Gentilly_MAT_NB_1848_831 a rico:RecordPart ;
+    cad:hasNumFolio "831"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0333_page .
+
+source:94_Gentilly_MAT_NB_1848_832 a rico:RecordPart ;
+    cad:hasNumFolio "832"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0334_page .
+
+source:94_Gentilly_MAT_NB_1848_833 a rico:RecordPart ;
+    cad:hasNumFolio "833"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0335_page .
+
+source:94_Gentilly_MAT_NB_1848_834 a rico:RecordPart ;
+    cad:hasNumFolio "834"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0336_page .
+
+source:94_Gentilly_MAT_NB_1848_836 a rico:RecordPart ;
+    cad:hasNumFolio "836"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0338_page .
+
+source:94_Gentilly_MAT_NB_1848_837 a rico:RecordPart ;
+    cad:hasNumFolio "837"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0339_page .
+
+source:94_Gentilly_MAT_NB_1848_843 a rico:RecordPart ;
+    cad:hasNumFolio "843"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0345_page .
+
+source:94_Gentilly_MAT_NB_1848_844 a rico:RecordPart ;
+    cad:hasNumFolio "844"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0346_page .
+
+source:94_Gentilly_MAT_NB_1848_845 a rico:RecordPart ;
+    cad:hasNumFolio "845"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0347_page .
+
+source:94_Gentilly_MAT_NB_1848_846 a rico:RecordPart ;
+    cad:hasNumFolio "846"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0348_page .
+
+source:94_Gentilly_MAT_NB_1848_847 a rico:RecordPart ;
+    cad:hasNumFolio "847"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0349_page .
+
+source:94_Gentilly_MAT_NB_1848_848 a rico:RecordPart ;
+    cad:hasNumFolio "848"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0350_page .
+
+source:94_Gentilly_MAT_NB_1848_849 a rico:RecordPart ;
+    cad:hasNumFolio "849"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0351_page .
+
+source:94_Gentilly_MAT_NB_1848_851 a rico:RecordPart ;
+    cad:hasNumFolio "851"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0353_page .
+
+source:94_Gentilly_MAT_NB_1848_852 a rico:RecordPart ;
+    cad:hasNumFolio "852"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0354_page .
+
+source:94_Gentilly_MAT_NB_1848_853 a rico:RecordPart ;
+    cad:hasNumFolio "853"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0355_page .
+
+source:94_Gentilly_MAT_NB_1848_854 a rico:RecordPart ;
+    cad:hasNumFolio "854"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0356_page .
+
+source:94_Gentilly_MAT_NB_1848_855 a rico:RecordPart ;
+    cad:hasNumFolio "855"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0357_page .
+
+source:94_Gentilly_MAT_NB_1848_856 a rico:RecordPart ;
+    cad:hasNumFolio "856"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0358_page .
+
+source:94_Gentilly_MAT_NB_1848_857 a rico:RecordPart ;
+    cad:hasNumFolio "857"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0359_page .
+
+source:94_Gentilly_MAT_NB_1848_858 a rico:RecordPart ;
+    cad:hasNumFolio "858"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0360_page .
+
+source:94_Gentilly_MAT_NB_1848_859 a rico:RecordPart ;
+    cad:hasNumFolio "859"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0361_page .
+
+source:94_Gentilly_MAT_NB_1848_860 a rico:RecordPart ;
+    cad:hasNumFolio "860"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0362_page .
+
+source:94_Gentilly_MAT_NB_1848_861 a rico:RecordPart ;
+    cad:hasNumFolio "861"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0363_page .
+
+source:94_Gentilly_MAT_NB_1848_862 a rico:RecordPart ;
+    cad:hasNumFolio "862"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0364_page .
+
+source:94_Gentilly_MAT_NB_1848_863 a rico:RecordPart ;
+    cad:hasNumFolio "863"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0365_page .
+
+source:94_Gentilly_MAT_NB_1848_864 a rico:RecordPart ;
+    cad:hasNumFolio "864"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0366_page .
+
+source:94_Gentilly_MAT_NB_1848_865 a rico:RecordPart ;
+    cad:hasNumFolio "865"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0367_page .
+
+source:94_Gentilly_MAT_NB_1848_866 a rico:RecordPart ;
+    cad:hasNumFolio "866"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0368_page .
+
+source:94_Gentilly_MAT_NB_1848_867 a rico:RecordPart ;
+    cad:hasNumFolio "867"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0369_page .
+
+source:94_Gentilly_MAT_NB_1848_868 a rico:RecordPart ;
+    cad:hasNumFolio "868"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0370_page .
+
+source:94_Gentilly_MAT_NB_1848_869 a rico:RecordPart ;
+    cad:hasNumFolio "869"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0371_page .
+
+source:94_Gentilly_MAT_NB_1848_870 a rico:RecordPart ;
+    cad:hasNumFolio "870"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0372_page .
+
+source:94_Gentilly_MAT_NB_1848_871 a rico:RecordPart ;
+    cad:hasNumFolio "871"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0373_page .
+
+source:94_Gentilly_MAT_NB_1848_872 a rico:RecordPart ;
+    cad:hasNumFolio "872"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0374_page .
+
+source:94_Gentilly_MAT_NB_1848_873 a rico:RecordPart ;
+    cad:hasNumFolio "873"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0375_page .
+
+source:94_Gentilly_MAT_NB_1848_874 a rico:RecordPart ;
+    cad:hasNumFolio "874"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0376_page .
+
+source:94_Gentilly_MAT_NB_1848_875 a rico:RecordPart ;
+    cad:hasNumFolio "875"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0377_page .
+
+source:94_Gentilly_MAT_NB_1848_876 a rico:RecordPart ;
+    cad:hasNumFolio "876"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0378_page .
+
+source:94_Gentilly_MAT_NB_1848_877 a rico:RecordPart ;
+    cad:hasNumFolio "877"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0379_page .
+
+source:94_Gentilly_MAT_NB_1848_878 a rico:RecordPart ;
+    cad:hasNumFolio "878"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0380_page .
+
+source:94_Gentilly_MAT_NB_1848_879 a rico:RecordPart ;
+    cad:hasNumFolio "879"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0381_page .
+
+source:94_Gentilly_MAT_NB_1848_880 a rico:RecordPart ;
+    cad:hasNumFolio "880"^^xsd:string ;
+    cad:isSourceType srctype:FolioNonBati ;
+    rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000263_01_0382_page .
+
