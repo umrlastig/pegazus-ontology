@@ -37,11 +37,11 @@ Note: Some owners and usufructuaries mentioned in the mutation registers and ini
 
 <i>Germay à Paris</i><br> - Etats de sections de la commune de Valenton (Seine-et-Oise). 1810-1811. Cote FRAD094_3P_000036_01_0015.
 
-### Exemple 3 [Lastname | Activité | Address]
+### Exemple 3 [Lastname | Activity | Address]
 
 <i>Barbaroux quincailler à Paris</i><br> - Liste alpahbétique de la matrice des propriétés foncières de Choisy-le-Roi (Seine). 1836-1841. Cote FRAD094_3P_000171_01_0008.
 
-### Exemple 4 [Lastname | Firstname | Activité | Address]
+### Exemple 4 [Lastname | Firstname | Activity | Address]
 <i>Costy, J<sup>n</sup> B<sup>te</sup> Tailleur de Pierre à Villeneuve Leroy</i><br> - Matrice des propriétés foncières d'Ablon-sur-Seine (Seine-et-Oise). 1822-1914. Cote FRAD094_3P_000019_01_0051.
 
 ### Exemple 5 [Lastname | Firstnames | Address 1 | Address 2 (current)]

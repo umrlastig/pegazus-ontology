@@ -1,4 +1,4 @@
-# Competency Questions for the Owners and Usufructuaries Model
+# Competency Questions for the Taxpayers Modelet
 
 ## Question 1
 ### Question
