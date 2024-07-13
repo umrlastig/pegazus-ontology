@@ -11,6 +11,9 @@ This repository contains the documentation of the PeGaZus ontology and knowledge
 ├── ontology                  <- PeGaZus Ontology
 │   ├── ontology-address.ttl      <- Core part of the ontology to describe landmarks and addresses
 │   ├── ontology-cadastre.ttl     <- Specific modules used to describe the Napoleonic cadaster documents
+│   ├── documentation
+│
+├── scripts
 │
 └── README.md
 ```
