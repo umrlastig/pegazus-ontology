@@ -22,8 +22,8 @@
     <td>A mutation article corresponds to the list of successive taxpayers of a list of plots in a given folio.</td>
   </tr>
   <tr>
-    <td>Increases (Augmentations)</td>
-    <td>Increases are all events that lead to a revaluation of a property, such as an increase in area, a construction, or an improvement of a building. A section is specifically dedicated to them at the beginning of the mutation registers of land properties (1822-1882) and non-built properties (1882-1914, 1914-renovation).</td>
+    <td>Additions (Augmentations)</td>
+    <td>Additions are all events that lead to a revaluation of a property, such as an increase in area, a construction, or an improvement of a building. A special section is devoted to them at the beginning of the mutation registers of land properties (1822-1882) and non-built properties (1882-1914, 1914-renovation).</td>
   </tr>
   <tr>
     <td>Case (Case)</td>
@@ -34,11 +34,11 @@
     <td>A land account is composed of a mutation article and one or more associated classification articles in a given folio/article/case of the mutation register.</td>
   </tr>
   <tr>
-    <td>Entry Date (Date d'entrée)</td>
+    <td>Beginning (Date d'entrée)</td>
     <td>Date corresponding to the start of validity of a plot state in a land account.<br><i>Title of one of the columns related to mutation dates in the non-built property registers (c.1882-renovation).</i></td>
   </tr>
   <tr>
-    <td>Exit Date (Date de sortie)</td>
+    <td>End Date (Date de sortie)</td>
     <td>Date corresponding to the end of validity of a plot state in a land account.<br><i>Title of one of the columns related to mutation dates in the non-built property registers (c.1882-renovation).</i></td>
   </tr>
   <tr>
