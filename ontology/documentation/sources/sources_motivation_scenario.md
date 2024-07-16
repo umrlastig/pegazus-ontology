@@ -6,16 +6,16 @@ Sources
 
 ## Description
 
-The Sources model aims to link the information described in the knowledge graph to the sources from which they originate.
+The Sources model aims to link the information described in the knowledge graph to the sources from which its originate.
 
 A source has two main forms:
 * Concept/general idea: content of the source considered independently of its concrete form;
 * Concrete form, which can be:
-    * Physical: physical copy of a document, usually characterized by an identifier and location;
-    * Digital: digitized version of a physical document, database, archive inventory...;
-    * Derived: version obtained after automatic or manual processing (e.g., georeferenced map, transcribed page...) of a physical/digital source. There can be several derived forms of the same source.
+    * Physical: physical copy of a document, usually characterised by an identifier and a location;
+    * Digital: digitised version of a physical document, database, archive inventory...;
+    * Derived: version obtained after automatic or manual processing (e.g., georeferenced map, transcribed page...) of a physical/digital source. There may be several derived forms of the same source.
 
-A source can be divided into several parts, which can themselves be divided into coherent documentary elements (e.g., a register contains several pages that contain several zones).
+A source may be divided into several parts, which in turn may be divided into coherent documentary elements (e.g., a register contains several pages that contain several zones, etc.).
 
 A **source** can be described by the following properties:
 * {*mandatory*} its **title**;
@@ -45,10 +45,10 @@ A **source** can be described by the following properties:
 ## Examples
 
 ### Example 1: Forms of Sources (archival records)
-- A mutation register includes an alphabetical list of taxpayers. This list is a set of pages composed of columns that contain multiple mentions of taxpayers.
+- A mutation register contains an alphabetical list of taxpayers. This list is a serie of pages consisting in a list that contains multiple mentions of taxpayers.
 - A paper copy of the mutation register is kept in an archive service and is identified by an archive reference.
-- Each page has been digitized and has an archive reference.
-- The elements contained in each page are detected and transcribed with a model (DAN).
+- Each page has been digitised and has an archive reference.
+- The elements contained in each page are identified and transcribed with a model (DAN).
 
 ### Example 2
 > Example description of the initial register of Marolles-en-Brie in its different forms.
