@@ -119,7 +119,7 @@ cad:Source a owl:Class ;
 
 cad:MLClasse a owl:Class ;
     rdfs:subClassOf skos:Concept ;
-    rdfs:label "Classe d'un document"@fr, "Classe of document provided by an automated treament."@en.
+    rdfs:label "Classe d'un document"@fr, "Class of a document provided by an automated treament."@en.
 
 cad:NamedEntity a owl:Class ;
     rdfs:label "Named entity"@en, "Entité nommée"@fr ;
@@ -258,22 +258,9 @@ cad:isPlotAddressOf a owl:ObjectProperty ;
 
 #relative to cadastre use
 
-cad:hasAssociatedFolioInMatriceDesProprietesBaties a owl:ObjectypeProperty ;
-    rdfs:label "a pour folio lié dans la matrice des propriétés bâties"@fr,
-               "has linked folio in the built properties matrix"@en .
-
-cad:hasAssociatedFolioInMatriceDesProprietesNonBaties a owl:ObjectypeProperty ;
-    rdfs:label "a pour folio lié dans la matrice des propriétés non bâties"@fr,
-               "has linked folio in the unbuilt properties matrix"@en .
-
-cad:hasLinkedFolioInPreviousMatrice a owl:ObjectProperty;
-    rdfs:comment "Un folio X d'une matrice est la recopie/suite d'un folio Y dans la matrice précédente."@fr;
-    rdfs:label "suit";
-    owl:inverseOf cad:isContinuationOf.
-
-cad:hasLinkedFolioInNextMatrice a owl:ObjectProperty;
-    rdfs:comment "Un folio Y d'une matrice est précède un folio X dans la matrice suivante."@fr;
-    rdfs:label "précède".
+cad:hasEquivalentFolio a owl:ObjectypeProperty ;
+    rdfs:label "a pour folio équivalent"@fr,
+               "has equivalent folio"@en .
 
 #relative to sources
 cad:isSourceType a owl:ObjectProperty ;

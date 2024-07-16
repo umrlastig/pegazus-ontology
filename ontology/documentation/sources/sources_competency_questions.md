@@ -1,4 +1,4 @@
-# Competency Questions for the Sources Model
+# Competency Questions for the Sources modelet
 
 ## Question 1
 ### Question
