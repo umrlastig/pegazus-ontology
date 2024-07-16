@@ -43,19 +43,19 @@
   </tr>
   <tr>
     <td>Decreases (Diminutions)</td>
-    <td>Decreases are all events that lead to a devaluation of a property: ruined building, building destruction, transformation of a house into an agricultural building, reduction in area (e.g., construction of a road). A section is specifically dedicated to them at the beginning of the mutation registers of land properties (1822-1882), non-built properties (1882-1914, 1914-renovation).</td>
+    <td>Decreases are all events that lead to a decrease in the value of a property: ruined building, destruction of a building, conversion of a house into an agricultural building, reduction in area (e.g., construction of a road). A special section is specifically dedicated to them at the beginning of the mutation registers of land properties (1822-1882), non-built properties (1882-1914, 1914-renovation).</td>
   </tr>
   <tr>
     <td>Folio (also called <i>article</i> or <i>case</i>) (Folio (aussi appelés <i>article</i> ou <i>case</i>))</td>
-    <td>Page of the mutation register that contains the list of plots belonging to a taxpayer (more precisely, the various successive states of the plots belonging to a taxpayer). A folio can contain one or more land accounts associated with different taxpayers.</td>
+    <td>Page of the mutation register that contains the list of plots belonging to a taxpayer (more precisely, the various successive classification articles of the plots belonging to a taxpayer). A folio can contain one or more land accounts associated with different taxpayers.</td>
   </tr>
   <tr>
     <td>Mutation (Mutation)</td>
-    <td>A mutation is a change that impacts a plot, particularly its taxpayer (purchase, sale, donation, division, succession) or its nature. It causes either a change of taxpayer, a modification of the fiscal evaluation, or a passage into the public domain.</td>
+    <td>A mutation is a change affecting a plot, in particular its taxpayer (purchase, sale, donation, division, inheritence) or its nature. It causes either a change of taxpayer, a change in the tax assement, or a transfer to the public domain.</td>
   </tr>
   <tr>
-    <td>Added to (Porté à)</td>
-    <td>Column of the main table of the mutation registers used to indicate, for each plot, the land account to which it was added after being transferred through the considered land account.</td>
+    <td>Passed to (Porté à)</td>
+    <td>Column of the main table of the mutation registers used to indicate, for each plot, the folio to which it was added after being transferred through the considered folio.</td>
   </tr>
   <tr>
     <td>Taken from (Tiré de)</td>
@@ -79,7 +79,7 @@
   <tr>
     <td><b>B</b></td>
     <td>Built / Built</td>
-    <td>Primarily used in the "Added to" column of the mutation register of land properties in 1882, the date of extraction of built properties into a new specifically dedicated register. The <i>B</i> is generally followed by the case number of the built properties register.</td>
+    <td>Primarily used in the "Passed to" column of the mutation register of land properties in 1882, the date of extraction of built properties into a new specifically dedicated register. The <i>B</i> is generally followed by the case number of the built properties register.</td>
   </tr>
   <tr>
     <td><b>B.R.</b></td>
