@@ -8,7 +8,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix atype: <http://rdf.geohistoricaldata.org/id/codes/address/attributeType/> .
-@prefix ctype: <http://rdf.geohistoricaldata.org/id/codes/address/Type/> .
+@prefix ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/> .
 @prefix ltype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkType/> .
 @prefix lrtype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/> .
 @base <http://rdf.geohistoricaldata.org/def/address#> .
@@ -47,23 +47,11 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://rdf.geohistoricaldata.org/def/address#after
-:after rdf:type owl:ObjectProperty ;
-       owl:inverseOf :before ;
-       rdf:type owl:TransitiveProperty ;
-       rdfs:domain [ rdf:type owl:Class ;
-                     owl:unionOf ( :
-                                   :Event
-                                 )
-                   ] ;
-       rdfs:range [ rdf:type owl:Class ;
-                    owl:unionOf ( :Change
-                                  :Event
-                                )
-                  ] ;
-       rdfs:comment "Décrit la relation temporelle de postériorité entre deux changements ou événements"@fr ;
-       rdfs:label "est après"@fr .
-
+###  http://rdf.geohistoricaldata.org/def/address#isSimilarTo
+:isSimilarTo rdf:type owl:ObjectProperty ,
+                owl:TransitiveProperty ;
+       rdfs:comment "Décrit qu'une ressource est similaire à une autre"@fr ;
+       rdfs:label "est similaire à"@fr .
 
 ###  http://rdf.geohistoricaldata.org/def/address#appliedTo
 :appliedTo rdf:type owl:ObjectProperty ;
@@ -78,24 +66,237 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
            rdfs:comment "Définit sur quoi s'applique le changement"@fr ;
            rdfs:label "s'applique"@fr .
 
-
-###  http://rdf.geohistoricaldata.org/def/address#before
-:before rdf:type owl:ObjectProperty ,
+###  http://rdf.geohistoricaldata.org/def/address#eventBefore
+:eventBefore rdf:type owl:ObjectProperty ,
                 owl:TransitiveProperty ;
-       rdfs:domain [ rdf:type owl:Class ;
-                     owl:unionOf ( :Change
-                                   :Event
-                                 )
-                   ] ;
-       rdfs:range [ rdf:type owl:Class ;
-                    owl:unionOf ( :Change
-                                  :Event
-                                )
-                  ] ;
-       rdfs:comment "Décrit la relation temporelle d'antériorité entre deux changements ou événéments"@fr ;
+       owl:inverseOf :eventAfter ;
+       rdfs:domain :Event ;
+       rdfs:range :Event ;
+       rdfs:comment "Décrit la relation temporelle d'antériorité entre deux événéments"@fr ;
        rdfs:label "est avant"@fr .
 
 
+###  http://rdf.geohistoricaldata.org/def/address#eventAfter
+:eventAfter rdf:type owl:ObjectProperty ;
+      owl:inverseOf :eventBefore ;
+      rdf:type owl:TransitiveProperty ;
+      rdfs:domain :Event ;
+      rdfs:range :Event ;
+      rdfs:comment "Décrit la relation temporelle de postériorité entre deux événements"@fr ;
+      rdfs:label "est après"@fr .
+
+###  http://rdf.geohistoricaldata.org/def/address#eventSameTime
+:eventSameTime rdf:type owl:ObjectProperty ,
+                   owl:SymmetricProperty ;
+          rdfs:domain :Event ;
+          rdfs:range :Event ;
+          rdfs:comment "Décrit la relation temporelle de simultanéité entre deux événements"@fr ;
+          rdfs:label "est en même temps que"@fr .
+
+:instantBefore rdf:type owl:ObjectProperty ;
+      owl:inverseOf :instantAfter ;
+      rdf:type owl:TransitiveProperty ;
+      rdfs:domain :CrispTimeInstant ;
+      rdfs:range :CrispTimeInstant ;
+      rdfs:comment "Décrit la relation temporelle d'antériorité entre deux instants"@fr ;
+      rdfs:label "est avant"@fr .
+
+:instantAfter rdf:type owl:ObjectProperty ;
+      owl:inverseOf :instantBefore ;
+      rdf:type owl:TransitiveProperty ;
+      rdfs:domain :CrispTimeInstant ;
+      rdfs:range :CrispTimeInstant ;
+      rdfs:comment "Décrit la relation temporelle de postériorité entre deux instants"@fr ;
+      rdfs:label "est après"@fr .
+
+:instantSameTime rdf:type owl:ObjectProperty ;
+      rdf:type owl:SymmetricProperty ;
+      rdfs:domain :CrispTimeInstant ;
+      rdfs:range :CrispTimeInstant ;
+      rdfs:comment "Décrit la relation temporelle de simultanéité entre deux instants"@fr ;
+      rdfs:label "est en même temps que"@fr .
+
+:instantMorePreciseThan rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+      owl:inverseOf :instantLessPreciseThan ;
+      rdfs:domain :CrispTimeInstant ;
+      rdfs:range :CrispTimeInstant ;
+      rdfs:comment "Compare les précisions temporelles entre deux instants"@fr ;
+      rdfs:label "est plus précis que"@fr .
+
+:instantLessPreciseThan rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+      owl:inverseOf :instantMorePreciseThan ;
+      rdfs:domain :CrispTimeInstant ;
+      rdfs:range :CrispTimeInstant ;
+      rdfs:comment "Compare les précisions temporelles entre deux instants"@fr ;
+      rdfs:label "est moins précis que"@fr .
+
+:instantAsPreciseAs rdf:type owl:ObjectProperty , owl:SymmetricProperty ;
+      rdfs:domain :CrispTimeInstant ;
+      rdfs:range :CrispTimeInstant ;
+      rdfs:comment "Compare les précisions temporelles entre deux instants"@fr ;
+      rdfs:label "est aussi précis que"@fr .
+
+time:after
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Gives directionality to time. If a temporal entity T1 is after another temporal entity T2, then the beginning of T1 is after the end of T2."@en ;
+  rdfs:domain time:TemporalEntity ;
+  rdfs:label "after"@en ;
+  rdfs:range time:TemporalEntity ;
+  owl:inverseOf time:before ;
+  skos:definition "Gives directionality to time. If a temporal entity T1 is after another temporal entity T2, then the beginning of T1 is after the end of T2."@en .
+
+time:before
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:TransitiveProperty ;
+  rdfs:comment "Gives directionality to time. If a temporal entity T1 is before another temporal entity T2, then the end of T1 is before the beginning of T2. Thus, \"before\" can be considered to be basic to instants and derived for intervals."@en ;
+  rdfs:domain time:TemporalEntity ;
+  rdfs:label "before"@en ;
+  rdfs:range time:TemporalEntity ;
+  owl:inverseOf time:after ;
+  skos:definition "Gives directionality to time. If a temporal entity T1 is before another temporal entity T2, then the end of T1 is before the beginning of T2. Thus, \"before\" can be considered to be basic to instants and derived for intervals."@en .
+
+time:intervalAfter
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalAfter another proper interval T2, then the beginning of T1 is after the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval after"@en ;
+ rdfs:range time:ProperInterval ;
+ rdfs:subPropertyOf time:after ;
+ rdfs:subPropertyOf time:intervalDisjoint ;
+ owl:inverseOf time:intervalBefore ;
+ skos:definition "If a proper interval T1 is intervalAfter another proper interval T2, then the beginning of T1 is after the end of T2."@en .
+
+time:intervalBefore
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalBefore another proper interval T2, then the end of T1 is before the beginning of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval before"@en ;
+ rdfs:range time:ProperInterval ;
+ rdfs:subPropertyOf time:before ;
+ rdfs:subPropertyOf time:intervalDisjoint ;
+ owl:inverseOf time:intervalAfter ;
+ skos:definition "If a proper interval T1 is intervalBefore another proper interval T2, then the end of T1 is before the beginning of T2."@en .
+
+time:intervalContains
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalContains another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is after the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval contains"@en ;
+ rdfs:range time:ProperInterval ;
+ owl:inverseOf time:intervalDuring ;
+ skos:definition "If a proper interval T1 is intervalContains another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is after the end of T2."@en .
+
+time:intervalDisjoint
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalDisjoint another proper interval T2, then the beginning of T1 is after the end of T2, or the end of T1 is before the beginning of T2, i.e. the intervals do not overlap in any way, but their ordering relationship is not known."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval disjoint"@en ;
+ rdfs:range time:ProperInterval ;
+ skos:definition "If a proper interval T1 is intervalDisjoint another proper interval T2, then the beginning of T1 is after the end of T2, or the end of T1 is before the beginning of T2, i.e. the intervals do not overlap in any way, but their ordering relationship is not known."@en ;
+ skos:note "This interval relation is not included in the 13 basic relationships defined in Allen (1984), but is defined in (T.3) as the union of time:intervalBefore v time:intervalAfter . However, that is outside OWL2 expressivity, so is implemented as an explicit property, with time:intervalBefore , time:intervalAfter as sub-properties"@en .
+
+time:intervalDuring
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalDuring another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is before the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval during"@en ;
+ rdfs:range time:ProperInterval ;
+ rdfs:subPropertyOf time:intervalIn ;
+ owl:inverseOf time:intervalContains ;
+ skos:definition "If a proper interval T1 is intervalDuring another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is before the end of T2."@en .
+
+time:intervalEquals
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalEquals another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is coincident with the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval equals"@en ;
+ rdfs:range time:ProperInterval ;
+ owl:propertyDisjointWith time:intervalIn ;
+ skos:definition "If a proper interval T1 is intervalEquals another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is coincident with the end of T2."@en .
+
+time:intervalFinishedBy
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalFinishedBy another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is coincident with the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval finished by"@en ;
+ rdfs:range time:ProperInterval ;
+ owl:inverseOf time:intervalFinishes ;
+ skos:definition "If a proper interval T1 is intervalFinishedBy another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is coincident with the end of T2."@en .
+
+time:intervalFinishes
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalFinishes another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is coincident with the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval finishes"@en ;
+ rdfs:range time:ProperInterval ;
+ rdfs:subPropertyOf time:intervalIn ;
+ owl:inverseOf time:intervalFinishedBy ;
+ skos:definition "If a proper interval T1 is intervalFinishes another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is coincident with the end of T2."@en .
+
+time:intervalIn
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalIn another proper interval T2, then the beginning of T1 is after the beginning of T2 or is coincident with the beginning of T2, and the end of T1 is before the end of T2, or is coincident with the end of T2, except that end of T1 may not be coincident with the end of T2 if the beginning of T1 is coincident with the beginning of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval in"@en ;
+ rdfs:range time:ProperInterval ;
+ owl:propertyDisjointWith time:intervalEquals ;
+ skos:definition "If a proper interval T1 is intervalIn another proper interval T2, then the beginning of T1 is after the beginning of T2 or is coincident with the beginning of T2, and the end of T1 is before the end of T2, or is coincident with the end of T2, except that end of T1 may not be coincident with the end of T2 if the beginning of T1 is coincident with the beginning of T2."@en ;
+ skos:note "This interval relation is not included in the 13 basic relationships defined in Allen (1984), but is referred to as 'an important relationship' in Allen and Ferguson (1997). It is the disjoint union of time:intervalStarts v time:intervalDuring v time:intervalFinishes . However, that is outside OWL2 expressivity, so is implemented as an explicit property, with time:intervalStarts , time:intervalDuring , time:intervalFinishes as sub-properties"@en .
+
+time:intervalMeets
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalMeets another proper interval T2, then the end of T1 is coincident with the beginning of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval meets"@en ;
+ rdfs:range time:ProperInterval ;
+ owl:inverseOf time:intervalMetBy ;
+ skos:definition "If a proper interval T1 is intervalMeets another proper interval T2, then the end of T1 is coincident with the beginning of T2."@en .
+
+time:intervalMetBy
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalMetBy another proper interval T2, then the beginning of T1 is coincident with the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval met by"@en ;
+ rdfs:range time:ProperInterval ;
+ owl:inverseOf time:intervalMeets ;
+ skos:definition "If a proper interval T1 is intervalMetBy another proper interval T2, then the beginning of T1 is coincident with the end of T2."@en .
+
+time:intervalOverlappedBy
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalOverlappedBy another proper interval T2, then the beginning of T1 is after the beginning of T2, the beginning of T1 is before the end of T2, and the end of T1 is after the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval overlapped by"@en ;
+ rdfs:range time:ProperInterval ;
+ owl:inverseOf time:intervalOverlaps ;
+ skos:definition "If a proper interval T1 is intervalOverlappedBy another proper interval T2, then the beginning of T1 is after the beginning of T2, the beginning of T1 is before the end of T2, and the end of T1 is after the end of T2."@en .
+
+time:intervalOverlaps
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalOverlaps another proper interval T2, then the beginning of T1 is before the beginning of T2, the end of T1 is after the beginning of T2, and the end of T1 is before the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval overlaps"@en ;
+ rdfs:range time:ProperInterval ;
+ owl:inverseOf time:intervalOverlappedBy ;
+ skos:definition "If a proper interval T1 is intervalOverlaps another proper interval T2, then the beginning of T1 is before the beginning of T2, the end of T1 is after the beginning of T2, and the end of T1 is before the end of T2."@en .
+
+time:intervalStartedBy
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalStarted another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is after the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval started by"@en ;
+ rdfs:range time:ProperInterval ;
+ owl:inverseOf time:intervalStarts ;
+ skos:definition "If a proper interval T1 is intervalStarted another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is after the end of T2."@en .
+
+time:intervalStarts
+ rdf:type owl:ObjectProperty ;
+ rdfs:comment "If a proper interval T1 is intervalStarts another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is before the end of T2."@en ;
+ rdfs:domain time:ProperInterval ;
+ rdfs:label "interval starts"@en ;
+ rdfs:range time:ProperInterval ;
+ rdfs:subPropertyOf time:intervalIn ;
+ owl:inverseOf time:intervalStartedBy ;
+ skos:definition "If a proper interval T1 is intervalStarts another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is before the end of T2."@en .
 
 ###  http://rdf.geohistoricaldata.org/def/address#changedBy
 :changedBy rdf:type owl:ObjectProperty ;
@@ -128,6 +329,7 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
            rdfs:label "a pour première étape"@fr ,
                       "has first step"@en ;
            skos:altLabel "a pour premier segment d'adresse"@fr .
+
 
 ###  http://rdf.geohistoricaldata.org/def/address#hasAttribute
 :hasAttribute rdf:type owl:ObjectProperty ;
@@ -218,14 +420,28 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
          rdfs:comment "Valeur temporelle liée à une ressource"@fr ;
          rdfs:label "a pour valeur temporelle"@fr .
 
+###  http://rdf.geohistoricaldata.org/def/address#hasTimeAfter
+:hasTimeAfter rdf:type owl:ObjectProperty ;
+       rdfs:range :TemporalInstant ;
+       rdfs:comment "Indique que la ressource est liée à un instant situé avant l'instant associé"@fr ;
+       rdfs:label "se passe après"@fr .
+
+###  http://rdf.geohistoricaldata.org/def/address#hasTimeBefore
+:hasTimeBefore rdf:type owl:ObjectProperty ;
+       rdfs:range :TemporalInstant ;
+       rdfs:comment "Indique que la ressource est liée à un instant situé après l'instant associé"@fr ;
+       rdfs:label "se passe avant"@fr .
+
 ###  http://rdf.geohistoricaldata.org/def/address#hasEarliestTimeInstant
 :hasEarliestTimeInstant rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :hasTimeAfter ;
         rdfs:range :TemporalInstant ;
         rdfs:comment "Instant au plus tôt lié à la ressource"@fr ;
         rdfs:label "instant au plus tôt"@fr .
 
 ###  http://rdf.geohistoricaldata.org/def/address#hasLatestTimeInstant
 :hasLatestTimeInstant rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :hasTimeBefore ;
         rdfs:range :TemporalInstant ;
         rdfs:comment "Instant au plus tard lié à la ressource"@fr ;
         rdfs:label "instant au plus tard"@fr .
@@ -349,23 +565,6 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
                     "has relatum"@en .
 
 
-###  http://rdf.geohistoricaldata.org/def/address#sameTime
-:sameTime rdf:type owl:ObjectProperty ,
-                   owl:SymmetricProperty ;
-          rdfs:domain [ rdf:type owl:Class ;
-                        owl:unionOf ( :Change
-                                      :Event
-                                    )
-                      ] ;
-          rdfs:range [ rdf:type owl:Class ;
-                       owl:unionOf ( :Change
-                                     :Event
-                                   )
-                     ] ;
-          rdfs:comment "Décrit la relation temporelle de simultanéité entre deux changements"@fr ;
-          rdfs:label "est en même temps que"@fr .
-
-
 ###  http://rdf.geohistoricaldata.org/def/address#targets
 :targets rdf:type owl:ObjectProperty ;
          rdfs:domain :Address ;
@@ -390,17 +589,19 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
                rdfs:comment "Précision de l'instant (au jour, au mois, à l'année...)"@fr ;
                rdfs:label "a pour précision temporelle"@fr .
 
-time:after
-   a owl:ObjectProperty ;
-   rdfs:domain time:TemporalEntity ;
-   rdfs:range time:TemporalEntity ;
-   owl:inverseOf time:before .
+###  http://rdf.geohistoricaldata.org/def/address#sameVersionValueAs
+:sameVersionValueAs rdf:type owl:ObjectProperty , owl:SymmetricProperty ;
+               rdfs:domain :AttributeVersion ;
+               rdfs:range :AttributeVersion ;
+               rdfs:comment "Indique que deux versions d'attributs ont des valeurs similaires"@fr ;
+               rdfs:label "a une valeur similaire à"@fr .
 
-time:before
-   a owl:ObjectProperty, owl:TransitiveProperty ;
-   rdfs:domain time:TemporalEntity ;
-   rdfs:range time:TemporalEntity ;
-   owl:inverseOf time:after .
+###  http://rdf.geohistoricaldata.org/def/address#differentVersionValueFrom
+:differentVersionValueFrom rdf:type owl:ObjectProperty , owl:SymmetricProperty ;
+              rdfs:domain :AttributeVersion ;
+              rdfs:range :AttributeVersion ;
+              rdfs:comment "Indique que deux versions d'attributs ont des valeurs différents"@fr ;
+              rdfs:label "a une valeur différente de"@fr .
 
 ###  http://rdf.geohistoricaldata.org/def/address#versionOf
 :versionOf rdf:type owl:ObjectProperty ;
@@ -418,7 +619,6 @@ prov:wasDerivedFrom rdf:type owl:ObjectProperty ;
                     rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
                     rdfs:label "est dérivé de"@fr ,
                                "wasDerivedFrom"@en .
-
 
 #################################################################
 #    Data properties
@@ -955,6 +1155,14 @@ ltype:AdministrativeUnity rdf:type owl:NamedIndividual ,
                           skos:prefLabel "Administrative unity"@en ,
                                          "Unité administrative"@fr .
 
+###  http://rdf.geohistoricaldata.org/id/codes/address/landmarkType/PostalCodeArea
+ltype:PostalCodeArea rdf:type owl:NamedIndividual ,
+                                  :LandmarkType ,
+                                  skos:Concept ;
+                         skos:definition "Zone postale définie par un code"@fr ;
+                         skos:inScheme :LandmarkList ;
+                         skos:prefLabel "Postal area"@en ,
+                                        "Zone postale"@fr .
 
 ###  http://rdf.geohistoricaldata.org/id/codes/address/landmarkType/City
 ltype:City rdf:type owl:NamedIndividual ,
