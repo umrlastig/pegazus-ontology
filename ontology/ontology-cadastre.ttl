@@ -290,7 +290,7 @@ cad:passedTo a owl:ObjectProperty;
             "passed to"@en ;
     rdfs:comment "Numéro du folio où est décrit l'état de parcelle suivant ou l'événement qui met fin à un état considéré."@fr .
 
-cad:isEventTypeOf a owl:ObjectProperty ;
+cad:isEventType a owl:ObjectProperty ;
     rdfs:domain add:Event ;
     rdfs:range cad:EventType ;
     rdfs:label "est un événement de type"@fr,
