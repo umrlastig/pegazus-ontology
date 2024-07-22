@@ -26,10 +26,7 @@ add:  owl:imports  <file:///D:/Documents/ONTOLOGY/ontology-adresse.ttl> .
 @prefix lrtype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/> .
 
 #Cadastre extension 
-@prefix : <http://rdf.geohistoricaldata.org/def/cadastre#> .
-@base <http://rdf.geohistoricaldata.org/def/cadastre#> .
 @prefix cad: <http://rdf.geohistoricaldata.org/def/cadastre#> .
-
 # Skos Concepts Cadastre extension
 @prefix cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/> .
 @prefix cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/> .
@@ -99,42 +96,37 @@ skos:prefLabel a owl:AnnotationProperty .
 #################################################################
 
 # ---- Our classes ----
-## relative to landmarks
+cad:EventType a owl:Class ;
+            rdfs:subClassOf skos:Concept ;
+            rdfs:label "Type d'évènement"@fr, "Event type"@en .
+
+cad:MLClasse a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Classe d'un document"@fr, "Class of a document provided by a classification task."@en.
+
+cad:NamedEntity a owl:Class ;
+    rdfs:label "Named entity"@en, "Entité nommée"@fr .
+
 cad:Nature a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Plot nature"@en, "Nature de parcelle"@fr ;
     rdfs:comment "Nature d'une parcelle correspondant à une occupation ou à un usage du sol"@fr ,
                  "Nature of a plot corresponding to a land use or occupation"@en .
 
-## relative to taxpayers
-cad:Taxpayer a owl:Class;
-    rdfs:label "Taxpayer"@en, "contribuable"@fr ;
-    skos:altLabel "Owner"@en, "Propriétaire ou usufruitier"@fr ;
-    rdfs:comment "Propriétaire ou usufruitier : personne redevable de l'impôt foncier pour les terres dont elle a la pleine propriété ou l'usufruit."@fr .
-
-#relative to sources
 cad:Source a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Type de source"@fr, "Type of source"@en.
 
-cad:MLClasse a owl:Class ;
-    rdfs:subClassOf skos:Concept ;
-    rdfs:label "Classe d'un document"@fr, "Class of a document provided by an automated treament."@en.
-
-cad:NamedEntity a owl:Class ;
-    rdfs:label "Named entity"@en, "Entité nommée"@fr ;
-    rdfs:comment "Entité nommée."@fr .
-
-#relative to cadastre use
 cad:SpecialCellValue a owl:Class;
     rdfs:subClassOf skos:Concept ;
     skos:prefLabel "Special cell value"@en, "Valeur spéciale"@fr ;
     rdfs:label "Valeur spéciale liée au fonctionnement des documents cadastraux"@fr, "Special value related to the operation of cadastral documents"@en ;
     rdfs:comment "Valeur spéciale liée au fonctionnement des documents cadastraux, par exemple les mentions de construction, destruction dans les colonnes réservées aux numéros de folio."@fr.
 
-cad:EventType a owl:Class ;
-            rdfs:subClassOf skos:Concept ;
-            rdfs:label "Type d'évènement'"@fr .
+cad:Taxpayer a owl:Class;
+    rdfs:label "Taxpayer"@en, "contribuable"@fr ;
+    skos:altLabel "Owner"@en, "Propriétaire ou usufruitier"@fr ;
+    rdfs:comment "Propriétaire ou usufruitier : personne redevable de l'impôt foncier pour les terres dont elle a la pleine propriété ou l'usufruit."@fr .
 
 # ---- Imported classes ----
 skos:Concept a owl:Class .
@@ -190,20 +182,6 @@ prov:SoftwareAgent a owl:Class ;
 #################################################################
 #    Objectype properties
 #################################################################
-
-cad:hasCadastreAttribute a owl:ObjectProperty ;
-              owl:inverseOf cad:isCadastreAttributeOf ;
-              rdfs:domain cad:Thing ;
-              rdfs:range add:Attribute ;
-              rdfs:comment "Décrit l'attribut pour une ressource du cadastre à l'exception des landmarks (voir add:hasAttribute)"@fr ;
-              rdfs:label "a pour attribut"@fr .
-
-cad:isCadastreAttributeOf a owl:ObjectProperty ;
-              owl:inverseOf cad:hasCadastreAttribute ;
-              rdfs:domain add:Attribute ;
-              rdfs:range cad:Thing ;
-              rdfs:comment "Définit la ressource du cadastre pour laquelle l'attribut existe"@fr ;
-              rdfs:label "est un attribut de"@fr .
 
 #relative to landmarks
 cad:hasPlotNature a owl:ObjectProperty ;
@@ -312,7 +290,7 @@ cad:passedTo a owl:ObjectProperty;
             "passed to"@en ;
     rdfs:comment "Numéro du folio où est décrit l'état de parcelle suivant ou l'événement qui met fin à un état considéré."@fr .
 
-cad:isEventType a owl:ObjectProperty ;
+cad:isEventTypeOf a owl:ObjectProperty ;
     rdfs:domain add:Event ;
     rdfs:range cad:EventType ;
     rdfs:label "est un événement de type"@fr,
@@ -323,10 +301,23 @@ cad:fromSource a owl:ObjectProperty ;
     rdfs:label "affirmé dans"@fr ;
     owl:inverseOf cad:isSourceFor.
 
-cad:isSourceFor a owl:ObjectProperty ;
-    rdfs:comment "Une source affirme un élément."@fr ;
-    rdfs:label "est source pour"@fr ;
+cad:isSourceOf a owl:ObjectProperty ;
+    rdfs:comment "Une source fourni une information."@fr ;
+    rdfs:label "est la source de"@fr ;
     owl:inverseOf cad:fromSource.
+
+cad:hasNamedEntity a owl:ObjectProperty ;
+    rdfs:domain rico:Instanciation ;
+    rdfs:range cad:NamedEntity ;
+    rdfs:label "a pour entité nommée"@fr,
+               "has named entity"@en ;
+    rdfs:comment "Entité nommée mentionnée dans une source."@fr .
+
+cad:isNamedEntityType a owl:ObjectProperty ;
+    rdfs:domain cad:NamedEntity ;
+    rdfs:range cad:MLClasse ;
+    rdfs:label "est une entité nommée de type "@fr,
+               "is named entity of type"@en .
 
 # --------- Imported properties ---------
 rico:hasCreationDate a owl:ObjectProperty ;
@@ -562,19 +553,6 @@ prov:wasGeneratedBy a owl:ObjectProperty ;
         prov:activity
     ).
 
-cad:hasNamedEntity a owl:ObjectProperty ;
-    rdfs:domain rico:Instanciation ;
-    rdfs:range cad:NamedEntity ;
-    rdfs:label "a pour entité nommée"@fr,
-               "has named entity"@en ;
-    rdfs:comment "Entité nommée mentionnée dans une source."@fr .
-
-cad:isNamedEntityType a owl:ObjectProperty ;
-    rdfs:domain cad:NamedEntity ;
-    rdfs:range cad:MLClasse ;
-    rdfs:label "est une entité nommée de type "@fr,
-               "is named entity of type"@en .
-
 #################################################################
 #    Datatype properties
 #################################################################
@@ -694,22 +672,17 @@ cad:CadastreAttributeList a owl:NamedIndividual,
     rdfs:comment "Liste des différents rôles spécifique au cadastre pouvant être joués par un attribut, représentés comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type d'attributs spécifiques aux objets du cadastre"@fr .
 
-cad:TaxepayerAttributeList a owl:NamedIndividual,
+cad:CadastreEventList a owl:NamedIndividual,
     skos:ConceptScheme ;
-    rdfs:comment "Liste des différents attributs pouvant être associés à un contribuable, représentés comme une liste de concepts SKOS."@fr ;
-    rdfs:label "Type d'attributs de contribuable"@fr .
+    rdfs:comment "Liste des types d'évènements pouvant intervenir, représentés comme une liste de concepts SKOS."@fr ;
+    rdfs:label "Type d'événements spécifiques au cadastre"@fr ,
+               "Type of cadastre events"@en .
 
 cad:CadastreLandmarkList a owl:NamedIndividual ,
     skos:ConceptScheme ;
     rdfs:comment "Liste des différents rôles pouvant être joués par un repère spécifique au cadastre, représentés comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type de repère spécifiques au cadastre"@fr ,
                 "Type of cadastre landmark"@en .
-
-cad:CadastreEventList a owl:NamedIndividual,
-    skos:ConceptScheme ;
-    rdfs:comment "Liste des types d'évènements pouvant intervenir, représentés comme une liste de concepts SKOS."@fr ;
-    rdfs:label "Type d'événements spécifiques au cadastre"@fr ,
-               "Type of cadastre events"@en .
 
 cad:NatureList a owl:NamedIndividual ,
     skos:ConceptScheme ;
