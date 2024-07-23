@@ -47,6 +47,42 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://rdf.geohistoricaldata.org/def/address#hasNextVersion
+:hasNextVersion rdf:type owl:ObjectProperty ;
+       owl:inverseOf :hasPreviousVersion ;
+       rdfs:comment "Décrit qu'une version de repère en précède une autre"@fr ;
+       rdfs:label "a pour version suivante"@fr .
+
+###  http://rdf.geohistoricaldata.org/def/address#hasPreviousVersion
+:hasPreviousVersion rdf:type owl:ObjectProperty ;
+      owl:inverseOf :hasNextVersion ;
+      rdfs:comment "Décrit qu'une version de repère en succède à une autre"@fr ;
+      rdfs:label "a pour version précédente"@fr .
+
+###  http://rdf.geohistoricaldata.org/def/address#hasOverlappingVersion
+:hasOverlappingVersion rdf:type owl:ObjectProperty ;
+      owl:inverseOf :isOverlappedByVersion ;
+      rdfs:comment "Décrit qu'une version de repère en chevauche une autre"@fr ;
+      rdfs:label "chevauche la version"@fr .
+
+###  http://rdf.geohistoricaldata.org/def/address#overlapsVersion
+:overlapsVersion rdf:type owl:ObjectProperty ;
+      owl:inverseOf :hasOverlappingVersion ;
+      rdfs:comment "Décrit qu'une version de repère est chevauchée par une autre"@fr ;
+      rdfs:label "est chevauché par"@fr .
+
+
+###  http://rdf.geohistoricaldata.org/def/address#hasRootLandmark
+:hasRootLandmark rdf:type owl:ObjectProperty ;
+       owl:inverseOf :isRootLandmarkOf ;
+       rdfs:comment "Décrit qu'un repère est la racine d'un autre"@fr ;
+       rdfs:label "a pour racine"@fr .
+
+###  http://rdf.geohistoricaldata.org/def/address#isRootLandmarkOf
+:isRootLandmarkOf rdf:type owl:ObjectProperty ;
+      rdfs:comment "Décrit qu'un repère est la racine d'un autre"@fr ;
+      rdfs:label "est racine de"@fr .
+
 ###  http://rdf.geohistoricaldata.org/def/address#isSimilarTo
 :isSimilarTo rdf:type owl:ObjectProperty ,
                 owl:TransitiveProperty ;
@@ -334,7 +370,7 @@ time:intervalStarts
 ###  http://rdf.geohistoricaldata.org/def/address#hasAttribute
 :hasAttribute rdf:type owl:ObjectProperty ;
               owl:inverseOf :isAttributeOf ;
-              rdfs:domain :Landmark ;
+              rdfs:domain owl:Thing ;
               rdfs:range :Attribute ;
               rdfs:comment "Décrit l'attribut pour un repère"@fr ;
               rdfs:label "a pour attribut"@fr .
@@ -1048,7 +1084,6 @@ lrtype:Along rdf:type owl:NamedIndividual ,
              skos:inScheme :AdressSegmentList ;
              skos:prefLabel "Along"@en ,
                             "Le long de"@fr .
-
 
 ###  http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/Belongs
 lrtype:Belongs rdf:type owl:NamedIndividual ,
