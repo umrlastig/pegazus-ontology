@@ -28,12 +28,12 @@ http://rdf.geohistoricaldata.org/relatedlandmarks
 
 * **Other landmarks** (towns, cadastral sections, streets, etc.)
 ```sparql
-http://rdf.geohistoricaldata.org/otherslandmarks
+http://rdf.geohistoricaldata.org/otherlandmarks
 ``` 
     - landmarks.ttl
     - Gentilly_landmarks_lieu_dit.ttl
 
-* **Sources (registres et images)**
+* **Sources (root sources)**
 ```sparql
 http://rdf.geohistoricaldata.org/sources
 ``` 
