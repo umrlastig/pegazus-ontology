@@ -19,14 +19,14 @@ http://rdf.geohistoricaldata.org/rootlandmarks
 
 * Plots (**plots versions** created from mutation registers)
 ```sparql
-http://rdf.geohistoricaldata.org/relatedlandmarks
+http://rdf.geohistoricaldata.org/landmarksversions
 ``` 
     - Gentilly_landmarks_plot_mentions.ttl
     - Gentilly_sources_folios.ttl
     - Gentilly_sources_pages.ttl
     - Gentilly_owners_cf_clas_mut.ttl
 
-* **Other landmarks** (towns, cadastral sections, streets, etc.)
+* **Other landmarks** (towns, cadastral sections, streets etc.)
 ```sparql
 http://rdf.geohistoricaldata.org/otherlandmarks
 ``` 
