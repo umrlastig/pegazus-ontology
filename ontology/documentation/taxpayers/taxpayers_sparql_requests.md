@@ -1,5 +1,6 @@
-## Taxpayers Requests
+## Taxpayers SPARQL Requests
 * The following requests are used to answer to the competency questions.
+
 ### 1. Who are the taxpayers of the municipality X?
 * Example : Taxpayers in Gentilly
 ```sparql
@@ -10,7 +11,8 @@ PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkTy
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
 #List of the taxpayers of a given commune
-SELECT DISTINCT ?taxpayer (SAMPLE(?taxpayerLabel) AS ?label) where {
+SELECT DISTINCT ?taxpayer (SAMPLE(?taxpayerLabel) AS ?label) 
+WHERE {
     GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
     ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.}
     #Select the commune
@@ -38,7 +40,8 @@ PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeT
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
-SELECT DISTINCT ?taxpayer (SAMPLE(?taxpayerLabel) AS ?label) where {
+SELECT DISTINCT ?taxpayer (SAMPLE(?taxpayerLabel) AS ?label) 
+WHERE {
     GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
     ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.}
     ?plot dcterms:identifier ?id.
@@ -69,7 +72,7 @@ PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkTy
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
 SELECT DISTINCT ?taxpayer (SAMPLE(?taxpayerLabel) AS ?label) (SAMPLE(?taxpayerAddress) AS ?address)
-where {
+WHERE {
     GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
     ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.}
     #Select the commune where the plot is located
@@ -99,7 +102,7 @@ PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkTy
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
 SELECT DISTINCT ?taxpayer (SAMPLE(?taxpayerLabel) AS ?label) (SAMPLE(?taxpayerActivity) AS ?activity)
-where {
+WHERE {
     GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
     ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.}
     #Select the commune where the plot is located
