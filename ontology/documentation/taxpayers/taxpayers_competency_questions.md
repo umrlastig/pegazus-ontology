@@ -2,11 +2,11 @@
 
 ## Question 1
 ### Question
-Who are the owners of the municipality X?
+Who are the taxpayers of the commune X?
 ### Expected Result
-List of owners whose last name starts with V
+List of taxpayers who have plots in a commune
 ### Example of Response
-*Extract from the list of owners of the municipality of Marolles-en-Brie whose last name starts with V*
+*Extract from the list of taxpayers of the commune of Marolles-en-Brie (last name starts with V)*
 #### French text
 ```
 - Vigoureux Gabriel fabriquant de Bar à marolles
@@ -21,11 +21,11 @@ List of owners whose last name starts with V
 ```
 ## Question 2
 ### Question
-Who are the owners of plot X in section C of a given municipality?
+Who are the taxpayers of plot X in section C of a given commune?
 ### Expected Result
-List of owners or usufructuaries of the plot
+List of taxpayers or usufructuaries of the plot
 ### Example of Response
->Owners of plot 191 in section C of Marolles en Brie
+>Taxpayers of plot 191 in section C of Marolles en Brie
 * Mazarot Pierre
 * D’Auvergne
 * Fleury Jn Btp
@@ -35,11 +35,11 @@ List of owners or usufructuaries of the plot
 
 ## Question 3
 ### Question
-Who are the owners residing in a given municipality?
+Who are the taxpayers living in a given commune?
 ### Expected Result
-List of owners identified at least once in the municipality since the creation of the cadastre.
+List of taxpayers identified at least once in the commune since the creation of the cadastre.
 ### Example of Response
-*Extract from the list of owners residing in the municipality of Marolles en Brie (idem/id refers to Marolles)*
+*Extract from the list of taxpayers living in the commune of Marolles en Brie (idem/id refers to Marolles)*
 #### English translation
 ```
 * Huguet Louis, winemaker in Marolles
@@ -58,11 +58,11 @@ List of owners identified at least once in the municipality since the creation o
 ```
 ## Question 4
 ### Question
-Who are the owners whose profession is XX in a given municipality?
+Who are the taxpayers of a given commune whose profession is XX ?
 ### Expected Result
-List of corresponding owners
+List of corresponding taxpayers
 ### Example of Response
-*Extract from the list of winemakers in the municipality of Marolles en Brie*
+*Extract from the list of winemakers in the commune of Marolles en Brie*
 #### English translation
 ```
 * Guérin Joseph son, win<sup>on</sup> in idem
@@ -91,10 +91,3 @@ List of corresponding owners
 * Mazarot Ve Pierre vig<up>one</sup> à id
 * Lefèvre Jacques vig<up>on</sup> et adjoint à id
 ```
-## Question 5
-### Question
-Who inherits the plots of owner X?
-### Expected Result
-List of all individuals who have inherited from owner X (ownership or usufruct).
-
-<p style="color: green">The names of the heirs can be aggregated under the mention heirs XX</p>
