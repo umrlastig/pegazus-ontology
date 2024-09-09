@@ -1,4 +1,4 @@
-# Competency questions about the Land registry landmarks
+# Competency questions of the Land Registry Landmarks extension
 
 ## Question 1
 ### Question
