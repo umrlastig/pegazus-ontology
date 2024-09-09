@@ -68,7 +68,7 @@
     The land registry administration establishes a separation (the form and objectives of which vary over time) between built plots and unbuilt plots.</td>
   </tr>
   <tr>
-    <td>Parcelle</td>
+    <td>Plot<br>(<i>Parcelle</i>)</td>
     <td><i>A plot is a more or less large portion of land, located in the same canton, sorting or locality, presenting the same type of nature and belonging to the same owner/taxpayer.
     <ul>
         <li>
@@ -86,7 +86,7 @@
     <td><i>See taxpayers modelet</i></td>
   </tr>
     <tr>
-    <td>Section cadastrale</td>
+    <td>Cadastral section<br>(<i>Section cadastrale</i>)</td>
     <td>A cadastral section is a subdivision of a commune created specifically for the land registry. Each section is identified by a letter which is associated with a common name which refers to an element of its territory (e.g. named place).
     <ul>
         <li>Natural borders: <i>The division of the commune into sections has no interest in territorial law or property, the surveyor must, in the opinion of the mayor, attach himself to convenience, habits, and above all to natural and invariable limits. </i></li>
@@ -226,14 +226,8 @@
     <td></td>
   </tr> 
   <tr>
-    <td>Magasin</td>
     <td>Shop</td>
-    <td></td>
-    <td></td>
-  </tr> 
-  <tr>
-    <td>Washhouse</td>
-    <td>Lavoir</td>
+    <td>Magasin</td>
     <td></td>
     <td></td>
   </tr> 
@@ -263,8 +257,8 @@
   </tr> 
 </table>
 
-### Propriétés non bâties
-<i>Liste constituée à partir des récapitulatifs de nature de parcelles des registres de : Boissy-Saint-Léger</i>
+### Unbuilt properties
+
 <table>
   <tr>
     <th>Nature (en)</th>
@@ -273,7 +267,7 @@
     <th>Note (fr)</th>
   </tr>
   <tr>
-    <td>Alders</td>
+    <td>Alder grove</td>
     <td>Aulnaie</td>
     <td></td>
     <td></td>
@@ -309,85 +303,151 @@
     <td>See also : CourCommune (<i>Shared courtyard</i>)</td>
   </tr>
   <tr>
+    <td>Fenced garden</td>
+    <td>Courtil</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Pond</td>
     <td>Etang</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Wasteland</td>
     <td>Friche</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Garden</td>
     <td>Jardin</td>
     <td>J</td>
     <td></td>
   </tr>
   <tr>
+    <td>Heath</td>
+    <td>Lande</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Pond</td>
     <td>Mare</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Melon plantation</td>
     <td>Melonière</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Ornemental thing</td>
     <td>Objet d'agrément</td>
     <td></td>
     <td>Peut-être précisé sous la forme : <i>Jardin d'agrément, Canal d'agrément, Terrain d'agrément</i> etc.</td>
   </tr>
   <tr>
+    <td>Wicker grove</td>
     <td>Oseraie</td>
     <td></td>
     <td></td>
   </tr>
-    <tr>
+  <tr>
+    <td>Flowerbed</td>
+    <td>Parterre</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Way</td>
+    <td>Passage</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Pasture</td>
     <td>Pâture</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Planted land</td>
+    <td>Terrain planté</td>
     <td>Pâture plantée</td>
-    <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Plant nursery</td>
     <td>Pépinière</td>
     <td>Pep</td>
     <td>Associé à <i>Verger</i> dans certains documents</td>
   </tr>
   <tr>
-    <td>Prés</td>
+    <td>Vegetable garden</td>
+    <td>Potager</td>
     <td></td>
     <td></td>
   </tr>
-    <tr>
+  <tr>
+    <td>Meadow</td>
+    <td>Pré</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Willow grove</td>
+    <td>Saulaie</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Ground (House ground)</td>
     <td>Sol</td>
     <td>Terrain de maison, Sol des propriétés bâties</td>
     <td>Emprise d'une construction quelque soit sa nature. Apparaît après la réforme des matrices de 1822.</td>
   </tr>
   <tr>
+    <td>Piece of land</td>
+    <td>Terrain</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Bare ground</td>
     <td>Terre</td>
     <td>T, Terre labourable</td>
     <td></td>
   </tr>
-    <tr>
+  <tr>
+    <td>Vineyard land</td>
     <td>Terre à vigne</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Planted land</td>
     <td>Terre plantée</td>
     <td>T. p.</td>
-    <td</td>
-  </tr>
-  <tr>
-    <td>Verger</td>
     <td></td>
   </tr>
   <tr>
+    <td>Plowed land</td>
+    <td>Terre labourable</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Orchard</td>
+    <td>Verger</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Vineyard</td>
     <td>Vigne</td>
     <td>V</td>
     <td></td>
