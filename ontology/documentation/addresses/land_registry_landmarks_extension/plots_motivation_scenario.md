@@ -1,7 +1,7 @@
-# Motivation scenario of the Plot modelet
+# Motivation scenario of the Land Registry Landmarks extension
 
 ## Nom
-Plot
+Addresses modelet : land registry landmarks extension
 
 ## Description
 

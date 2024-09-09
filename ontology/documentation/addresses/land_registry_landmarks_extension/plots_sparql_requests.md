@@ -1,4 +1,4 @@
-# SPARQL request of the PLot modelet
+# SPARQL requests of the Land Registry Landmarks extension
 
 ## 1. Which are the plots located in a given commune/section of a commune ?
 * List of plots in Gentilly

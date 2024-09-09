@@ -1,4 +1,4 @@
-# Competency questions about the Plot modelet
+# Competency questions about the Land registry landmarks
 
 ## Question 1
 ### Question
