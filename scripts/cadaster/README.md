@@ -10,4 +10,4 @@ After having added the data into the initial named graphs, the algorithm files h
 3. Update initial datas
 4. Build KG
 
-SPARQL requests to answer the competency questions are in the XXX_sparql_request file of the */documentation/cadaster* folder of this repository.
+SPARQL requests to answer the competency questions are in the *XXX_sparql_request.md* file of the */documentation/modelet_XXX* folder of this repository.

@@ -184,6 +184,7 @@ prov:SoftwareAgent a owl:Class ;
 #    Objectype properties
 #################################################################
 
+#KG building properties to link and order facts and factoids resources
 add:hasTrace a owl:ObjectProperty ;
     rdfs:domain owl:Thing ;
     rdfs:range owl:Thing ;
@@ -197,6 +198,22 @@ add:hasTrace a owl:ObjectProperty ;
     rdfs:label "a pour trace"@fr,
                "has trace"@en ;
     owl:inverseOf add:isTraceOf.
+
+cad:hasPreviousVersionInSRCOrder a owl:ObjectProperty ;
+    rdfs:label "a pour version précédente dans les documents"@fr,
+               "has previous version in the source order"@en ;
+    owl:inverseOf cad:hasNextVersionInSRCOrder.
+
+cad:hasNextVersionInSRCOrder a owl:ObjectProperty ;
+    rdfs:label "a pour version suivante dans les documents"@fr,
+               "has next version in the source order"@en ;
+    owl:inverseOf cad:hasPreviousVersionInSRCOrder.
+
+cad:hasOverlappingVersionInSRCOrder a owl:ObjectProperty ;
+    owl:inverseOf cad:isOverlappedByVersionInSRCOrder.
+
+cad:isOverlappedByVersionInSRCOrder a owl:ObjectProperty ;
+    owl:inverseOf cad:hasOverlappingVersionInSRCOrder.
 
 #relative to landmarks
 cad:hasPlotNature a owl:ObjectProperty ;

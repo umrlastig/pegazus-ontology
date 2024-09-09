@@ -222,14 +222,14 @@ WHERE {
 }
 ```
 ## 3 and 4. Create changes and events (#1)
-### 3/4.1 Create changes and events relative to landmarks identity
+### 3.1 Create changes and events relative to landmarks identity
 In the mutation registers, plots ID never change even in case of split or merge of plots. These events lead to the appearance of new landmarks and the disappearance of the previous ones.
 
 In this part, we try to detect the changes and events about Splits.
 
 *NB : Merge will be treated later because all the necessary informations to detect them have not been created yet.*
 
-#### 3/4.1.1 Create Landmark Disappearance Changes and Split Events
+#### 3.1.1 Create Landmark Disappearance Changes and Split Events
 To detect splits events, we choose to use the page reports that are used to link the property accounts changes in the mutation registers tables. 
 
 More than one page number in a column *Next property account* means, in most of cases, that the plot has been split between multiple taxpayers. 
@@ -278,7 +278,7 @@ WHERE{
     HAVING(count(?portea) > 1)
 }
 ```
-#### 3/4.1.2 Create LandmarkAppearance Changes linked to Split Events using "Tiré de" = ResteSV
+#### 3.1.2 Create LandmarkAppearance Changes linked to Split Events using "Tiré de" = ResteSV
 Now, we want to retrieve the first landmark version that follow a disappearance to create Landmark Appearance change.
 
 * Creation of a Change of type *Landmark Appearance* linked to the previously create events.
@@ -335,12 +335,12 @@ WHERE {
 	}
 }
 ```
-### 3/4.2 Create changes and events relative to property account changes
+### 3.2 Create changes and events relative to property account changes
 Now, we want to search for the events related to a plot transfert to one property account to another one without split event. 
 
 *NB : In further steps, we will qualify in further details those changes that also might be a taxpayer change.*
 
-#### 3/4.2.1 Create FolioMutation event
+#### 3.2.1 Create FolioMutation event
 
 * Create *AttributeVersionDisappearance* Change
 * Create a *FolioMutation* Event
@@ -380,7 +380,7 @@ WHERE {
 	}
 }
 ```
-### 3/4.2.2 Create AttributeVersionAppearance change linked to a FolioMutation event
+### 3.2.2 Create AttributeVersionAppearance change linked to a FolioMutation event
 * Create an *AttributeVersionAppearance* Change connected to an already created *FolioMutation* Event.
 
 ```sparql
@@ -443,12 +443,12 @@ WHERE {SELECT DISTINCT ?nextPlot ?attNext ?event (IRI(CONCAT("http://rdf.geohist
 }}
 ```
 
-## 5. Aggregate landmarks versions that have the same identity
+## 4. Aggregate landmarks versions that have the same identity
 
-### 5.1 [Additionnal step for cadastre] Precise relative order of landmarks versions using documents
+### 4.1 [Additionnal step for cadastre] Precise relative order of landmarks versions using documents
 Using the temporal relations and the events and changes we have created, we precise the relations between landmarks versions using *Previous/Next property account* attributes. 
 
-#### 5.1.1 Add *hasPreviousVersionInSRCOrder* and *hasNextVersionInSRCOrder* using FolioMutation events
+#### 4.1.1 Add *hasPreviousVersionInSRCOrder* and *hasNextVersionInSRCOrder* using FolioMutation events
 * Create links between landmark versions that are before and after an event of type *FolioMutation*.
 
 ```sparql
@@ -478,8 +478,8 @@ WHERE {
 } 
 ```
 
-#### 5.1.2 Order landmark versions with the same rootLandmark in the same Property Account
-##### 5.1.2.1 Landmark versions with a temporal relation *hasNextVersion*
+#### 4.1.2 Order landmark versions with the same rootLandmark in the same Property Account
+##### 4.1.2.1 Landmark versions with a temporal relation *hasNextVersion*
 * Create *hasPreviousVersionInSRCOrder / hasNextVersionInSRCOrder* : 
     * A *hasNextVersion* B
     * A in the same property account than B
@@ -525,7 +525,7 @@ WHERE {
 }
 }
 ```
-##### 5.1.2.2 Landmark versions with a temporal relation *hasOverlappingVersion*
+##### 4.1.2.2 Landmark versions with a temporal relation *hasOverlappingVersion*
 * Create *hasOverlappingVersionInSRCOrder / isOverlappedByVersionInSRCOrder* : 
     * A *hasOverlappingVersion* B
     * A in the same property account than B
@@ -570,12 +570,12 @@ WHERE {
 }}
 ```
 
-## 5.2. Create aggregation landmarks with landmarks versions that share the same identity
+## 4.2. Create aggregation landmarks with landmarks versions that share the same identity
 * We create links between landmarks versions that seems be the same object.
 
 *NB1 : Merge events have not been treated for the moment*
 
-### 5.2.1 Links between landmark versions of plots created after the cadastre creation
+### 4.2.1 Links between landmark versions of plots created after the cadastre creation
 First, we create the links between landmark version of plots created after the creation of the first matrice.
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -602,7 +602,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/tmp/siblings>{
     ?plot (add:hasNextVersionInSRCOrder|add:hasOverlappingVersionInSRCOrder)+ ?landmarkversion.
 } 
 ```
-### 5.2.2 Links between landmark versions that seems to share the same identity
+### 4.2.2 Links between landmark versions that seems to share the same identity
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -663,7 +663,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/tmp/siblings>{
     FILTER(YEAR(?start1) = YEAR(?start2))
 } 
 ```
-### 5.2.3 Delete ambiguous sibling relations
+### 4.2.3 Delete ambiguous sibling relations
 * Delete sibling relations when one landmark version have two plot IDs (meaning that it result from a merge of two other plots or parts of thoose plots)
 
 ```sparql
@@ -689,9 +689,9 @@ WHERE {
 }
 ```
 
-### 5.3 Links between property accounts and landmarks versions that are discribed in several mutation registers
+### 4.3 Links between property accounts and landmarks versions that are discribed in several mutation registers
 
-#### 5.3.1 Create links between property accounts from several mutation registers when they have the same taxpayer
+#### 4.3.1 Create links between property accounts from several mutation registers when they have the same taxpayer
 * Create link if taxpayers have a similarity link
 * *NB : We could had more constraints in future tests.*
 ```sparql
@@ -727,7 +727,7 @@ WHERE {
     ?taxpayer skos:exactMatch ?taxpayer2
 }
 ```
-#### 5.3.2 Create links between landmarks versions from several mutation registers
+#### 4.3.2 Create links between landmarks versions from several mutation registers
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
