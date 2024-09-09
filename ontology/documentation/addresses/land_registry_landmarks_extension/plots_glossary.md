@@ -1,160 +1,312 @@
-# Glossaire du modelet Entités géographiques
+# Glossary of the Land Registry Landmarks extension
 
-## Glossaire
 <table>
   <tr>
-    <th>Terme</th>
-    <th>Définition</th>
+    <th>Term</th>
+    <th>Definition</th>
   </tr>
   <tr>
-    <td>Arrondissement</td>
-    <td>L'arrondissement est une subdivision administrative du territoire française créée par la loi du 17 février 1800. Il se trouve à une position intermédiaire entre le département et le canton.
-    Une de ses attributions passées était de fixer l'impôt de répartition.<br>
-     - <a href="https://fr.wikipedia.org/wiki/Arrondissement_fran%C3%A7ais">Arrondissement, Wikipédia</a>
+    <td>French Arrondissement (<i>Arrondissement</i>)</td>
+    <td>The arrondissement is an administrative subdivision of the French territory created by the law of 17 February 1800. In the administrative units hierarchy, it is situated between the departement and the canton.
+    One of its functions in the past was to set the distribution tax.<br>
+     - <a href="https://fr.wikipedia.org/wiki/Arrondissement_fran%C3%A7ais">Arrondissement français, Wikipedia (fr)</a>
     </td>
   </tr>
   <tr>
-    <td>Bien non délimité</td>
-    <td><i>Un bien non délimité est un ensemble de propriétés, de contenance déterminée, dont les limites séparatives n'ont pu, faute de détermination contradictoire, être portées au plan cadastral lors de la rénovation du cadastre ou après cette rénovation.</i><br>
-     - <a href="https://www.defrenois.fr/actualites/regime-des-biens-non-delimites#:~:text=Selon%20une%20r%C3%A9ponse%20minist%C3%A9rielle%2C%20un,cadastre%20ou%20apr%C3%A8s%20cette%20r%C3%A9novation.">Régime des biens non délimités</a>, Defresnois</td>
+    <td>Undelimited property (<i>Bien non délimité</i>)</td>
+    <td><i>A undelimited property is a group of properties of given sizes, whose boundaries could not be recorded on the cadastral index map at the time of or after the renovation of the land register, due to a lack of contradictory determination.</i><br>
+     - <a href="https://www.defrenois.fr/actualites/regime-des-biens-non-delimites#:~:text=Selon%20une%20r%C3%A9ponse%20minist%C3%A9rielle%2C%20un,cadastre%20ou%20apr%C3%A8s%20cette%20r%C3%A9novation.">French rules on undelimited properties</a>, Defresnois</td>
   </tr>
   <tr>
-    <td>Canton (aussi <i>Justice de paix</i>)</td>
-    <td>Les cantons ont été créés pour la première fois par la loi du 22 décembre 1789. Plusieurs fois supprimés puis recréés lors de la dernière decénnie du XVIIIème siècle, ils sont institués en 1800 pour une période plus pérenne.<br>Ils ont alors trois tâches principales :
+    <td>French canton (<i>Canton <br>aussi Justice de paix</i>)</td>
+    <td>The cantons were created for the first time by the law of December 22, 1789. Suppressed several times then recreated during the last decade of the 18th century, they were established in 1800 for a more lasting period.<br>They have three main characteristics:
         <ul>
-        <li>être dotés d'une brigade de gendarmerie et d'une brigade de sapeurs pompiers volontaires</li>
-        <li>disposer d'un hospice</li>
-        <li>collecter un impôt <span style="color:red">à préciser</span></li>
+        <li>be equipped with a gendarmerie brigade and a volunteer fire brigade</li>
+        <li>have an hospice</li>
+        <li>collect taxes</li>
     </ul>
-    A partir de 1833, les cantons sont également une entité électorale utilisée pour élire les conseillers généraux qui siègent au département.<br>
-    De 1790 à 1958, les limites du canton correspondent également à celles des justices de paix. Les deux termes apparaissent en alternance dans les documents cadastraux (notamment au début du XIXème siècle).<br>
-    Le canton n'est plus une circonscription administrative depuis la loi du 17 mai 2013.<br/>
-     - <a href="https://fr.wikipedia.org/wiki/Canton_fran%C3%A7ais">Canton</a>, <a href="https://fr.wikipedia.org/wiki/Justice_de_paix_en_France">Justice de Paix</a>, Wikipédia
+    From 1833, the cantons were also an electoral entity used to elect the general councilors who sat in the department assembly.<br>
+    From 1790 to 1958, the boundaries of the canton are the same as those of the justices of peace. The two terms appear alternately in land registry documents (particularly at the beginning of the 19th century).<br>
+    The canton is no longer an administrative district since the law of May 17, 2013.<br/>
+     - <a href="https://fr.wikipedia.org/wiki/Canton_fran%C3%A7ais">Canton</a>, <a href="https://fr.wikipedia.org/wiki/Justice_de_paix_en_France">Justice de Paix</a>, Wikipedia (fr)
     </td>
   </tr>
   <tr>
-    <td>Circonscription administrative</td>
-    <td>Une circonscription administrative est une entité territoriale qui résulte d'une division administrative et/ou électorale du territoire. Il en existe plusieurs niveaux. L'entité élémentaire est la commune.<br/>
+    <td>Administrative district<br>(<i>Circonscription administrative</i>)</td>
+    <td>
+    An administrative district is a territorial entity which results from an administrative and/or electoral division of the territory. There are several levels. The elementary entity is the municipality.<br/>
     Les circonscriptions mentionnées dans la documentation cadastrale sont :
     <ul>
-        <li>les communes</li>
-        <li>les cantons</li>
-        <li>les arrondissements</li>
-        <li>les départements</li>
+        <li>the French communes</li>
+        <li>the French cantons</li>
+        <li>the French arrondissements</li>
+        <li>the French departements</li>
     </ul>
-    - <a href="https://fr.wikipedia.org/wiki/Circonscription_administrative_(France)">Circonscription administrative, Wikipédia</a>
+    - <a href="https://fr.wikipedia.org/wiki/Circonscription_administrative_(France)">Circonscription administrative, Wikipedia (fr)</a>
     </td>
   </tr>
   <tr>
     <td>Commune</td>
-    <td>Les communes sont les unités administratives élémentaires à l'échelle desquelles est levé le cadastre.</td>
+    <td>Communes are the basic administrative units at which the land register is collected.</td>
   </tr>
   <tr>
-    <td>Département</td>
-    <td>Le département est l'instance chargée de la production du cadastre dans l'ensemble des communes qui le compose.</td>
+    <td>Departement<br>(<i>Département</i>)</td>
+    <td>The department is the body responsible for producing the land register in all the communes that make it up.</td>
   </tr>
   <tr>
-    <td>Espace non cadastré</td>
-    <td>Un espace non cadastré est un objet géographique non numéroté dans le cadastre. Ce sont des espaces non imposables. Ils ne sont pas décrits en détails dans la documentation littérale du cadastre mais figurent précisément sur les plans parcellaires comme l'indique le <i><a href="https://gallica.bnf.fr/ark:/12148/bpt6k96475008/f58.item">Recueil de 1811 (article 151)</a></i> : <i>Les rues , les places publiques, les grandes routes, les chemins vicinaux, les rivières, et généralement tous les objets non imposables (<a href="https://gallica.bnf.fr/ark:/12148/bpt6k96475008/f133.item">article 403</a>), sont levés et décrits avec exactitude.</i>
+    <td>Unregistered space<br>(<i>Espace non cadastré</i>)</td>
+    <td>An unregistered space is a geographical object not numbered in the land registry. These are non-taxable spaces. They are not described in detail in the literal documentation of the land registry but appear precisely on the index maps as indicated in <i><a href="https://gallica.bnf.fr/ark:/12148/bpt6k96475008/ f58.item">Collection of 1811 (article 151)</a></i>: <i>Streets, public squares, main roads, local roads, rivers, and generally all non-taxable objects ( <a href="https://gallica.bnf.fr/ark:/12148/bpt6k96475008/f133.item">article 403</a>), are surveyed and described accurately.</i>
     </td>
   </tr>
   <tr>
-    <td>Impôt de répartition</td>
-    <td><i>L'impôt de répartition est celui dont le produit est fixé par avance et dont le taux dépendra du produit total attendu divisé par le nombre de contribuables soumis à cet impôt ou d'éléments taxables.</i> Cette méthode d'imposition a disparu en France au début du XXème siècle pour être remplacé par l'impôt de quotité.<br> - <a href="https://www.universalis.fr/encyclopedie/impot-histoire-de-l-impot/#c95933"><i>Histoire de l'impôt</i>, Jean-Claude Maitrot, Universalis</a></td>
+    <td>Distribution tax<br>(<i>Impôt de répartition</i>)</td>
+    <td><i>The distribution tax is one whose product is fixed in advance and whose rate will depend on the expected total product divided by the number of taxpayers subject to this tax or taxable elements.</i> This method of taxation has disappeared in France at the beginning of the 20th century to be replaced by the quota tax.<br> - <a href="https://www.universalis.fr/encyclopedie/impot-histoire-de-l-impot/#c95933"><i>History of taxation</i>, Jean-Claude Maitrot, Universalis</a></td>
   </tr>
   <tr>
-    <td>Nature de la propriété</td>
-    <td>La nature de la propriété est une des informations indispensables à l'évaluation de la parcelle.<br>
-    L'administration du cadastre établit une séparation (dont la forme et les objectifs sont variables) entre les propriétés bâties et les propriétés non bâties.</td>
+    <td>Plot nature (<i>Nature de la parcelle</i>)</td>
+    <td>The nature of the plot is one of the essential information for evaluating its value.<br>
+    The land registry administration establishes a separation (the form and objectives of which vary over time) between built plots and unbuilt plots.</td>
   </tr>
   <tr>
     <td>Parcelle</td>
-    <td><i>Une parcelle est une portion de terrain plus ou moins grande, située dans un même canton, triage ou lieu dit, présentant une même nature de culture et appartenant à un même propriétaire.
+    <td><i>A plot is a more or less large portion of land, located in the same canton, sorting or locality, presenting the same type of nature and belonging to the same owner/taxpayer.
     <ul>
         <li>
-        Champ divisé entre plusieurs Propriétaires. : Ainsi, une masse de terres labourables qui se partage entre dix propriétaires, forme dix parcelles.
+        Field divided between several owners. : Thus, a mass of arable land which is shared between ten owners, forms ten plots.
         </li>
         <li>
-        Champ divisé en plusieurs cultures : Une masse de terre appartenant à un seul propriétaire, mais partagée en dix champs , chacun d'une nature absolument distincte de ceux auxquels il est attenant, et devant recevoir une estimation différente, forme dix parcelles.
+        Field divided into several crops: A mass of land belonging to a single owner, but divided into ten fields, each of a nature absolutely distinct from those to which it is adjoining, and having to receive a different estimate, forms ten plots.
         </li>
     </ul></i>
      - <i><a href="https://gallica.bnf.fr/ark:/12148/bpt6k96475008/f54.item">Recueil méthodique des lois, décrets, réglemens, instructions et décisions sur le cadastre de la France, Articles 130-131-132, Page 50, 1811</a></i><br>
     </td>
   </tr>
   <tr>
-    <td>Propriétaire ou usufruitier</td>
-    <td><i>Voir le modelet Propriétaires et usufruitiers</i></td>
+    <td>Owner or usufructuary<br>(<i>Propriétaires ou usufruitiers</i>)</td>
+    <td><i>See taxpayers modelet</i></td>
   </tr>
     <tr>
     <td>Section cadastrale</td>
-    <td>Une section cadastrale est une subdivision d'une commune créée spécifiquement pour le cadastre. Chaque section est identifiée par une lettre à laquelle est associé un nom d'usage qui fait référence à un élément de son territoire (ex: nom de lieu-dit).
+    <td>A cadastral section is a subdivision of a commune created specifically for the land registry. Each section is identified by a letter which is associated with a common name which refers to an element of its territory (e.g. named place).
     <ul>
-        <li>Limites naturelles: <i>La division de la commune en sections n'intéressant en rien ni le droit de territoire ni la propriété, le géomètre doit, de l'avis du maire, s'attacher aux convenances, aux habitudes, et sur-tout aux limites naturelles et invariables. </i></li>
-        <li>Dénomination des Sections : <i>Chaque section doit être désignée , non-seulement par des lettres alphabétiques , mais encore par le nom usité dans la commune , ou par une dénomination que le géomètre lui donne, de concert avec le maire, d'après la contrée ou l'objet principal que la section renferme. Cette dénomination en facilite la connaissance aux contribuables, et leur indique d'une manière plus certaine la situation de leurs propriétés.</i></li>
+        <li>Natural borders: <i>The division of the commune into sections has no interest in territorial law or property, the surveyor must, in the opinion of the mayor, attach himself to convenience, habits, and above all to natural and invariable limits. </i></li>
+        <li>Name of Sections: <i>Each section must be designated, not only by alphabetical letters, but also by the name used in the commune, or by a name that the surveyor gives it, in conjunction with the mayor, according to the region or the main object. that the section contains. This name makes it easier for taxpayers to know, and indicates to them in a more certain way the situation of their properties.</i></li>
     </ul>
     - <i><a href="https://gallica.bnf.fr/ark:/12148/bpt6k96475008/f47.item">Recueil méthodique des lois, décrets, réglemens, instructions et décisions sur le cadastre de la France, Articles 105 & 107, Page 43, 1811</a></i><br>
   </td>
   </tr>
 </table>
 
-## Liste non exhaustive des natures de parcelles
+## Exhaustive list of landmark types related to the French land registry
+* Plot
+* Section
+* Commune
+* Canton
+* Arrondissement
+* Departement
 
-### Propriétés bâties
+## Non-exhaustive list of plot natures
+<i>This list presents the plot natures that have been added to the SKOS Concept Scheme of Plot Natures in the ontology.</i>
+
+### Build properties
 <table>
   <tr>
-    <th>Nature</th>
-    <th>Autre dénomination</th>
-    <th>Remarque</th>
+    <th>Nature (en)</th>
+    <th>Nature (fr)</th>
+    <th>Other name (fr)</th>
+    <th>Note (fr)</th>
   </tr>
   <tr>
-    <td>Maison</td>
-    <td><i>M<sup>son</sup></i></td>
-    <td rowspan="2">Dans le <a href="https://gallica.bnf.fr/ark:/12148/bpt6k96475008/f56.item">Recueil de 1811 (article 142, page 52)</a>, il est précisé que : <i>On ne fait qu'une seule et même parcelle de la maison d'habitation, de la cour et des bâtimens ruraux, lorsque le tout est contigu.</i></td>
+    <td>Lean-to</td>
+    <td>Appenti</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>Workshop</td>
+    <td>Atelier</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Hut</td>
+    <td>Baraque</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Building</td>
     <td>Bâtiment</td>
-    <td>Bâtiment rural</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>Rural building</td>
+    <td>Bâtiment rural</td>
+    <td></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td>Cemetery</td>
+    <td>Cimetière</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Courtyard</td>
+    <td>Cour</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Shared courtyard</td>
+    <td>Cour commune</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Kitchen</td>
+    <td>Cuisine</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+  <td>Outbuilding</td>
+    <td>Dépendance</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Stable</td>
+    <td>Ecurie</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Church</td>
     <td>Eglise</td>
     <td></td>
     <td><i>Édifices publics.<br>Les églises, les monumens ou édifices publics, et en général tous les terrains clos employés à un service public, forment parcelle.</i><br>
      - <a href="https://gallica.bnf.fr/ark:/12148/bpt6k96475008/f56.item">Recueil de 1811 (article 144, page 52)</a></td>
   </tr>
   <tr>
+    <td>Public baths</td>
+    <td>Etablissement de bains</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Factory</td>
     <td>Fabrique</td>
     <td></td>
-    <td>il peut être précisé la nature des productions de la fabrique.</td>
+    <td>Il peut être précisé la nature des productions de la fabrique.</td>
   </tr>
+  <tr>
+    <td>Bakery</td>
+    <td>Fournil</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Shed</td>
+    <td>Hangar</td>
+    <td>Hang</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Washhouse</td>
+    <td>Lavoir</td>
+    <td></td>
+    <td></td>
+  </tr> 
+  <tr>
+    <td>Steam engine</td>
+    <td>Machine à vapeur</td>
+    <td></td>
+    <td></td>
+  </tr> 
+  <tr>
+    <td>Magasin</td>
+    <td>Shop</td>
+    <td></td>
+    <td></td>
+  </tr> 
+  <tr>
+    <td>Washhouse</td>
+    <td>Lavoir</td>
+    <td></td>
+    <td></td>
+  </tr> 
+  <tr>
+    <td>House</td>
+    <td>Maison</td>
+    <td><i>M<sup>son</sup></i></td>
+    <td>Dans le <a href="https://gallica.bnf.fr/ark:/12148/bpt6k96475008/f56.item">Recueil de 1811 (article 142, page 52)</a>, il est précisé que : <i>On ne fait qu'une seule et même parcelle de la maison d'habitation, de la cour et des bâtimens ruraux, lorsque le tout est contigu.</i></td>
+  </tr>
+  <tr>
+    <td>Mill</td>
+    <td>Moulin</td>
+    <td></td>
+    <td></td>
+  </tr> 
+  <tr>
+    <td>Water tank</td>
+    <td>Réservoir</td>
+    <td></td>
+    <td></td>
+  </tr> 
+  <tr>
+    <td>Ruin</td>
+    <td>Ruine</td>
+    <td></td>
+    <td></td>
+  </tr> 
 </table>
 
 ### Propriétés non bâties
 <i>Liste constituée à partir des récapitulatifs de nature de parcelles des registres de : Boissy-Saint-Léger</i>
 <table>
   <tr>
-    <th>Nature</th>
-    <th>Abréviations/Nom alternatif</th>
-    <th>Remarque</th>
+    <th>Nature (en)</th>
+    <th>Nature (fr)</th>
+    <th>Other name (fr)</th>
+    <th>Note (fr)</th>
   </tr>
   <tr>
+    <td>Alders</td>
     <td>Aulnaie</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Wood</td>
     <td>Bois</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Canal</td>
+    <td>Canal</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Railway</td>
     <td>Chemin de fer</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
+    <td>Fenced lot</td>
+    <td>Clos</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Courtyard</td>
     <td>Cour</td>
     <td></td>
-    <td>Généralement associé à une maison et/ou des bâtiments (propriétés bâties).</td>
+    <td>See also : CourCommune (<i>Shared courtyard</i>)</td>
   </tr>
   <tr>
     <td>Etang</td>
