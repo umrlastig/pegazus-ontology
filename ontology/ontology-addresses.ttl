@@ -72,6 +72,7 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
       rdfs:label "est chevauché par"@fr, "is overlapped by version"@en .
 
 ###  http://rdf.geohistoricaldata.org/def/address#hasTrace
+<<<<<<<< HEAD:ontology/ontology-addresses.ttl
 addr:hasTrace a owl:ObjectProperty ;
     rdfs:label "a pour trace"@fr, "has trace"@en ;
     owl:inverseOf addr:isTraceOf.
@@ -80,31 +81,69 @@ addr:hasTrace a owl:ObjectProperty ;
 addr:isTraceOf a owl:ObjectProperty ;
     rdfs:label "est une trace de"@fr, "is trace of"@en ;
     owl:inverseOf addr:hasTrace.
+========
+:hasTrace a owl:ObjectProperty ;
+    rdfs:label "a pour trace"@fr,
+               "has trace"@en ;
+    owl:inverseOf :isTraceOf.
+
+###  http://rdf.geohistoricaldata.org/def/address#isTraceOf
+:isTraceOf a owl:ObjectProperty ;
+    rdfs:label "est une trace de"@fr,
+               "is trace of"@en ;
+    owl:inverseOf :hasTrace.
+>>>>>>>> b6ea87bf2816fb84e2bcaf5122a978db59b7a44f:ontology/ontology-adresses.ttl
 
 ###  http://rdf.geohistoricaldata.org/def/address#hasRoot
 :hasRoot rdf:type owl:ObjectProperty ;
        owl:inverseOf :isRootOf ;
+<<<<<<<< HEAD:ontology/ontology-addresses.ttl
        rdfs:comment "Décrit qu'un élément a pour racine un autre élement"@fr, "Describes that an element has another element of reference as its root"@en ;
        rdfs:label "a pour racine"@fr, "has root"@en .
+========
+       rdfs:comment "Décrit qu'un élément a pour racine un autre repère"@fr ;
+       rdfs:label "a pour racine"@fr .
+>>>>>>>> b6ea87bf2816fb84e2bcaf5122a978db59b7a44f:ontology/ontology-adresses.ttl
 
 ###  http://rdf.geohistoricaldata.org/def/address#isRootOf
 :isRootOf rdf:type owl:ObjectProperty ;
        owl:inverseOf :hasRoot ;
+<<<<<<<< HEAD:ontology/ontology-addresses.ttl
       rdfs:comment "Décrit qu'un élément est la racine d'un autre"@fr, "Describes that an element is the root of another"@en ;
       rdfs:label "est racine de"@fr, "is root of"@en .
+========
+      rdfs:comment "Décrit qu'un élément est la racine d'un autre"@fr ;
+      rdfs:label "est racine de"@fr .
+>>>>>>>> b6ea87bf2816fb84e2bcaf5122a978db59b7a44f:ontology/ontology-adresses.ttl
 
 ###  http://rdf.geohistoricaldata.org/def/address#hasRootLandmark
 :hasRootLandmark rdf:type owl:ObjectProperty ;
        rdfs:subPropertyOf :hasRoot ;
        owl:inverseOf :isRootLandmarkOf ;
+<<<<<<<< HEAD:ontology/ontology-addresses.ttl
        rdfs:comment "Décrit qu'un repère a pour racine un autre repère"@fr, "Describes that an landmark has another landmark as its root"@en ;
        rdfs:label "a pour racine"@fr, "has root"@en .
+========
+       rdfs:comment "Décrit qu'un repère a pour racine un autre repère"@fr ;
+       rdfs:label "a pour racine"@fr .
+>>>>>>>> b6ea87bf2816fb84e2bcaf5122a978db59b7a44f:ontology/ontology-adresses.ttl
 
 ###  http://rdf.geohistoricaldata.org/def/address#isRootLandmarkOf
 :isRootLandmarkOf rdf:type owl:ObjectProperty ;
        rdfs:subPropertyOf :isRootOf ;
+<<<<<<<< HEAD:ontology/ontology-addresses.ttl
       rdfs:comment "Décrit qu'un repère est la racine d'un autre"@fr, "Describes that an landmark is the root of another"@en ;
       rdfs:label "est racine de"@fr, "is root of"@en .
+========
+      rdfs:comment "Décrit qu'un repère est la racine d'un autre"@fr ;
+      rdfs:label "est racine de"@fr .
+
+###  http://rdf.geohistoricaldata.org/def/address#isSimilarTo
+:isSimilarTo rdf:type owl:ObjectProperty ,
+                owl:TransitiveProperty ;
+       rdfs:comment "Décrit qu'une ressource est similaire à une autre"@fr ;
+       rdfs:label "est similaire à"@fr .
+>>>>>>>> b6ea87bf2816fb84e2bcaf5122a978db59b7a44f:ontology/ontology-adresses.ttl
 
 ###  http://rdf.geohistoricaldata.org/def/address#appliedTo
 :appliedTo rdf:type owl:ObjectProperty ;
