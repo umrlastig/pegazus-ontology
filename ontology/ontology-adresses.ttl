@@ -65,21 +65,46 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
       rdfs:comment "Décrit qu'une version de repère en chevauche une autre"@fr ;
       rdfs:label "chevauche la version"@fr .
 
-###  http://rdf.geohistoricaldata.org/def/address#overlapsVersion
-:overlapsVersion rdf:type owl:ObjectProperty ;
+###  http://rdf.geohistoricaldata.org/def/address#isOverlappedByVersion
+:isOverlappedByVersion rdf:type owl:ObjectProperty ;
       owl:inverseOf :hasOverlappingVersion ;
       rdfs:comment "Décrit qu'une version de repère est chevauchée par une autre"@fr ;
       rdfs:label "est chevauché par"@fr .
 
+###  http://rdf.geohistoricaldata.org/def/address#hasTrace
+:hasTrace a owl:ObjectProperty ;
+    rdfs:label "a pour trace"@fr,
+               "has trace"@en ;
+    owl:inverseOf :isTraceOf.
+
+###  http://rdf.geohistoricaldata.org/def/address#isTraceOf
+:isTraceOf a owl:ObjectProperty ;
+    rdfs:label "est une trace de"@fr,
+               "is trace of"@en ;
+    owl:inverseOf :hasTrace.
+
+###  http://rdf.geohistoricaldata.org/def/address#hasRoot
+:hasRoot rdf:type owl:ObjectProperty ;
+       owl:inverseOf :isRootOf ;
+       rdfs:comment "Décrit qu'un élément a pour racine un autre repère"@fr ;
+       rdfs:label "a pour racine"@fr .
+
+###  http://rdf.geohistoricaldata.org/def/address#isRootOf
+:isRootOf rdf:type owl:ObjectProperty ;
+       owl:inverseOf :hasRoot ;
+      rdfs:comment "Décrit qu'un élément est la racine d'un autre"@fr ;
+      rdfs:label "est racine de"@fr .
 
 ###  http://rdf.geohistoricaldata.org/def/address#hasRootLandmark
 :hasRootLandmark rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf :hasRoot ;
        owl:inverseOf :isRootLandmarkOf ;
-       rdfs:comment "Décrit qu'un repère est la racine d'un autre"@fr ;
+       rdfs:comment "Décrit qu'un repère a pour racine un autre repère"@fr ;
        rdfs:label "a pour racine"@fr .
 
 ###  http://rdf.geohistoricaldata.org/def/address#isRootLandmarkOf
 :isRootLandmarkOf rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf :isRootOf ;
       rdfs:comment "Décrit qu'un repère est la racine d'un autre"@fr ;
       rdfs:label "est racine de"@fr .
 
