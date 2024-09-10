@@ -1,9 +1,6 @@
 from rdflib import Graph
-from rdflib.namespace import RDF, RDFS, SKOS, NamespaceManager
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
-from rdflib.namespace import CSVW, DC, DCAT, DCTERMS, DOAP, FOAF, ODRL2, ORG, OWL, \
-                           PROF, PROV, RDF, RDFS, SDO, SH, SKOS, SOSA, SSN, TIME, \
-                           VOID, XSD
+from rdflib.namespace import RDF, RDFS, XSD
 from namespaces import NameSpaces
 from uuid import uuid4
 import re
@@ -113,7 +110,6 @@ def create_landmark_attribute(g:Graph, attribute_uri:URIRef, attribute_type_uri:
     g.add((landmark_uri, np.ADDR["hasAttribute"], attribute_uri))
 
 def create_attribute_version(g:Graph, attr_vers_uri:URIRef, vers_value:Literal):
-    # attr_vers_lit = Literal(value, lang=lang, datatype=datatype)
     g.add((attr_vers_uri, RDF.type, np.ADDR["AttributeVersion"]))
     g.add((attr_vers_uri, np.ADDR["versionValue"], vers_value))
 
@@ -163,7 +159,7 @@ def add_time_to_resource(g:Graph, resource_uri:URIRef, time_uri):
 
 def convert_result_elem_to_rdflib_elem(result_elem:dict):
     """
-    À partir d'un dictionnaire qui décrit un élement d'un résultat d'une requête, le convertir en un élément d'un triplet d'un graph (URIRef, Literal, Bnode)
+    From a dictionary describing an element of a query result, convert it into an element of a graph triplet (URIRef, Literal, Bnode)
     """
     
     res_type = result_elem.get("type")

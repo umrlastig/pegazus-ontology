@@ -83,7 +83,7 @@ def get_union_of_geosparql_wktliterals(wkt_literal_list:list[Literal]):
 
 def get_wkt_geom_from_geosparql_wktliteral(wktliteral:str):
     """
-    Extraire le WKT et le l'URI SRID de la géométrie si elle est indiquée
+    Extract the WKT and SRID URI of the geometry if indicated
     """
 
     wkt_srid_pattern = "<(.{0,})>"
@@ -106,7 +106,7 @@ def get_wkt_geom_from_geosparql_wktliteral(wktliteral:str):
 
 def transform_geometry_crs(geom, crs_from, crs_to):
     """
-    Obtenir une géométrie définie dans le système de coordonnées `from_crs` vers le système `to_crs`.
+    Obtain geometry defined in the `from_crs` coordinate system to the `to_crs` coordinate system.
     """
 
     project = pyproj.Transformer.from_crs(crs_from, crs_to, always_xy=True).transform
@@ -114,7 +114,7 @@ def transform_geometry_crs(geom, crs_from, crs_to):
 
 def get_pyproj_crs_from_opengis_epsg_uri(opengis_epsg_uri:URIRef):
     """
-    Extraction du code EPSG à partir de `opengis_epsg_uri` pour renvoyer un objet pyproj.CRS
+    Extract EPSG code from `opengis_epsg_uri` to return a pyproj.CRS object
     """
     pattern = "http://www.opengis.net/def/crs/EPSG/0/([0-9]{1,})"
     try :
@@ -125,18 +125,10 @@ def get_pyproj_crs_from_opengis_epsg_uri(opengis_epsg_uri:URIRef):
 
 def are_similar_geometries(geom_1, geom_2, geom_type:str, coef_min:float=0.8, max_dist=10) -> bool:
     """
-    La fonction détermine si deux géométries sont similaires
-    `coef_min` est dans [0,1] et définit la valeur minimale pour considérer que `geom_1` et `geom_2` soient similaires
-    `geom_type` définit le type de géométrie à prendre en compte (`point`, `linestring`, `polygon`)
+    The function determines whether two geometries are similar:
+    `coef_min` is in [0,1] and defines the minimum value for considering `geom_1` and `geom_2` to be similar
+    `geom_type` defines the type of geometry to be taken into account (`point`, `linestring`, `polygon`)
     """
-    # geom_intersection = geom_1.intersection(geom_2)
-    # geom_union = geom_1.union(geom_2)
-    # coef = geom_intersection.area/geom_union.area
-
-    # if coef > 0.7:
-    #     return True
-    # else:
-    #     return False
 
     if geom_type == "polygon":
         return are_similar_polygons(geom_1, geom_2, coef_min)
@@ -147,7 +139,7 @@ def are_similar_geometries(geom_1, geom_2, geom_type:str, coef_min:float=0.8, ma
     
 def are_similar_points(geom_1, geom_2, max_dist):
     """
-    On cherche à savoir si deux points sont similaires, ils le sont si la distance qui les sépare est inférieure à `max_dist`.
+    We want to know if two points are similar. They are similar if the distance between them is less than `max_dist`.
     """
 
     dist = geom_1.distance(geom_2)
@@ -160,11 +152,11 @@ def are_similar_points(geom_1, geom_2, max_dist):
 
 def are_similar_polygons(geom_1, geom_2, coef_min:float):
     """
-    Techinique pour savoir si les polygones sont similaires :
-    * on construction une bounding bbox pour chaque polygone
-    * on analyse le recouvrement de l'union des bbox et de l'intersection
+    Technique for determining whether polygons are similar:
+    * build a bounding bbox for each polygon
+    * analyse the overlap between the union of the bboxes and the intersection.
 
-    Si le taux de recouvrement est supérieur à `coef_min`, les polygones sont similaires
+    If the overlap rate is greater than `coef_min`, the polygons are similar
     """
 
     geom_intersection = geom_1.envelope.intersection(geom_2.envelope)
@@ -179,20 +171,20 @@ def are_similar_polygons(geom_1, geom_2, coef_min:float):
 
 def get_processed_geometry(geom_wkt:str, geom_srid_uri:URIRef, geom_type:str, crs_uri:URIRef, buffer_radius:float):
     """
-    Obtention d'une géométrie pour pouvoir la comparer aux autres :
-    * ses coordonnées seront exprimées dans le référentiel lié à `crs_uri`
-    * si la géométrie est une ligne ou un point (area=0.0) et qu'on veut avoir un polygone comme géométrie (`geom_type == "polygon"`), alors on récupère une zone tampon dont le buffer est donné par `buffer_radius`
+    Obtaining a geometry so that it can be compared with others:
+    * its co-ordinates will be expressed in the reference frame linked to `crs_uri`.
+    * if the geometry is a line or a point (area=0.0) and we want to have a polygon as geometry (`geom_type == ‘polygon’`), then we retrieve a buffer zone whose buffer is given by `buffer_radius`.
     """
 
     geom = wkt.loads(geom_wkt)
     crs_from = get_pyproj_crs_from_opengis_epsg_uri(geom_srid_uri)
     crs_to = get_pyproj_crs_from_opengis_epsg_uri(crs_uri)
 
-    # Conversion de la géométrie vers le système de coordonnées cible
+    # Converting geometry to the target coordinate system
     if crs_from != crs_to:
         geom = transform_geometry_crs(geom, crs_from, crs_to)
     
-    # Ajout d'un buffer `meter_buffer` mètres si c'est pas un polygone
+    # Add a `meter_buffer` if it's not a polygon
     if geom.area == 0.0 and geom_type == "polygon":
         geom = geom.buffer(buffer_radius)
 

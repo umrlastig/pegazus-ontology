@@ -173,8 +173,6 @@ def get_lower_simplified_french_street_name_function(variable:str):
     return get_remplacement_sparql_function(lc_variable, replacements)
 
 def get_remplacement_sparql_function(string, replacements):
-    # arg, pattern, replacement = string, first_repl[0], first_repl[1]
-    # function_str = f"REPLACE({arg}, {pattern}, {replacement})"
     function_str = string
     for repl in replacements:
         arg, pattern, replacement = function_str, repl[0], repl[1]
@@ -184,7 +182,7 @@ def get_remplacement_sparql_function(string, replacements):
     return function_str
 
 def normalize_street_rdfs_labels_in_graph_file(graph_file:str):
-    # Normalisation de noms de voies
+    # Standardisation of road names
     g = Graph()
     g.parse(graph_file)
     triples_to_remove = []
@@ -205,11 +203,11 @@ def normalize_street_rdfs_labels_in_graph_file(graph_file:str):
 
 def define_time_filter_for_sparql_query(val_tRef:str, cal_tRef:str, val_t1:str, cal_t1:str, val_t2:str, cal_t2:str, time_precision:URIRef="day"):
     """
-    Création d'un filtre temporel pour les requêtes afin de sélectionner des données valables à l'instant `tRef` telles que t2 <= tRef <= t1
-    val_tX sont des variables de la requête liées aux timestamps (`?t1Value`, `?t2Value`...)
-    cal_tX sont des variables de la requête liées aux calendriers (`?t1Calendar`, `?t2Calendar`...)
+    Creation of a time filter for queries in order to select data valid at time `tRef` such that t2 <= tRef <= t1
+    val_tX are query variables linked to timestamps (`?t1Value`, `?t2Value`...)
+    cal_tX are variables in the query related to calendars (`?t1Calendar`, `?t2Calendar`...)
 
-    `time_precision` peut prendre les valeurs suivantes : 
+    time_precision` can take the following values:
     * `URIRef("http://www.w3.org/2006/time#unitYear")` ;
     * `URIRef("http://www.w3.org/2006/time#unitMonth")` ;
     * `URIRef("http://www.w3.org/2006/time#unitDay")`.
@@ -217,9 +215,6 @@ def define_time_filter_for_sparql_query(val_tRef:str, cal_tRef:str, val_t1:str, 
     
     t1_get_t2 = "{t1} >= {t2}"
     t1_let_t2 = "{t1} <= {t2}"
-    # t1_gt_t2 = "{t1} > {t2}"
-    # t1_lt_t2 = "{t1} < {t2}"
-    # t1_eq_t2 = "{t1} = {t2}"
     t_not_exists = "!BOUND({t})"
     or_op = "||"
     and_op = "&&"

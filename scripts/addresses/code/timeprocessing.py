@@ -1,7 +1,7 @@
 import re
 import datetime
-from rdflib import Graph, Namespace, Literal, BNode, URIRef
-from rdflib.namespace import RDF, XSD
+from rdflib import Namespace, Literal, URIRef
+from rdflib.namespace import XSD
 from namespaces import NameSpaces
 import graphdb as gd
 
@@ -324,7 +324,6 @@ def remove_earliest_and_latest_time_instants(graphdb_url, repository_name, time_
     gd.update_query(query, graphdb_url, repository_name)
 
 def get_validity_interval_for_attribute_versions(graphdb_url, repository_name, time_named_graph_uri:URIRef):
-
     # Creation of a time interval of attribute version without any time interval
     query1 = np.query_prefixes + f"""
         INSERT {{
@@ -393,14 +392,14 @@ def get_validity_interval_for_attribute_versions(graphdb_url, repository_name, t
 
 def add_time_relations(graphdb_url:str, repository_name:str, time_named_graph_name:str):
     """
-    Ajout de relations temporelles :
-    * comparaison des instants appartenant à un même événement (i1 before/after i2)
-    * comparaison des instants liés à un même attribut (i1 before/after i2)
-    * déduction des instants au plus tôt / au plus tard liés aux événéments à partir des instants avant / après
-    * création d'intervalles de validité pour des versions d'attributs
-    * comparaison des intervalles de versions entre versions d'un même attribut
+    Add temporal relationships:
+    * comparison of instants belonging to the same event (i1 before/after i2)
+    * comparison of instants linked to the same attribute (i1 before/after i2)
+    * deduction of earliest/latest instants linked to events from before/after instants
+    * creation of validity intervals for attribute versions
+    * comparison of version intervals between versions of the same attribute
 
-    L'ensemble des triplets est stocké dans le graphe nommé dont le nom est `time_named_graph_name`.
+    The set of triples is stored in the named graph whose name is `time_named_graph_name`.
     """
     
     time_named_graph_uri = URIRef(gd.get_named_graph_uri_from_name(graphdb_url, repository_name, time_named_graph_name))
@@ -436,7 +435,7 @@ def get_similar_events(graphdb_url:str, repository_name:str, time_named_graph_ur
 
 def get_events_before(graphdb_url:str, repository_name:str, time_named_graph_uri:URIRef):
 
-    # Un événement A dont la valeur temporelle est située avant une valeur temporelle dépendant d'un événément B, alors A est avant B
+    # An event A whose time value is before a time value dependent on an event B, then A is before B.
     query1 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?ev1 addr:eventBefore ?ev2 . }}
@@ -452,7 +451,7 @@ def get_events_before(graphdb_url:str, repository_name:str, time_named_graph_uri
         }}
     """
 
-    # Pour un repère, l'événément lié au changement décrivant son apparition est situé avant l'événément lié au changement décrivant sa disparition
+    # For a landmark, the event linked to the change describing its appearance is located before the event linked to the change describing its disappearance.
     query2 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?ev1 addr:eventBefore ?ev2 . }}
@@ -465,7 +464,7 @@ def get_events_before(graphdb_url:str, repository_name:str, time_named_graph_uri
         }}
         """
     
-    # Pour une relation entre repères, l'événément lié au changement décrivant son apparition est situé avant l'événément lié au changement décrivant sa disparition
+    # For a landmark relation, the event linked to the change describing its appearance is located before the event linked to the change describing its disappearance.
     query3 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?ev1 addr:eventBefore ?ev2 . }}
@@ -478,8 +477,8 @@ def get_events_before(graphdb_url:str, repository_name:str, time_named_graph_uri
         }}
         """
     
-    # Pour une relation entre repères, l'événément lié au changement décrivant son apparition est après tout événément lié à un changement d'apparition d'un repère compris dans la relation.
-    # Ie, une relation entre repères ne peut exister qu'à l'existence des repères décrits.
+    # For a landmark relation, the event linked to the change describing its appearance is after any event linked to a change in the appearance of a landmark included in the relationship.
+    # Ie, a landmark relation can only exist when the landmarks described exist.
     query4 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?ev1 addr:eventBefore ?ev2 . }}
@@ -494,8 +493,8 @@ def get_events_before(graphdb_url:str, repository_name:str, time_named_graph_uri
         }}
         """
     
-    # Pour une relation entre repères, l'événément lié au changement décrivant sa disparition est avant tout événément lié à un changement de disparition d'un repère compris dans la relation.
-    # Ie, une relation entre repères disparaît avant la disparition des repères décrits.
+    # For a landmark relation, the event linked to the change describing its disappearance is above all an event linked to a change in the disappearance of a landmark included in the relationship.
+    # Ie, a rlandmark relation disappears before the landmarks described disappear.
     query5 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?ev1 addr:eventBefore ?ev2 . }}
@@ -510,7 +509,7 @@ def get_events_before(graphdb_url:str, repository_name:str, time_named_graph_uri
         }}
         """
     
-    # Un événément lié à un changement décrivant la mise en effectivité d'une version est situé avant l'événement lié au changement décrivant la péremption de cette version.
+    # An event linked to a change describing a version's effectiveness is located before the event linked to the change describing the version's expiration.
     query6 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?ev1 addr:eventBefore ?ev2 . }}

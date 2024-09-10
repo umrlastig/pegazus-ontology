@@ -42,7 +42,7 @@ def compare_attribute_versions(graphdb_url:str, repository_name:str, comp_named_
 def get_geom_type_according_landmark_type(rel_lm_type:URIRef):
     if rel_lm_type in [np.LTYPE["HouseNumber"], np.LTYPE["StreetNumber"], np.LTYPE["DistrictNumber"]]:
         return "point"
-    elif rel_lm_type in [np.LTYPE["Thoroughfare"], np.LTYPE["District"], np.LTYPE["City"]]:
+    elif rel_lm_type in [np.LTYPE["Thoroughfare"], np.LTYPE["District"], np.LTYPE["Municipality"]]:
         return "polygon"
     else:
         return "polygon"
@@ -52,7 +52,7 @@ def get_name_type_according_landmark_type(rel_lm_type:URIRef):
         return "housenumber"
     elif rel_lm_type in [np.LTYPE["Thoroughfare"]]:
         return "thoroughfare"
-    elif rel_lm_type in [np.LTYPE["District"], np.LTYPE["City"]]:
+    elif rel_lm_type in [np.LTYPE["District"], np.LTYPE["Municipality"]]:
         return "area"
     else:
         return ""

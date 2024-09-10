@@ -415,7 +415,7 @@ def export_named_graph_and_reload_repository(graphdb_url, repository_name, ttl_f
     # Export named graph in TTL file
     export_data_from_repository(graphdb_url, repository_name, ttl_file, named_graph_uri=named_graph_uri)
 
-    # Réinitialiser le répertoire et le remplir une nouvelle fois avec l'ontologie et le graphe des faits
+    # Reset the directory and fill it again with the ontology and the fact graph
     clear_repository(graphdb_url, repository_name)
     load_ontologies(graphdb_url, repository_name, [ont_file], ontology_named_graph_name)
     import_ttl_file_in_graphdb(graphdb_url, repository_name, ttl_file, named_graph_name)

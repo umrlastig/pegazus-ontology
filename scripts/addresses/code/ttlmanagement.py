@@ -17,16 +17,16 @@ def uri_is_valid(uri:URIRef):
 
 def format_ttl_to_avoid_invalid_iri_value_error(in_ttl_file:str, out_ttl_file:str=None):
     """
-    Reformattage d'un fichier ttl en supprimant les triplets problématiques lors de l'import du fichier.
-    Éviter l'erreur `org.eclipse.rdf4j.sail.SailException: Invalid IRI value` due à des IRI avec deux `#`.
-    Si `out_ttl_file` n'est pas renseigné, `in_ttl_file` est écrasé.
+    Reformatting a ttl file by deleting problematic triplets when importing the file.
+    Avoid error `org.eclipse.rdf4j.sail.SailException: Invalid IRI value` due to IRIs with two `#`.
+    If `out_ttl_file` is not set, `in_ttl_file` is overwritten.
     """
 
     g = Graph()
     g.parse(in_ttl_file)
 
-    # Pour chaque triplet, on regarde si les URI y sont valides.
-    # On supprime le triple si une d'entre elles ne l'est pas
+    # For each triple, we check whether the URIs are valid.
+    # We delete the triple if one of them is not valid.
     for s, p, o in g:
         remove_triple = False
         remove_triple = not elem_is_valid(s)

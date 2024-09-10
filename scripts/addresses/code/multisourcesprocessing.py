@@ -1,12 +1,9 @@
 import os
-import datetime
-from rdflib import Graph, Namespace, Literal, BNode, URIRef, XSD, SKOS
-from rdflib.namespace import RDF
+from rdflib import Graph, Namespace, Literal, URIRef, XSD, SKOS
 from namespaces import NameSpaces
 import strprocessing as sp
 import geomprocessing as gp
 import timeprocessing as tp
-import ontorefine as otr
 import graphdb as gd
 import graphrdf as gr
 import curl as curl
@@ -34,14 +31,14 @@ def add_alt_and_hidden_labels_for_name_attribute_versions(graphdb_url, repositor
 
     query_lines = ""
     for elem in results.get("results").get("bindings"):
-        # Récupération des URIs (attibut et version d'attribut) et de la géométrie
+        # Retrieval of URIs (attribute and attribute version) and geometry
         rel_av = gr.convert_result_elem_to_rdflib_elem(elem.get('av'))
         rel_name = gr.convert_result_elem_to_rdflib_elem(elem.get('name'))
         rel_landmark_type = gr.convert_result_elem_to_rdflib_elem(elem.get('ltype'))
 
         if rel_landmark_type == np.LTYPE["Thoroughfare"]:
             lm_label_type = "thoroughfare"
-        elif rel_landmark_type in [np.LTYPE["City"], np.LTYPE["District"]]:
+        elif rel_landmark_type in [np.LTYPE["Municipality"], np.LTYPE["District"]]:
             lm_label_type = "area"
         elif rel_landmark_type in [np.LTYPE["HouseNumber"],np.LTYPE["StreetNumber"],np.LTYPE["DistrictNumber"],np.LTYPE["PostalCodeArea"]]:
             lm_label_type = "housenumber"
@@ -91,7 +88,7 @@ def merge_landmark_multiple_geometries(graphdb_url, repository_name, factoids_na
 
     to_remove_property = np.ADDR["toRemove"]
 
-    # Requête pour sélectionner toutes les géométries des repères
+    # Query to select all landmark geometries
     query = np.query_prefixes + """
         SELECT DISTINCT * WHERE {
             ?attr addr:isAttributeType atype:Geometry ; addr:hasAttributeVersion ?attrVersion .
@@ -103,7 +100,7 @@ def merge_landmark_multiple_geometries(graphdb_url, repository_name, factoids_na
     attr_geom_values = {}
 
     for elem in results.get("results").get("bindings"):
-        # Récupération des URIs (attibut et version d'attribut) et de la géométrie
+        # Recovery of URIs (attribute and attribute version) and geometry
         rel_attr = gr.convert_result_elem_to_rdflib_elem(elem.get('attr'))
         rel_attr_version = gr.convert_result_elem_to_rdflib_elem(elem.get('attrVersion'))
         rel_geom = gr.convert_result_elem_to_rdflib_elem(elem.get('geom'))
@@ -113,8 +110,8 @@ def merge_landmark_multiple_geometries(graphdb_url, repository_name, factoids_na
         else:
             attr_geom_values[rel_attr] = [[rel_attr_version, rel_geom]]
 
-    # Ajout d'une version de géométrie qui est le résultat de la fusion de l'ensemble des versions liées à un attribut
-    # On indique pour chaque version initiale qu'on doit la supprimer.
+    # Add a version of geometry which is the result of merging all the versions linked to an attribute.
+    # Indicate for each initial version that it must be deleted.
     g = Graph()
     for attr_uri, versions in attr_geom_values.items():
         if len(versions) > 1:
@@ -126,7 +123,7 @@ def merge_landmark_multiple_geometries(graphdb_url, repository_name, factoids_na
             for version in versions:
                 g.add((version[0], to_remove_property, Literal("true", datatype=XSD.boolean)))
 
-    # Export du graphe dans le fichier `kg_file` qui est importé dans le répertoire
+    # Export the graph to the `kg_file` file, which is imported into the
     g.serialize(geom_kg_file)
     gd.import_ttl_file_in_graphdb(graphdb_url, repository_name, geom_kg_file, named_graph_uri=factoids_named_graph_uri)
 
@@ -246,7 +243,7 @@ def transfert_factoids_to_facts_repository(graphdb_url, facts_repository_name, f
 
 ####################################################################
 
-## Gestion des éléments racines
+## Management of root elements
 """
 Cette partie inclut des fonctions pour créer des racines : chaque élément des graphes nommés qui incluent des factoïdes doit avoir un équivalent
 dans le graphe nommé des faits. Cet équivalent est une racine (root). Une racine peut être l'équivalent de plusieurs éléments de plusieurs éléments.
@@ -254,26 +251,30 @@ Par exemple, s'il y a une "rue Gérard" dans plusieurs graphes nommés, ces dern
 Les racines s'appliquent à Landmark, LandmarkRelation, Attribute, AttributeVersion, Event, Change, TemporalEntity.
 """
 
-def create_roots_for_landmarks(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
+def create_roots_and_traces_for_landmarks(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
     """
     Create `addr:hasRoot` links between similar landmarks.
     """
 
-    create_roots_for_landmark_areas(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
-    create_roots_for_landmark_thoroughfares(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
-    create_roots_for_landmark_housenumbers(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
-    create_roots_for_landmark_others(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
+    create_roots_and_traces_for_landmark_areas(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
+    create_roots_and_traces_for_landmark_thoroughfares(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
+    create_roots_and_traces_for_landmark_housenumbers(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
+    create_roots_and_traces_for_landmark_others(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
 
-def create_roots_for_landmark_areas(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
+def create_roots_and_traces_for_landmark_areas(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
     """
-    Pour les repères de type DISTRICT, CITY ou POSTALCODEAREA définis dans le graphe nommé `factoids_named_graph_uri`, les lier avec un repère de même type défini dans `facts_named_graph_uri` s'ils ont un nom similaire.
+    Pour les repères de type DISTRICT, MUNICIPALITY ou POSTALCODEAREA définis dans le graphe nommé `factoids_named_graph_uri`, les lier avec un repère de même type défini dans `facts_named_graph_uri` s'ils ont un nom similaire.
     Le lien créé est mis dans `inter_sources_name_graph_uri`.
     """
 
     query = np.query_prefixes + f"""
     INSERT {{
         GRAPH ?gf {{ ?rootLandmark a addr:Landmark ; addr:isLandmarkType ?landmarkType ; skos:hiddenLabel ?keyLabel ; rdfs:label ?label . }}
-        GRAPH ?gi {{ ?landmark addr:hasRoot ?rootLandmark . }}
+        GRAPH ?gi {{
+            ?landmark addr:hasRoot ?rootLandmark .
+            ?rootLandmark addr:hasTrace ?landmark .
+            
+        }}
     }} WHERE {{
         BIND({facts_named_graph_uri.n3()} AS ?gf)
         BIND({inter_sources_name_graph_uri.n3()} AS ?gi)
@@ -281,7 +282,7 @@ def create_roots_for_landmark_areas(graphdb_url, repository_name, factoids_named
         {{
             SELECT DISTINCT ?landmarkType ?keyLabel WHERE {{
                 ?l a addr:Landmark ; addr:isLandmarkType ?landmarkType ; skos:hiddenLabel ?keyLabel .
-                FILTER(?landmarkType IN (ltype:City, ltype:District, ltype:PostalCodeArea))
+                FILTER(?landmarkType IN (ltype:Municipality, ltype:District, ltype:PostalCodeArea))
             }}
         }}
         BIND(URI(CONCAT(STR(URI(facts:)), "LM_", STRUUID())) AS ?toCreateRootLandmark)
@@ -295,7 +296,7 @@ def create_roots_for_landmark_areas(graphdb_url, repository_name, factoids_named
 
     gd.update_query(query, graphdb_url, repository_name)
 
-def create_roots_for_landmark_thoroughfares(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
+def create_roots_and_traces_for_landmark_thoroughfares(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
     """
     Pour les repères de type VOIE définis dans le graphe nommé `factoids_named_graph_uri`, les lier avec un repère de même type défini dans `facts_named_graph_uri` s'ils ont un nom similaire.
     Le lien créé est mis dans `inter_sources_name_graph_uri`.
@@ -304,7 +305,10 @@ def create_roots_for_landmark_thoroughfares(graphdb_url, repository_name, factoi
     query = np.query_prefixes + f"""
     INSERT {{
         GRAPH ?gf {{ ?rootLandmark a addr:Landmark ; addr:isLandmarkType ?landmarkType ; skos:hiddenLabel ?keyLabel ; rdfs:label ?label . }}
-        GRAPH ?gi {{ ?landmark addr:hasRoot ?rootLandmark . }}
+        GRAPH ?gi {{
+            ?landmark addr:hasRoot ?rootLandmark .
+            ?rootLandmark addr:hasTrace ?landmark .
+        }}
     }} WHERE {{
         BIND({facts_named_graph_uri.n3()} AS ?gf)
         BIND({inter_sources_name_graph_uri.n3()} AS ?gi)
@@ -327,7 +331,7 @@ def create_roots_for_landmark_thoroughfares(graphdb_url, repository_name, factoi
     gd.update_query(query, graphdb_url, repository_name)
 
 
-def create_roots_for_landmark_housenumbers(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
+def create_roots_and_traces_for_landmark_housenumbers(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
     """
     Pour les repères de type HOUSENUMBER définis dans le graphe nommé `factoids_named_graph_uri`, les lier avec un repère de même type défini dans `facts_named_graph_uri` s'ils ont un nom similaire.
     Le lien créé est mis dans `inter_sources_name_graph_uri`.
@@ -341,7 +345,9 @@ def create_roots_for_landmark_housenumbers(graphdb_url, repository_name, factoid
         }}
         GRAPH ?gi {{
             ?landmark addr:hasRoot ?rootLandmark .
+            ?rootLandmark addr:hasTrace ?landmark .
             ?landmarkRelation addr:hasRoot ?rootLandmarkRelation .
+            ?rootLandmarkRelation addr:hasTrace ?landmarkRelation .
         }}
     }}
     WHERE {{
@@ -379,7 +385,7 @@ def create_roots_for_landmark_housenumbers(graphdb_url, repository_name, factoid
 
     gd.update_query(query, graphdb_url, repository_name)
 
-def create_roots_for_landmark_others(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
+def create_roots_and_traces_for_landmark_others(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
     """
     Pour les repères définis dans le graphe nommé `factoids_named_graph_uri` qui ne sont reliés à aucun repère dans le graphe `facts_named_graph_uri`,
     les lier avec un repère de même type créé dans `facts_named_graph_uri`.
@@ -389,7 +395,10 @@ def create_roots_for_landmark_others(graphdb_url, repository_name, factoids_name
     query = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gf {{ ?rootLandmark a addr:Landmark ; addr:isLandmarkType ?landmarkType ; skos:hiddenLabel ?keyLabel ; rdfs:label ?label . }}
-            GRAPH ?gi {{ ?landmark addr:hasRoot ?rootLandmark . }}
+            GRAPH ?gi {{
+                ?landmark addr:hasRoot ?rootLandmark .
+                ?rootLandmark addr:hasTrace ?landmark .
+            }}
         }}
         WHERE {{
             BIND({facts_named_graph_uri.n3()} AS ?gf)
@@ -408,13 +417,14 @@ def create_roots_for_landmark_others(graphdb_url, repository_name, factoids_name
 
     gd.update_query(query, graphdb_url, repository_name)
 
-# TODO : la refaire !
-def create_roots_for_temporal_entities(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri):
+# TODO : modify it completely !
+def create_roots_and_traces_for_temporal_entities(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri):
     # Create links for similar crisp time instants
     query = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gi {{
                 ?t1 addr:hasRoot ?t2.
+                ?t2 addr:hasTrace ?t1.
             }}
         }}
         WHERE {{
@@ -438,15 +448,15 @@ def create_roots_for_temporal_entities(graphdb_url, repository_name, factoids_na
 
     gd.update_query(query, graphdb_url, repository_name)
 
-def create_roots_for_landmark_relations(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
+def create_roots_and_traces_for_landmark_relations(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
     """
     Pour des relations entre repères dans le graphe nommé `factoids_named_graph_uri`, les lier avec une relation entre repères dans `facts_named_graph_uri` qui sont similaires (mêmes locatum, relatums et type de relation).
     Le lien créé est mis dans `factoids_facts_named_graph_uri`.
     """
 
-    # Création d'un hiddenLabel pour chaque LandmarkRelation du graphe des faits (d'agrégation). Il est composé de la manière suivante : URI du locatum + "&" + URIs ordonnées des relatums séparées d'un point virgule
-    # Exemple si une relation a URILoc pour locatum et URIRel1 et URIRel2 comme relatums, le hidden label sera "URILoc1&URIRel1;URIRel2"
-    # On crée ce label pour les relations qui n'en n'ont pas
+    # Creation of a hiddenLabel for each LandmarkRelation in the (aggregation) fact graph. It is composed as follows: URI of the locatum + ‘&’ + ordered URIs of the relatums separated by a semicolon
+    # For example, if a relationship has URILoc as its locatum and URIRel1 and URIRel2 as its relatums, the hidden label will be ‘URILoc1&URIRel1;URIRel2’.
+    # We create this label for relationships that don't have one
     query1 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gf {{?lr skos:hiddenLabel ?hiddenLabel}}
@@ -462,7 +472,7 @@ def create_roots_for_landmark_relations(graphdb_url, repository_name, factoids_n
         }}
     """
 
-    # On fait la même chose pour les relations du graphe de factoides. On n'intègre pas les URIs des locatums et des relatums mais les URIs de leur racine située dans le graphe des faits.
+    # We do the same thing for the relations in the factoid graph. We don't integrate the URIs of the locatums and relatums, but the URIs of their root in the fact graph.
     query2 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gi {{?lr skos:hiddenLabel ?hiddenLabel}}
@@ -483,7 +493,10 @@ def create_roots_for_landmark_relations(graphdb_url, repository_name, factoids_n
     query3 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gf {{ ?rootLandmarkRelation a addr:LandmarkRelation ; addr:isLandmarkRelationType ?landmarkRelationType ; skos:hiddenLabel ?keyLabel . }}
-            GRAPH ?gi {{ ?landmarkRelation addr:hasRoot ?rootLandmarkRelation . }}
+            GRAPH ?gi {{
+                ?landmarkRelation addr:hasRoot ?rootLandmarkRelation .
+                ?rootLandmarkRelation addr:hasTrace ?landmarkRelation .
+            }}
         }}
         WHERE {{
             BIND({facts_named_graph_uri.n3()} AS ?gf)
@@ -522,66 +535,72 @@ def create_roots_for_landmark_relations(graphdb_url, repository_name, factoids_n
     for query in queries:
         gd.update_query(query, graphdb_url, repository_name)
 
-def create_roots_for_landmark_attributes(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
-    # Intégration des changements dans le graphe des faits (excepté les changements sur les attributs car non uniques)
+def create_roots_and_traces_for_landmark_attributes(graphdb_url, repository_name, factoids_named_graph_uri:URIRef, facts_named_graph_uri:URIRef, inter_sources_name_graph_uri:URIRef):
+    # Integration of changes in the fact graph (except for attribute changes, which are not unique)
     query = np.query_prefixes + f"""
     INSERT {{
         GRAPH ?gf {{
             ?rootAttr a addr:Attribute ; addr:isAttributeType ?attrType .
             ?rootLandmark addr:hasAttribute ?rootAttr .
         }}
-        GRAPH ?gi {{ ?attr addr:hasRoot ?rootAttr . }}
+        GRAPH ?gi {{
+            ?attr addr:hasRoot ?rootAttr .
+            ?rootAttr addr:hasTrace ?attr .
+            }}
     }} WHERE {{
         BIND({facts_named_graph_uri.n3()} AS ?gf)
         BIND({inter_sources_name_graph_uri.n3()} AS ?gi)
         BIND({factoids_named_graph_uri.n3()} AS ?gs)
         {{
             SELECT DISTINCT ?attrType ?rootLandmark WHERE {{
-                ?attr a addr:Attribute ; addr:isAttributeType ?attrType ; addr:isAttributeOf [addr:hasRoot ?rootLandmark].
+                ?landmark addr:hasRoot ?rootLandmark ; addr:hasAttribute [a addr:Attribute ; addr:isAttributeType ?attrType] .
             }}
         }}
 
         GRAPH ?gs {{ ?attr a addr:Attribute . }}
-        ?attr addr:isAttributeType ?attrType ; addr:isAttributeOf [addr:hasRoot ?rootLandmark] .
+        ?attr addr:isAttributeType ?attrType .
+        ?landmark addr:hasRoot ?rootLandmark ; addr:hasAttribute ?attr .
         MINUS {{ ?attr addr:hasRoot ?x . }}
         OPTIONAL {{
             GRAPH ?gf {{ ?existingRootAttr a addr:Attribute . }}
-            ?existingRootAttr addr:isAttributeType ?attrType ; addr:isAttributeOf ?rootLandmark .
+            ?existingRootAttr addr:isAttributeType ?attrType .
+            ?rootLandmark addr:hasAttribute ?existingRootAttr .
             }}
         BIND(IF(BOUND(?existingRootAttr), ?existingRootAttr, URI(CONCAT(STR(URI(facts:)), "ATTR_", STRUUID())) ) AS ?rootAttr)
     }}
     """
+
     gd.update_query(query, graphdb_url, repository_name)
 
-def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_name, facts_named_graph_uri, inter_sources_name_graph_uri, tmp_named_graph_uri):
+def create_roots_and_traces_for_landmark_attribute_versions(graphdb_url, facts_repository_name, facts_named_graph_uri, inter_sources_name_graph_uri, tmp_named_graph_uri):
     """
-    Étapes :
-    1. Après avoir trié les versions de landmarks et les valeurs des versions d'attributs, on peut détecter les versions similaires.
-    Ces dernières sont liées entre elles via <v1 addr:toBeMergedWith v2>. Il faut bien penser à faire en sorte que <v1 addr:toBeMergedWith v1>.
-    Cette étape se fait avec `query1` et `query2`
+    Steps :
+    1. After sorting landmark versions and attribute version values, similar versions can be detected.
+    These are linked together via <v1 addr:toBeMergedWith v2>. We need to remember to ensure that <v1 addr:toBeMergedWith v1>.
+    This is done with `query1` and `query2`.
 
-    2. Il se peut que plus de deux versions soient similaires entre elles. Pour détecter toutes les versions similaires, on va leur associer un mergedVal construit à partir des URI des versions similaires.
-    Ainsi si v1 est similaire à v2, v3 et v4, le mergedVal sera "uriV1;uriV2;uriV3;uriV4" où uriVi est l'URI de la version i. v2, v3 et v4 auront le même mergedVal.
-    Le triplet créé sera alors <v1 addr:hasMergedVal "uriV1;uriV2;uriV3;uriV4">
-    Cette étape se fait avec `query3`.
+    2. It may be that more than two versions are similar to each other. To detect all the similar versions, we will associate them with a mergedVal constructed from the URIs of the similar versions.
+    So if v1 is similar to v2, v3 and v4, the mergedVal will be ‘uriV1;uriV2;uriV3;uriV4’ where uriVi is the URI of version i. v2, v3 and v4 will have the same mergedVal.
+    The triplet created will then be <v1 addr:hasMergedVal ‘uriV1;uriV2;uriV3;uriV4’>.
+    This step is done with `query3`.
 
-    3. On crée une version d'attribut racine pour chaque groupe de versions similaires, c'est-à-dire que dans l'exemple précédent, on aura vRoot qui sera la racine de v1, v2, v3 et v4.
-    Cette étape se fait avec `query4`.
+    3. We create a root attribute version for each group of similar versions, i.e. in the previous example, we will have vRoot which will be the root of v1, v2, v3 and v4.
+    This is done with `query4`.
 
-    4. Une fois les différentes versions créées, il faut trier celles qui dépendent d'un même attribut.
-    Par exemple, si on a v5 et v6 qui ont été regroupées via une racine vRootBis et que v4 précède v5, il faut pouvoir dire que vRoot précède (`addr:precedes`) vRootBis.
-    Cette étape se fait avec `query5`.
+    4. Once the different versions have been created, you need to sort those that depend on the same attribute.
+    For example, if we have v5 and v6 which have been grouped together via a vRootBis root and v4 precedes v5, we need to be able to say that vRoot precedes (`addr:precedes`) vRootBis.
+    This is done with `query5`.
 
-    5. Création de changements et d'événements entre des versions d'attributs successifs. Dans l'étape 4, on en a déduit que vRoot précédait vRootBis.
-    Cela signifie qu'il y a eu un changement pour l'attribut lié à ces versions.
-    Ce changement indique un changement de version : vRoot est périmé (`addr:outdates`) tandis que vRootBis est rendu effectif (`addr:makesEffective`)
-    Cette étape se fait avec `query6`.
+    5. Creating changes and events between successive attribute versions. In step 4, we deduced that vRoot preceded vRootBis.
+    This means that there has been a change to the attribute linked to these versions.
+    This change indicates a version change: vRoot is outdated (`addr:outdates`) while vRootBis is made effective (`addr:makesEffective`).
+    This is done with `query6`.
 
-    6. Les triplets créés aux étapes 1, 2 et 4 sont supprimés car servaient juste de construction.
-    Cette étape se fait avec `query7`.
+    6. The triplets created in steps 1, 2 and 4 are deleted as they were just used for construction purposes.
+    This is done with `query7`.
     """
 
-    # Requête simple pour dire qu'une version est similaire à elle-même (doit être fusionnée avec elle)
+    # Simple request to say that a version is similar to itself (must be merged with it)
     query1 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{
@@ -593,8 +612,8 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
         }}
     """
 
-    # Agrégation des versions successives qui ont des valeurs similaires (en plusieurs requêtes)
-    # On ajoute des triplets indiquant la similarité (addr:toBeMergedWith) avec des versions successives qui ont des valeurs similaires (addr:hasNextVersion ou addr:hasOverlappingVersion)
+    # Aggregation of successive versions with similar values (in several queries)
+    # Add triples indicating similarity (addr:toBeMergedWith) with successive versions that have similar values (addr:hasNextVersion or addr:hasOverlappingVersion)
     query2 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{
@@ -612,8 +631,8 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
         }}
     """
 
-    # Agrégation des versions successives qui ont des valeurs similaires (en plusieurs requêtes)
-    # On ajoute des triplets indiquant la similarité (addr:toBeMergedWith) avec des versions successives qui ont des valeurs similaires (addr:hasNextVersion ou addr:hasOverlappingVersion)
+    # Aggregation of successive versions with similar values (in several queries)
+    # Add triples indicating similarity (addr:toBeMergedWith) with successive versions that have similar values (addr:hasNextVersion or addr:hasOverlappingVersion)
     query3 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?vers1 addr:toBeMergedWith ?vers2 . }}
@@ -623,7 +642,7 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
         }}
     """
 
-    # Pour chaque version, on créé une valeur (versMergeVal) qui est la fusion des URI de versions qui sont similaires.
+    # For each version, we create a value (versMergeVal) which is the fusion of the URIs of versions that are similar.
     query4 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?vers1 addr:versMergeVal ?versMergeVal }}
@@ -638,7 +657,7 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
         }}
     """
 
-    # On crée une version d'attribut faisant office de racine (agrégation de versions similaires)
+    # We create an attribute version that acts as a root (aggregation of similar versions)
     query5 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gf {{
@@ -647,6 +666,7 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
             }}
             GRAPH ?gi {{
                 ?attrVers addr:hasRoot ?rootAttrVers .
+                ?rootAttrVers addr:hasTrace ?attrVers .
             }}
         }} WHERE {{
             BIND({facts_named_graph_uri.n3()} AS ?gf)
@@ -663,7 +683,7 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
         }}
     """
 
-    # On indique qu'une version d'attribut 1 précède une version d'attribut 2 si elles ont des valeurs différentes et si les versions de repère auxquelles elles dépendent se succèdent.
+    # We indicate that an attribute version 1 precedes an attribute version 2 if they have different values and if the landmark versions on which they depend follow one another.
     query6a = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gt {{
@@ -686,7 +706,7 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
         }}
     """
 
-    # On indique qu'une version d'attribut n'est précédée par aucune autre, c'est-à-dire qu'on indique l'apparition de la 1re version (connue)
+    # We indicate that an attribute version is not preceded by any other, i.e. we indicate the appearance of the 1st (known) version.
     query6b = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gt {{
@@ -705,7 +725,7 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
         }}
     """
 
-    # On indique qu'une version d'attribut n'est succédée par aucune autre, c'est-à-dire qu'on indique la disparition de la dernière version (connue)
+    # This indicates that one version of an attribute has not been succeeded by another, i.e. it indicates the disappearance of the last (known) version.
     query6c = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gt {{
@@ -724,7 +744,7 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
         }}
     """
 
-    # Création des événements et des changements
+    # Creating events and changes
     query7 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?gf {{
@@ -738,6 +758,8 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
             GRAPH ?gi {{
                 ?timeAfter addr:hasRoot ?rootTimeAfter .
                 ?timeBefore addr:hasRoot ?rootTimeBefore .
+                ?rootTimeAfter addr:hasTrace ?timeAfter .
+                ?rootTimeBefore addr:hasTrace ?timeBefore .
             }}
         }} WHERE {{
             BIND({facts_named_graph_uri.n3()} AS ?gf)
@@ -758,15 +780,18 @@ def create_roots_for_landmark_attribute_versions(graphdb_url, facts_repository_n
     for query in queries:
         gd.update_query(query, graphdb_url, facts_repository_name)
 
-    # Suppression du graphe temporaire
+    # Deleting the temporary graph
     gd.remove_named_graph_from_uri(tmp_named_graph_uri)
 
-def create_roots_for_changes(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri):
-    # Intégration des changements dans le graphe des faits (excepté les changements sur les attributs car non uniques)
+def create_roots_and_traces_for_changes(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri):
+    # Integration of changes in the fact graph (except for attribute changes, which are not unique)
     query = np.query_prefixes + f"""
     INSERT {{
         GRAPH ?gf {{ ?rootChange a addr:Change ; addr:isChangeType ?changeType ; addr:appliedTo ?rootElem . }}
-        GRAPH ?gi {{ ?change addr:hasRoot ?rootChange . }}
+        GRAPH ?gi {{
+            ?change addr:hasRoot ?rootChange .
+            ?rootChange addr:hasTrace ?change .
+        }}
     }} WHERE {{
         BIND({facts_named_graph_uri.n3()} AS ?gf)
         BIND({inter_sources_name_graph_uri.n3()} AS ?gi)
@@ -791,16 +816,20 @@ def create_roots_for_changes(graphdb_url, repository_name, factoids_named_graph_
     """
     gd.update_query(query, graphdb_url, repository_name)
 
-def create_roots_for_events(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri):
-    # Intégration des événements dans le graphe des faits
-    # Si deux événements comportent au moins un changement commun alors on considère qu'il sont égaux (un changement ne dépend que d'un événément)
+def create_roots_and_traces_for_events(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri):
+    # Integration of events in the fact graph
+    # If two events have at least one change in common, they are considered to be equal (a change depends on only one event).
     query = np.query_prefixes + f"""
     INSERT {{
         GRAPH ?gf {{
             ?rootEvent a addr:Event .
             ?rootChange addr:dependsOn ?rootEvent .
             }}
-        GRAPH ?gi {{ ?event addr:hasRoot ?rootEvent . }}
+        GRAPH ?gi {{
+            ?event addr:hasRoot ?rootEvent .
+            ?rootEvent addr:hasTrace ?event .
+        
+        }}
     }} WHERE {{
         BIND({facts_named_graph_uri.n3()} AS ?gf)
         BIND({inter_sources_name_graph_uri.n3()} AS ?gi)
@@ -826,15 +855,15 @@ def create_roots_for_events(graphdb_url, repository_name, factoids_named_graph_u
 
 ####################################################################
 
-## Tri temporel et gestion des versions d'attributs
+## Temporal sorting and attribute version management
 """
-Cette partie inclut des fonctions pour le tri temporel pour la gestion des versions d'attributs :
-- tri temporel des versions d'état de landmark et des versions d'attribut
-- comparaison entre elles des différentes versions appartenant à un même attribut. La comparaison se fait sur leur valeur (`<version addr:versionValue valeur>`)
+This part includes functions for temporal sorting to manage attribute versions:
+- temporal sorting of landmark state versions and attribute versions
+- comparison of different versions of the same attribute. The comparison is based on their value (`<version addr:versionValue>`)
 """
 
 def order_temporally_landmark_versions(graphdb_url, repository_name, order_named_graph_uri, tmp_named_graph_uri):
-    # Calcul des écarts entre les versions d'état de landmark
+    # Calculating differences between landmark state versions
     query1 = np.query_prefixes + f"""
         PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
 
@@ -855,7 +884,7 @@ def order_temporally_landmark_versions(graphdb_url, repository_name, order_named
         }}
         """
 
-    # Détection des versions d'états de landmark qui s'overlappent
+    # Detection of overlapping versions of landmark states
     query2 = np.query_prefixes + f"""
         PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
 
@@ -882,7 +911,7 @@ def order_temporally_landmark_versions(graphdb_url, repository_name, order_named
         }}
         """
 
-    # Détection des versions d'états de landmark qui se succèdent
+    # Detection of successive versions of landmark states
     query3 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?go {{
@@ -914,11 +943,11 @@ def order_temporally_landmark_versions(graphdb_url, repository_name, order_named
     for query in queries:
         gd.update_query(query, graphdb_url, repository_name)
 
-    # Suppression du graphe temporaire
+    # Deleting the temporary graph
     gd.remove_named_graph_from_uri(tmp_named_graph_uri)
 
 def order_temporally_attribute_versions(graphdb_url, repository_name, order_named_graph_uri, tmp_named_graph_uri):
-    # Calcul des écarts entre les versions d'état d'attribut
+    # Calculation of differences between attribute status versions
     query1 = np.query_prefixes + f"""
         PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
 
@@ -942,7 +971,7 @@ def order_temporally_attribute_versions(graphdb_url, repository_name, order_name
         }}
         """
 
-    # Détection des versions d'états d'attribut qui s'overlappent
+    # Detection of overlapping versions of attribute states
     query2 = np.query_prefixes + f"""
         PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
 
@@ -969,7 +998,7 @@ def order_temporally_attribute_versions(graphdb_url, repository_name, order_name
         }}
         """
 
-    # Détection des versions d'états d'attribut qui se succèdent
+    # Detection of successive versions of attribute states
     query3 = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?go {{
@@ -1001,7 +1030,7 @@ def order_temporally_attribute_versions(graphdb_url, repository_name, order_name
     for query in queries:
         gd.update_query(query, graphdb_url, repository_name)
 
-    # Suppression du graphe temporaire
+    # Deleting the temporary graph
     gd.remove_named_graph_from_uri(tmp_named_graph_uri)
 
 ####################################################################
@@ -1013,10 +1042,10 @@ def transfer_implicit_triples(graphdb_url, repository_name, factoids_named_graph
         }} WHERE {{
             BIND({factoids_named_graph_uri.n3()} AS ?gs)
             BIND({facts_named_graph_uri.n3()} AS ?gf)
-            ?elem addr:hasRoot ?rootElem .
+            ?rootElem addr:hasTrace ?elem .
             {{
                 GRAPH ?gs {{ ?elemSource ?p ?oSource }}
-                ?oSource addr:hasRoot ?oRoot .
+                ?oRoot addr:hasTrace ?oSource .
                 GRAPH ?gs {{ ?oSource a ?oSourceType }}
                 GRAPH ?gf {{ ?oFact a ?oFactType }}
                 BIND(?oFact AS ?o)
@@ -1032,7 +1061,7 @@ def transfer_implicit_triples(graphdb_url, repository_name, factoids_named_graph
 
 def transfer_version_values_to_roots(graphdb_url, repository_name, facts_named_graph_uri:URIRef):
     """
-    Transférer les valeurs des versions d'attributs vers les versions racines : si <?av addr:versionValue ?value> et <?av addr:hasRoot ?rootAv> alors <?rootAv addr:versionValue ?value>
+    Transfer attribute version values to root versions: if <?av addr:versionValue ?value> and <?rootAv addr:hasTrace ?av> then <?rootAv addr:versionValue ?value>.
     """
 
     query = np.query_prefixes + f"""
@@ -1040,7 +1069,7 @@ def transfer_version_values_to_roots(graphdb_url, repository_name, facts_named_g
             GRAPH ?gf {{ ?rootAttr addr:versionValue ?value }}
         }} WHERE {{
             BIND({facts_named_graph_uri.n3()} AS ?gf)
-            ?av addr:versionValue ?value ; addr:hasRoot ?rootAttr .
+            ?av addr:versionValue ?value .addr:isTraceOf ?rootAttr .
         }}
     """
 
@@ -1048,7 +1077,7 @@ def transfer_version_values_to_roots(graphdb_url, repository_name, facts_named_g
 
 def transfer_provenances_to_roots(graphdb_url, repository_name, facts_named_graph_uri:URIRef):
     """
-    Transférer les provenances (sources) des éléments vers leur racine.
+    Transférer les provenances (sources) des éléments vers leur racine
     """
 
     query = np.query_prefixes + f"""
@@ -1056,7 +1085,7 @@ def transfer_provenances_to_roots(graphdb_url, repository_name, facts_named_grap
             GRAPH ?gf {{ ?rootElem prov:wasDerivedFrom ?provenance }}
         }} WHERE {{
             BIND({facts_named_graph_uri.n3()} AS ?gf)
-            ?elem prov:wasDerivedFrom ?provenance ; addr:hasRoot ?rootElem .
+            ?elem prov:wasDerivedFrom ?provenance ; addr:isTraceOf ?rootElem .
         }}
     """
 
@@ -1064,7 +1093,7 @@ def transfer_provenances_to_roots(graphdb_url, repository_name, facts_named_grap
 
 def transfer_crisp_time_instant_elements_to_roots(graphdb_url, repository_name, facts_named_graph_uri:URIRef):
     """
-    Transférer les provenances (sources) des éléments vers leur racine.
+    Transfer the crisp time instant elements to their root.
     """
 
     query = np.query_prefixes + f"""
@@ -1072,7 +1101,7 @@ def transfer_crisp_time_instant_elements_to_roots(graphdb_url, repository_name, 
             GRAPH ?gf {{ ?rootTime ?p ?timeElem }}
         }} WHERE {{
             BIND({facts_named_graph_uri.n3()} AS ?gf)
-            ?time ?p ?timeElem ; addr:hasRoot ?rootElem .
+            ?time ?p ?timeElem ; addr:isTraceOf ?rootElem .
             FILTER(?p IN (addr:timeStamp, addr:timeCalendar, addr:timePrecision))
         }}
     """
@@ -1088,20 +1117,20 @@ def link_factoids_with_facts(graphdb_url, repository_name, factoids_named_graph_
         * for unlinked factoid resources, we create its equivalent in the fact graph
     """
 
-    create_roots_for_landmarks(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
-    create_roots_for_landmark_relations(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
-    create_roots_for_landmark_attributes(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
+    create_roots_and_traces_for_landmarks(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
+    create_roots_and_traces_for_landmark_relations(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
+    create_roots_and_traces_for_landmark_attributes(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
 
-    # Change roots are created excepted for attribute changes
-    create_roots_for_changes(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
-    create_roots_for_events(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
+    # Les racines de modification sont créées sauf pour les modifications d'attributs.
+    create_roots_and_traces_for_changes(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
+    create_roots_and_traces_for_events(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
 
 def import_factoids_in_facts(graphdb_url, repository_name, factoids_named_graph_name, facts_named_graph_name, inter_sources_name_graph_name):
     facts_named_graph_uri = gd.get_named_graph_uri_from_name(graphdb_url, repository_name, facts_named_graph_name)
     factoids_named_graph_uri = gd.get_named_graph_uri_from_name(graphdb_url, repository_name, factoids_named_graph_name)
     inter_sources_name_graph_uri = gd.get_named_graph_uri_from_name(graphdb_url, repository_name, inter_sources_name_graph_name)
 
-    # Ajout de labels normalisés et simplifiés pour les repères (du graphe des factoïdes) afin de faire des liens avec les repères des faits
+    # Addition of standardised and simplified labels for landmarks (on the factoid graph) in order to make links with fact landmarks
     add_alt_and_hidden_labels_to_landmarks(graphdb_url, repository_name, factoids_named_graph_uri)
 
     link_factoids_with_facts(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
@@ -1109,11 +1138,11 @@ def import_factoids_in_facts(graphdb_url, repository_name, factoids_named_graph_
 
 ####################################################################
 
-## Création des sources
+## Creation sources
 
 def create_source_resource(graphdb_url, repository_name, source_uri:URIRef, source_label:str, publisher_label:str, lang:str, namespace:Namespace, named_graph_uri:URIRef):
     """
-    Création de la source relative aux données de la ville de Paris
+    Creation of the source for a resource
     """
 
     source_label_lit = Literal(source_label, lang=lang)
@@ -1166,16 +1195,16 @@ def create_landmark_version(g:Graph, lm_uri:URIRef, lm_type_uri:URIRef, lm_label
         attr_uri, attr_version_uri = gr.generate_uri(factoids_namespace, "ATTR"), gr.generate_uri(factoids_namespace, "AV")
         gr.create_landmark_attribute_and_version(g, lm_uri, attr_uri, attr_type_uri, attr_version_uri, attr_value_lit)
 
-        # Ajout de la source (si elle est fournie)
+        # Add provenance (if supplied)
         if provenance_uri is not None:
             gr.add_provenance_to_resource(g, attr_version_uri, provenance_uri)
 
-        # Si l'attribut est de type `Name`, on ajoute des labels alternatifs à ses versions.
+        # If the attribute is of type `Name`, we add alternative labels to its versions.
         if attr_type_uri in [np.ATYPE["Name"]]:
             attr_value_lit_label, attr_value_lit_lang = attr_value_lit.value, attr_value_lit.language
             add_other_labels_for_resource(g, attr_version_uri, attr_value_lit_label, attr_value_lit_lang, lm_type_uri)
 
-    # Ajout de labels alternatifs pour le landmark
+    # Adding alternative labels for the landmark
     add_other_labels_for_resource(g, lm_uri, lm_label, lang, lm_type_uri)
     add_validity_time_interval_to_landmark(g, lm_uri, time_description)
 
@@ -1184,7 +1213,7 @@ def create_landmark_version(g:Graph, lm_uri:URIRef, lm_type_uri:URIRef, lm_label
 
 
 def detect_similar_landmarks_with_hidden_label_and_landmark_relation(graphdb_url, repository_name, similar_property:URIRef, landmark_type:URIRef, landmark_relation_type:URIRef, factoids_named_graph_uri:URIRef):
-    # Détection de repères similaires sur le seul critère de similarité du hiddenlabel et d'appartenance à un même repère (il faut qu'ils aient le même type)
+    # Detection of similar landmarks on the sole criterion of hiddenlabel similarity and belonging to the same landmark (they must have the same type)
     query = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?landmark {similar_property.n3()} ?tmpLandmark . }}
@@ -1206,7 +1235,7 @@ def detect_similar_landmarks_with_hidden_label_and_landmark_relation(graphdb_url
     gd.update_query(query, graphdb_url, repository_name)
 
 def detect_similar_landmarks_with_hidden_label(graphdb_url, repository_name, similar_property:URIRef, landmark_type:URIRef, factoids_named_graph_uri:URIRef):
-    # Détection de repères similaires sur le seul critère de similarité du hiddenlabel (il faut qu'ils aient le même type)
+    # Detection of similar landmarks based solely on the hiddenlabel similarity criterion (they must have the same type)
     query = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?landmark {similar_property.n3()} ?tmpLandmark . }}
@@ -1226,8 +1255,8 @@ def detect_similar_landmarks_with_hidden_label(graphdb_url, repository_name, sim
     gd.update_query(query, graphdb_url, repository_name)
 
 def detect_similar_landmark_versions_with_hidden_label(graphdb_url, repository_name, similar_property, landmark_type, factoids_named_graph_uri):
-    # Détection de repères similaires sur le seul critère de similarité du hiddenlabel (il faut qu'ils aient le même type).
-    # Pour être considéré comme une version de landmark, il faut que le repère soit le sujet d'un triplet du type `<?s addr:hasTime ?o>`.
+    # Detection of similar landmarks based solely on the hiddenlabel similarity criterion (they must have the same type).
+    # To be considered as a version of a landmark, the landmark must be the subject of a triplet of the type `<?s addr:hasTime ?o>`.
     query = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{ ?landmark {similar_property.n3()} ?tmpLandmark . }}
@@ -1247,7 +1276,7 @@ def detect_similar_landmark_versions_with_hidden_label(graphdb_url, repository_n
     gd.update_query(query, graphdb_url, repository_name)
 
 def detect_similar_attributes(graphdb_url, repository_name, similar_property:URIRef, factoids_named_graph_uri:URIRef):
-    # Détection des attributs similaires à partir de la requête précedente
+    # Detection of similar attributes from the previous query
     query = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{
@@ -1270,7 +1299,6 @@ def detect_similar_attributes(graphdb_url, repository_name, similar_property:URI
 
 
 def detect_similar_attribute_versions(graphdb_url, repository_name, similar_property:URIRef, factoids_named_graph_uri:URIRef):
-
     query = np.query_prefixes + f"""
         INSERT {{
             GRAPH ?g {{
@@ -1311,52 +1339,52 @@ def detect_similar_landmark_relations(graphdb_url, repository_name, similar_prop
 def merge_similar_landmarks_with_hidden_labels(graphdb_url, repository_name, landmark_type:URIRef, factoids_named_graph_uri:URIRef):
     similar_property = np.SKOS["exactMatch"]
 
-    # Détection de repères similaires et fusion
+    # Detection and merging of similar landmarks
     detect_similar_landmarks_with_hidden_label(graphdb_url, repository_name, similar_property, landmark_type, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
-    # Détection des attributs similaires et fusion
+    # Detection and merging of similar attributes
     detect_similar_attributes(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
-    # Détection des versions d'attribut similaires et fusion
+    # Detection and merging of similar attribute versions
     detect_similar_attribute_versions(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
 def merge_similar_landmark_versions_with_hidden_labels(graphdb_url, repository_name, landmark_type:URIRef, factoids_named_graph_uri:URIRef):
     similar_property = np.SKOS["exactMatch"]
 
-    # Détection de repères similaires et fusion
+    # Detection and merging of similar landmarks
     detect_similar_landmark_versions_with_hidden_label(graphdb_url, repository_name, similar_property, landmark_type, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
-    # Détection des attributs similaires et fusion
+    # Detection and merging of similar attributes
     detect_similar_attributes(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
-    # Détection des versions d'attribut similaires et fusion
+    # Detection and merging of similar attribute versions
     detect_similar_attribute_versions(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
 def merge_similar_landmarks_with_hidden_label_and_landmark_relation(graphdb_url, repository_name, landmark_type:URIRef, landmark_relation_type:URIRef, factoids_named_graph_uri:URIRef):
     similar_property = np.SKOS["exactMatch"]
 
-    # Détection de repères similaires et fusion
+    # Detection and merging of similar landmarks
     detect_similar_landmarks_with_hidden_label_and_landmark_relation(graphdb_url, repository_name, similar_property, landmark_type, landmark_relation_type, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
-    # Détection des attributs similaires et fusion
+    # Detection and merging of similar attributes
     detect_similar_attributes(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
-    # Détection des versions d'attribut similaires et fusion
+    # Detection and merging of similar attribute versions
     detect_similar_attribute_versions(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
 def merge_similar_landmark_relations(graphdb_url, repository_name, factoids_named_graph_uri:URIRef):
     similar_property = np.SKOS["exactMatch"]
 
-    # Détection de repères similaires et fusion
+    # Detection and merging of similar landmark relations
     detect_similar_landmark_relations(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
     remove_temporary_resources_and_transfert_triples(graphdb_url, repository_name, similar_property, factoids_named_graph_uri)
 
@@ -1417,7 +1445,7 @@ def detect_similar_time_interval_of_landmarks(graphdb_url, repository_name, simi
 
 def remove_temporary_resources_and_transfert_triples(graphdb_url:str, repository_name:str, similar_property:URIRef, named_graph_uri:str):
     """
-    Suppression de ressources temporaires et transfert de tous ses triplets vers sa resource associée (celui tel que resource skos:exactMatch resource tempoaire)
+    Deletion of temporary resources and transfer of all their triplets to their associated resource (such as `<?resource skos:exactMatch ?temporaryResource>`).
     """
     query = np.query_prefixes + f"""
     DELETE {{
@@ -1455,14 +1483,14 @@ def remove_temporary_resources_and_transfert_triples(graphdb_url:str, repository
 def add_other_labels_for_resource(g:Graph, res_uri:URIRef, res_label_value:str, res_label_lang:str, res_type_uri:URIRef):
     if res_type_uri == np.LTYPE["Thoroughfare"]:
         res_label_type = "thoroughfare"
-    elif res_type_uri in [np.LTYPE["City"], np.LTYPE["District"]]:
+    elif res_type_uri in [np.LTYPE["Municipality"], np.LTYPE["District"]]:
         res_label_type = "area"
     elif res_type_uri in [np.LTYPE["HouseNumber"],np.LTYPE["StreetNumber"],np.LTYPE["DistrictNumber"],np.LTYPE["PostalCodeArea"]]:
         res_label_type = "housenumber"
     else:
         res_label_type = None
 
-    # Ajout de labels alternatif et caché
+    # Adding alternative and hidden labels
     alt_label, hidden_label = sp.normalize_and_simplify_name_version(res_label_value, res_label_type, res_label_lang)
 
     if alt_label is not None:
@@ -1477,12 +1505,12 @@ def add_other_labels_for_resource(g:Graph, res_uri:URIRef, res_label_value:str, 
 def transfert_rdflib_graph_to_factoids_repository(graphdb_url, repository_name, factoids_named_graph_name:str, g:Graph, kg_file:str, tmp_folder, ont_file, ontology_named_graph_name):
     g.serialize(kg_file)
 
-    # Création du répertoire
+    # Creating repository
     create_factoid_repository(graphdb_url, repository_name, tmp_folder,
                                 ont_file, ontology_named_graph_name, ruleset_name="rdfsplus-optimized",
                                 disable_same_as=False, clear_if_exists=True)
 
-    # Import du fichier `kg_file` dans le répertoire
+    # Import the `kg_file` file into the directory
     gd.import_ttl_file_in_graphdb(graphdb_url, repository_name, kg_file, factoids_named_graph_name)
 
 def add_validity_time_interval_to_landmark(g:Graph, lm_uri:URIRef, time_description:dict):
