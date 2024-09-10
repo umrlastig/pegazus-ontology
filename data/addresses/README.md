@@ -13,12 +13,11 @@ Files: `osm_adresses.csv` and `osm_hn_adresses.csv`
 These files are the results of two queries from [OSM planet SPARQL endpoint](https://qlever.cs.uni-freiburg.de/osm-planet). See *Bast, H., Brosi, P., Kalmbach, J., & Lehmann, A. (2021, November). An efficient RDF converter and SPARQL endpoint for the complete OpenStreetMap data. In Proceedings of the 29th International Conference on Advances in Geographic Information Systems (pp. 536-539)*.
 
 Extracted data from OpenStreetMap are :
-- house numbers (_house numbers_) : their value (a number and optionally a complement), their geometry, the thoroughfare or the district they belong to ;
-- thoroughfares : their name
-- districts : their name and INSEE code.
+* house numbers (_house numbers_) : their value (a number and optionally a complement), their geometry, the thoroughfare or the district they belong to ;
+* thoroughfares : their name
+* districts : their name and INSEE code.
 
-1. Extract Paris addresses
-In the query interface, there are two queries to launch.
+In the query interface, there are two queries to launch to extract Paris addresses.
 * Query 1 :
 ```
 PREFIX osmrel: <https://www.openstreetmap.org/relation/>
