@@ -29,11 +29,12 @@ This repository contains the documentation of the PeGaZus ontology and knowledge
 ## Historical sources
 Use cases presented to asses the PeGaZus ontology and KG construction method are the followings.
 ### Addresses use case
-    * 
+TO BE ADD
 ### Plots use case
 **Sources**
 * Napoleonic land registry of Gentilly (1810-1848) inclusing cadastral index maps and mutation registers (Departemental Archives of Val-de-Marne)
 * Napoleonic land registry of Gentilly (1845-1860) inclusing cadastral index maps and mutation registers (Departemental Archives of Val-de-Marne and Paris Archives)
+
 **RDF Resources creation**
 * Geometries : Plots have been digitized by hand using georeferenced cadastral index maps of previous project. This includes :
     * Vectorization of the plots
