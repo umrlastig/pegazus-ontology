@@ -66,12 +66,12 @@
 	      foaf:name "Solenn Tual" ;
           foaf:workInfoHomepage <https://www.umr-lastig.fr/solenn-tual/> ;
 	    ] ; 
-        dcterms:description "Extansion de l'ontologie Pegazus décrivant le contenu des séries du cadastre napoléonien"@fr, 
-		                    "Ontology describing the napoleonic cadaster documents and data."@en;
+        dcterms:description "Extension de l'ontologie PeGaZus pour descrire le contenu des séries du cadastre napoléonien"@fr, 
+		                    "Extension of the PeGaZus ontology to describe the Napoleonic land registry landmarks, documents and related information."@en;
         dcterms:issued "2024-01-24"^^xsd:date ;
         dcterms:modified "2024-07-12"^^xsd:date ;
         dcterms:publisher <http://fr.dbpedia.org/resource/Institut_national_de_l%27information_g%C3%A9ographique_et_foresti%C3%A8re> ;
-        dcterms:title "Ontologie Pegazus, extension cadastre napoléonien"@fr, "Ontology Pegazus, extension of the Napoleonic Cadaster"@en ;
+        dcterms:title "Ontologie PeGaZus, extension cadastre napoléonien"@fr, "Ontology PeGaZus, extension related to the Napoleonic Land Registry"@en ;
         vann:preferredNamespacePrefix "cad" ;
 		vann:preferredNamespaceUri <http://rdf.geohistoricaldata.org/def/cadastre#> ;
 		dcterms:rights "Copyright 2024, IGN" ;
