@@ -40,7 +40,7 @@ TO BE ADD
     * Vectorization of the plots
     * Association of each plot with a plot number
 * Other informations have been transcribed by hand in several mutation registers
-* Sources object have been created using archives metadata
+* Sources (maps and registers) object have been created using archives metadata
 
 ## Acknowledgements
 This work was supported by the IGN and the AID.
