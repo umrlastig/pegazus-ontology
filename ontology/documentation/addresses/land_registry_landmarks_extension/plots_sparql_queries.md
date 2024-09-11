@@ -1,6 +1,6 @@
 # SPARQL requests of the Land Registry Landmarks extension
 
-## 1. Which are the plots located in a given commune/section of a commune ?
+## 1. Which are the plots located in a given area (commune/section) ?
 * List of plots in Gentilly
 ```sparql
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -27,7 +27,6 @@ WHERE {
 GROUP BY ?plot
 ORDER BY ?ID
 ```
-* NB : pas le bon nombre...
 
 ## 2. How many plots are there in a given commune ?
 * There are two possible interpretation of this request :

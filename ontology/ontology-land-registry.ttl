@@ -1,4 +1,4 @@
-#Import others ontologies
+#Others ontologies
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -17,15 +17,14 @@
 @prefix pwikidata: <https://www.wikidata.org/wiki/Property:> .
 @prefix igeo:    <http://rdf.insee.fr/def/geo#> .
 
-# Import core ontology
+# Core ontology
 @prefix add: <http://rdf.geohistoricaldata.org/def/address#> .
-add:  owl:imports  <file:///D:/Documents/ONTOLOGY/ontology-adresse.ttl> .
 @prefix atype: <http://rdf.geohistoricaldata.org/id/codes/address/attributeType/> .
 @prefix ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/> .
 @prefix ltype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkType/> .
 @prefix lrtype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/> .
 
-#Cadastre extension 
+#Land registry extension 
 @prefix cad: <http://rdf.geohistoricaldata.org/def/cadastre#> .
 # Skos Concepts Cadastre extension
 @prefix cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/> .

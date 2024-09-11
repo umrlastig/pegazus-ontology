@@ -17,7 +17,7 @@ List of folios/articles/cases mentioning plot X
 
 ## Question 2
 ### Question
-In which folios is a taxpayer mentioned?
+In which folios is a taxpayer mentionned?
 ### Expected Result
 List of corresponding folios
 ### Example Response

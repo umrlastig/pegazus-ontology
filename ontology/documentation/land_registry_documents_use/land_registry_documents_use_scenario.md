@@ -8,11 +8,11 @@ Land registry documents use
 
 ### Documents
 
-The Napoleonic cadastre is composed of a set of documents created and completed according to defined rules. This modelet aims to describe the land registry documentats not as a source but as an administrative object whose operation can be compared to that of a handwritten database. The models **Sources** and **Land registry documents use** are strongly connected.
+The Napoleonic land registry is composed of a set of documents created and completed according to defined rules. This modelet aims to describe the land registry documentats not as a source but as an administrative object whose operation can be compared to that of a handwritten database. The models **Sources** and **Land registry documents use** are strongly connected.
 
 The registers that make up the land registry are the initial registers and the mutation registers.
 
-The **initial registers** are made up of chapters. Each chapter begins with a title page describing a given section (name, identifier) and a table in which each row corresponds to the initial register of a plot at the time of the creation of the cadastre. Before 1822, there are also chapters dedicated to the taxation of built properties.
+The **initial registers** are made up of chapters. Each chapter begins with a title page describing a given section (name, identifier) and a table in which each row corresponds to the initial register of a plot at the time of the creation of the land registry. Before 1822, there are also chapters dedicated to the taxation of built properties.
 In order to structure data contained in the initial registers:
 - the order of the table pages next to a cover pages must be taken into account to build the plot identifier.
 - the table may contain a column indicating the identifier of a taxpayer in the mutation register (to be used as a join field)
@@ -51,7 +51,7 @@ A fully crossed out land account is closed.
 - **Mutation Register**: Mutation Register of Marolles-en-Brie (1810-1822)
 
 ### Example 2 [Folio]
-> Folio 602/1040, Mutation Register of land/non-built properties (1822-1914), Champigny-sur-Marne (<a href="https://github.com/solenn-tl/ontologie-cadastre/blob/main/comptes_fonciers/img/folio_champigny_FRAD094_3P_000108_01_0004.PNG">View the image</a>)
+> Folio 602/1040, Mutation Register of land/non-built properties (1822-1914), Champigny-sur-Marne (<a href="https://github.com/solenn-tl/ontologie-land registry/blob/main/comptes_fonciers/img/folio_champigny_FRAD094_3P_000108_01_0004.PNG">View the image</a>)
 - **Number**: 602 <i>AND</i> 1040
 - **Taxpayer**:
     - Macreau Laurent à Chennevière
