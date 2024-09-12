@@ -1852,7 +1852,8 @@ cad_spval:AdditionConstructionSV a cad:SpecialCellValue,
         "add",
         "addition" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Addition à une construction"@fr .
+    skos:prefLabel "Expension"@en,
+        "Addition à une construction"@fr .
 
 cad_spval:AugmentationSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1863,15 +1864,17 @@ cad_spval:AugmentationSV a cad:SpecialCellValue,
         "Augtion",
         "Augton" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Augmentation"@fr .
+    skos:prefLabel "Enhancement"@en,
+        "Augmentation"@fr .
 
-cad_spval:CelluleVideSV a cad:SpecialCellValue,
+cad_spval:CelluleVide a cad:SpecialCellValue,
         owl:NamedIndividual,
         skos:Concept ;
     skos:altLabel "EMPTY"@fr ;
     skos:definition "Cellule vide (sens différent de idem)"@fr ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Cellule vide"@fr .
+    skos:prefLabel "Empty cell"@en,
+        "Cellule vide"@fr .
 
 cad_spval:ConstructionNouvelleSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1884,7 +1887,8 @@ cad_spval:ConstructionNouvelleSV a cad:SpecialCellValue,
         "Construction nouvelle",
         "Nouvelle construction" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Construction nouvelle"@fr .
+    skos:prefLabel "New building"@en,
+        "Construction nouvelle"@fr .
 
 cad_spval:DemolitionSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1895,7 +1899,8 @@ cad_spval:DemolitionSV a cad:SpecialCellValue,
         "Démolition",
         "Détruite" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Démolition"@fr .
+    skos:prefLabel "Demolition"@en,
+        "Démolition"@fr .
 
 cad_spval:DiminutionSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1905,14 +1910,17 @@ cad_spval:DiminutionSV a cad:SpecialCellValue,
         "Diminution",
         "Dton" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Diminution"@fr .
+    skos:prefLabel "Reduction"@en,
+        "Diminution"@fr .
 
 cad_spval:DoubleEmploiSV a cad:SpecialCellValue,
         owl:NamedIndividual,
         skos:Concept ;
+    skos:definition "A définir"@fr ;
     skos:hiddenLabel "Double emploi" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Double emploi"@fr .
+    skos:prefLabel "Double employement"@en,
+        "Double emploi"@fr .
 
 cad_spval:EvaluationSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1921,14 +1929,14 @@ cad_spval:EvaluationSV a cad:SpecialCellValue,
     skos:hiddenLabel "Eval",
         "Evaluation" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Evaluation"@fr .
+    skos:prefLabel "Evaluation"@en,
+        "Evaluation"@fr .
 
 cad_spval:IdemPrecedentSV a cad:SpecialCellValue,
         owl:NamedIndividual,
         skos:Concept ;
     skos:broader cad_spval:IdemSV ;
-    skos:definition "Valeur de cellule reprenant le contenu de la cellule précédente"@fr,
-        "Valeur de cellule reprenant le contenu de la cellule suivante"@fr ;
+    skos:definition "Valeur de cellule reprenant le contenu de la cellule précédente"@fr ;
     skos:hiddenLabel "\"",
         "/",
         "Id",
@@ -1936,17 +1944,35 @@ cad_spval:IdemPrecedentSV a cad:SpecialCellValue,
         "Les mêmes",
         "idem",
         "§",
-        "Ø",
+        "Ø" ;
+    skos:inScheme cad:SpecialCellValuesList ;
+    skos:prefLabel "Idem as previous cell"@en,
+        "Idem au précédent"@fr .
+
+cad_spval:IdemSuivantSV a cad:SpecialCellValue,
+        owl:NamedIndividual,
+        skos:Concept ;
+    skos:broader cad_spval:IdemSV ;
+    skos:definition "Valeur de cellule reprenant le contenu de la cellule suivante"@fr ;
+    skos:hiddenLabel "\"",
+        "/",
+        "Id",
+        "Le même",
+        "Les mêmes",
+        "idem",
+        "§",
         "☼" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Idem au précédent"@fr .
+    skos:prefLabel "Idem as next cell"@en,
+        "Idem au précédent"@fr .
 
 cad_spval:InconnuSV a cad:SpecialCellValue,
         owl:NamedIndividual,
         skos:Concept ;
     skos:definition "Valeur de cellule dont le sens n'a pas été explicité"@fr ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Valeur inconnue"@fr .
+    skos:prefLabel "Unknown"@en,
+        "Valeur inconnue"@fr .
 
 cad_spval:OmissionSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1954,9 +1980,11 @@ cad_spval:OmissionSV a cad:SpecialCellValue,
     skos:altLabel "OmissionSV{{date}}"@fr ;
     skos:definition "Déclaration omise depuis une date donnée réintégrée au compte foncier d'un propriétaire"@fr ;
     skos:hiddenLabel "Omission",
-        "Omission depuis" ;
+        "Omission depuis",
+        "OmissionSV{{date}}" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Omission"@fr .
+    skos:prefLabel "Omission"@en,
+        "Omission"@fr .
 
 cad_spval:PartieSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1966,7 +1994,8 @@ cad_spval:PartieSV a cad:SpecialCellValue,
         "Ptie",
         "p" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Partie"@fr .
+    skos:prefLabel "Part of"@en,
+        "Partie"@fr .
 
 cad_spval:ResteSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1974,7 +2003,8 @@ cad_spval:ResteSV a cad:SpecialCellValue,
     skos:definition "Reste d'une parcelle modifiée (divisée ou partiellement bâtie) à un état antérieur"@fr ;
     skos:hiddenLabel "Reste" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Reste"@fr .
+    skos:prefLabel "Left-over"@en,
+        "Reste"@fr .
 
 cad_spval:RuinesSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1984,7 +2014,8 @@ cad_spval:RuinesSV a cad:SpecialCellValue,
         "En ruines",
         "Ruines" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "En ruines"@fr .
+    skos:prefLabel "Ruined"@en,
+        "En ruines"@fr .
 
 cad_spval:ValeurBarreeSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -1993,7 +2024,8 @@ cad_spval:ValeurBarreeSV a cad:SpecialCellValue,
     skos:definition "Indique que le texte entre double tilde est rayé dans le document"@fr ;
     skos:hiddenLabel "~~~~" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Valeur barrée"@fr .
+    skos:prefLabel "Crossed out"@en,
+        "Valeur barrée"@fr .
 
 cad_spval:VoiePubliqueSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -2002,7 +2034,8 @@ cad_spval:VoiePubliqueSV a cad:SpecialCellValue,
     skos:hiddenLabel "Voie publique",
         "Vp" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Passé à la voie publique"@fr .
+    skos:prefLabel "Passed to the public roads"@en,
+        "Passé à la voie publique"@fr .
 
 cad_spval:IdemSV a cad:SpecialCellValue,
         owl:NamedIndividual,
@@ -2016,4 +2049,5 @@ cad_spval:IdemSV a cad:SpecialCellValue,
         "idem",
         "§" ;
     skos:inScheme cad:SpecialCellValuesList ;
-    skos:prefLabel "Idem"@fr .
+    skos:prefLabel "Idem"@en,
+        "Idem"@fr .
