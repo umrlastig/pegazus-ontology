@@ -2,7 +2,7 @@
 
 ## Question 1
 ### Question
-In which folios is plot X mentioned?
+Which folios mention plot X ?
 ### Expected Result
 List of folios/articles/cases mentioning plot X
 ### Example Response
@@ -17,7 +17,7 @@ List of folios/articles/cases mentioning plot X
 
 ## Question 2
 ### Question
-In which folios is a taxpayer mentionned?
+Which folios mention taxpayer X ?
 ### Expected Result
 List of corresponding folios
 ### Example Response
@@ -46,3 +46,12 @@ List of taxpayers
 ### Example Response
 > Article No. 29, Mutation register of built and non-built properties of Marolles en Brie (1812-1822)
 - Guérin Louis, carter in Marolles
+
+## Question 5
+### Question
+Which table lines are crossed out ?
+### Expected Result
+List of plot versions for wich the associated table line is crossed-out in the archival record
+
+## Question 6
+### Question
