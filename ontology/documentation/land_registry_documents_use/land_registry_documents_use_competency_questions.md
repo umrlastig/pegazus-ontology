@@ -55,3 +55,6 @@ List of plot versions for wich the associated table line is crossed-out in the a
 
 ## Question 6
 ### Question
+Which plot versions is taken from a left-over of an other plot version ?
+### Expected Result
+List of plot versions that have *cad:takenFrom cad_spval:ResteSV*

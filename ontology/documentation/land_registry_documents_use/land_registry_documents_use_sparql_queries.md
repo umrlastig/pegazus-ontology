@@ -123,4 +123,31 @@ WHERE {
 
 ## 5. Which table lines are crossed out ?
 ```sparql
+PREFIX mlclasse: <http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/>
+PREFIX cad_spval: <http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/>
+PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+select * where {
+    ?classement a rico:RecordResource.
+    ?classement cad:isSourceType srctype:ArticleDeClassement.
+    ?classement rico:hasOrHadInstantiation ?i.
+    ?i cad:hasClasse/cad:hasClasseValue mlclasse:CrossedOut.
+} 
+```
+
+## 6. Which plot versions is taken from a left-over of an other plot version ?
+```
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX cad_spval: <http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+
+select * 
+where {
+    GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
+        ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.
+    }
+    ?plot add:hasAttribute/add:hasAttributeVersion/cad:takenFrom cad_spval:ResteSV.
+} 
 ```
