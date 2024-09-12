@@ -59,3 +59,68 @@ WHERE {
     BIND(CONCAT(?matriceLabel, ', ', ?matriceArea) AS ?matriceName)
 } 
 ```
+
+## 3. Which plots are mentioned in a given folio?
+```sparql
+PREFIX source: <http://rdf.geohistoricaldata.org/id/source/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+
+SELECT DISTINCT ?plot ?id ?folio ?numFolio ?matrice ?matriceName
+WHERE {
+    ?folio a rico:RecordResource.
+    ?folio cad:isSourceType/skos:broader srctype:Folio.
+    ?folio cad:hasNumFolio ?numFolio.
+    #Register details
+    ?folio rico:isOrWasConstituentOf+/rico:isOrWasIncludedIn ?matrice.
+    ?matrice cad:isSourceType ?matriceType.
+    ?matrice rico:name ?matriceLabel.
+    ?matrice rico:location ?matriceArea.
+    BIND(CONCAT(?matriceLabel, ', ', ?matriceArea) AS ?matriceName)
+    FILTER(?numFolio = '236' && ?matrice = source:94_Gentilly_MAT_B_NB_1813)
+    #Plot
+    ?folio rico:hasOrHadConstituent+ ?classement.
+    ?classement cad:mentions/add:isAttributeVersionOf/add:isAttributeOf/add:isTraceOf ?plot.
+    ?plot dcterms:identifier ?id.
+} 
+```
+## 4. Which taxpayers are mentioned in a given folio?
+```sparql 
+PREFIX source: <http://rdf.geohistoricaldata.org/id/source/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+
+SELECT DISTINCT ?taxpayer ?label ?folio ?numFolio ?matrice ?matriceName
+WHERE {
+    ?folio a rico:RecordResource.
+    ?folio cad:isSourceType/skos:broader srctype:Folio.
+    ?folio cad:hasNumFolio ?numFolio.
+    #Register details
+    ?folio rico:isOrWasConstituentOf+/rico:isOrWasIncludedIn ?matrice.
+    ?matrice cad:isSourceType ?matriceType.
+    ?matrice rico:name ?matriceLabel.
+    ?matrice rico:location ?matriceArea.
+    BIND(CONCAT(?matriceLabel, ', ', ?matriceArea) AS ?matriceName)
+    FILTER(?numFolio = '236' && ?matrice = source:94_Gentilly_MAT_B_NB_1813)
+    #Taxpayers
+    ?folio rico:hasOrHadConstituent+ ?mutation.
+    ?mutation add:hasAttribute/add:hasAttributeVersion/cad:hasTaxpayer/add:isTraceOf ?taxpayer.
+    ?taxpayer rdfs:label ?label.
+} 
+```
+
+## 5. Which table lines are crossed out ?
+```sparql
+```
