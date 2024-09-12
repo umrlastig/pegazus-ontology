@@ -131,72 +131,17 @@ cad:Taxpayer a owl:Class;
 # ---- Imported classes ----
 skos:Concept a owl:Class .
 skos:ConceptScheme a owl:Class .
-
-rico:RecordSet a owl:Class ;
-	rdfs:subClassOf rico:RecordResource ;
-	rdfs:comment """One or more records that are grouped together by an Agent based on
-         the records sharing one or more attributes or relations."""@en ;
-	rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-	rdfs:label "Record Set"@en, "Ensemble d’objets informationnels"@fr, "Agrupación documental"@es .
-
-rico:Record a owl:Class ;
-	rdfs:subClassOf rico:RecordResource ;
-	rdfs:comment """Discrete information content formed and inscribed, at least once,
-         by any method on any carrier in any persistent, recoverable form by an Agent in the course
-         of life or work activity."""@en ;
-	rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-	rdfs:label "Record"@en, "Objet informationnel"@fr, "Documento"@es .
-
-rico:RecordPart a owl:Class ;
-	rdfs:subClassOf rico:RecordResource ;
-	rdfs:comment """Component of a Record with independent information content that
-         contributes to the intellectual completeness of the Record."""@en ;
-	rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-	rdfs:label "Record Part"@en, "Partie d’objet informationnel"@fr, "Componente documental"@es.
-
-rico:Instantiation
-  a owl:Class ;
-  rdfs:subClassOf rico:Thing ;
-  rdfs:comment """The inscription of information made by an Agent on a physical
-         carrier in any persistent, recoverable form as a means of communicating information through
-         time and space."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "Instantiation"@en, "Instanciation"@fr, "Instanciación"@es ;
-  rico:closeTo "PREMIS Representation"@en .
-
-prov:Activity a owl:Class ;
-    rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-    rdfs:label "Activity" ;
-    owl:disjointWith prov:Entity.
-
-prov:Agent a owl:Class ;
-    rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-    rdfs:label "Agent" ;
-    owl:disjointWith prov:InstantaneousEvent.
-
-prov:SoftwareAgent a owl:Class ;
-    rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-    rdfs:label "SoftwareAgent" ;
-    rdfs:subClassOf prov:Agent.
+rico:RecordSet a owl:Class  .
+rico:Record a owl:Class  .
+rico:RecordPart a owl:Class .
+rico:Instantiation a owl:Class .
+prov:Activity a owl:Class .
+prov:Agent a owl:Class .
+prov:SoftwareAgent a owl:Class .
 
 #################################################################
 #    Objectype properties
 #################################################################
-
-#KG building properties to link and order facts and factoids resources
-add:hasTrace a owl:ObjectProperty ;
-    rdfs:domain owl:Thing ;
-    rdfs:range owl:Thing ;
-    rdfs:label "a pour trace"@fr,
-               "has trace"@en ;
-    owl:inverseOf add:isTraceOf.
-
-add:hasTrace a owl:ObjectProperty ;
-    rdfs:domain owl:Thing ;
-    rdfs:range owl:Thing ;
-    rdfs:label "a pour trace"@fr,
-               "has trace"@en ;
-    owl:inverseOf add:isTraceOf.
 
 cad:hasPreviousVersionInSRCOrder a owl:ObjectProperty ;
     rdfs:label "a pour version précédente dans les documents"@fr,
@@ -214,7 +159,6 @@ cad:hasOverlappingVersionInSRCOrder a owl:ObjectProperty ;
 cad:isOverlappedByVersionInSRCOrder a owl:ObjectProperty ;
     owl:inverseOf cad:hasOverlappingVersionInSRCOrder.
 
-#relative to landmarks
 cad:hasPlotNature a owl:ObjectProperty ;
     rdfs:domain add:AttributeVersion ;
     rdfs:range cad:Nature ;
@@ -265,13 +209,10 @@ cad:isPlotAddressOf a owl:ObjectProperty ;
                "is address of"@en ;
     owl:inverseOf cad:hasPlotAddress.
 
-#relative to cadastre use
-
 cad:hasEquivalentFolio a owl:ObjectypeProperty ;
     rdfs:label "a pour folio équivalent"@fr,
                "has equivalent folio"@en .
 
-#relative to sources
 cad:isSourceType a owl:ObjectProperty ;
                     rdfs:domain rico:RecordResource ;
                     rdfs:range cad:Source ;
@@ -351,244 +292,28 @@ cad:isNamedEntityType a owl:ObjectProperty ;
                "is named entity of type"@en .
 
 # --------- Imported properties ---------
-rico:hasCreationDate a owl:ObjectProperty ;
-  owl:inverseOf rico:isCreationDateOf ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf (
-     rico:Instantiation
-     rico:RecordResource
-   )
-  ] ;
-  rdfs:comment "Inverse of 'is creation date of' object property"@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "has creation date"@en, "a pour date de création"@fr, "tiene como fecha de creación"@es .
-
-rico:isCreationDateOf a owl:ObjectProperty ;
-  owl:inverseOf rico:hasCreationDate ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf (
-     rico:Instantiation
-     rico:RecordResource
-   )
-  ] ;
-  rdfs:comment """Connects a Date to a Record Resource or Instantiation that was
-         created at this Date."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "is creation date of"@en, "est la date de création de"@fr, "es fecha de creación de"@es .
-
-rico:includesOrIncluded a owl:ObjectProperty ;
-	owl:inverseOf rico:isOrWasIncludedIn ;
-	rdfs:domain rico:RecordSet ;
-	rdfs:range [
-		a owl:Class ;
-		owl:unionOf (
-			rico:Record
-			rico:RecordSet
-		) ;
-	] ;
-	rdfs:comment """Connects a Record Set to a Record or Record Set it aggregates, or
-         aggregated in the past."""@en ;
-	rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-	rdfs:label "includes or included"@en, "inclut ou a inclus"@fr, "incluye o incluía"@es .
-
-rico:isOrWasIncludedIn a owl:ObjectProperty ;
-  owl:inverseOf rico:includesOrIncluded ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf (
-     rico:Record
-     rico:RecordSet)] ;
-  rdfs:range rico:RecordSet ;
-  rdfs:comment "Inverse of 'includes or included' object property."@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "is or was included in"@en, "est ou a été inclus dans"@fr, "está o estaba incluido en"@es .
-
-rico:hasOrHadComponent a owl:ObjectProperty ;
-	owl:inverseOf rico:isOrWasComponentOf ;
-	rdfs:domain rico:Instantiation ;
-	rdfs:range rico:Instantiation ;
-	rdfs:comment """Connects an Instantiation to one of its present or past component
-         instantiations."""@en ;
-	rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-	rdfs:label "has or had component"@en, "a ou a eu pour composant"@fr, "tiene o tenía como componente"@es .
-
-rico:isOrWasComponentOf a owl:ObjectProperty ;
-  owl:inverseOf rico:hasOrHadComponent ;
-  rdfs:domain rico:Instantiation ;
-  rdfs:range rico:Instantiation ;
-  rdfs:comment "Inverse of 'has or had component' object property."@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "is or was component of"@en, "est ou a été un composant de"@fr, "es o era componente de"@es .
-
-rico:hasOrHadInstantiation a owl:ObjectProperty ;
-	owl:inverseOf rico:isOrWasInstantiationOf ;
-	rdfs:domain rico:RecordResource ;
-	rdfs:range rico:Instantiation ;
-	rdfs:comment """Connects a Record Resource to an Instantiation, which either may
-         exist or may have been lost or destroyed."""@en ;
-	rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-	rdfs:label "has or had instantiation"@en, "a ou a eu pour instanciation"@fr, "tiene o tenía como instanciación"@es .
-
-rico:isOrWasInstantiationOf a owl:ObjectProperty ;
-  owl:inverseOf rico:hasOrHadInstantiation ;
-  rdfs:domain rico:Instantiation ;
-  rdfs:range rico:RecordResource ;
-  rdfs:comment """Inverse of 'has or had instantiation' object
-         property."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "is or was instantiation of"@en, "est ou a été une instanciation de"@fr, "es o era instanciación de"@es .
-
-rico:hasOrHadDigitalInstantiation a owl:ObjectProperty ;
-	rdfs:subPropertyOf rico:hasOrHadInstantiation ;
-	owl:inverseOf rico:isOrWasDigitalInstantiationOf ;
-	rdfs:domain rico:RecordResource ;
-	rdfs:range rico:Instantiation ;
-	rdfs:comment """Connects a record resource to one of its digital instantiations,
-         whether it exists or has been lost or destroyed."""@en ;
-	rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-	rdfs:label "has or had digital instantiation"@en, "a ou a eu pour instanciation numérique"@fr, "tiene o tenía como instanciación digital"@es .
-
-rico:isOrWasDigitalInstantiationOf a owl:ObjectProperty ;
-  rdfs:subPropertyOf rico:isOrWasInstantiationOf ;
-  owl:inverseOf rico:hasOrHadDigitalInstantiation ;
-  rdfs:domain rico:Instantiation ;
-  rdfs:range rico:RecordResource ;
-  rdfs:comment """Inverse of 'has or had digital instantiation' object
-         property."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "is or was digital instantiation of"@en, "est ou a été une instanciation numérique de"@fr, "es o era instanciación digital de"@es .
-
-rico:hasOrHadComponent
-  a owl:ObjectProperty ;
-  rdfs:subPropertyOf rico:hasOrHadPart, rico:isInstantiationAssociatedWithInstantiation ;
-  owl:inverseOf rico:isOrWasComponentOf ;
-  rdfs:domain rico:Instantiation ;
-  rdfs:range rico:Instantiation ;
-  rdfs:comment """Connects an Instantiation to one of its present or past component
-         instantiations."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "has or had component"@en, "a ou a eu pour composant"@fr, "tiene o tenía como componente"@es .
-
-rico:hasOrHadConstituent
-  a owl:ObjectProperty ;
-  owl:inverseOf rico:isOrWasConstituentOf ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf (
-     rico:Record
-     rico:RecordPart
-   )
-  ] ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf (
-     rico:Record
-     rico:RecordPart
-   )
-  ] ;
-  rdfs:comment """Connects a Record or Record Part to a Record or Record part that
-         is or was a constituent of that Record or Record Part."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "has or had constituent"@en, "a ou a eu pour constituant"@fr, "tiene o tenía como elemento constitutivo"@es .
-
-rico:isOrWasConstituentOf
-  a owl:ObjectProperty ;
-  rdfs:subPropertyOf rico:isOrWasPartOf, rico:isRecordResourceAssociatedWithRecordResource ;
-  owl:inverseOf rico:hasOrHadConstituent ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf (
-     rico:Record
-     rico:RecordPart
-   )
-  ] ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf (
-     rico:Record
-     rico:RecordPart
-   )
-  ] ;
-  rdfs:comment """Inverse of 'has or had constituent' object
-         property."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "is or was constituent of"@en, "est ou a été un constituant de"@fr, "es o era elemento constitutivo de"@es .
-
-rico:hasComponentTransitive
-  a owl:ObjectProperty, owl:TransitiveProperty ;
-  rdfs:subPropertyOf rico:hasOrHadComponent, rico:hasPartTransitive ;
-  owl:inverseOf rico:isComponentOfTransitive ;
-  rdfs:domain rico:Instantiation ;
-  rdfs:range rico:Instantiation ;
-  rdfs:comment """Connects an Instantiation to another Instantiation that is,
-         directly or indirectly, a component of that Instantiation. This is a transitive
-         relation."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "has component transitive"@en, "a pour composant transitif"@fr, "tiene como componente transitivo"@es .
-
-rico:hasConstituentTransitive
-  a owl:ObjectProperty, owl:TransitiveProperty ;
-  rdfs:subPropertyOf rico:hasOrHadConstituent, rico:hasPartTransitive ;
-  owl:inverseOf rico:isConstituentOfTransitive ;
-  rdfs:domain [
-    a owl:Class ;
-    owl:unionOf (
-     rico:Record
-     rico:RecordPart
-   )
-  ] ;
-  rdfs:range [
-    a owl:Class ;
-    owl:unionOf (
-     rico:Record
-     rico:RecordPart
-   )
-  ] ;
-  rdfs:comment """Connects a Record or Record Part to another Record or Record Part
-         that is its constituent, directly or indirectly. This is a transitive
-         relation."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "has constituent transitive"@en, "a pour constituant transitif"@fr, "tiene como elemento constitutivo transitivo"@es ;.
-
-prov:wasAssociatedWith a owl:ObjectProperty ;
-    rdfs:comment "An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity."@en ;
-    rdfs:domain prov:Activity ;
-    rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-    rdfs:label "wasAssociatedWith" ;
-    rdfs:range prov:Agent ;
-    rdfs:subPropertyOf prov:wasInfluencedBy ;
-    owl:propertyChainAxiom (prov:qualifiedAssociation
-        prov:agent
-    ).
-
-prov:used a owl:ObjectProperty ;
-    rdfs:comment "A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven ."@en ;
-    rdfs:domain prov:Activity ;
-    rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-    rdfs:label "used" ;
-    rdfs:range prov:Entity ;
-    rdfs:subPropertyOf prov:wasInfluencedBy ;
-    owl:propertyChainAxiom (prov:qualifiedUsage
-        prov:Entity
-    ).
-
-prov:wasGeneratedBy a owl:ObjectProperty ;
-    rdfs:domain prov:Entity ;
-    rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-    rdfs:label "wasGeneratedBy" ;
-    rdfs:range prov:Activity ;
-    rdfs:subPropertyOf prov:wasInfluencedBy ;
-    owl:propertyChainAxiom (prov:qualifiedGeneration
-        prov:activity
-    ).
+rico:hasCreationDate a owl:ObjectProperty .
+rico:isCreationDateOf a owl:ObjectProperty .
+rico:includesOrIncluded a owl:ObjectProperty .
+rico:isOrWasIncludedIn a owl:ObjectProperty .
+rico:hasOrHadComponent a owl:ObjectProperty .
+rico:isOrWasComponentOf a owl:ObjectProperty  .
+rico:hasOrHadInstantiation a owl:ObjectProperty .
+rico:isOrWasInstantiationOf a owl:ObjectProperty .
+rico:hasOrHadDigitalInstantiation a owl:ObjectProperty .
+rico:isOrWasDigitalInstantiationOf a owl:ObjectProperty .
+rico:hasOrHadComponent a owl:ObjectProperty .
+rico:hasOrHadConstituent a owl:ObjectProperty  .
+rico:isOrWasConstituentOf a owl:ObjectProperty .
+rico:hasComponentTransitive a owl:ObjectProperty.
+rico:hasConstituentTransitive a owl:ObjectProperty.
+prov:wasAssociatedWith a owl:ObjectProperty .
+prov:used a owl:ObjectProperty .
+prov:wasGeneratedBy a owl:ObjectProperty .
 
 #################################################################
 #    Datatype properties
 #################################################################
-
-#Relative to taxpayers
 
 cad:taxpayerLabel 
     a owl:DatatypeProperty ;
@@ -622,7 +347,6 @@ cad:taxpayerActivity a owl:DatatypeProperty ;
     rdfs:comment "Activité du contribuable"@fr ;
     rdfs:label "activité"@fr .
 
-#relative to cadastre use and doc
 cad:hasNumFolio a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:label "a pour numéro de folio"@fr,
@@ -633,7 +357,6 @@ cad:hasAlternativeNumFolio a owl:DatatypeProperty ;
     rdfs:label "a pour ancien numéro de folio"@fr,
                "has former folio number"@en .
 
-#relative to sources
 cad:transcription a owl:DatatypeProperty ;
   rdfs:domain [ a owl:Class ;
                     owl:unionOf ( rico:Instanciation
@@ -661,37 +384,12 @@ cad:URL a owl:DatatypeProperty ;
 
 # ---- Imported properties ----
 rdfs:label a owl:DatatypeProperty.
-
 dcterms:identifier a owl:DatatypeProperty.
-
 pwikidata:P8422 a owl:DatatypeProperty;
     rdfs:label "identifiant Ldh/EHESS/Cassini"@fr.
-
-igeo:codeINSEE
-      a owl:DatatypeProperty ;
-      rdfs:label "code Insee"@fr ;
-      rdfs:comment "Code donné par l'Insee au territoire"@fr ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo>.
-
-rico:identifier a owl:DatatypeProperty ;
-  rdfs:domain rico:Thing ;
-  rdfs:range rdfs:Literal ;
-  rdfs:comment """A word, number, letter, symbol, or any combination of these used
-         to uniquely identify or reference an individual instance of an entity within a specific
-         information domain. Can include Global Persistent Identifiers (globally unique and
-         persistently resolvable identifier for the entity) and/or Local Identifiers. Both the
-         domain within which the identifier is unique, and the rules used in forming the identifier
-         value should be provided with the identifier value."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "identifier"@en, "identifiant"@fr, "identificador"@es.
-
-rico:name a owl:DatatypeProperty ;
-  rdfs:domain rico:Thing ;
-  rdfs:range rdfs:Literal ;
-  rdfs:comment """A label, title or term designating an entity in order to make it
-         distinguishable from other similar entities."""@en ;
-  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
-  rdfs:label "name"@en, "nom"@fr, "nombre"@es .
+igeo:codeINSEE  a owl:DatatypeProperty .
+rico:identifier a owl:DatatypeProperty .
+rico:name a owl:DatatypeProperty .
 
 #################################################################
 #    Named Individuals

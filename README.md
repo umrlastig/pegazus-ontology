@@ -42,5 +42,8 @@ TO BE ADD
 * Other informations have been transcribed by hand in several mutation registers
 * Sources (maps and registers) object have been created using archives metadata
 
+## Imported ontologies
+* It is highly recommanded to import also the following ontologies
+
 ## Acknowledgements
 This work was supported by the IGN and the AID.
