@@ -15,6 +15,51 @@
 
 <http://rdf.geohistoricaldata.org/def/address> rdf:type owl:Ontology .
 
+
+#################################################################
+#    Ontology metadata
+#################################################################
+
+<http://rdf.geohistoricaldata.org/def/cadastre#> a owl:Ontology, voaf:Vocabulary ;
+        dcterms:creator [
+	      a foaf:Person ;
+	      organization:hasMembership [
+	          a organization:Membership ;
+	          organization:memberDuring [
+	              a time:Interval ;
+	              time:hasBeginning [
+	                  a time:Instant ;
+	                  time:inXSDDateTimeStamp "2019-10-15"^^xsd:dateTimeStamp ;
+	                ] ;
+	            ] ;
+	          organization:organization <http://www.ign.fr/> ;
+	          organization:organization <http://www.umr-lastig.fr/> ;
+	          organization:role [
+	              a organization:Role ;
+	              rdfs:label "Doctorant"@fr, "PhD Student"@en ;
+	            ] ;
+	        ] ;
+	      foaf:family_name "Bernard" ;
+	      foaf:firstName "Charly" ;
+	      foaf:mbox <mailto:charly.bernard@ign.fr> ;
+	      foaf:name "Charly Bernard" ;
+          foaf:workInfoHomepage <https://www.umr-lastig.fr/charly-bernard/> ;
+	    ] ;
+        dcterms:description "Ontologie PeGaZus pour décrire l'évolution des entités géographiques"@fr,
+		                    "PeGaZus ontology to describe evolution of geographical entities"@en;
+        dcterms:issued "2023-10-30"^^xsd:date ;
+        dcterms:modified "2024-09-13"^^xsd:date ;
+        dcterms:publisher <http://fr.dbpedia.org/resource/Institut_national_de_l%27information_g%C3%A9ographique_et_foresti%C3%A8re> ;
+        dcterms:title "Ontologie PeGaZus"@fr, "PeGaZus ontology"@en ;
+        vann:preferredNamespacePrefix "addr" ;
+		vann:preferredNamespaceUri <http://rdf.geohistoricaldata.org/def/address#> ;
+		dcterms:rights "Copyright 2024, IGN" ;
+		cc:license <http://www.data.gouv.fr/Licence-Ouverte-Open-Licence> ;
+		cc:license <http://creativecommons.org/licenses/by/2.0/> ;
+		cc:license <http://opendatacommons.org/licenses/by/> ;
+    #owl:priorVersion <> ;
+		owl:versionInfo "Version 0.1 - 2024-09-13" .
+
 #################################################################
 #    Annotation properties
 #################################################################
@@ -735,7 +780,7 @@ prov:wasDerivedFrom rdf:type owl:ObjectProperty ;
 
 ###  http://rdf.geohistoricaldata.org/def/address#Attribute
 :Attribute rdf:type owl:Class ;
-           rdfs:label "Attribut"@fr .
+           rdfs:label "Attribut"@fr, "Attribute"@en .
 
 
 ###  http://rdf.geohistoricaldata.org/def/address#AttributeChange

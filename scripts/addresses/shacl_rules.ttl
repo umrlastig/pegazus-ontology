@@ -1,0 +1,231 @@
+@base <http://rdf.geohistoricaldata.org/def/address#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix addr: <http://rdf.geohistoricaldata.org/def/address#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
+@prefix wb: <http://wikiba.se/ontology#> .
+@prefix : <http://www.example.org/test#> .
+
+# A resource of Landmark class must have at least one LandmarkType
+:LandmarkShape1 a sh:NodeShape;
+   sh:targetClass addr:Landmark ;
+   sh:property [
+        sh:path     addr:isLandmarkType ;
+        sh:nodeKind sh:IRI ;
+        sh:class    addr:LandmarkType ;
+        sh:minCount 1 ;
+  ] .
+
+# If a landmark is the subject of a triple whose predicate is addr:hasAttribute, the object must be an Attribute.
+:LandmarkShape2 a sh:NodeShape;
+   sh:targetClass addr:Landmark ;
+   sh:property [
+        sh:path     addr:hasAttribute ;
+        sh:nodeKind sh:IRI ;
+        sh:class    addr:Attribute ;
+  ] .
+
+# An address targets one and only one Landmark
+:AddressShape1 a sh:NodeShape;
+      sh:targetClass addr:Address ;
+      sh:property [
+            sh:path     addr:targets ;
+            sh:nodeKind sh:IRI ;
+            sh:class    addr:Landmark ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+] .
+
+# The first step of an address is either a AddressSegment or a FinalAddressSegment.
+:AddressShape2 a sh:NodeShape;
+   sh:targetClass addr:Address ;
+   sh:property [
+        sh:path     addr:firstStep ;
+        sh:nodeKind sh:IRI ;
+        sh:or (
+          [sh:class addr:AddressSegment]
+          [sh:class addr:FinalAddressSegment]
+) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+  ] .
+
+# A LandmarkRelation (of its subclasses) has one and only one LandmarkRelationType.
+:LandmarkRelationShape1 a sh:NodeShape;
+      sh:targetClass addr:LandmarkRelation, addr:AddressSegment, addr:FinalAddressSegment ;
+      sh:property [
+      sh:path addr:isLandmarkRelationType;
+      sh:nodeKind sh:IRI ;
+      sh:class addr:LandmarkRelationType ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+      ] .
+
+# A LandmarkRelation (of its subclasses) has one and only one LandmarkRelationType.
+# Besides, it has has one and only one locatum which is a Landmark and at least one relatum (which is a Landmark)
+:LandmarkRelationShape2 a sh:NodeShape;
+sh:targetClass addr:LandmarkRelation, addr:AddressSegment, addr:FinalAddressSegment ;
+sh:property [
+      sh:path addr:locatum;
+      sh:nodeKind sh:IRI ;
+      sh:class addr:Landmark ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+] ;
+sh:property [
+      sh:path addr:relatum;
+      sh:nodeKind sh:IRI ;
+      sh:class addr:Landmark ;
+      sh:minCount 1 ;
+] .
+
+# The object of a triple whose predicate is addr:nextStep must be an AddressSegment (one at maximum)
+:AddressSegmentShape1 a sh:NodeShape;
+sh:targetClass addr:AddressSegment ;
+sh:property [
+      sh:path addr:nextStep;
+      sh:nodeKind sh:IRI ;
+      sh:or (
+            [sh:class addr:AddressSegment]
+            [sh:class addr:FinalAddressSegment]
+) ;
+      sh:minCount 0 ;
+      sh:maxCount 1 ;
+] .
+
+# A FinalAddressSegment can't be the subject of a triple whose predicate is addr:nextStep
+:FinalAddressSegmentShape1 a sh:NodeShape;
+sh:targetClass addr:FinalAddressSegment ;
+sh:property [
+      sh:path addr:nextStep;
+      sh:nodeKind sh:IRI ;
+      sh:maxCount 0 ;
+] .
+
+# A resource of Attribute class has one and only one AttributeType
+:AttributeShape1 a sh:NodeShape;
+      sh:targetClass addr:Attribute ;
+      sh:property [
+        sh:path addr:isAttributeType;
+        sh:nodeKind sh:IRI ;
+        sh:class addr:AttributeType ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+      ] .
+
+# A triple whose subject is an Attribute and predicate is addr:hasAttributeVersion must have an object of AttributeVersion class
+:AttributeShape2 a sh:NodeShape;
+      sh:targetClass addr:Attribute ;
+      sh:property [
+            sh:path addr:hasAttributeVersion;
+            sh:nodeKind sh:IRI ;
+            sh:class addr:AttributeVersion ;
+      ] .
+
+# A change has one and only one type
+:ChangeShape1 a sh:NodeShape;
+      sh:targetClass addr:Change, addr:LandmarkChange, addr:LandmarkRelationChange, addr:AttributeChange ;
+      sh:property [
+            sh:path addr:isChangeType;
+            sh:nodeKind sh:IRI ;
+            sh:class addr:ChangeType ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+      ] .
+
+# A change depends on one and only one event
+:ChangeShape2 a sh:NodeShape;
+  sh:targetClass addr:Change, addr:LandmarkChange, addr:LandmarkRelationChange, addr:AttributeChange ;
+  sh:property [
+    sh:path addr:dependsOn;
+    sh:nodeKind sh:IRI ;
+    sh:class addr:Event ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+# An AttributeChange is applied to one and only one Attribute
+:AttributeChangeShape1 a sh:NodeShape;
+      sh:targetClass addr:AttributeChange ;
+      sh:property [
+        sh:path addr:appliedTo ;
+        sh:nodeKind sh:IRI ;
+        sh:class addr:Attribute ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+      ] .
+
+# An AttributeChange outdates and makesEffective AttributeVersion
+:AttributeChangeShape2 a sh:NodeShape;
+      sh:targetClass addr:AttributeChange ;
+      sh:property [
+        sh:path addr:outdates ;
+        sh:nodeKind sh:IRI ;
+        sh:class addr:AttributeVersion ;
+      ] ;
+      sh:property [
+        sh:path addr:makesEffective ;
+        sh:nodeKind sh:IRI ;
+        sh:class addr:AttributeVersion ;
+      ] .
+
+# An LandmarkChange is applied to one and only one Landmark
+:LandmarkChangeShape1 a sh:NodeShape;
+      sh:targetClass addr:LandmarkChange ;
+      sh:property [
+        sh:path addr:appliedTo ;
+        sh:nodeKind sh:IRI ;
+        sh:class addr:Landmark ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+      ] .
+
+# An LandmarkRelationChange is applied to one and only one LandmarkRelation
+:LandmarkRelationChangeShape1 a sh:NodeShape;
+      sh:targetClass addr:LandmarkRelationChange ;
+      sh:property [
+        sh:path addr:appliedTo ;
+        sh:nodeKind sh:IRI ;
+        sh:class addr:LandmarkRelation ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+      ] .
+
+:EventShape1 a sh:NodeShape;
+  sh:targetClass addr:Event ;
+  sh:property [
+    sh:path addr:hasTime ;
+    sh:nodeKind sh:IRI ;
+    sh:or (
+      [sh:class addr:TimeInstant]
+      [sh:class addr:CrispTimeInstant]
+      [sh:class addr:FuzzyTimeInstant]
+    ) ;
+  ] .
+
+
+:CrispTimeInstantShape1 a sh:NodeShape;
+  sh:targetClass addr:CrispTimeInstant ;
+  sh:property [
+    sh:path addr:timePrecision ;
+    sh:nodeKind sh:IRI ;
+    sh:class time:TemporalUnit ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path addr:timeStamp ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:dateTimeStamp ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path addr:timeCalendar ;
+    sh:nodeKind sh:IRI ;
+    sh:class time:TRS ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
