@@ -9,7 +9,7 @@ This repository contains the documentation of the PeGaZus ontology and knowledge
 │   ├── land-registry               <- RDF resources for the specific case of the plots from the Napoleonic land registry
 │
 ├── ontology                  <- PeGaZus Ontology
-│   ├── ontology-addresses.ttl         <- Core part of the ontology to describe landmarks and addresses
+│   ├── ontology-addresses.ttl       <- Core part of the ontology to describe landmarks and addresses
 │   ├── ontology-land-registry.ttl   <- Specific modules used to describe the Napoleonic land registry documents and landmarks
 │   ├── documentation
 │       ├── addresses
