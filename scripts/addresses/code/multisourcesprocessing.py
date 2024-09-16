@@ -1069,7 +1069,7 @@ def transfer_version_values_to_roots(graphdb_url, repository_name, facts_named_g
             GRAPH ?gf {{ ?rootAttr addr:versionValue ?value }}
         }} WHERE {{
             BIND({facts_named_graph_uri.n3()} AS ?gf)
-            ?av addr:versionValue ?value .addr:isTraceOf ?rootAttr .
+            ?av addr:versionValue ?value ; addr:isTraceOf ?rootAttr .
         }}
     """
 
@@ -1101,7 +1101,7 @@ def transfer_crisp_time_instant_elements_to_roots(graphdb_url, repository_name, 
             GRAPH ?gf {{ ?rootTime ?p ?timeElem }}
         }} WHERE {{
             BIND({facts_named_graph_uri.n3()} AS ?gf)
-            ?time ?p ?timeElem ; addr:isTraceOf ?rootElem .
+            ?time ?p ?timeElem ; addr:isTraceOf ?rootTime .
             FILTER(?p IN (addr:timeStamp, addr:timeCalendar, addr:timePrecision))
         }}
     """
