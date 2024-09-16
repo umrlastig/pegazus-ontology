@@ -113,7 +113,7 @@ PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?plot ?id (SAMPLE(?label) AS ?taxpayerLabel) ?start ?end
+SELECT ?plot ?id ?label ?start ?end
 WHERE {
     GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
         ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.

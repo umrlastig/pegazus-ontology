@@ -904,7 +904,37 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
 * In this step, we want to build aggregated attributes versions that are equals for each landmark aggregation.
 
 #### 6.3.1 Match PlotNature attribute versions that should be aggregated
-1. Match PlotNature attribute versions of landmark versions that :
+1. Compare attribute versions that are linked to trace of each same aggregated landmarks
+```sparql
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/natureattributeversions> {
+    ?natV1 ?property ?natV2.
+    ?natV2 ?property ?natV1.
+    }}
+WHERE {
+    ?plotAGG add:hasTrace ?plot1.
+    ?plotAGG add:hasTrace ?plot2.
+
+    ?plot1 add:hasAttribute ?nat1.
+    ?nat1 add:isAttributeType cad_atype:PlotNature.
+    ?nat1 add:hasAttributeVersion ?natV1.
+    ?natV1 cad:hasPlotNature ?natV1value.
+
+    ?plot2 add:hasAttribute ?nat2.
+    ?nat2 add:isAttributeType cad_atype:PlotNature.
+    ?nat2 add:hasAttributeVersion ?natV2.
+    ?natV2 cad:hasPlotNature ?natV2value.
+
+    # Comparison of the nature attributes
+    BIND(IF((?natV2value = ?natV1value), add:sameVersionValueAs, add:differentVersionValueAs) AS ?property)
+}
+```
+2. Match PlotNature attribute versions of landmark versions that :
     * have *hasNextVersion / hasOverlappingVersion / isOverlappedByVersion* temporal relation;
     * have the same nature (*cad:hasPlotNature*);
     * are part of the same landmark version aggregation.
@@ -916,10 +946,10 @@ PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/natureattributeversions> {
-    ?natV1 cad:matchWithVersion ?natV1.
-    ?natV1 cad:matchWithVersion ?natV2.
-    ?natV2 cad:matchWithVersion ?natV1.
-    ?natV2 cad:matchWithVersion ?natV2.
+    ?natV1 add:toBeMergedWith ?natV1.
+    ?natV1 add:toBeMergedWith ?natV2.
+    ?natV2 add:toBeMergedWith ?natV1.
+    ?natV2 add:toBeMergedWith ?natV2.
     }}
 WHERE {
     ?plot1 (add:hasNextVersion|add:hasOverlappingVersion|add:isOverlappedByVersion) ?plot2.
@@ -937,14 +967,13 @@ WHERE {
     ?natV2 cad:hasPlotNature ?natV2value.
 
     # Comparison of the nature attributes
-    BIND(IF((?natV2value = ?natV1value), true, false) AS ?areEqual)
-    FILTER(?areEqual = True)
+    ?natV1 add:sameVersionValueAs ?natV2
 }
 ```
-2. Match PlotNature attribute version with itself when the landmark version that have no *hasNextVersion / hasOverlappingVersion / isOverlappedByVersion* temporal relation with any other landmark version;.
+3. Match PlotNature attribute version with itself when the landmark version that have no *hasNextVersion / hasOverlappingVersion / isOverlappedByVersion* temporal relation with any other landmark version.
 ```sparql
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/natureattributeversions> {
-        ?natV1 cad:matchWithVersion ?natV1.}}
+        ?natV1 add:toBeMergedWith ?natV1.}}
 WHERE {
     ?plotAGG add:hasTrace ?plot1.
     ?plot1 add:hasAttribute ?nat1.
@@ -965,7 +994,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/natureattributeversions>{
 WHERE {SELECT DISTINCT ?plotAGG ?natureAGG (GROUP_CONCAT(?natV2) AS ?mergedValue)
 	WHERE {
         ?natV1 a add:AttributeVersion; 
-               cad:matchWithVersion+ ?natV2;
+               add:toBeMergedWith+ ?natV2;
                add:isAttributeVersionOf [add:isAttributeOf ?plot1].
         ?natV2 add:isAttributeVersionOf [add:isAttributeOf ?plot2].
 
@@ -1063,16 +1092,49 @@ WHERE {{
 ```
 ### 6.4. Addresses
 #### 6.4.1 Match PlotAddress attribute versions that have the same value
+1. Compare attribute versions that are linked to trace of each same aggregated landmarks
+```sparql
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/natureattributeversions> {
+    ?addV1 ?property ?addV2.
+    ?addV2 ?property ?addV1.
+    }}
+WHERE {
+    ?plotAGG add:hasTrace ?plot1.
+    ?plotAGG add:hasTrace ?plot2.
+
+    ?plot1 add:hasAttribute ?add1.
+    ?add1 add:isAttributeType cad_atype:PlotAddress.
+    ?add1 add:hasAttributeVersion ?addV1.
+    ?addV1 cad:hasPlotNature ?addV1value.
+
+    ?plot2 add:hasAttribute ?add2.
+    ?add2 add:isAttributeType cad_atype:PlotAddress.
+    ?add2 add:hasAttributeVersion ?addV2.
+    ?addV2 cad:hasPlotNature ?addV2value.
+
+    # Comparison of the nature attributes
+    BIND(IF((?addV2value = ?addV1value), add:sameVersionValueAs, add:differentVersionValueAs) AS ?property)
+}
+```
+2. Match PlotAddress attribute versions of landmark versions that :
+    * have *hasNextVersion / hasOverlappingVersion / isOverlappedByVersion* temporal relation;
+    * have the same nature (*sameVersionValue*);
 ```sparql
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/addressattributeversions> {
-    ?addV1 cad:matchWithVersion ?addV1.
-    ?addV1 cad:matchWithVersion ?addV2.
-    ?addV2 cad:matchWithVersion ?addV1.
-    ?addV2 cad:matchWithVersion ?addV2.
+    ?addV1 add:toBeMergedWith ?addV1.
+    ?addV1 add:toBeMergedWith ?addV2.
+    ?addV2 add:toBeMergedWith ?addV1.
+    ?addV2 add:toBeMergedWith ?addV2.
     }}
 WHERE {
     ?plot1 (add:hasNextVersion|add:hasOverlappingVersion|add:isOverlappedByVersion) ?plot2.
@@ -1089,19 +1151,18 @@ WHERE {
     ?add2 add:hasAttributeVersion ?addV2.
     ?addV2 cad:hasPlotAddress/add:relatum ?addV2value.
 
-    # Comparison of the nature attributes
-    BIND(IF((?addV2value = ?addV1value), true, false) AS ?areEqual)
-    FILTER(?areEqual = True)
+    # Comparison of the address attributes
+    ?addV2value add:sameVersionValue ?addV1value
 }
 ```
-
+3. Match PlotAddress attribute version with itself when the landmark version that have no *hasNextVersion / hasOverlappingVersion / isOverlappedByVersion* temporal relation with any other landmark version.
 ```sparql
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/addressattributeversions> {
-    ?addV1 cad:matchWithVersion ?addV1.
+    ?addV1 add:toBeMergedWith ?addV1.
     }}
 WHERE {
     ?plotAGG add:hasTrace ?plot1.
@@ -1123,7 +1184,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/addressattributeversions>{
 WHERE {SELECT DISTINCT ?plotAGG ?addAGG (GROUP_CONCAT(?addV2) AS ?mergedValue)
 	WHERE {
         ?addV1 a add:AttributeVersion; 
-               cad:matchWithVersion+ ?addV2;
+               add:toBeMergedWith+ ?addV2;
                add:isAttributeVersionOf [add:isAttributeOf ?plot1].
         ?addV2 add:isAttributeVersionOf [add:isAttributeOf ?plot2].
 
@@ -1226,10 +1287,10 @@ PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/taxpayerattributeversions> {
-    ?taxV1 cad:matchWithVersion ?taxV1.
-    ?taxV1 cad:matchWithVersion ?taxV2.
-    ?taxV2 cad:matchWithVersion ?taxV1.
-    ?taxV2 cad:matchWithVersion ?taxV2.
+    ?taxV1 add:toBeMergedWith ?taxV1.
+    ?taxV1 add:toBeMergedWith ?taxV2.
+    ?taxV2 add:toBeMergedWith ?taxV1.
+    ?taxV2 add:toBeMergedWith ?taxV2.
     }}
 WHERE {
     ?plot1 (add:hasNextVersion|add:hasOverlappingVersion|add:isOverlappedByVersion) ?plot2.
@@ -1257,7 +1318,7 @@ PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/taxpayerattributeversions> {
-    ?taxV1 cad:matchWithVersion ?taxV1.
+    ?taxV1 add:toBeMergedWith ?taxV1.
     }}
 WHERE {
     ?plotAGG add:hasTrace ?plot1.
@@ -1279,7 +1340,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayerattributeversions>{
 WHERE {SELECT DISTINCT ?plotAGG ?taxAGG (GROUP_CONCAT(?taxV2) AS ?mergedValue)
 	WHERE {
         ?taxV1 a add:AttributeVersion; 
-               cad:matchWithVersion+ ?taxV2;
+               add:toBeMergedWith+ ?taxV2;
                add:isAttributeVersionOf [add:isAttributeOf ?plot1].
         ?taxV2 add:isAttributeVersionOf [add:isAttributeOf ?plot2].
 
@@ -1379,11 +1440,11 @@ WHERE {{
 }
 ```
 ### 6.6. *cad:PlotMention*
-#### 6.6.1 Create *cad:matchWithVersion* links between same attribute version *PlotMention* attribute
+#### 6.6.1 Create *add:toBeMergedWith* links between same attribute version *PlotMention* attribute
 * Should create the same number of links that of landmarks versions.
 ```sparql
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/mentionattributeversions> {   
-    ?mentionV1 cad:matchWithVersion ?mentionV1.
+    ?mentionV1 add:toBeMergedWith ?mentionV1.
 }}
 WHERE {
     ?plotAGG add:hasTrace ?plot1.
@@ -1406,7 +1467,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/mentionattributeversions>{
 WHERE {SELECT DISTINCT ?plotAGG ?mentionAGG (GROUP_CONCAT(?mentionV2) AS ?mergedValue)
 	WHERE {
         ?mentionV1 a add:AttributeVersion; 
-               cad:matchWithVersion+ ?mentionV2;
+               add:toBeMergedWith+ ?mentionV2;
                add:isAttributeVersionOf [add:isAttributeOf ?plot1].
         ?mentionV2 add:isAttributeVersionOf [add:isAttributeOf ?plot2].
 

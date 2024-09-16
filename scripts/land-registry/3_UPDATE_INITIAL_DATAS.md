@@ -281,7 +281,7 @@ PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
 PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
 PREFIX time: <http://www.w3.org/2006/time#>
 
-INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
     ?attr add:hasAttributeVersion ?attrv;
     	  add:changedBy ?change1;
           add:changedBy ?change2.
@@ -331,7 +331,7 @@ PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
 PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
 PREFIX time: <http://www.w3.org/2006/time#>
 
-INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
     ?attr add:hasAttributeVersion ?attrv;
     	  add:changedBy ?change1;
           add:changedBy ?change2.
@@ -381,7 +381,7 @@ PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
 PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
 PREFIX time: <http://www.w3.org/2006/time#>
 
-INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
     ?attr add:hasAttributeVersion ?attrv;
     	  add:changedBy ?change1;
           add:changedBy ?change2.
@@ -431,7 +431,7 @@ PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
 PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
 PREFIX time: <http://www.w3.org/2006/time#>
 
-INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
     ?attr add:hasAttributeVersion ?attrv;
     	  add:changedBy ?change1;
           add:changedBy ?change2.

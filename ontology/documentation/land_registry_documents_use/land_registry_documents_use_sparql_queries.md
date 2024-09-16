@@ -137,7 +137,7 @@ select * where {
 ```
 
 ## 6. Which plot versions is taken from a left-over of an other plot version ?
-```
+```sparql
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX cad_spval: <http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
