@@ -1,4 +1,7 @@
 @prefix : <http://rdf.geohistoricaldata.org/def/address#> .
+@base <http://rdf.geohistoricaldata.org/def/address#> .
+
+#Others namespaces
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -7,14 +10,19 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix organization: <http://www.w3.org/ns/org#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+
+# Core namespaces
 @prefix atype: <http://rdf.geohistoricaldata.org/id/codes/address/attributeType/> .
 @prefix ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/> .
 @prefix ltype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkType/> .
 @prefix lrtype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/> .
-@base <http://rdf.geohistoricaldata.org/def/address#> .
 
 <http://rdf.geohistoricaldata.org/def/address> rdf:type owl:Ontology .
-
 
 #################################################################
 #    Ontology metadata
