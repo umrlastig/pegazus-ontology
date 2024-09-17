@@ -953,7 +953,7 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/natureattributeversions> {
     ?natV2 add:toBeMergedWith ?natV2.
     }}
 WHERE {
-    ?plot1 (add:hasNextVersion|add:hasOverlappingVersion|add:isOverlappedByVersion) ?plot2.
+    ?plot1 (add:hasNextVersion|add:hasOverlappingVersion|add:isOverlappedByVersion)+ ?plot2.
     ?plotAGG add:hasTrace ?plot1.
     ?plotAGG add:hasTrace ?plot2.
 
@@ -1226,7 +1226,9 @@ WHERE {
     BIND(IF((?taxV2value = ?taxV1value), add:sameVersionValueAs, add:differentVersionValueFrom) AS ?property)
 }
 ```
-
+2. Match Taxpayer attribute versions of landmark versions that :
+    * have *hasNextVersion / hasOverlappingVersion / isOverlappedByVersion* temporal relation;
+    * have the same nature (*sameVersionValueAs*);
 ```sparql
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1257,7 +1259,7 @@ WHERE {
     ?taxV2 add:sameVersionValueAs ?taxV1
 }
 ```
-
+3. Match PlotTaxpayer attribute version with itself when the landmark version that have no *hasNextVersion / hasOverlappingVersion / isOverlappedByVersion* temporal relation with any other landmark version.
 ```sparql
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1325,19 +1327,23 @@ WHERE {
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayerattributeversions> {
-    ?attrVAGG cad:hasTaxpayer ?addValue.
-    }}
+	?attrVAGG cad:hasTaxpayer ?taxpayer.
+}}
 WHERE {{
-	SELECT DISTINCT ?attrVAGG ?addValue 
+	SELECT DISTINCT ?plotAGG ?attrVAGG ?taxpayer
 	WHERE { 
-		?attrVAGG a add:AttributeVersion; add:isAttributeVersionOf[add:isAttributeType cad_atype:PlotTaxpayer].
+		?attrVAGG a add:AttributeVersion.
+        ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
     	?attrVAGG add:hasTrace ?attrV.
-    	?attrV cad:hasTaxpayer ?addValue.
-	}}
-}
+    	?attrV cad:hasTaxpayer ?taxpayer
+	}
+}}
 ```
-### 5.5. *cad:PlotMention*
+### 5.5. PlotMention
 #### 5.5.1 Create *add:toBeMergedWith* links between same attribute version *PlotMention* attribute
 * Should create the same number of links that of landmarks versions.
 ```sparql
