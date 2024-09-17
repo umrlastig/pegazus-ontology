@@ -1030,54 +1030,7 @@ WHERE {
     }
 }
 ```
-#### 5.2.4 Create events and changes of each PlotNature attribute version
-```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
-PREFIX time: <http://www.w3.org/2006/time#>
-PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
-PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
-PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
-
-
-INSERT { GRAPH <http://rdf.geohistoricaldata.org/natureattributeversions> {
-    ?event1 a add:Event.
-    ?event1 cad:isEventType cad_etype:PlotNatureEvent.
-    ?event2 a add:Event.
-    ?event2 cad:isEventType cad_etype:PlotNatureEvent.
-    ?change1 a add:Change.
-    ?change1 add:isChangeType ctype:AttributeVersionAppearance.
-    ?change2 a add:Change.
-	?change2 add:isChangeType ctype:AttributeVersionDisappearance.
-    ?event1 add:hasTime[add:timeStamp ?minBeginning; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
-    ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
-    ?change1 add:dependsOn ?event1.
-    ?change2 add:dependsOn ?event2.
-    ?change1 add:appliedTo ?attrAGG.
-    ?change2 add:appliedTo ?attrAGG.
-    ?attrAGG add:changedBy ?change1.
-    ?attrAGG add:changedBy ?change2.
-    ?change1 add:makesEffective ?attrVAGG.
-    ?change2 add:outdates ?attrVAGG.
-}}
-WHERE {{
-     SELECT ?plotAGG ?attrAGG ?attrVAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
-	WHERE { 
-            GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
-            ?plotAGG a add:Landmark; add:isLandmarkType cad_ltype:Plot.
-         }
-        ?attrVAGG add:isAttributeVersionOf ?attrAGG.
-        ?attrAGG add:isAttributeOf ?plotAGG.
-    	?attrVAGG add:hasTrace ?attrV.
-    	?attrV add:isAttributeVersionOf ?attr.
-    	?attr add:isAttributeOf ?plot.
-        ?attr add:isAttributeType cad_atype:PlotNature.
-    	?plot add:hasTime/add:hasBeginning/add:timeStamp ?beginning.
-    	?plot add:hasTime/add:hasEnd/add:timeStamp ?end.
-		}
-    GROUP BY ?attrVAGG ?attrAGG ?plotAGG}
-}
-```
-#### 5.2.5 Add cad:hasPlotNature to aggregated attributeversion
+#### 5.2.4 Add cad:hasPlotNature to aggregated attributeversion
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1222,50 +1175,7 @@ WHERE {
 }
 
 ```
-#### 5.3.4 Create events and changes of each PlotAddress attribute version
-```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
-PREFIX time: <http://www.w3.org/2006/time#>
-PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
-PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
-PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
-
-
-INSERT { GRAPH <http://rdf.geohistoricaldata.org/addressattributeversions> {
-    ?event1 a add:Event.
-    ?event1 cad:isEventType cad_etype:PlotAddressEvent.
-    ?event2 a add:Event.
-    ?event2 cad:isEventType cad_etype:PlotAddressEvent.
-    ?change1 a add:Change.
-    ?change1 add:isChangeType ctype:AttributeVersionAppearance.
-    ?change2 a add:Change.
-	?change2 add:isChangeType ctype:AttributeVersionDisappearance.
-    ?event1 add:hasTime[add:timeStamp ?minBeginning; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
-    ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
-    ?change1 add:dependsOn ?event1.
-    ?change2 add:dependsOn ?event2.
-    ?change1 add:appliedTo ?attrAGG.
-    ?change2 add:appliedTo ?attrAGG.
-    ?attrAGG add:changedBy ?change1.
-    ?attrAGG add:changedBy ?change2.
-    ?change1 add:makesEffective ?attrVAGG.
-    ?change2 add:outdates ?attrVAGG.
-}}
-WHERE {{
-     SELECT ?plotAGG ?attrVAGG ?attrAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
-	WHERE { 
-        ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
-    	?attrVAGG add:hasTrace ?attrV.
-    	?attrV add:isAttributeVersionOf ?attr.
-        ?attr add:isAttributeType cad_atype:PlotAddress.
-    	?attr add:isAttributeOf ?plot.
-    	?plot add:hasTime/add:hasBeginning/add:timeStamp ?beginning.
-    	?plot add:hasTime/add:hasEnd/add:timeStamp ?end.
-		}
-    GROUP BY ?plotAGG ?attrVAGG ?attrAGG}
-}
-```
-#### 5.3.5 Add cad:hasPlotAddress to aggregated attributeversion
+#### 5.3.4 Add cad:hasPlotAddress to aggregated attributeversion
 ```sparql
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -1410,56 +1320,7 @@ WHERE {
     }
 }
 ```
-#### 5.4.4 Create events and changes of each PlotTaxpayer attribute version
-```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
-PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
-PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
-PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
-PREFIX time: <http://www.w3.org/2006/time#>
-PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
-
-INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayerattributeversions> {
-    ?event1 a add:Event.
-    ?event1 cad:isEventType cad_etype:PlotTaxpayerEvent.
-    ?event2 a add:Event.
-    ?event2 cad:isEventType cad_etype:PlotTaxpayerEvent.
-    ?change1 a add:Change.
-    ?change1 add:isChangeType ctype:AttributeVersionAppearance.
-    ?change2 a add:Change.
-	?change2 add:isChangeType ctype:AttributeVersionDisappearance.
-    ?event1 add:hasTime[add:timeStamp ?minBeginning; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
-    ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
-    ?change1 add:dependsOn ?event1.
-    ?change2 add:dependsOn ?event2.
-    ?change1 add:appliedTo ?attrAGG.
-    ?change2 add:appliedTo ?attrAGG.
-    ?attrAGG add:changedBy ?change1.
-    ?attrAGG add:changedBy ?change2.
-    ?change1 add:makesEffective ?attrVAGG.
-    ?change2 add:outdates ?attrVAGG.
-}}
-WHERE {{
-     SELECT ?plotAGG ?attrVAGG ?attrAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
-	WHERE { 
-        ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
-    	?attrVAGG add:hasTrace ?attrV.
-    	?attrV add:isAttributeVersionOf ?attr.
-        ?attr add:isAttributeType cad_atype:PlotTaxpayer.
-    	?attr add:isAttributeOf ?plot.
-        ?attr add:changedBy ?change1.
-        ?change1 add:dependsOn ?event1.
-        ?change1 add:isChangeType ctype:AttributeVersionAppearance.
-    	?event1 add:hasTime/add:timeStamp ?beginning.
-        ?attr add:changedBy ?change2.
-        ?change2 add:isChangeType ctype:AttributeVersionDisappearance.
-        ?change2 add:dependsOn ?event2.
-    	?event2 add:hasTime/add:timeStamp ?end.
-		}
-    GROUP BY ?plotAGG ?attrAGG ?attrVAGG}
-}
-```
-#### 5.4.5 Add *cad:hasTaxpayer* to aggregated attributeversion
+#### 5.4.4 Add *cad:hasTaxpayer* to aggregated attributeversion
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1539,7 +1400,168 @@ WHERE {
     }
 }
 ```
-#### 5.5.4 Create events and changes of each *PlotMention* attribute version
+#### 5.5.4 Add *cad:isMentionnedIn*, *cad:takenFrom*, *cad:passedTo* to aggregated *PlotMention* attribute version
+```sparql
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
+
+INSERT { GRAPH <http://rdf.geohistoricaldata.org/mentionattributeversions> {
+    ?attrVAGG cad:isMentionnedIn ?mention.
+    ?attrVAGG cad:takenFrom ?tirede.
+    ?attrVAGG cad:passedTo ?portea.
+}}
+WHERE {{
+	SELECT DISTINCT ?attrVAGG ?mention ?tirede ?portea
+	WHERE { 
+		?attrVAGG a add:AttributeVersion; add:isAttributeVersionOf[add:isAttributeType cad_atype:PlotMention].
+    	?attrVAGG add:hasTrace ?attrV.
+    	?attrV cad:isMentionnedIn ?mention.
+        ?attrV cad:takenFrom ?tirede.
+        ?attrV cad:passedTo ?portea.
+	}}
+}
+```
+## 6. Inferring changes and events related to the attributes
+### 6.1 Infer events and changes of PlotNature attribute versions
+```sparql
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
+
+INSERT { GRAPH <http://rdf.geohistoricaldata.org/natureattributeversions> {
+    ?event1 a add:Event.
+    ?event1 cad:isEventType cad_etype:PlotNatureEvent.
+    ?event2 a add:Event.
+    ?event2 cad:isEventType cad_etype:PlotNatureEvent.
+    ?change1 a add:Change.
+    ?change1 add:isChangeType ctype:AttributeVersionAppearance.
+    ?change2 a add:Change.
+	?change2 add:isChangeType ctype:AttributeVersionDisappearance.
+    ?event1 add:hasTime[add:timeStamp ?minBeginning; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
+    ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
+    ?change1 add:dependsOn ?event1.
+    ?change2 add:dependsOn ?event2.
+    ?change1 add:appliedTo ?attrAGG.
+    ?change2 add:appliedTo ?attrAGG.
+    ?attrAGG add:changedBy ?change1.
+    ?attrAGG add:changedBy ?change2.
+    ?change1 add:makesEffective ?attrVAGG.
+    ?change2 add:outdates ?attrVAGG.
+}}
+WHERE {{
+     SELECT ?plotAGG ?attrAGG ?attrVAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
+	WHERE { 
+            GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
+            ?plotAGG a add:Landmark; add:isLandmarkType cad_ltype:Plot.
+         }
+        ?attrVAGG add:isAttributeVersionOf ?attrAGG.
+        ?attrAGG add:isAttributeOf ?plotAGG.
+    	?attrVAGG add:hasTrace ?attrV.
+    	?attrV add:isAttributeVersionOf ?attr.
+    	?attr add:isAttributeOf ?plot.
+        ?attr add:isAttributeType cad_atype:PlotNature.
+    	?plot add:hasTime/add:hasBeginning/add:timeStamp ?beginning.
+    	?plot add:hasTime/add:hasEnd/add:timeStamp ?end.
+		}
+    GROUP BY ?attrVAGG ?attrAGG ?plotAGG}
+}
+```
+### 6.2 Infer events and changes of PlotAddress attribute versions
+```sparql
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
+
+
+INSERT { GRAPH <http://rdf.geohistoricaldata.org/addressattributeversions> {
+    ?event1 a add:Event.
+    ?event1 cad:isEventType cad_etype:PlotAddressEvent.
+    ?event2 a add:Event.
+    ?event2 cad:isEventType cad_etype:PlotAddressEvent.
+    ?change1 a add:Change.
+    ?change1 add:isChangeType ctype:AttributeVersionAppearance.
+    ?change2 a add:Change.
+	?change2 add:isChangeType ctype:AttributeVersionDisappearance.
+    ?event1 add:hasTime[add:timeStamp ?minBeginning; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
+    ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
+    ?change1 add:dependsOn ?event1.
+    ?change2 add:dependsOn ?event2.
+    ?change1 add:appliedTo ?attrAGG.
+    ?change2 add:appliedTo ?attrAGG.
+    ?attrAGG add:changedBy ?change1.
+    ?attrAGG add:changedBy ?change2.
+    ?change1 add:makesEffective ?attrVAGG.
+    ?change2 add:outdates ?attrVAGG.
+}}
+WHERE {{
+     SELECT ?plotAGG ?attrVAGG ?attrAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
+	WHERE { 
+        ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
+    	?attrVAGG add:hasTrace ?attrV.
+    	?attrV add:isAttributeVersionOf ?attr.
+        ?attr add:isAttributeType cad_atype:PlotAddress.
+    	?attr add:isAttributeOf ?plot.
+    	?plot add:hasTime/add:hasBeginning/add:timeStamp ?beginning.
+    	?plot add:hasTime/add:hasEnd/add:timeStamp ?end.
+		}
+    GROUP BY ?plotAGG ?attrVAGG ?attrAGG}
+}
+```
+### 6.3 Infer events and changes of PlotTaxpayer attribute versions
+```sparql
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
+PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
+
+INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayerattributeversions> {
+    ?event1 a add:Event.
+    ?event1 cad:isEventType cad_etype:PlotTaxpayerEvent.
+    ?event2 a add:Event.
+    ?event2 cad:isEventType cad_etype:PlotTaxpayerEvent.
+    ?change1 a add:Change.
+    ?change1 add:isChangeType ctype:AttributeVersionAppearance.
+    ?change2 a add:Change.
+	?change2 add:isChangeType ctype:AttributeVersionDisappearance.
+    ?event1 add:hasTime[add:timeStamp ?minBeginning; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
+    ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
+    ?change1 add:dependsOn ?event1.
+    ?change2 add:dependsOn ?event2.
+    ?change1 add:appliedTo ?attrAGG.
+    ?change2 add:appliedTo ?attrAGG.
+    ?attrAGG add:changedBy ?change1.
+    ?attrAGG add:changedBy ?change2.
+    ?change1 add:makesEffective ?attrVAGG.
+    ?change2 add:outdates ?attrVAGG.
+}}
+WHERE {{
+     SELECT ?plotAGG ?attrVAGG ?attrAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
+	WHERE { 
+        ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
+    	?attrVAGG add:hasTrace ?attrV.
+    	?attrV add:isAttributeVersionOf ?attr.
+        ?attr add:isAttributeType cad_atype:PlotTaxpayer.
+    	?attr add:isAttributeOf ?plot.
+        ?attr add:changedBy ?change1.
+        ?change1 add:dependsOn ?event1.
+        ?change1 add:isChangeType ctype:AttributeVersionAppearance.
+    	?event1 add:hasTime/add:timeStamp ?beginning.
+        ?attr add:changedBy ?change2.
+        ?change2 add:isChangeType ctype:AttributeVersionDisappearance.
+        ?change2 add:dependsOn ?event2.
+    	?event2 add:hasTime/add:timeStamp ?end.
+		}
+    GROUP BY ?plotAGG ?attrAGG ?attrVAGG}
+}
+```
+### 6.4 Infer events and changes of PlotMention attribute versions
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1581,31 +1603,6 @@ WHERE {{
     GROUP BY ?attrVAGG ?plotAGG}
 }
 ```
-#### 5.5.5 Add *cad:isMentionnedIn*, *cad:takenFrom*, *cad:passedTo* to aggregated *PlotMention* attribute version
-```sparql
-PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
-PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
-
-INSERT { GRAPH <http://rdf.geohistoricaldata.org/mentionattributeversions> {
-    ?attrVAGG cad:isMentionnedIn ?mention.
-    ?attrVAGG cad:takenFrom ?tirede.
-    ?attrVAGG cad:passedTo ?portea.
-}}
-WHERE {{
-	SELECT DISTINCT ?attrVAGG ?mention ?tirede ?portea
-	WHERE { 
-		?attrVAGG a add:AttributeVersion; add:isAttributeVersionOf[add:isAttributeType cad_atype:PlotMention].
-    	?attrVAGG add:hasTrace ?attrV.
-    	?attrV cad:isMentionnedIn ?mention.
-        ?attrV cad:takenFrom ?tirede.
-        ?attrV cad:passedTo ?portea.
-	}}
-}
-```
-## 6. Inferring changes and events related to the attributes
-* This step has been done with step 5
-
 ## 7. Clean knowledge graph
 ### 7.1 [NOT FOR THE MOMENT] Add root landmark has a trace of aggregation landmark
 ```sparql
