@@ -1,6 +1,6 @@
 # Process to create the KG : use case of plots
 
-## 1. Create links between root landmarks and their versions in other sources
+## 1. Identity-based landmark versions rooting
 * Create a relation between a root landmark and all the others landmarks that seem to be versions of this root landmark.
 * In the case of plots :
     * Root landmarks are the plots vectorized from the cadastral index map.
@@ -33,7 +33,7 @@ WHERE {
         FILTER(?plotidm = ?plotid)
 }
 ```
-## 2. Compute temporal relative order between leandmark versions
+## 2. Inferring temporal order of landmark versions
 
 ### 2.1 Compute the temporal gap between two versions of a landmark
 * This step aims to compute temporal gaps between two versions of landmarks that have the same root landmark.
@@ -221,7 +221,7 @@ WHERE {
     FILTER ((?ecartDeb = 0) && (?ecartFin = 0) && !(sameTerm(?landmarkversion,?landmarkversion2)))
 }
 ```
-## 3 and 4. Create changes and events (#1)
+## 3. Inferring changes and events related to landmarks (#1)
 ### 3.1 Create changes and events relative to landmarks identity
 In the mutation registers, plots ID never change even in case of split or merge of plots. These events lead to the appearance of new landmarks and the disappearance of the previous ones.
 
@@ -443,7 +443,8 @@ WHERE {SELECT DISTINCT ?nextPlot ?attNext ?event (IRI(CONCAT("http://rdf.geohist
 }}
 ```
 
-## 4. Aggregate landmarks versions that have the same identity
+## 4. Inferring landmarks identity
+Aggregate landmarks versions that seems to be the same real-world object.
 
 ### 4.1 [Additionnal step for cadastre] Precise relative order of landmarks versions using documents
 Using the temporal relations and the events and changes we have created, we precise the relations between landmarks versions using *Previous/Next property account* attributes. 
@@ -883,7 +884,7 @@ WHERE {SELECT ?plot ?plotAGG ?relatum (UUID() AS ?lrAGG)
 	?plot add:isRootLandmarkOf ?plotAGG
     }}
 ```
-## 5. Inference of attributes and attributes versions of landmarks (aggregations)
+## 5. Inferring attribute versions
 ### 5.1 Initialised the attributes of the aggregations using the list of attributes of the landmarks versions
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -1602,7 +1603,7 @@ WHERE {{
 	}}
 }
 ```
-## 6. Create changes and events for attribute versions
+## 6. Inferring changes and events related to the attributes
 * This step has been done with step 5
 
 ## 7. Clean knowledge graph
