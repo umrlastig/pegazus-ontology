@@ -570,12 +570,12 @@ WHERE {
 }}
 ```
 
-## 4.2. Create aggregation landmarks with landmarks versions that share the same identity
+### 4.2. Create aggregation landmarks with landmarks versions that share the same identity
 * We create links between landmarks versions that seems be the same object.
 
 *NB1 : Merge events have not been treated for the moment*
 
-### 4.2.1 Links between landmark versions of plots created after the cadastre creation
+#### 4.2.1 Links between landmark versions of plots created after the cadastre creation
 First, we create the links between landmark version of plots created after the creation of the first matrice.
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -602,7 +602,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/tmp/siblings>{
     ?plot (add:hasNextVersionInSRCOrder|add:hasOverlappingVersionInSRCOrder)+ ?landmarkversion.
 } 
 ```
-### 4.2.2 Links between landmark versions that seems to share the same identity
+#### 4.2.2 Links between landmark versions that seems to share the same identity
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -663,7 +663,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/tmp/siblings>{
     FILTER(YEAR(?start1) = YEAR(?start2))
 } 
 ```
-### 4.2.3 Delete ambiguous sibling relations
+#### 4.2.3 Delete ambiguous sibling relations
 * Delete sibling relations when one landmark version have two plot IDs (meaning that it result from a merge of two other plots or parts of thoose plots)
 
 ```sparql
@@ -768,8 +768,8 @@ WHERE {
 }
 ```
 
-### 5.4 Create an aggregate landmark for each group of sibling landmarks versions
-#### 5.4.1 Create a unique label between landmarks that are siblings
+### 4.4 Create an aggregate landmark for each group of sibling landmarks versions
+#### 4.4.1 Create a unique label between landmarks that are siblings
 * Landmarks with the same label will be traces of the same landmark aggregation.
 * One landmark aggregation have at least one trace.
 
@@ -796,7 +796,7 @@ WHERE {
     ORDER BY ?sibling}
 }
 ```
-#### 5.4.2 Create a new landmark using siblings that have the same label (and are in the same aggregation)
+#### 4.4.2 Create a new landmark using siblings that have the same label (and are in the same aggregation)
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
@@ -817,7 +817,7 @@ WHERE {
     ?landmark add:hasAggregateLabel ?siblingLabel .
     ?landmark dcterms:identifier ?id.}
 ```
-### 5.4.3 Create landmarks for landmarks versions that have no siblings
+#### 4.4.3 Create landmarks for landmarks versions that have no siblings
 * One landmark versions = one landmark (aggregation of one landmark version)
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -842,7 +842,7 @@ WHERE {
     ?landmark dcterms:identifier ?id.}
 ```
 
-### 5.4.4 Link landmarks versions aggregation with their root landmark
+### 4.5 Link landmarks versions aggregation with their root landmark
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
@@ -860,7 +860,7 @@ WHERE {
     GROUP BY ?aggLandmark ?root}
 ```
 
-### 5.4.5 Create landmark relation with cadastral section
+### 4.6 Create landmark relation with cadastral section
 ```sparql
 PREFIX lrtype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -883,8 +883,8 @@ WHERE {SELECT ?plot ?plotAGG ?relatum (UUID() AS ?lrAGG)
 	?plot add:isRootLandmarkOf ?plotAGG
     }}
 ```
-## 6. Inference of attributes and attributes versions of landmarks (aggregations)
-### 6.1 Initialised the attributes of the aggregations using the list of attributes of the landmarks versions
+## 5. Inference of attributes and attributes versions of landmarks (aggregations)
+### 5.1 Initialised the attributes of the aggregations using the list of attributes of the landmarks versions
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
@@ -900,11 +900,11 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
 }
 ```
 
-### 6.2 PlotNature attribute for each landmark aggregation
+### 5.2 Nature
 * In this step, we want to build aggregated attributes versions that are equals for each landmark aggregation.
 
-#### 6.3.1 Match PlotNature attribute versions that should be aggregated
-1. Compare attribute versions that are linked to trace of each same aggregated landmarks
+#### 5.2.1 Match PlotNature attribute versions that should be aggregated
+1. Compare attribute versions (PlotNature) from plots versions that are traces of the same aggregated landmark.
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -981,7 +981,7 @@ WHERE {
     ?nat1 add:hasAttributeVersion ?natV1.
 }
 ```
-#### 6.3.2 Create the aggregated attributes versions of Nature attribute
+#### 5.2.2 Create the aggregated attributes versions of Nature attribute
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1006,7 +1006,7 @@ WHERE {SELECT DISTINCT ?plotAGG ?natureAGG (GROUP_CONCAT(?natV2) AS ?mergedValue
     	GROUP BY ?plotAGG ?natV1 ?natureAGG 
     	ORDER BY ?plotAGG ?mergedValue}
 ```
-#### 6.3.3 Cast add:hasMergedValue elements as URIs
+#### 5.2.3 Cast add:hasMergedValue elements as URIs
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX spif: <http://spinrdf.org/spif#>
@@ -1029,7 +1029,7 @@ WHERE {
     }
 }
 ```
-#### 6.3.4 Create events and changes of each PlotNature attribute version
+#### 5.2.4 Create events and changes of each PlotNature attribute version
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX time: <http://www.w3.org/2006/time#>
@@ -1076,7 +1076,7 @@ WHERE {{
     GROUP BY ?attrVAGG ?attrAGG ?plotAGG}
 }
 ```
-#### 6.3.5 Add cad:hasPlotNature to aggregated attributeversion
+#### 5.2.5 Add cad:hasPlotNature to aggregated attributeversion
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1093,9 +1093,9 @@ WHERE {{
 	}}
 }
 ```
-### 6.4. Addresses
-#### 6.4.1 Match PlotAddress attribute versions that have the same value
-1. Compare attribute versions that are linked to trace of each same aggregated landmarks
+### 5.3. Addresses
+#### 5.3.1 Match PlotAddress attribute versions that have the same value
+1. Compare attribute versions (PlotAddress) from plots versions that are traces of the same aggregated landmark.
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -1172,7 +1172,7 @@ WHERE {
     ?add1 add:hasAttributeVersion ?addV1.
 }
 ```
-#### 6.4.2 Create the aggregated versions of PlotAddress attribute
+#### 5.3.2 Create the aggregated versions of PlotAddress attribute
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
@@ -1197,7 +1197,7 @@ WHERE {SELECT DISTINCT ?plotAGG ?addAGG (GROUP_CONCAT(?addV2) AS ?mergedValue)
     	GROUP BY ?plotAGG ?addV1 ?addAGG 
     	ORDER BY ?plotAGG ?mergedValue}
 ```
-#### 6.4.3 Cast add:hasMergedValue elements as URIs
+#### 5.3.3 Cast add:hasMergedValue elements as URIs
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX spif: <http://spinrdf.org/spif#>
@@ -1221,7 +1221,7 @@ WHERE {
 }
 
 ```
-#### 6.4.4 Create events and changes of each PlotAddress attribute version
+#### 5.3.4 Create events and changes of each PlotAddress attribute version
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX time: <http://www.w3.org/2006/time#>
@@ -1264,7 +1264,7 @@ WHERE {{
     GROUP BY ?plotAGG ?attrVAGG ?attrAGG}
 }
 ```
-#### 6.4.5 Add cad:hasPlotAddress to aggregated attributeversion
+#### 5.3.5 Add cad:hasPlotAddress to aggregated attributeversion
 ```sparql
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -1286,8 +1286,9 @@ WHERE {{
 }
 ```
 
-### 6.5. Taxpayers
-#### 6.5.1 Match PlotTaxpayer attribute versions that have the same value
+### 5.4. Taxpayers
+#### 5.4.1 Match PlotTaxpayer attribute versions that have the same value
+1. Compare attribute versions (PlotTaxpayer) from plots versions that are traces of the same aggregated landmark.
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
@@ -1361,7 +1362,7 @@ WHERE {
     ?tax1 add:hasAttributeVersion ?taxV1.
 }
 ```
-#### 6.5.2 Create the aggregated versions of PlotTaxpayer attribute
+#### 5.4.2 Create the aggregated versions of PlotTaxpayer attribute
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
@@ -1385,7 +1386,7 @@ WHERE {SELECT DISTINCT ?plotAGG ?taxAGG (GROUP_CONCAT(?taxV2) AS ?mergedValue)
     	GROUP BY ?plotAGG ?taxV1 ?taxAGG 
     	ORDER BY ?plotAGG ?mergedValue}
 ```
-#### 6.4.3 Cast add:hasMergedValue elements as URIs
+#### 5.4.3 Cast add:hasMergedValue elements as URIs
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX spif: <http://spinrdf.org/spif#>
@@ -1408,7 +1409,7 @@ WHERE {
     }
 }
 ```
-#### 6.5.4 Create events and changes of each PlotTaxpayer attribute version
+#### 5.4.4 Create events and changes of each PlotTaxpayer attribute version
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1457,7 +1458,7 @@ WHERE {{
     GROUP BY ?plotAGG ?attrAGG ?attrVAGG}
 }
 ```
-#### 6.5.5 Add *cad:hasTaxpayer* to aggregated attributeversion
+#### 5.4.5 Add *cad:hasTaxpayer* to aggregated attributeversion
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1474,8 +1475,8 @@ WHERE {{
 	}}
 }
 ```
-### 6.6. *cad:PlotMention*
-#### 6.6.1 Create *add:toBeMergedWith* links between same attribute version *PlotMention* attribute
+### 5.5. *cad:PlotMention*
+#### 5.5.1 Create *add:toBeMergedWith* links between same attribute version *PlotMention* attribute
 * Should create the same number of links that of landmarks versions.
 ```sparql
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/mentionattributeversions> {   
@@ -1489,7 +1490,7 @@ WHERE {
     ?mentionV1 cad:isMentionnedIn ?mentionV1value.
 }
 ```
-#### 6.6.2 Create the aggregated versions of PlotMention attribute
+#### 5.5.2 Create the aggregated versions of PlotMention attribute
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1514,7 +1515,7 @@ WHERE {SELECT DISTINCT ?plotAGG ?mentionAGG (GROUP_CONCAT(?mentionV2) AS ?merged
     	GROUP BY ?plotAGG ?mentionV1 ?mentionAGG 
     	ORDER BY ?plotAGG ?mergedValue}
 ```
-#### 6.6.3 Cast add:hasMergedValue elements as URIs
+#### 5.5.3 Cast add:hasMergedValue elements as URIs
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX spif: <http://spinrdf.org/spif#>
@@ -1537,7 +1538,7 @@ WHERE {
     }
 }
 ```
-#### 6.6.4 Create events and changes of each *PlotMention* attribute version
+#### 5.5.4 Create events and changes of each *PlotMention* attribute version
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1579,7 +1580,7 @@ WHERE {{
     GROUP BY ?attrVAGG ?plotAGG}
 }
 ```
-#### 6.5.5 Add *cad:isMentionnedIn*, *cad:takenFrom*, *cad:passedTo* to aggregated *PlotMention* attribute version
+#### 5.5.5 Add *cad:isMentionnedIn*, *cad:takenFrom*, *cad:passedTo* to aggregated *PlotMention* attribute version
 ```sparql
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -1601,6 +1602,9 @@ WHERE {{
 	}}
 }
 ```
+## 6. Create changes and events for attribute versions
+* This step has been done with step 5
+
 ## 7. Clean knowledge graph
 ### 7.1 [NOT FOR THE MOMENT] Add root landmark has a trace of aggregation landmark
 ```sparql
