@@ -15,7 +15,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
 @prefix pwikidata: <https://www.wikidata.org/wiki/Property:> .
-@prefix igeo:    <http://rdf.insee.fr/def/geo#> .
+@prefix igeo:  <http://rdf.insee.fr/def/geo#> .
 
 # Core ontology
 @prefix add: <http://rdf.geohistoricaldata.org/def/address#> .
@@ -319,43 +319,47 @@ cad:taxpayerLabel
     a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Nom ou raison sociale du contribuable"@fr ;
-    rdfs:label "nom"@fr .
+    rdfs:comment "Identité complète d'un contribuable : nom de famille (personne physique), raison sociale (personne morale)"@fr,
+                 "Full identity of a taxpayer: name (individual), company name (legal entity)"@en ;
+    rdfs:label "nom"@fr, "name"@en .
 
 cad:taxpayerFirstName
     a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Prénom(s) du contribuable"@fr ;
-    rdfs:label "prénom(s)"@fr .
+    rdfs:comment "Prénom(s) d'un contribuable"@fr,
+                 "First name(s) of a taxpayer"@en ;
+    rdfs:label "prénom(s)"@fr, "first name(s)"@en .
 
 cad:taxpayerStatus a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Statut du contribuable (M, Mme, Veuve, Veuf, Fils, Fille, Mineur, Héritiers)"@fr ;
-    rdfs:label "statut"@fr .
+    rdfs:comment "Statut d'un contribuable (M, Mme, Veuve, Veuf, Fils, Fille, Mineur, Héritiers)"@fr ,
+                 "Status of a taxpayer (Mr, Mrs, Widow, Widower, Son, Daughter, Minor, Heirs)"@en ;
+    rdfs:label "statut"@fr, "family status"@en .
 
 cad:taxpayerAddress a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Adresse du contribuable"@fr ;
-    rdfs:label "adresse"@fr .
+    rdfs:comment "Adresse d'un contribuable"@fr, "Address of a taxpayer"@en ;
+    rdfs:label "adresse"@fr, "address"@en .
 
 cad:taxpayerActivity a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Activité du contribuable"@fr ;
-    rdfs:label "activité"@fr .
+    rdfs:comment "Activité d'un contribuable"@fr, "Activity of a taxpayer"@en ;
+    rdfs:label "activité"@fr, "activity"@en.
 
 cad:hasNumFolio a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
+    rdfs:comment "Numéro de folio (associé à une page entière ou à une partie de page) "@fr, "folio number (associated to a mutation register page or part of page)"@en ;
     rdfs:label "a pour numéro de folio"@fr,
                "has folio number"@en .
 
 cad:hasAlternativeNumFolio a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
-    rdfs:label "a pour ancien numéro de folio"@fr,
-               "has former folio number"@en .
+    rdfs:comment "Numéro de folio alternatif (ex: ancien numéro)"@fr, "Alternative folio number (e.g. former number)"@en;
+    rdfs:label "a pour numéro de folio alternatif"@fr, "has alternative folio number"@en .
 
 cad:transcription a owl:DatatypeProperty ;
   rdfs:domain [ a owl:Class ;
@@ -365,7 +369,8 @@ cad:transcription a owl:DatatypeProperty ;
                   ] ;
   rdfs:range rdfs:Literal ;
   rdfs:label "transcription"@en, "transcription"@fr;
-  rdfs:comment "Transcription d'une zone our d'une entité obtenue automatiquement ou manuellement à partir d'un document numérisé.".
+  rdfs:comment "Transcription d'une zone our d'une entité obtenue automatiquement ou manuellement à partir d'un document (numérisé)."@fr,
+                "Transcription of an area or an entity obtained automatically or manually from a (scanned) document."@en.
 
 cad:coordinatesInImageSystem a owl:DatatypeProperty ;
   rdfs:range rdfs:Literal ;
@@ -405,13 +410,13 @@ cad:CadastreEventList a owl:NamedIndividual,
     skos:ConceptScheme ;
     rdfs:comment "Liste des types d'évènements pouvant intervenir, représentés comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type d'événements spécifiques au cadastre"@fr ,
-               "Type of cadastre events"@en .
+               "Type of event related to the land registry"@en .
 
 cad:CadastreLandmarkList a owl:NamedIndividual ,
     skos:ConceptScheme ;
     rdfs:comment "Liste des différents rôles pouvant être joués par un repère spécifique au cadastre, représentés comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type de repère spécifiques au cadastre"@fr ,
-                "Type of cadastre landmark"@en .
+                "Type of landmark related to the land registry"@en .
 
 cad:CadastreChangeList a owl:NamedIndividual ,
     skos:ConceptScheme ;
@@ -634,11 +639,6 @@ cad_ltype:Section a owl:NamedIndividual ,
                                   "Section"@en .
 
 ########## NatureList
-
-@prefix cad: <http://data.ign.fr/def/cadastre#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix pnature: <http://data.ign.fr/id/codes/cadastre/Nature/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 pnature:Abreuvoir a cad:Nature,
         owl:NamedIndividual,

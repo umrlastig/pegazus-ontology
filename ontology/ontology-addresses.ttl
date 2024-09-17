@@ -125,14 +125,14 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
       rdfs:label "est chevauché par"@fr, "is overlapped by version"@en .
 
 ###  http://rdf.geohistoricaldata.org/def/address#hasTrace
-addr:hasTrace a owl:ObjectProperty ;
+:hasTrace a owl:ObjectProperty ;
     rdfs:label "a pour trace"@fr, "has trace"@en ;
-    owl:inverseOf addr:isTraceOf.
+    owl:inverseOf :isTraceOf.
 
 ###  http://rdf.geohistoricaldata.org/def/address#isTraceOf
-addr:isTraceOf a owl:ObjectProperty ;
+:isTraceOf a owl:ObjectProperty ;
     rdfs:label "est une trace de"@fr, "is trace of"@en ;
-    owl:inverseOf addr:hasTrace.
+    owl:inverseOf :hasTrace.
 
 ###  http://rdf.geohistoricaldata.org/def/address#hasRoot
 :hasRoot rdf:type owl:ObjectProperty ;

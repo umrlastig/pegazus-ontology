@@ -841,26 +841,26 @@ WHERE {
     BIND(URI(CONCAT('http://rdf.geohistoricaldata.org/id/landmark/AGG_', STRUUID())) AS ?aggLandmark)
     ?landmark dcterms:identifier ?id.}
 ```
-### 5.5 Link landmarks versions aggregation with their root landmark
-* Create the link
+
+### 5.4.4 Link landmarks versions aggregation with their root landmark
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
     ?aggLandmark add:hasRootLandmark ?root.
     ?root add:isRootLandmarkOf ?aggLandmark.
-    ?aggLandmark add:hasTrace ?root.
-    ?root add:isTraceOf ?aggLandmark.
     }}
 WHERE {
     SELECT distinct ?aggLandmark ?root WHERE {
-        ?aggLandmark a add:Landmark; add:isLandmarkType cad_ltype:Plot .  
-        ?aggLandmark add:hasTrace ?otherLandmark .  
+        GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
+        ?aggLandmark a add:Landmark; add:isLandmarkType cad_ltype:Plot .  }
+        ?aggLandmark add:hasTrace ?otherLandmark.
         ?otherLandmark add:hasRootLandmark ?root . 
     }
     GROUP BY ?aggLandmark ?root}
 ```
-* Create landmark relation with cadastral section
+
+### 5.4.5 Create landmark relation with cadastral section
 ```sparql
 PREFIX lrtype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -931,7 +931,7 @@ WHERE {
     ?natV2 cad:hasPlotNature ?natV2value.
 
     # Comparison of the nature attributes
-    BIND(IF((?natV2value = ?natV1value), add:sameVersionValueAs, add:differentVersionValueAs) AS ?property)
+    BIND(IF((?natV2value = ?natV1value), add:sameVersionValueAs, add:differentVersionValueFrom) AS ?property)
 }
 ```
 2. Match PlotNature attribute versions of landmark versions that :
@@ -1100,7 +1100,7 @@ PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeT
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/natureattributeversions> {
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/addressattributeversions> {
     ?addV1 ?property ?addV2.
     ?addV2 ?property ?addV1.
     }}
@@ -1111,15 +1111,15 @@ WHERE {
     ?plot1 add:hasAttribute ?add1.
     ?add1 add:isAttributeType cad_atype:PlotAddress.
     ?add1 add:hasAttributeVersion ?addV1.
-    ?addV1 cad:hasPlotNature ?addV1value.
+    ?addV1 cad:hasPlotAddress ?addV1value.
 
     ?plot2 add:hasAttribute ?add2.
     ?add2 add:isAttributeType cad_atype:PlotAddress.
     ?add2 add:hasAttributeVersion ?addV2.
-    ?addV2 cad:hasPlotNature ?addV2value.
+    ?addV2 cad:hasPlotAddress ?addV2value.
 
     # Comparison of the nature attributes
-    BIND(IF((?addV2value = ?addV1value), add:sameVersionValueAs, add:differentVersionValueAs) AS ?property)
+    BIND(IF((?addV2value = ?addV1value), add:sameVersionValueAs, add:differentVersionValueFrom) AS ?property)
 }
 ```
 2. Match PlotAddress attribute versions of landmark versions that :
@@ -1174,17 +1174,17 @@ WHERE {
 #### 6.4.2 Create the aggregated versions of PlotAddress attribute
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
-PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
-
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/addressattributeversions>{ 
     ?addAGG add:hasAttributeVersion [ a add:AttributeVersion;
                                          add:hasMergedValue ?mergedValue].
     }}
 WHERE {SELECT DISTINCT ?plotAGG ?addAGG (GROUP_CONCAT(?addV2) AS ?mergedValue)
 	WHERE {
-        ?addV1 a add:AttributeVersion; 
-               add:toBeMergedWith+ ?addV2;
+        GRAPH <http://rdf.geohistoricaldata.org/tmp/addressattributeversions>{
+            ?addV1 add:toBeMergedWith+ ?addV2.}
+
+        ?addV1 a add:AttributeVersion;
                add:isAttributeVersionOf [add:isAttributeOf ?plot1].
         ?addV2 add:isAttributeVersionOf [add:isAttributeOf ?plot2].
 
@@ -1282,6 +1282,33 @@ WHERE {{
 ### 6.5. Taxpayers
 #### 6.5.1 Match PlotTaxpayer attribute versions that have the same value
 ```sparql
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/taxpayerattributeversions> {
+    ?taxV1 ?property ?taxV2.
+    ?taxV2 ?property ?taxV1.
+    }}
+WHERE {
+    ?plotAGG add:hasTrace ?plot1.
+    ?plotAGG add:hasTrace ?plot2.
+
+    ?plot1 add:hasAttribute ?tax1.
+    ?tax1 add:isAttributeType cad_atype:PlotTaxpayer.
+    ?tax1 add:hasAttributeVersion ?taxV1.
+    ?taxV1 cad:hasTaxpayer ?taxV1value.
+
+    ?plot2 add:hasAttribute ?tax2.
+    ?tax2 add:isAttributeType cad_atype:PlotTaxpayer.
+    ?tax2 add:hasAttributeVersion ?taxV2.
+    ?taxV2 cad:hasTaxpayer ?taxV2value.
+
+    # Comparison of the nature attributes
+    BIND(IF((?taxV2value = ?taxV1value), add:sameVersionValueAs, add:differentVersionValueFrom) AS ?property)
+}
+```
+
+```sparql
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -1307,11 +1334,11 @@ WHERE {
     ?tax2 add:hasAttributeVersion ?taxV2.
     ?taxV2 cad:hasTaxpayer ?taxV2value.
 
-    # Comparison of the nature attributes
-    BIND(IF((?taxV2value = ?taxV1value), true, false) AS ?areEqual)
-    FILTER(?areEqual = True)
+    # Comparison of the taxpayer attributes
+    ?taxV2 add:sameVersionValueAs ?taxV1
 }
 ```
+
 ```sparql
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1330,7 +1357,6 @@ WHERE {
 #### 6.5.2 Create the aggregated versions of PlotTaxpayer attribute
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
-PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayerattributeversions>{ 
@@ -1339,8 +1365,8 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayerattributeversions>{
     }}
 WHERE {SELECT DISTINCT ?plotAGG ?taxAGG (GROUP_CONCAT(?taxV2) AS ?mergedValue)
 	WHERE {
+        GRAPH <http://rdf.geohistoricaldata.org/tmp/taxpayerattributeversions>{?taxV1 add:toBeMergedWith+ ?taxV2.}
         ?taxV1 a add:AttributeVersion; 
-               add:toBeMergedWith+ ?taxV2;
                add:isAttributeVersionOf [add:isAttributeOf ?plot1].
         ?taxV2 add:isAttributeVersionOf [add:isAttributeOf ?plot2].
 
@@ -1565,14 +1591,31 @@ WHERE {{
 }
 ```
 ## 7. Clean knowledge graph
-### 7.1 Delete tmp named graphs related to attributes versions
+### 7.1 [NOT FOR THE MOMENT] Add root landmark has a trace of aggregation landmark
+```sparql
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+
+INSERT { GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
+    ?aggLandmark add:hasTrace ?root.
+    ?root add:isTraceOf ?aggLandmark.
+    }}
+WHERE {
+    SELECT distinct ?aggLandmark ?root WHERE {
+        GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
+        ?aggLandmark a add:Landmark; add:isLandmarkType cad_ltype:Plot .  }
+        ?otherLandmark add:hasRootLandmark ?root . 
+    }
+    GROUP BY ?aggLandmark ?root}
+```
+
+### 7.2 Delete tmp named graphs related to attributes versions
 * We can delete all the *http://rdf.geohistoricaldata.org/tmp/XXXXX* named graphs :
     * *http://rdf.geohistoricaldata.org/tmp/natureattributeversions*
     * *http://rdf.geohistoricaldata.org/tmp/addressattributeversions*
     * *http://rdf.geohistoricaldata.org/tmp/taxpayerattributeversions*
     * *etc.*
 
-### 7.2 Clean tmp properties related to landmarks
+### 7.3 Clean tmp properties related to landmarks
 * To be shure
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>

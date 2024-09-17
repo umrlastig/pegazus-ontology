@@ -113,6 +113,71 @@ WHERE {SELECT ?cf ?end ?mutation ?version ?change ?event
     }
 }
 ```
+
+### 2.3 Update Event that have no date because of lack of information in the transcribed data
+```sparql
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+    GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
+        ?event2 add:hasTime[add:timeStamp ?end; 
+            add:timeCalendar time:Gregorian; 
+            add:timePrecision time:Year; 
+            cad:timeUncertainty cad:LatestTimeInstant].
+    }
+}
+where {
+    ?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier.
+    ?cf add:hasTime/add:hasBeginning/add:timeStamp ?start.
+    ?cf add:hasTime/add:hasEnd/add:timeStamp ?end.
+    ?cf rico:hasOrHadConstituent ?mutation.
+    ?mutation add:hasAttribute ?a.
+    ?a add:hasAttributeVersion ?v.
+    ?v cad:hasTaxpayer ?taxpayer.
+    ?taxpayer rdfs:label ?labelT.
+    ?v add:isMadeEffectiveBy/add:dependsOn ?event1.
+    ?v add:isOutdatedBy/add:dependsOn ?event2.
+    ?event1 add:hasTime/add:timeStamp ?t1.
+	FILTER NOT EXISTS{?event2 add:hasTime/add:timeStamp ?t2.}
+}
+```
+
+```
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+    GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
+        ?event1 add:hasTime[add:timeStamp ?start; 
+            add:timeCalendar time:Gregorian; 
+            add:timePrecision time:Year; 
+            cad:timeUncertainty cad:EarliestTimeInstant].
+    }
+}
+where {
+    ?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier.
+    ?cf add:hasTime/add:hasBeginning/add:timeStamp ?start.
+    ?cf add:hasTime/add:hasEnd/add:timeStamp ?end.
+    ?cf rico:hasOrHadConstituent ?mutation.
+    ?mutation add:hasAttribute ?a.
+    ?a add:hasAttributeVersion ?v.
+    ?v cad:hasTaxpayer ?taxpayer.
+    ?taxpayer rdfs:label ?labelT.
+    ?v add:isMadeEffectiveBy/add:dependsOn ?event1.
+    ?v add:isOutdatedBy/add:dependsOn ?event2.
+    FILTER NOT EXISTS{?event1 add:hasTime/add:timeStamp ?t1.}
+	?event2 add:hasTime/add:timeStamp ?t2.
+}
+```
 ## 3. Create *cad:Taxpayer* aggregations
 ### 3.1 Create keys to compare taxpayers names
 ```sparql
@@ -291,8 +356,8 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
     ?event2 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
     ?change1 a add:Change; add:isChangeType ctype:AttributeVersionAppearance.
     ?change2 a add:Change; add:isChangeType ctype:AttributeVersionDisappearance.
-    ?change1 add:makesEffective ?attrV.
-    ?change2 add:outdates ?attrV.
+    ?change1 add:makesEffective ?attrv.
+    ?change2 add:outdates ?attrv.
     ?change1 add:dependsOn ?event1.
     ?change2 add:dependsOn ?event2.
     ?event1 add:hasTime[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
@@ -341,8 +406,8 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
     ?event2 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
     ?change1 a add:Change; add:isChangeType ctype:AttributeVersionAppearance.
     ?change2 a add:Change; add:isChangeType ctype:AttributeVersionDisappearance.
-    ?change1 add:makesEffective ?attrV.
-    ?change2 add:outdates ?attrV.
+    ?change1 add:makesEffective ?attrv.
+    ?change2 add:outdates ?attrv.
     ?change1 add:dependsOn ?event1.
     ?change2 add:dependsOn ?event2.
     ?event1 add:hasTime[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
@@ -391,8 +456,8 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
     ?event2 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
     ?change1 a add:Change; add:isChangeType ctype:AttributeVersionAppearance.
     ?change2 a add:Change; add:isChangeType ctype:AttributeVersionDisappearance.
-    ?change1 add:makesEffective ?attrV.
-    ?change2 add:outdates ?attrV.
+    ?change1 add:makesEffective ?attrv.
+    ?change2 add:outdates ?attrv.
     ?change1 add:dependsOn ?event1.
     ?change2 add:dependsOn ?event2.
     ?event1 add:hasTime[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
@@ -441,8 +506,8 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
     ?event2 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
     ?change1 a add:Change; add:isChangeType ctype:AttributeVersionAppearance.
     ?change2 a add:Change; add:isChangeType ctype:AttributeVersionDisappearance.
-    ?change1 add:makesEffective ?attrV.
-    ?change2 add:outdates ?attrV.
+    ?change1 add:makesEffective ?attrv.
+    ?change2 add:outdates ?attrv.
     ?change1 add:dependsOn ?event1.
     ?change2 add:dependsOn ?event2.
     ?event1 add:hasTime[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
