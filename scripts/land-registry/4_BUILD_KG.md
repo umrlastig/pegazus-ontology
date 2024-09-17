@@ -900,7 +900,7 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
 }
 ```
 
-### 6.2 Create aggregate attribute versions for PlotNature Attribute for each landmark aggregation
+### 6.2 PlotNature attribute for each landmark aggregation
 * In this step, we want to build aggregated attributes versions that are equals for each landmark aggregation.
 
 #### 6.3.1 Match PlotNature attribute versions that should be aggregated
@@ -1051,18 +1051,21 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/natureattributeversions> {
     ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
     ?change1 add:dependsOn ?event1.
     ?change2 add:dependsOn ?event2.
-    ?change1 add:appliedTo ?attrVAGG.
-    ?change2 add:appliedTo ?attrVAGG.
-    ?attrVAGG add:changedBy ?change1.
-    ?attrVAGG add:changedBy ?change2.
+    ?change1 add:appliedTo ?attrAGG.
+    ?change2 add:appliedTo ?attrAGG.
+    ?attrAGG add:changedBy ?change1.
+    ?attrAGG add:changedBy ?change2.
+    ?change1 add:makesEffective ?attrVAGG.
+    ?change2 add:outdates ?attrVAGG.
 }}
 WHERE {{
-     SELECT ?plotAGG ?attrVAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
+     SELECT ?plotAGG ?attrAGG ?attrVAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
 	WHERE { 
             GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
             ?plotAGG a add:Landmark; add:isLandmarkType cad_ltype:Plot.
          }
-        ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
+        ?attrVAGG add:isAttributeVersionOf ?attrAGG.
+        ?attrAGG add:isAttributeOf ?plotAGG.
     	?attrVAGG add:hasTrace ?attrV.
     	?attrV add:isAttributeVersionOf ?attr.
     	?attr add:isAttributeOf ?plot.
@@ -1070,7 +1073,7 @@ WHERE {{
     	?plot add:hasTime/add:hasBeginning/add:timeStamp ?beginning.
     	?plot add:hasTime/add:hasEnd/add:timeStamp ?end.
 		}
-    GROUP BY ?attrVAGG ?plotAGG}
+    GROUP BY ?attrVAGG ?attrAGG ?plotAGG}
 }
 ```
 #### 6.3.5 Add cad:hasPlotNature to aggregated attributeversion
@@ -1111,12 +1114,12 @@ WHERE {
     ?plot1 add:hasAttribute ?add1.
     ?add1 add:isAttributeType cad_atype:PlotAddress.
     ?add1 add:hasAttributeVersion ?addV1.
-    ?addV1 cad:hasPlotAddress ?addV1value.
+    ?addV1 cad:hasPlotAddress/add:relatum ?addV1value.
 
     ?plot2 add:hasAttribute ?add2.
     ?add2 add:isAttributeType cad_atype:PlotAddress.
     ?add2 add:hasAttributeVersion ?addV2.
-    ?addV2 cad:hasPlotAddress ?addV2value.
+    ?addV1 cad:hasPlotAddress/add:relatum ?addV2value.
 
     # Comparison of the nature attributes
     BIND(IF((?addV2value = ?addV1value), add:sameVersionValueAs, add:differentVersionValueFrom) AS ?property)
@@ -1124,7 +1127,7 @@ WHERE {
 ```
 2. Match PlotAddress attribute versions of landmark versions that :
     * have *hasNextVersion / hasOverlappingVersion / isOverlappedByVersion* temporal relation;
-    * have the same nature (*sameVersionValue*);
+    * have the same nature (*sameVersionValueAs*);
 ```sparql
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -1144,15 +1147,13 @@ WHERE {
     ?plot1 add:hasAttribute ?add1.
     ?add1 add:isAttributeType cad_atype:PlotAddress.
     ?add1 add:hasAttributeVersion ?addV1.
-    ?addV1 cad:hasPlotAddress/add:relatum ?addV1value.
 
     ?plot2 add:hasAttribute ?add2.
     ?add2 add:isAttributeType cad_atype:PlotAddress.
     ?add2 add:hasAttributeVersion ?addV2.
-    ?addV2 cad:hasPlotAddress/add:relatum ?addV2value.
 
     # Comparison of the address attributes
-    ?addV2value add:sameVersionValue ?addV1value
+    ?addV2 add:sameVersionValueAs ?addV1
 }
 ```
 3. Match PlotAddress attribute version with itself when the landmark version that have no *hasNextVersion / hasOverlappingVersion / isOverlappedByVersion* temporal relation with any other landmark version.
@@ -1242,13 +1243,15 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/addressattributeversions> {
     ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
     ?change1 add:dependsOn ?event1.
     ?change2 add:dependsOn ?event2.
-    ?change1 add:appliedTo ?attrVAGG.
-    ?change2 add:appliedTo ?attrVAGG.
-    ?attrVAGG add:changedBy ?change1.
-    ?attrVAGG add:changedBy ?change2.
+    ?change1 add:appliedTo ?attrAGG.
+    ?change2 add:appliedTo ?attrAGG.
+    ?attrAGG add:changedBy ?change1.
+    ?attrAGG add:changedBy ?change2.
+    ?change1 add:makesEffective ?attrVAGG.
+    ?change2 add:outdates ?attrVAGG.
 }}
 WHERE {{
-     SELECT ?plotAGG ?attrVAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
+     SELECT ?plotAGG ?attrVAGG ?attrAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
 	WHERE { 
         ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
     	?attrVAGG add:hasTrace ?attrV.
@@ -1258,23 +1261,27 @@ WHERE {{
     	?plot add:hasTime/add:hasBeginning/add:timeStamp ?beginning.
     	?plot add:hasTime/add:hasEnd/add:timeStamp ?end.
 		}
-    GROUP BY ?attrVAGG ?plotAGG}
+    GROUP BY ?plotAGG ?attrVAGG ?attrAGG}
 }
 ```
 #### 6.4.5 Add cad:hasPlotAddress to aggregated attributeversion
 ```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/addressattributeversions> {
-    ?attrVAGG cad:hasPlotAddress ?addValue.
+    ?attrVAGG cad:hasPlotAddress [ a add:LandmarkRelation;
+    								add:locatum ?plotAGG;
+        							add:relatum ?relatum].
     }}
 WHERE {{
-	SELECT DISTINCT ?attrVAGG ?addValue 
+	SELECT DISTINCT ?plotAGG ?attrVAGG ?relatum
 	WHERE { 
 		?attrVAGG a add:AttributeVersion.
+        ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
     	?attrVAGG add:hasTrace ?attrV.
     	?attrV cad:hasPlotAddress ?addValue.
+        ?addValue add:relatum ?relatum
 	}}
 }
 ```
@@ -1423,13 +1430,15 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayerattributeversions> {
     ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
     ?change1 add:dependsOn ?event1.
     ?change2 add:dependsOn ?event2.
-    ?change1 add:appliedTo ?attrVAGG.
-    ?change2 add:appliedTo ?attrVAGG.
-    ?attrVAGG add:changedBy ?change1.
-    ?attrVAGG add:changedBy ?change2.
+    ?change1 add:appliedTo ?attrAGG.
+    ?change2 add:appliedTo ?attrAGG.
+    ?attrAGG add:changedBy ?change1.
+    ?attrAGG add:changedBy ?change2.
+    ?change1 add:makesEffective ?attrVAGG.
+    ?change2 add:outdates ?attrVAGG.
 }}
 WHERE {{
-     SELECT ?plotAGG ?attrVAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
+     SELECT ?plotAGG ?attrVAGG ?attrAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
 	WHERE { 
         ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
     	?attrVAGG add:hasTrace ?attrV.
@@ -1445,7 +1454,7 @@ WHERE {{
         ?change2 add:dependsOn ?event2.
     	?event2 add:hasTime/add:timeStamp ?end.
 		}
-    GROUP BY ?attrVAGG ?plotAGG}
+    GROUP BY ?plotAGG ?attrAGG ?attrVAGG}
 }
 ```
 #### 6.5.5 Add *cad:hasTaxpayer* to aggregated attributeversion
@@ -1549,13 +1558,15 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/mentionattributeversions> {
     ?event2 add:hasTime[add:timeStamp ?maxEnd; add:timeCalendar time:Gregorian; add:timePrecision time:Year].
     ?change1 add:dependsOn ?event1.
     ?change2 add:dependsOn ?event2.
-    ?change1 add:appliedTo ?attrVAGG.
-    ?change2 add:appliedTo ?attrVAGG.
-    ?attrVAGG add:changedBy ?change1.
-    ?attrVAGG add:changedBy ?change2.
+    ?change1 add:appliedTo ?attrAGG.
+    ?change2 add:appliedTo ?attrAGG.
+    ?attrAGG add:changedBy ?change1.
+    ?attrAGG add:changedBy ?change2.
+    ?change1 add:makesEffective ?attrVAGG.
+    ?change2 add:outdates ?attrVAGG.
 }}
 WHERE {{
-     SELECT ?plotAGG ?attrVAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
+     SELECT ?plotAGG ?attrVAGG ?attrAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
 	WHERE { 
         ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
     	?attrVAGG add:hasTrace ?attrV.
