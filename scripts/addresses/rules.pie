@@ -1214,15 +1214,4 @@ Id: perso_rule_order_events_6_b
 	-----------------------
 	event2 <addr:hasTimeBefore> time
 
-//Id: perso_rule_order_is_similar_to_1
-//	a <addr:isSimilarTo> b
-//	b p o [Constraint p != <addr:isSimilarTo>, p != <owl:sameAs>]
-//	-----------------------
-//	a p o
-//
-//Id: perso_rule_order_is_similar_to_2
-//	a <addr:isSimilarTo> b
-//	s p b [Constraint p != <addr:isSimilarTo>, p != <owl:sameAs>]
-//	-----------------------
-//	s p a
 }

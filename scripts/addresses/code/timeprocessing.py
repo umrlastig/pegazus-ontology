@@ -198,6 +198,20 @@ def get_query_to_compare_time_intervals(time_named_graph_uri:URIRef, time_interv
 
     return query
 
+def compare_time_instants_of_events_from_traces(graphdb_url, repository_name, time_named_graph_uri:URIRef):
+    """
+    Sort all time instants related to events which are a trace of one event.
+    """
+    
+    time_instant_select_conditions = """
+        ?ev a addr:Event ; addr:hasTrace [?tpred1 ?ti1] ; [?tpred2 ?ti2] .
+        FILTER(?tpred1 IN (addr:hasTime, addr:hasTimeBefore, addr:hasTimeAfter))
+        FILTER(?tpred2 IN (addr:hasTime, addr:hasTimeBefore, addr:hasTimeAfter))
+    """
+
+    query = get_query_to_compare_time_instants(time_named_graph_uri, time_instant_select_conditions)
+
+    gd.update_query(query, graphdb_url, repository_name)
 
 def compare_time_instants_of_events(graphdb_url, repository_name, time_named_graph_uri:URIRef):
     """
