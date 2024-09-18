@@ -285,10 +285,6 @@ source:94_Gentilly_MAT_NB_1836_249 a rico:RecordPart ;
     cad:isSourceType srctype:FolioNonBati ;
     rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0302_page .
 
-<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_NB_1836_249↑16↓> a rico:RecordPart ;
-    cad:hasNumFolio "249↑16↓"^^xsd:string ;
-    cad:isSourceType srctype:FolioNonBati .
-
 source:94_Gentilly_MAT_NB_1836_250 a rico:RecordPart ;
     cad:hasNumFolio "250"^^xsd:string ;
     cad:isSourceType srctype:FolioNonBati ;
@@ -418,10 +414,6 @@ source:94_Gentilly_MAT_NB_1836_449 a rico:RecordPart ;
     cad:hasNumFolio "449"^^xsd:string ;
     cad:isSourceType srctype:FolioNonBati ;
     rico:isOrWasConstituentOf source:94_Gentilly_FRAD094_3P_000256_01_0502_page .
-
-<http://rdf.geohistoricaldata.org/id/source/94_Gentilly_MAT_NB_1836_449↑1↓> a rico:RecordPart ;
-    cad:hasNumFolio "449↑1↓"^^xsd:string ;
-    cad:isSourceType srctype:FolioNonBati .
 
 source:94_Gentilly_MAT_NB_1836_450 a rico:RecordPart ;
     cad:hasNumFolio "450"^^xsd:string ;

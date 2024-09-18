@@ -1879,9 +1879,9 @@ cad_spval:CelluleVide a cad:SpecialCellValue,
 cad_spval:ConstructionNouvelleSV a cad:SpecialCellValue,
         owl:NamedIndividual,
         skos:Concept ;
-    skos:definition "Destruction d'un bâtiment qui est donc imposable au titre de propriété bâtie"@fr ;
+    skos:definition "Construction d'un bâtiment qui est donc imposable au titre de propriété bâtie"@fr ;
     skos:hiddenLabel " Cn nvelle",
-        " Con nvelle",
+        "Con nvelle",
         "CN",
         "Conston nouvelle",
         "Construction nouvelle",
