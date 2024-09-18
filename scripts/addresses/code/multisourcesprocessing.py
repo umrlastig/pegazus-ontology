@@ -575,7 +575,7 @@ def create_roots_and_traces_for_landmark_attributes(graphdb_url, repository_name
 def create_roots_and_traces_for_landmark_attribute_versions(graphdb_url, facts_repository_name, facts_named_graph_uri, inter_sources_name_graph_uri, tmp_named_graph_uri):
     """
     Steps :
-    1. After sorting landmark versions and attribute version values, similar versions can be detected.
+    1. After having sorted landmark versions and attribute version values, similar versions can be detected.
     These are linked together via <v1 addr:toBeMergedWith v2>. We need to remember to ensure that <v1 addr:toBeMergedWith v1>.
     This is done with `query1` and `query2`.
 
@@ -1135,6 +1135,127 @@ def import_factoids_in_facts(graphdb_url, repository_name, factoids_named_graph_
 
     link_factoids_with_facts(graphdb_url, repository_name, factoids_named_graph_uri, facts_named_graph_uri, inter_sources_name_graph_uri)
 
+def infer_missing_changes_on_landmark_and_relations(graphdb_url, facts_repository_name, facts_named_graph_uri):
+
+    # Create a change (appearance and/or disappearance) for landmarks and landmark relations for which change is missing.
+    # Associate this change with an event. Tell the event has no time which has to be added (?event addr:timeToAdd "true"^^xsd:boolean)
+    # Related time will be added by the next query.
+    query = np.query_prefixes + f"""
+    INSERT {{
+        GRAPH ?gf {{
+            ?change a addr:Change ; addr:isChangeType ?cgType ; addr:appliedTo ?elem ; addr:dependsOn ?event .
+            ?event a addr:Event .
+        }}
+    }} WHERE {{
+        {{
+            SELECT DISTINCT * WHERE {{
+                BIND({facts_named_graph_uri.n3()} AS ?gf)
+                VALUES (?cgType ?class) {{
+                    (ctype:LandmarkAppearance addr:Landmark)
+                    (ctype:LandmarkDisappearance addr:Landmark)
+                    (ctype:LandmarkRelationAppearance addr:LandmarkRelation)
+                    (ctype:LandmarkRelationDisappearance addr:LandmarkRelation)
+                }}
+                GRAPH ?gf {{?elem a ?elemClass}}
+                ?elemClass rdfs:subClassOf ?class .
+                FILTER NOT EXISTS {{?change a [rdfs:subClassOf addr:Change] ; addr:isChangeType ?cgType ; addr:appliedTo ?elem . }}
+            }}
+        }}
+        BIND(URI(CONCAT(STR(URI(facts:)), "CG_", STRUUID())) AS ?change)
+        BIND(URI(CONCAT(STR(URI(facts:)), "EV_", STRUUID())) AS ?event)
+    }}
+    """
+
+    gd.update_query(query, graphdb_url, facts_repository_name)
+
+
+def infer_missing_time_on_events(graphdb_url, facts_repository_name, facts_named_graph_uri, inter_sources_name_graph_uri):
+    # For events created from no factoid (event without any trace: `FILTER NOT EXISTS {{ ?rootEvent addr:hasTrace ?randomEvent . }}`) and containing changes applied to landmark and landmark relation, we deduce time thanks to landmark versions.
+    # We deduce the event related to the appearance of a landmark or a landmark relation appears before the beginning of the interval of the first version (versions are already ordered temporally).
+    # We deduce the event related to the disapearance of a landmark or a landmark relation appears after the end of the interval of the last version.
+    query1a = np.query_prefixes + f"""
+    INSERT {{
+        GRAPH ?gf {{
+            ?rootEvent addr:hasTimeBefore ?rootInstant .
+            ?rootInstant a addr:CrispTimeInstant .
+        }}
+        GRAPH ?gi {{
+            ?rootInstant addr:hasTrace ?instant .
+            ?instant addr:hasRoot ?rootInstant .
+        }}
+    }} WHERE {{
+        {{
+            SELECT DISTINCT * WHERE {{
+                BIND({facts_named_graph_uri.n3()} AS ?gf)
+                BIND({inter_sources_name_graph_uri.n3()} AS ?gi)
+                VALUES ?cgType {{ ctype:LandmarkAppearance ctype:LandmarkRelationAppearance }}
+                GRAPH ?gf {{ ?rootEvent a addr:Event . }}
+                ?rootEvent addr:hasChange [addr:isChangeType ?cgType ; addr:appliedTo [addr:hasTrace ?elem] ] .
+                ?elem addr:hasTime [addr:hasBeginning ?instant] .
+                FILTER NOT EXISTS {{ ?rootEvent addr:hasTrace ?randomEvent . }}
+                FILTER NOT EXISTS {{ ?elem addr:hasPreviousVersion|addr:isOverlappedByVersion ?randomElem . }}
+            }}
+        }}
+        BIND(URI(CONCAT(STR(URI(facts:)), "TI_", STRUUID())) AS ?rootInstant)
+    }}
+    """
+
+    query1b = np.query_prefixes + f"""
+    INSERT {{
+        GRAPH ?gf {{
+            ?rootEvent addr:hasTimeAfter ?rootInstant .
+            ?rootInstant a addr:CrispTimeInstant .
+        }}
+        GRAPH ?gi {{
+            ?rootInstant addr:hasTrace ?instant .
+            ?instant addr:hasRoot ?rootInstant .
+        }}
+    }} WHERE {{
+        {{
+            SELECT DISTINCT * WHERE {{
+                BIND({facts_named_graph_uri.n3()} AS ?gf)
+                BIND({inter_sources_name_graph_uri.n3()} AS ?gi)
+                VALUES ?cgType {{ ctype:LandmarkDisappearance ctype:LandmarkRelationDisappearance }}
+                GRAPH ?gf {{ ?rootEvent a addr:Event . }}
+                ?rootEvent addr:hasChange [addr:isChangeType ?cgType ; addr:appliedTo [addr:hasTrace ?elem] ] .
+                ?elem addr:hasTime [addr:hasEnd ?instant] .
+                FILTER NOT EXISTS {{ ?rootEvent addr:hasTrace ?randomEvent . }}
+                FILTER NOT EXISTS {{ ?elem addr:hasNextVersion|addr:hasOverlappingVersion ?randomElem . }}
+            }}
+        }}
+        BIND(URI(CONCAT(STR(URI(facts:)), "TI_", STRUUID())) AS ?rootInstant)
+    }}
+    """
+
+    query2 = np.query_prefixes + f"""
+    INSERT {{
+        GRAPH ?gf {{
+            ?rootInstant a addr:CrispTimeInstant .
+            ?rootEvent addr:hasTime ?rootInstant .
+        }}
+        GRAPH ?gi {{
+            ?rootInstant addr:hasTrace ?instant .
+        }}
+    }} WHERE {{
+        {{
+            SELECT DISTINCT ?gf ?gi ?rootEvent WHERE {{
+                BIND({facts_named_graph_uri.n3()} AS ?gf)
+                BIND({inter_sources_name_graph_uri.n3()} AS ?gi)
+                GRAPH ?gf {{
+                    ?rootEvent a addr:Event .
+                    FILTER NOT EXISTS {{ ?rootEvent addr:hasTime ?rootInstant }}
+                }}
+            }}
+        }}
+        BIND(URI(CONCAT(STR(URI(facts:)), "TI_", STRUUID())) AS ?rootInstant)
+        ?rootEvent addr:hasTrace [addr:hasTime ?instant] .
+    }}
+    """
+    print(query2)
+
+    queries = [query1a, query1b, query2]
+    for query in queries:
+        gd.update_query(query, graphdb_url, facts_repository_name)
 
 ####################################################################
 
