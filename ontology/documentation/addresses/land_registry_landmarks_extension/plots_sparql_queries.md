@@ -132,7 +132,7 @@ WHERE {
 
     #Filters
     FILTER(?communeName = 'Gentilly')
-    FILTER(regex(?id, 'D-413$')||regex(?id,'D-413p')) 
+    FILTER(regex(?id, 'D-86$')||regex(?id,'D-86p')) 
 }
 ORDER BY ?start ?end
 ```

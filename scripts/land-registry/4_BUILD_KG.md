@@ -1241,7 +1241,7 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/taxpayerattributeversions> {
     ?taxV2 add:toBeMergedWith ?taxV2.
     }}
 WHERE {
-    ?plot1 (add:hasNextVersion|add:hasOverlappingVersion|add:isOverlappedByVersion) ?plot2.
+    ?plot1 (add:hasNextVersion|add:hasOverlappingVersion|add:isOverlappedByVersion)+ ?plot2.
     ?plotAGG add:hasTrace ?plot1.
     ?plotAGG add:hasTrace ?plot2.
 
@@ -1527,6 +1527,17 @@ PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
+PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
+PREFIX time: <http://www.w3.org/2006/time#>
+
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayerattributeversions> {
     ?event1 a add:Event.
     ?event1 cad:isEventType cad_etype:PlotTaxpayerEvent.
@@ -1546,26 +1557,28 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayerattributeversions> {
     ?attrAGG add:changedBy ?change2.
     ?change1 add:makesEffective ?attrVAGG.
     ?change2 add:outdates ?attrVAGG.
-}}
-WHERE {{
-     SELECT ?plotAGG ?attrVAGG ?attrAGG (MIN(?beginning) AS ?minBeginning) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
-	WHERE { 
-        ?attrVAGG add:isAttributeVersionOf/add:isAttributeOf ?plotAGG.
-    	?attrVAGG add:hasTrace ?attrV.
-    	?attrV add:isAttributeVersionOf ?attr.
-        ?attr add:isAttributeType cad_atype:PlotTaxpayer.
-    	?attr add:isAttributeOf ?plot.
-        ?attr add:changedBy ?change1.
-        ?change1 add:dependsOn ?event1.
-        ?change1 add:isChangeType ctype:AttributeVersionAppearance.
-    	?event1 add:hasTime/add:timeStamp ?beginning.
-        ?attr add:changedBy ?change2.
-        ?change2 add:isChangeType ctype:AttributeVersionDisappearance.
-        ?change2 add:dependsOn ?event2.
-    	?event2 add:hasTime/add:timeStamp ?end.
-		}
-    GROUP BY ?plotAGG ?attrAGG ?attrVAGG}
+    }}
+WHERE {
+SELECT DISTINCT ?plotAGG ?attrAGG ?attrVAGG (MIN(?t1) AS ?minBeginning) (MAX(?t2) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
+WHERE {
+    GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
+        ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.}
+        ?plot add:hasAttribute ?att.
+        ?att add:isAttributeType cad_atype:PlotTaxpayer.
+        ?att add:hasAttributeVersion ?attV.
+    	?attV cad:hasTaxpayer ?taxpayer.
+   		?attV add:isMadeEffectiveBy ?c1.
+    	?c1 add:dependsOn/add:hasTime/add:timeStamp ?t1.
+    	?attV add:isOutdatedBy ?c2.
+    	?c2 add:dependsOn/add:hasTime/add:timeStamp ?t2.
+    
+		?plot add:isTraceOf ?plotAGG.
+    	?plotAGG add:hasAttribute ?attrAGG.
+    	?attrAGG add:isAttributeType cad_atype:PlotTaxpayer; add:hasAttributeVersion ?attrVAGG.
+    	?attrVAGG cad:hasTaxpayer ?taxpayerAGG.
+    	FILTER(sameTerm(?taxpayer,?taxpayerAGG))
 }
+GROUP BY ?plotAGG ?attrAGG ?attrVAGG ?taxpayerAGG}
 ```
 ### 6.4 Infer events and changes of PlotMention attribute versions
 ```sparql
