@@ -8,6 +8,7 @@ This folder is composed of multiple python files to create and manage knowledge 
 * `graphdb.py`: functions to make actions via GraphDB API (make queries, remove named graph...) ;
 * `graphrdf.py`: construct knowledge graph thanks to RDFLib library
 * `multisourceprocessing.py`: functions which centralize process of all other files to construct and manage knowledge graph ;
+* `namespaces.py`: initialisation of namespaces used for the KG ;
 * `strprocessing.py`: functions to work with labels which are in the knowledge graph ;
 * `timeprocessing.py`: functions about time : compare instants, intevals... ;
 * `wikidata.py`: functions get access to SPARQL endpoint of Wikidata.
