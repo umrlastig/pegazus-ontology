@@ -23,7 +23,7 @@ This repository contains the documentation of the PeGaZus ontology and knowledge
 │   ├── addresses                    <- Implementation of the algorithm specialized for the addresses
 │   ├── land-registry                <- Implementation of the algorithm specialized for the Napoleonic land registry
 │
-├── LICENSE.md
+├── LICENCE.md
 └── README.md
 ```
 
