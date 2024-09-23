@@ -45,6 +45,12 @@ Two files describe the ontology: `ontology-addresses.ttl` is the core part of th
 * [`taxpayers`](ontology/documentation/taxpayers) ;
 * [`temporal_evolution`](ontology/documentation/temporal_evolution).
 
+Each modelet documentation has 3 or 4 files:
+* `{modelet_name}_scenario.md`: the natural-language argument describing the sub-problem to be addressed ;
+* `{modelet_name}_glossary.md`: glossary which defines the main terms involved ;
+* `{modelet_name}_competency_questions.md`: set of informal competence questions (in natural language) which represent the questions to be answered by the knowledge base ;
+* `{modelet_name}_sparql_queries.md`: it translates informal competence questions into SPARQL queries.
+ 
 ### `scripts` folder
 This folder contains code to build knowledge graphs. Since addresses and land plots have their own specificities, each one has a folder in which its code allow KG construction.
 
