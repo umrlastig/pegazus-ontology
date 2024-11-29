@@ -58,3 +58,21 @@ This folder contains code to build knowledge graphs. Since addresses and land pl
 
 ## Acknowledgements
 This work was supported by the IGN and the AID.
+
+## To cite this work
+```
+@inproceedings{bernard:hal-04721538,
+  TITLE = {{PeGazUs: A knowledge graph based approach to build urban perpetual gazetteers}},
+  AUTHOR = {Bernard, Charly and Tual, Solenn and Abadie, Nathalie and Dum{\'e}nieu, Bertrand and Perret, Julien and Chazalon, Joseph},
+  URL = {https://hal.science/hal-04721538},
+  BOOKTITLE = {{International Conference on Knowledge Engineering and Knowledge Management (EKAW 2024)}},
+  ADDRESS = {Amsterdam, Netherlands},
+  PUBLISHER = {{Springer Nature Switzerland}},
+  SERIES = {Lecture Notes in Computer Science},
+  VOLUME = {15370},
+  PAGES = {364-381},
+  YEAR = {2024},
+  MONTH = Nov,
+  DOI = {10.1007/978-3-031-77792-9\_22},
+}
+```

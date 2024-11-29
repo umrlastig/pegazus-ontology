@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as follows:"
+title: "PeGazUs: A knowledge graph based approach to build urban perpetual gazetteers"
+authors:
+  - family-names: Bernard
+    given-names: Charly
+  - family-names: Tual
+    given-names: Solenn
+  - family-names: Abadie
+    given-names: Nathalie
+  - family-names: Duménieu
+    given-names: Bertrand
+  - family-names: Perret
+    given-names: Julien
+  - family-names: Chazalon
+    given-names: Joseph
+date-released: 2024-11
+version: "1.0"
+doi: "10.1007/978-3-031-77792-9_22"
+url: "https://hal.science/hal-04721538"
+keywords:
+  - Knowledge Graph
+  - Geohistorical knowledge graph
+  - Land registry
+  - Addresses
+  - Ontology
+  - Ontology population
+  - Geographical Information
+conference:
+  name: "International Conference on Knowledge Engineering and Knowledge Management (EKAW 2024)"
+  location: Amsterdam, Netherlands
+  series: "Lecture Notes in Computer Science"
+  publisher: "Springer Nature Switzerland"
+  volume: "15370"
+  pages: "364-381"
