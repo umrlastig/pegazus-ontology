@@ -115,3 +115,33 @@ You can get some of geojson files on [GeoHistoricalData](https://geohistoricalda
 Once the files are in the `data` folder, the process can be started by running `multisource_population.ipynb` file.
 
 ⚠️ However, you need to ensure that GraphDB is installed and running during the process. [GraphDB](https://graphdb.ontotext.com/) is used to store and work on knowledge graphs. A variable is associated with the software: `graphdb_url` which is the URL of the web application.
+
+### Step by step process
+* Download GraphDB from https://www.ontotext.com/products/graphdb/download/
+* Download the repository, for instance:
+```
+git clone git@github.com:umrlastig/pegazus-ontology.git
+cd pegazus-ontology
+```
+* Create an environment with conda for instance:
+```
+conda create -n p3-12 python=3.12
+conda activate p3-12
+```
+* Install the dependencies. For conda for instance:
+```
+conda install jupyter
+conda install pyproj
+conda install conda-forge::geojson
+conda install conda-forge::rdflib
+conda install conda-forge::sparqlwrapper
+conda install unidecode
+```
+* Run the notebook:
+```
+cd scripts/addresses
+jupyter notebook
+```
+* In the jupyter interface:
+    * uncomment relevant lines in "Creating factoids in directories" (if it is not done)
+    * run all cells (it might take a while)

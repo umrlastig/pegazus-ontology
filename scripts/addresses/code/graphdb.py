@@ -1,6 +1,5 @@
 import os
 import filemanagement as fm
-import ttlmanagement as ttlm
 import curl as curl
 import urllib.parse as up
 from rdflib import Graph, Namespace, Literal, BNode, URIRef
@@ -300,23 +299,6 @@ def import_ttl_file_in_graphdb(graphdb_url, repository_id, ttl_file, named_graph
     cmd = curl.get_curl_command("POST", url.strip(), content_type="application/x-turtle", local_file=ttl_file)
     msg = os.popen(cmd)
     return msg.read()
-
-def upload_ttl_folder_in_graphdb_repository(ttl_folder_name, graphdb_url, repository_id, named_graph_name, limit:int=float("inf")):
-    nb_elem = 0
-    for elem in os.listdir(ttl_folder_name):
-        elem_path = os.path.join(ttl_folder_name, elem)
-        if os.path.splitext(elem)[-1].lower() == ".ttl":
-            nb_elem += 1
-            msg = import_ttl_file_in_graphdb(graphdb_url, repository_id, elem_path, named_graph_name)
-            # Création d'un fichier temporel sans URI problématique pour l'import si y a un problème.
-            if "Invalid IRI value" in msg:
-                nb_elem -= 1
-                tmp_elem_path = elem_path.replace(".ttl", "_tmp.ttl")
-                ttlm.format_ttl_to_avoid_invalid_iri_value_error(elem_path, tmp_elem_path)
-                msg = import_ttl_file_in_graphdb(graphdb_url, repository_id, tmp_elem_path, named_graph_name)
-                os.remove(tmp_elem_path)
-        if nb_elem >= limit:
-            return None
 
 def clear_named_graph_of_repository(graphdb_url, repository_name, named_graph_uri:URIRef):
     """
