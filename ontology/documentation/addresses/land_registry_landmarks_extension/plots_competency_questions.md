@@ -40,13 +40,21 @@ List of the taxpayers of the plot
 
 ## Question 5
 ### Question
+What is/are the address.es of the plot XXX in section XXX of a commune ?
+### Expected result
+List of addresses of the plot
+### Example of answer
+- 17, Rue Gérard, Gentilly
+
+## Question 6
+### Question
 Which are the plots of nature XXX in a commune/section?
 ### Expected result
 List of the plots that are or were of this nature
 ### Example of answer
 List of plots with a house
 
-## Question 6
+## Question 7
 ### Question
 Which are the plots with a given taxpayer in a commune/section?
 ### Expected result
@@ -54,7 +62,7 @@ List of the plots
 ### Example of answer
 List of plots of Berthier
 
-## Question 7
+## Question 8
 ### Question
 What is the size of a given plot ?
 ### Expected result
