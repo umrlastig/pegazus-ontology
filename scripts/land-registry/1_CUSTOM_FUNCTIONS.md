@@ -173,3 +173,11 @@ INSERT DATA {
 }
 
 ```
+
+## Get the list of functions in the repository
+```
+PREFIX jsfn:<http://www.ontotext.com/js#>
+SELECT ?s ?o {
+    ?s jsfn:enum ?o
+}
+```

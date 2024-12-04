@@ -1,0 +1,27 @@
+PREFIX extfn:<http://www.ontotext.com/js#>
+
+INSERT DATA {
+    [] <http://www.ontotext.com/js#register> '''
+
+        function replaceSubwords(str) {
+            var subwordMap = {
+                'p↑re↓': 'pierre', 
+                'j↑n↓': 'jean', 
+                'b↑te↓': 'baptiste', 
+                'bap↑te↓': 'baptiste', 
+                'jb↑te↓': 'jean baptiste',
+                'f↑ois↓': 'françois', 
+                'j↑d↓': 'jean', 
+                'v↑e↓': 'veuve', 
+                'v↑ve↓': 'veuve', 
+                'h↑re↓': 'heritier',
+            };
+
+            var pattern = new RegExp(Object.keys(subwordMap).join("|"), "g");
+
+            return str.replace(pattern, function(matched){
+                return subwordMap[matched];
+            });
+        }
+    '''
+}
