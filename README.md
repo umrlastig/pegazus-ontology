@@ -2,6 +2,17 @@
 
 This repository contains the documentation of the PeGaZus ontology and knowledge graph construction method. 
 
+## Abstract
+Gazetteers, as compilation of named places, are central resources on the Web of data, as they provide a common ground to link and integrate many textual or structured resources on the Web.
+Gazetteers usually categorise and associate places names with geospatial coordinates.
+In more recent times, historical gazetteers, which aim to represent places from the past, have received increasing attention.
+The creation of these gazetteers poses specific challenges, including the definition of the identity of evolving places, the representation of their evolution through time (how they change, when the changes happen), and the population of the gazetteer based on scarce and heterogeneous historical sources. 
+
+We propose an approach to create an urban historical gazetteer on the evolution of two major urban large-scale types of places, namely addresses and land plots.
+Our proposal is inspired by approaches for creating knowledge graphs and takes advantage of the knowledge representation and reasoning possibilities offered by Semantic Web standards to address the aforementioned challenges.
+The approach was applied to the \textit{Butte aux Cailles} district of Paris, for which a variety of contemporary and historical sources were used.
+The resulting knowledge graph can be used for a variety of purposes, including historical geocoding of old documents, identifying the use of a plot of land at a given date, and recording the events that led to its current state.
+
 ## Structure of the repository
 ```
 ├── data                      <- RDF resources used to build the graph
