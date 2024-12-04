@@ -4,6 +4,7 @@ These requests are used to complete the initial data created from archival sourc
 ## 1. Add *add:hasTime* property on *rico:Record Resources*
 ### 1.1 Add *add:hasTime* on each *rico:ResourcePart* of type *cad:CompteFoncier*
 * Using min and max time of a version of *add:Landmark*
+
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
@@ -147,7 +148,7 @@ where {
 }
 ```
 
-```
+```sparql
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>

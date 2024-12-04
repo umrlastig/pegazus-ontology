@@ -15,4 +15,7 @@ python -m venv .venv/pegazus_kg
 
 ## Run
 * ```00-load-rdf-tographdb.ipynb``` : create the initial named graphs with turtle files
-* 
+* ```01-add-custom-functions.ipynb``` : add custom funcstions into the repository
+* ```02-sanity-check.ipynb``` : just to remind to check the consistency of data
+* ```03-update-initial-data.ipynb``` : update the initial resources with more properties
+* ```04-build-kg.ipynb``` : build the final KG using PeGaZus method
