@@ -640,296 +640,931 @@ cad_ltype:Section a owl:NamedIndividual ,
 
 ########## NatureList
 
+@prefix cad: <http://rdf.geohistoricaldata.org/def/cadastre#> .
+@prefix pnature: <http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
 pnature:Abreuvoir a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Water trough"@en,
         "Abreuvoir"@fr .
 
-pnature:Appenti a cad:Nature,
-        owl:NamedIndividual,
+pnature:Abricotier a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:altLabel "Apricot"@en,
+        "Abricotiers"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Apricot trees"@en,
+        "Plantation d'abricotiers"@fr .
+
+pnature:Acacia a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Acacias"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Acacia"@en,
+        "Plantation d'acacias"@fr .
+
+pnature:Ajonc a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Furze"@en,
+        "Whin"@en,
+        "Ajoncs"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Gorse"@en,
+        "Ajonc"@fr .
+
+pnature:Allee a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Path"@en ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Walk"@en,
+        "Allée"@fr .
+
+pnature:Amandier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Almond"@en,
+        "Amandiers"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Almond tree"@en,
+        "Plantation d'amandiers"@fr .
+
+pnature:Appenti a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
     skos:closeMatch pnature:Batiment ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Lean-to"@en,
         "Appenti"@fr .
 
-pnature:Atelier a cad:Nature,
-        owl:NamedIndividual,
+pnature:Ardoisiere a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:altLabel "Ardoise"@fr,
+        "Carrière d'ardoise"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:closeMatch pnature:Carriere ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Slate quarry"@en,
+        "Ardoisière"@fr .
+
+pnature:Argilliere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Argile"@fr,
+        "Carrière d'argile"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:closeMatch pnature:Carriere ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Clay quarry"@en,
+        "Argillière"@fr .
+
+pnature:Asperges a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Asperge"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Asparagus"@en,
+        "Plantation d'asperges"@fr .
+
+pnature:Atelier a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Workshop"@en,
         "Atelier"@fr .
 
-pnature:Baraque a cad:Nature,
-        owl:NamedIndividual,
+pnature:Aulnaie a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Alder grove"@en,
+        "Aulnaie"@fr .
+
+pnature:Barraque a cad:Nature,
         skos:Concept ;
     skos:altLabel "Shed"@en ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:broader pnature:NatureBatie ;
     skos:closeMatch pnature:Batiment ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Hut"@en,
         "Baraque"@fr .
 
-pnature:BatimentRural a cad:Nature,
-        owl:NamedIndividual,
+pnature:Bassin a cad:Nature,
         skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Basin"@en,
+        "Bassin"@fr .
+
+pnature:BatimentRural a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Bâtiments ruraux"@fr ;
     skos:broader pnature:Batiment ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Rural building"@en,
         "Bâtiment rural"@fr .
 
-pnature:BoisAgrement a cad:Nature,
-        owl:NamedIndividual,
+pnature:Batterie a cad:Nature,
         skos:Concept ;
-    skos:closeMatch pnature:Bois ;
-    skos:hiddenLabel pnature:Bois,
+    skos:altLabel "Batterie de côte"@fr ;
+    skos:broader pnature:Batiment ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Battery"@en,
+        "Batterie"@fr .
+
+pnature:Bief a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Millstream"@en,
+        "Bief"@fr .
+
+pnature:BoisAgrement a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:Bois,
         pnature:ObjetDAgrement ;
+    skos:closeMatch pnature:Bois ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Ornamental wood"@en,
         "Bois d'agrément"@fr .
 
-pnature:CanalAgrement a cad:Nature,
-        owl:NamedIndividual,
+pnature:Broussaille a cad:Nature,
         skos:Concept ;
-    skos:closeMatch pnature:Canal ;
-    skos:hiddenLabel pnature:Canal,
+    skos:altLabel "Bushes"@en ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Undergrowth"@en,
+        "Brousaille"@fr .
+
+pnature:Bruyere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Bruyères"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Heather"@en,
+        "Bruyère"@fr .
+
+pnature:Buissiere a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Boxwood"@en,
+        "Buissières"@fr .
+
+pnature:CanalAgrement a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:Canal,
         pnature:ObjetDAgrement ;
+    skos:closeMatch pnature:Canal ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Ornamental canal"@en,
         "Canal d'agrément"@fr .
 
-pnature:Chemin a cad:Nature,
-        owl:NamedIndividual,
+pnature:Cassis a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Blackcurrant"@en,
+        "Plantation de cassis"@fr .
+
+pnature:Cedratiers a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Citron tree"@en,
+        "Cédratier"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Cedrate tree"@en,
+        "Plantation de cédratier"@fr .
+
+pnature:Cerisaies a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Cerise"@fr,
+        "Plantation de cerises"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Cherry orchard"@en,
+        "Cerisaies"@fr .
+
+pnature:Chantier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Dépôt de marchandises"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Construction site"@en,
+        "Chantier"@fr .
+
+pnature:Charmille a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Allée couverte"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Tree tunnel"@en,
+        "Charmille"@fr .
+
+pnature:Chataigneraie a cad:Nature,
+        skos:Concept ;
+    cad:TFNBGroup "3",
+        "5" ;
+    rdfs:comment "Cadastre actuel : Dans les régions où les châtaigneraies sont exploitées principalement en vue de la récolte des châtaignes, ces pro­priétés doivent être rangées dans le 3e groupe; là où elles sont surtout destinées à la pro­duction du bois, il y a lieu de les classer dans le 5e groupe."@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Chestnut grove"@en,
+        "Châtaigneraies"@fr .
+
+pnature:Chemin a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Walk"@en ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Path"@en,
         "Chemin"@fr .
 
-pnature:Cimetiere a cad:Nature,
-        owl:NamedIndividual,
+pnature:ChemindeFer a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    rdfs:comment "Cadastre actuel : Abstraction faite, bien entendu, des dépendances sus­ceptibles d'être considérées comme sols de propriétés bâties, lesquelles doivent être rangées dans le 13e groupe"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Railway"@en,
+        "Chemin de fer"@fr .
+
+pnature:Cheneviere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Champ de chanvre"@fr,
+        "Chanvre"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Hemp field"@en,
+        "Chenevière"@fr .
+
+pnature:Cimetiere a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Cemetery"@en,
         "Cimetiere"@fr .
 
-pnature:Clos a cad:Nature,
-        owl:NamedIndividual,
+pnature:Citronnier a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:altLabel "Citron"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Lemon tree"@en,
+        "Plantation de citronnier"@fr .
+
+pnature:Clos a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Fenced lot"@en,
         "Clos"@fr .
 
 pnature:CourCommune a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
     skos:broader pnature:Cour ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Shared courtyard"@en,
         "Cour commune"@fr .
 
-pnature:Courtil a cad:Nature,
-        owl:NamedIndividual,
+pnature:CoursDEau a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:altLabel "River"@en,
+        "stream"@en ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Waterway"@en,
+        "Cours d'eau"@fr .
+
+pnature:Courtil a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
     skos:closeMatch pnature:Jardin ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Fenced garden"@en,
         "Courtil"@fr .
 
-pnature:Cuisine a cad:Nature,
-        owl:NamedIndividual,
+pnature:Crayere a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:altLabel "Carrière de craie"@fr,
+        "Craie"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Chalk quarry"@en,
+        "Crayère"@fr .
+
+pnature:Cressonniere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Cresson"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Watercress"@en,
+        "Cressonnière"@fr .
+
+pnature:Cuisine a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Kitchen"@en,
         "Cuisine"@fr .
 
 pnature:Dependance a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:broader pnature:NatureBatie ;
     skos:closeMatch pnature:Batiment ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Outbuilding"@en,
         "Dépendance"@fr .
 
-pnature:Ecurie a cad:Nature,
-        owl:NamedIndividual,
+pnature:Digue a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:altLabel "Seawall"@en ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Dyke"@en,
+        "Digue"@fr .
+
+pnature:Douve a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Moat"@en,
+        "Douve"@fr .
+
+pnature:Dune a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Dune"@en,
+        "Dune"@fr .
+
+pnature:Eau a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Water"@en,
+        "Eau"@fr .
+
+pnature:Ecluse a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Lock"@en,
+        "Ecluse"@fr .
+
+pnature:Ecurie a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Stable"@en,
         "Ecurie"@fr .
 
 pnature:Eglise a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:broader pnature:NatureBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Church"@en,
         "Eglise"@fr .
 
 pnature:EtablissementDeBains a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:broader pnature:NatureBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Public baths"@en,
         "Etablissement de bains"@fr .
 
 pnature:EtangEmpoissonne a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
     skos:broader pnature:Etang ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Pond with fishes"@en,
         "Etang empoissonné"@fr .
 
-pnature:Fournil a cad:Nature,
-        owl:NamedIndividual,
+pnature:Falaise a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
-    skos:prefLabel "Bakery"@en,
-        "Fournil"@fr .
+    skos:prefLabel "Cliff"@en,
+        "Falaise"@fr .
+
+pnature:Figuier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Figues"@fr,
+        "Figuier"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Fig tree"@en,
+        "Plantation de figuiers"@fr .
+
+pnature:Fleur a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Culture de fleurs"@fr,
+        "Plantation de fleurs"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Flowers"@en,
+        "Fleurs"@fr .
+
+pnature:Fontaine a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Fountain"@en,
+        "Fontaine"@fr .
+
+pnature:Fosse a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Ditch"@en,
+        "Fossé"@fr .
+
+pnature:Fougeraie a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Ferny area"@en,
+        "Fougeraie"@fr .
+
+pnature:Fraisier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Plantation de fraisiers"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Strawberry plant"@en,
+        "Fraisiers"@fr .
+
+pnature:Framboisier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Plantation de framboisiers"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Raspberry bush"@en,
+        "Framboisiers"@fr .
+
+pnature:Friche a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Wasteland"@en,
+        "Friche"@fr .
+
+pnature:Genet a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Broom"@en,
+        "Genêt"@fr .
+
+pnature:Graviere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Carrière de gravier"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Gravel quarry"@en,
+        "Gravière"@fr .
+
+pnature:Groseillier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Groseille"@fr,
+        "Plantation de groseillier"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Currant bush"@en,
+        "Groseillier"@fr .
+
+pnature:Gue a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Ford"@en,
+        "Gué"@fr .
 
 pnature:Hangar a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
     skos:altLabel "Hangar"@en ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:broader pnature:NatureBatie ;
     skos:closeMatch pnature:Batiment ;
     skos:hiddenLabel "Hang"@fr ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Shed"@en,
         "Hangar"@fr .
 
-pnature:Lavoir a cad:Nature,
-        owl:NamedIndividual,
+pnature:Herbage a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Pasture"@en,
+        "Herbage"@fr .
+
+pnature:Houblonniere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Houblon"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Hop field"@en,
+        "Houblonnière"@fr .
+
+pnature:JardinDAgrement a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:Jardin,
+        pnature:ObjetDAgrement ;
+    skos:hiddenLabel "J d'ag"@fr ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Ornamental garden"@en,
+        "Jardin d'agrément"@fr .
+
+pnature:JardinMaraicher a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:Jardin ;
+    skos:closeMatch pnature:Plantation ;
+    skos:exactMatch pnature:Potager ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Vegetable garden"@en,
+        "Jardin Maraîcher"@fr .
+
+pnature:JardinMarais a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:Jardin ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Jardin Marais"@fr .
+
+pnature:Jonc a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Rush"@en,
+        "Jonc"@fr .
+
+pnature:Lac a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Lake"@en,
+        "Lac"@fr .
+
+pnature:Lagune a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Lagoon"@en,
+        "Lagune"@fr .
+
+pnature:Lande a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Heath"@en,
+        "Lande"@fr .
+
+pnature:Lavande a cad:Nature,
+        skos:Concept ;
+    cad:TFNBGroup "1",
+        "6" ;
+    rdfs:comment "Cadastre actuel : Les cultures de lavande sont rangées dans le 1er ou dans le 6e groupe suivant leur mode d'exploitation."@fr ;
+    skos:altLabel "Culture de lavande"@fr,
+        "Plantation de lavande"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Lavander"@en,
+        "Lavande"@fr .
+
+pnature:Lavoir a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Washhouse"@en,
         "Lavoir"@fr .
 
 pnature:MachineAVapeur a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:broader pnature:NatureBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Steam engine"@en,
         "Machine à vapeur"@fr .
 
 pnature:Magasin a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    skos:broader pnature:NatureBatie ;
     skos:closeMatch pnature:Batiment ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Shop"@en,
         "Magasin"@fr .
 
 pnature:Maison a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
-    skos:hiddenLabel "Mais",
-        "Mon" ;
+    skos:broader pnature:NatureBatie ;
+    skos:hiddenLabel "Mais"@fr,
+        "Mon"@fr ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "House"@en,
         "Maison"@fr .
 
-pnature:Mare a cad:Nature,
-        owl:NamedIndividual,
+pnature:Manufacture a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:NatureBatie ;
+    skos:closeMatch pnature:Fabrique ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Factory"@en,
+        "Manufacture"@fr .
+
+pnature:MaraisSalant a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Salt marsh"@en,
+        "Marais salant"@fr .
+
+pnature:Mare a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Pond"@en,
         "Mare"@fr .
 
-pnature:Neant a cad:Nature,
-        owl:NamedIndividual,
+pnature:Marecage a cad:Nature,
         skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Marsh"@en,
+        "Marécage"@fr .
+
+pnature:Marniere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Carrière de marne"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Marl quarry"@en,
+        "Manière"@fr .
+
+pnature:Meloniere a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Melon plantation"@en,
+        "Melonière"@fr .
+
+pnature:Mine a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Mine"@en,
+        "Mine"@fr .
+
+pnature:Miniere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Open mine"@en ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Small mine"@en,
+        "Minière"@fr .
+
+pnature:MoulinAEau a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:Moulin ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Water mill"@en,
+        "Moulin à eau"@fr .
+
+pnature:MoulinAVent a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:Moulin ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Wind mill"@en,
+        "Moulin à vent"@fr .
+
+pnature:Murier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Mûrier"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Blackberry bush"@en,
+        "Plantation de mûriers"@fr .
+
+pnature:Neant a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Nul"@fr ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Nothing"@en,
         "Néant"@fr .
 
-pnature:Parterre a cad:Nature,
-        owl:NamedIndividual,
+pnature:Noisetier a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:altLabel "Noisetier"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Hazel tree"@en,
+        "Plantation de noisetiers"@fr .
+
+pnature:Noyer a cad:Nature,
+        skos:Concept ;
+    cad:TFNBGroup "3",
+        "5" ;
+    rdfs:comment "Cadastre actuel : Selon qu'il s'agit de noyers à fruits ou à bois. Sont consi­dérées comme noyeraies à bois, à ranger dans le 5e groupe, les plantations qui répondent simul­tanément aux conditions sui­vantes : présenter une densité de peuplement au moins égale à 80 pieds à l'hectare; occuper entièrement une superficie au moins égale à 15 ares; être constituées exclusivement par des sujets “francs de pied” ou hybrides -c'est-à-dire non greffés- et appartenant à des variétés particulièrement aptes à la production du bois : “regia” ou “nigra” ou “nigra et regia”."@fr ;
+    skos:altLabel "Noyer"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Walnet tree"@en,
+        "Plantation de noyers"@fr .
+
+pnature:Olivier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Olivier"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Olive tree"@en,
+        "Plantation d'oliviers"@fr .
+
+pnature:Oranger a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Orange"@fr,
+        "Oranger"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Orange tree"@en,
+        "Plantation d'orangers"@fr .
+
+pnature:Ormaie a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Orme"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Elm"@en,
+        "Ormaie"@fr .
+
+pnature:Oseraie a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Wicker grove"@en,
+        "Oseraie"@fr .
+
+pnature:Parterre a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Flowerbed"@en,
         "Parterre"@fr .
 
 pnature:Passage a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    cad:TFNBGroup "10",
+        "13" ;
+    rdfs:comment "Cadastre actuel : Passages pratiqués entre les murs de clôtures ou les mai­sons."@fr ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Way"@en,
         "Passage"@fr .
 
-pnature:Pature a cad:Nature,
-        owl:NamedIndividual,
+pnature:Pecher a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:altLabel "Pêcher"@fr ;
+    skos:broader pnature:Plantation ;
     skos:inScheme cad:NatureList ;
-    skos:prefLabel "Pasture"@en,
-        "Pâture"@fr .
+    skos:prefLabel "Peach tree"@en,
+        "Plantation de pêchers"@fr .
+
+pnature:Pepiniere a cad:Nature,
+        skos:Concept ;
+    cad:TFNBGroup "1",
+        "9" ;
+    rdfs:comment "Cadastre actuel : Les pépinières sur terrains non aménagés sont rangées dans le 1er groupe."@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Plant nursery"@en,
+        "Pépinière"@fr .
+
+pnature:Peuplier a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Poplar"@en,
+        "Peuplier"@fr .
 
 pnature:PieceDEauAgrement a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:closeMatch pnature:PieceDEau ;
-    skos:hiddenLabel pnature:ObjetDAgrement,
-        pnature:ProprieteNonBatie ;
+    skos:broader pnature:ObjetDAgrement,
+        pnature:PieceDEau ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Onermental piece of water"@en,
         "Pièce d'eau d'agrément"@fr .
 
-pnature:Plantation a cad:Nature,
-        owl:NamedIndividual,
+pnature:Pin a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
-    skos:prefLabel "Plantation"@en,
-        "Plantation"@fr .
+    skos:prefLabel "Pine"@en,
+        "Pin"@fr .
 
-pnature:Potager a cad:Nature,
-        owl:NamedIndividual,
+pnature:Plage a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
-    skos:prefLabel "Vegetable garden"@en,
-        "Potager"@fr .
+    skos:prefLabel "Beach"@en,
+        "Plage"@fr .
+
+pnature:Platriere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Carrière de gypse"@fr,
+        "Gypse"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Gypsum quarry"@en,
+        "Plâtrière"@fr .
+
+pnature:Poirier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Poire"@fr,
+        "Poirier"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:closeMatch pnature:Verger ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Pear tree"@en,
+        "Plantation de poiriers"@fr .
+
+pnature:Pommeraie a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Pommier"@fr ;
+    skos:broader pnature:Plantation ;
+    skos:closeMatch pnature:Verger ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Apple tree"@en,
+        "Pommeraie"@fr .
+
+pnature:Poudriere a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:Batiment ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Gunpowder depot"@en,
+        "Poudrière"@fr .
 
 pnature:Pre a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Meadow"@en,
         "Pre"@fr .
 
-pnature:Reservoir a cad:Nature,
-        owl:NamedIndividual,
+pnature:PrePlante a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
+    cad:TFNBGroup "2",
+        "3" ;
+    rdfs:comment "Cadastre actuel : Ces prés doivent faire l'objet d'une classification parti­culière; mais le terrain est rangé dans le 3e groupe lorsque les arbres fournissent le produit principal"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Plated meadow"@en,
+        "Pré planté"@fr .
+
+pnature:Reservoir a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Water tank"@en,
         "Réservoir"@fr .
 
+pnature:Rigole a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Furrow"@en ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Channel"@en,
+        "Rigole"@fr .
+
+pnature:Riziere a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Rice paddy"@en,
+        "Rizière"@fr .
+
+pnature:Rocher a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Boulder"@en ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Rock"@en,
+        "Rocher"@fr .
+
+pnature:Rosier a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Plantation de rosiers"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Rose"@en,
+        "Rosier"@fr .
+
+pnature:Routoir a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Rouissoir"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Routoir"@fr .
+
 pnature:Ruine a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
     skos:broader pnature:Batiment ;
     skos:hiddenLabel "Ruines"@fr ;
@@ -937,183 +1572,358 @@ pnature:Ruine a cad:Nature,
     skos:prefLabel "Ruin"@en,
         "Ruine"@fr .
 
-pnature:Saulaie a cad:Nature,
-        owl:NamedIndividual,
+pnature:Sabliere a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:altLabel "Carrière de sable"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Sand quary"@en,
+        "Sablière"@fr .
+
+pnature:Salin a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Saline"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Salina"@en,
+        "Salin"@fr .
+
+pnature:Sapin a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Pine tree"@en ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Fir tree"@en,
+        "Sapin"@fr .
+
+pnature:Saulaie a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Saussaie"@fr ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Willow grove"@en,
         "Saulaie"@fr .
 
-pnature:Sol a cad:Nature,
-        owl:NamedIndividual,
+pnature:Serre a cad:Nature,
         skos:Concept ;
-    skos:altLabel "House ground"@en ;
-    skos:broader pnature:ProprieteNonBatie ;
-    skos:closeMatch pnature:ProprieteBatie ;
-    skos:hiddenLabel "Sol de la maison",
-        "Sol de maison",
-        "Sol de moulin",
-        "Terre de maison" ;
+    cad:TFNBGroup "13",
+        "9" ;
+    rdfs:comment """Cadastre actuel : Selon les cas, les serres peuvent être classées ainsi qu'il suit :\r
+- serres non affectées aux besoins d'une exploitation agricole : groupe 13 ;\r
+- serres affectées aux besoins d'une exploitation agricole : groupe 9."""@fr ;
+    skos:altLabel "Forcerie"@fr ;
+    skos:broader pnature:NatureBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Greenhouse"@en,
+        "Serre"@fr .
+
+pnature:Sol a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "House ground"@en,
+        "Superficie des bâtiments"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:hiddenLabel "Sol de la maison"@fr,
+        "Sol de maison"@fr,
+        "Sol de moulin"@fr,
+        "Sol de propriété bâtie"@fr,
+        "Terre de maison"@fr ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Ground"@en,
         "Sol"@fr .
 
 pnature:Terrain a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
-    skos:prefLabel "Land"@en,
+    skos:prefLabel "Piece of land"@en,
         "Terrain"@fr .
 
-pnature:TerrainPlante a cad:Nature,
-        owl:NamedIndividual,
+pnature:TerrainABatir a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
-    skos:hiddenLabel "Tp"@fr ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
-    skos:prefLabel "Planted land"@en,
-        "Terrain planté"@fr .
+    skos:prefLabel "Piece of land for building"@en,
+        "Terrain à bâtir"@fr .
 
-pnature:TerreAVigne a cad:Nature,
-        owl:NamedIndividual,
+pnature:TerrainDAgregemnt a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:NatureNonBatie,
+        pnature:ObjetDAgrement ;
     skos:inScheme cad:NatureList ;
-    skos:prefLabel "Vineyard land"@en,
-        "Terre à vigne"@fr .
-
-pnature:TerreLabourable a cad:Nature,
-        owl:NamedIndividual,
-        skos:Concept ;
-    skos:broader pnature:Terre ;
-    skos:inScheme cad:NatureList ;
-    skos:prefLabel "Plowed land"@en,
-        "Terre labourable"@fr .
-
-pnature:Verger a cad:Nature,
-        owl:NamedIndividual,
-        skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
-    skos:inScheme cad:NatureList ;
-    skos:prefLabel "Orchard"@en,
-        "Verger"@fr .
-
-pnature:Vigne a cad:Nature,
-        owl:NamedIndividual,
-        skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
-    skos:hiddenLabel "V",
-        "Vig" ;
-    skos:inScheme cad:NatureList ;
-    skos:prefLabel "Vineyard"@en,
-        "Vigne"@fr .
-
-pnature:Cour a cad:Nature,
-        owl:NamedIndividual,
-        skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
-    skos:inScheme cad:NatureList ;
-    skos:prefLabel "Courtyard"@en,
-        "Cour"@fr .
-
-pnature:Etang a cad:Nature,
-        owl:NamedIndividual,
-        skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
-    skos:inScheme cad:NatureList ;
-    skos:prefLabel "Pond"@en,
-        "Etang"@fr .
-
-pnature:Jardin a cad:Nature,
-        owl:NamedIndividual,
-        skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
-    skos:hiddenLabel "J"@fr ;
-    skos:inScheme cad:NatureList ;
-    skos:prefLabel "Garden"@en,
-        "Jardin"@fr .
-
-pnature:Lande a cad:Nature,
-        owl:NamedIndividual,
-        skos:Concept ;
-    skos:broader pnature:Lande ;
-    skos:inScheme cad:NatureList ;
-    skos:prefLabel "Heath"@en,
-        "Lande"@fr .
-
-pnature:Moulin a cad:Nature,
-        owl:NamedIndividual,
-        skos:Concept ;
-    skos:broader pnature:Moulin ;
-    skos:inScheme cad:NatureList ;
-    skos:prefLabel "Mill"@en,
-        "Moulin"@fr .
-
-pnature:PieceDEau a cad:Nature,
-        owl:NamedIndividual,
-        skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
-    skos:inScheme cad:NatureList ;
-    skos:prefLabel "Piece of water"@en,
-        "Pièce d'eau"@fr .
+    skos:prefLabel "Ornemental piece of land"@en,
+        "Terrain d'agrément"@fr .
 
 pnature:Terre a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    rdfs:comment "Cadastre actuel : On comprend dans le groupe des terres les terres plantées, quand le produit de la terre l'emporte sensiblement sur celui des plantations. On y fait figurer non seulement les terrains affectés à la culture des céréales, mais aussi ceux qui sont consacrés à la production des légumes (grande culture potagère rentrant dans l'agriculture proprement dite) et des plantes industrielles (tabac, colza, chanvre, lin, etc.). On y range également les prairies artificielles."@fr ;
+    skos:broader pnature:NatureNonBatie ;
     skos:hiddenLabel "T"@fr ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Bare ground"@en,
         "Terre"@fr .
 
-pnature:Bois a cad:Nature,
-        owl:NamedIndividual,
+pnature:TerreAVigne a cad:Nature,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Vineyard land"@en,
+        "Terre à vigne"@fr .
+
+pnature:TerreLabourable a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Plowed land"@en,
+        "Terre labourable"@fr .
+
+pnature:TerrePlantee a cad:Nature,
+        skos:Concept ;
+    cad:TFNBGroup "1",
+        "3" ;
+    rdfs:comment "Cadastre actuel : Lorsque la plantation fournit le produit principal, le terrain est rangé dans le 3e groupe."@fr ;
+    skos:altLabel "Terrain planté"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:hiddenLabel "T pt"@fr,
+        "T. p."@fr,
+        "Tp"@fr ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Planted land"@en,
+        "Terre plantée"@fr .
+
+pnature:TerreVaine a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Terre vague"@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Terre vaine"@fr .
+
+pnature:Tourbiere a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Peatland"@en,
+        "Tourbière"@fr .
+
+pnature:Truffiere a cad:Nature,
+        skos:Concept ;
+    cad:TFNBGroup "3",
+        "5" ;
+    rdfs:comment "Cadastre actuel : Les terrains spécialement plantés et entretenus en vue de la production des truffes sont rangés dans le 3e groupe."@fr ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Truffle patch"@en,
+        "Truffière"@fr .
+
+pnature:Vigne a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:hiddenLabel "V"@fr,
+        "Vig"@fr ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Vineyard"@en,
+        "Vigne"@fr .
+
+pnature:Vivier a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Fishpond"@en,
+        "Viver"@fr .
+
+pnature:Cour a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Courtyard"@en,
+        "Cour"@fr .
+
+pnature:Etang a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Pond"@en,
+        "Etang"@fr .
+
+pnature:Etendoir a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
+    skos:closeMatch pnature:Sechoir ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Drying rack"@en,
+        "Etendoir"@fr .
+
+pnature:Fabrique a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Manufacture"@fr ;
+    skos:broader pnature:NatureBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Factory"@en,
+        "Fabrique"@fr .
+
+pnature:Four a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
+    skos:closeMatch pnature:Fournil ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "\"Oven\""@en,
+        "Four"@fr .
+
+pnature:Fournil a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
+    skos:closeMatch pnature:Four ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Bakery"@en,
+        "Fournil"@fr .
+
+pnature:Marais a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:closeMatch pnature:Palus ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Swamp"@en,
+        "Marais"@fr .
+
+pnature:Palus a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:closeMatch pnature:Marais ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Swamp"@en,
+        "Palus"@fr .
+
+pnature:PieceDEau a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Piece of water"@en,
+        "Pièce d'eau"@fr .
+
+pnature:Potager a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Jardin potager"@fr ;
+    skos:broader pnature:Jardin ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Vegetable garden"@en,
+        "Potager"@fr .
+
+pnature:Sechoir a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
+    skos:closeMatch pnature:Etendoir ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Airer"@en,
+        "Séchoir"@fr .
+
+pnature:Bois a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Wood"@en,
         "Bois"@fr .
 
 pnature:Canal a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteNonBatie ;
+    skos:broader pnature:NatureNonBatie ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Canal"@en,
         "Canal"@fr .
 
+pnature:Carriere a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Pit"@en ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Quarry"@en,
+        "Carrière"@fr .
+
+pnature:Moulin a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Mill"@en,
+        "Moulin"@fr .
+
+pnature:Patis a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:closeMatch pnature:Paturage,
+        pnature:Pature ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Grass"@en,
+        "Pâtis"@fr .
+
+pnature:Paturage a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:closeMatch pnature:Patis,
+        pnature:Pature ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Pastureland"@en,
+        "Pâturage"@fr .
+
+pnature:Pature a cad:Nature,
+        skos:Concept ;
+    cad:TFNBGroup "2",
+        "6" ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:closeMatch pnature:Patis,
+        pnature:Paturage ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Pasture"@en,
+        "Pâture"@fr .
+
+pnature:Verger a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Orchard"@en,
+        "Verger"@fr .
+
+pnature:Jardin a cad:Nature,
+        skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:hiddenLabel "J"@fr ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Garden"@en,
+        "Jardin"@fr .
+
 pnature:ObjetDAgrement a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Ornemental thing"@en,
         "Objet d'agrément"@fr .
 
 pnature:Batiment a cad:Nature,
-        owl:NamedIndividual,
         skos:Concept ;
-    skos:broader pnature:ProprieteBatie ;
-    skos:hiddenLabel "Bat",
-        "Bt" ;
+    skos:broader pnature:NatureBatie ;
+    skos:hiddenLabel "Bat"@fr,
+        "Bt"@fr ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Building"@en,
         "Bâtiment"@fr .
 
-pnature:ProprieteBatie a cad:Nature,
-        owl:NamedIndividual,
+pnature:Plantation a cad:Nature,
         skos:Concept ;
+    skos:broader pnature:NatureNonBatie ;
+    skos:closeMatch pnature:TerrainPlante ;
+    skos:inScheme cad:NatureList ;
+    skos:prefLabel "Plantation"@en,
+        "Plantation"@fr .
+
+pnature:NatureBatie a cad:Nature,
+        skos:Concept ;
+    skos:altLabel "Propriété bâtie"@fr ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Build plot nature"@en,
-        "Propriété bâtie"@fr .
+        "Parcelle imposée au titre des propriétés bâties"@fr .
 
-pnature:ProprieteNonBatie a cad:Nature,
-        owl:NamedIndividual,
+pnature:NatureNonBatie a cad:Nature,
         skos:Concept ;
+    skos:altLabel "Propriété non bâtie"@fr ;
     skos:inScheme cad:NatureList ;
     skos:prefLabel "Unbuild plot nature"@en,
-        "Propriété non bâtie"@fr .
+        "Parcelle imposée au titre des propriétés no bâties"@fr .
 
 ########## EventList
 
