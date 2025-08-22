@@ -18,7 +18,7 @@
 @prefix igeo:  <http://rdf.insee.fr/def/geo#> .
 
 # Core ontology
-@prefix add: <http://rdf.geohistoricaldata.org/def/address#> .
+@prefix addr: <http://rdf.geohistoricaldata.org/def/address#> .
 @prefix atype: <http://rdf.geohistoricaldata.org/id/codes/address/attributeType/> .
 @prefix ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/> .
 @prefix ltype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkType/> .
@@ -160,7 +160,7 @@ cad:isOverlappedByVersionInSRCOrder a owl:ObjectProperty ;
     owl:inverseOf cad:hasOverlappingVersionInSRCOrder.
 
 cad:hasPlotNature a owl:ObjectProperty ;
-    rdfs:domain add:AttributeVersion ;
+    rdfs:domain addr:AttributeVersion ;
     rdfs:range cad:Nature ;
     rdfs:label "a pour nature"@fr ,
         "has plot nature"@en;
@@ -168,13 +168,13 @@ cad:hasPlotNature a owl:ObjectProperty ;
 
 cad:isPlotNatureOf a owl:ObjectProperty ;
     rdfs:domain cad:Nature ;
-    rdfs:range add:AttributeVersion ;
+    rdfs:range addr:AttributeVersion ;
     rdfs:label "est une nature de "@fr ,
                 "is plot nature of"@en;
     owl:inverseOf cad:hasPlotNature.
 
 cad:hasTaxpayer a owl:ObjectProperty ;
-                    rdfs:domain add:AttributeVersion ;
+                    rdfs:domain addr:AttributeVersion ;
                     rdfs:range cad:Taxpayer ;
                     rdfs:label "a pour contribuable"@fr ,
                                "has taxpayer"@en ;
@@ -182,16 +182,16 @@ cad:hasTaxpayer a owl:ObjectProperty ;
 
 cad:isTaxpayerOf a owl:ObjectProperty ;
                     rdfs:domain cad:Taxpayer ;
-                    rdfs:range add:AttributeVersion ;
+                    rdfs:range addr:AttributeVersion ;
                     rdfs:label "est le contribuable associé à"@fr ,
                                "is taxpayer of"@en ;
                     owl:inverseOf cad:hasTaxpayer.
 
 cad:hasPlotAddress a owl:ObjectProperty ;
-    rdfs:domain add:AttributeVersion ;
+    rdfs:domain addr:AttributeVersion ;
     rdfs:range [ a owl:Class ;
-                    owl:unionOf ( add:Address
-                                  add:LandmarkRelation
+                    owl:unionOf ( addr:Address
+                                  addr:LandmarkRelation
                                 )
                   ] ;
     rdfs:label "a pour adresse"@fr ,
@@ -200,11 +200,11 @@ cad:hasPlotAddress a owl:ObjectProperty ;
 
 cad:isPlotAddressOf a owl:ObjectProperty ;
     rdfs:domain [ a owl:Class ;
-                    owl:unionOf ( add:Address
-                                  add:LandmarkRelation
+                    owl:unionOf ( addr:Address
+                                  addr:LandmarkRelation
                                 )
                   ] ;
-    rdfs:range add:AttributeVersion ;
+    rdfs:range addr:AttributeVersion ;
     rdfs:label "est l'adresse associée à"@fr ,
                "is address of"@en ;
     owl:inverseOf cad:hasPlotAddress.
@@ -263,7 +263,7 @@ cad:passedTo a owl:ObjectProperty;
     rdfs:comment "Numéro du folio où est décrit l'état de parcelle suivant ou l'événement qui met fin à un état considéré."@fr .
 
 cad:isEventType a owl:ObjectProperty ;
-    rdfs:domain add:Event ;
+    rdfs:domain addr:Event ;
     rdfs:range cad:EventType ;
     rdfs:label "est un événement de type"@fr,
                "is event type"@en .
@@ -453,7 +453,7 @@ cad:SpecialCellValuesList a owl:NamedIndividual ,
 #################################################################
 
 ########## CadastreAttributesList
-cad_atype:PlotAddress a add:AttributeType,
+cad_atype:PlotAddress a addr:AttributeType,
         owl:NamedIndividual,
         skos:Concept ;
     skos:altLabel "Location"@en,
@@ -463,7 +463,7 @@ cad_atype:PlotAddress a add:AttributeType,
     skos:prefLabel "Address"@en,
         "Adresse de la parcelle"@fr .
 
-cad_atype:PlotMention a add:AttributeType,
+cad_atype:PlotMention a addr:AttributeType,
         owl:NamedIndividual,
         skos:Concept ;
     skos:definition "Mention d'une personne/d'une parcelle dans un document"@fr ;
@@ -471,7 +471,7 @@ cad_atype:PlotMention a add:AttributeType,
     skos:prefLabel "Mention"@en,
         "Mention"@fr .
 
-cad_atype:PlotNature a add:AttributeType,
+cad_atype:PlotNature a addr:AttributeType,
         owl:NamedIndividual,
         skos:Concept ;
     skos:broader cad_atype:PlotAttribute ;
@@ -480,7 +480,7 @@ cad_atype:PlotNature a add:AttributeType,
     skos:prefLabel "Nature"@en,
         "Nature"@fr .
 
-cad_atype:PlotTaxpayer a add:AttributeType,
+cad_atype:PlotTaxpayer a addr:AttributeType,
         owl:NamedIndividual,
         skos:Concept ;
     skos:altLabel "Propriétaire ou usufruitier"@fr ;
@@ -547,7 +547,7 @@ cad_atype:TaxpayerTitle a cad:TaxpayerAttributeType,
     skos:prefLabel "Title"@en,
         "Titre de civilité"@fr .
 
-cad_atype:PlotAttribute a add:AttributeType,
+cad_atype:PlotAttribute a addr:AttributeType,
         owl:NamedIndividual,
         skos:Concept ;
     skos:definition "Attribut de parcelle"@fr ;
@@ -575,14 +575,14 @@ cad_atype:TaxpayerFullLabel a cad:TaxpayerAttributeType,
 
 ########## CadastreChange List
 cad_ctype:TaxpayerAppearance a  owl:NamedIndividual ,
-                                          add:ChangeType ,
+                                          addr:ChangeType ,
                                           skos:Concept ;
                                  skos:definition "Changement décrivant l'apparition d'un contribuable"@fr ;
                                  skos:inScheme cad:CadastreChangeList ;
                                  skos:prefLabel "Apparition d'un contribuable"@fr ,
                                                 "Appearance of a taxpayer"@en .
 cad_ctype:TaxpayerDisappearance a  owl:NamedIndividual ,
-                                          add:ChangeType ,
+                                          addr:ChangeType ,
                                           skos:Concept ;
                                  skos:definition "Changement décrivant la disparition d'un contribuable"@fr ;
                                  skos:inScheme cad:CadastreChangeList ;
@@ -591,7 +591,7 @@ cad_ctype:TaxpayerDisappearance a  owl:NamedIndividual ,
 ########## CadastreLandmarkList
 
 cad_ltype:Arrondissement a owl:NamedIndividual ,
-                    add:LandmarkType ,
+                    addr:LandmarkType ,
                     skos:Concept ;
            skos:altLabel "Arrondissement"@en ,
                          "Arrondissement"@fr ;
@@ -602,7 +602,7 @@ cad_ltype:Arrondissement a owl:NamedIndividual ,
                           "Arrondissement"@fr .
 
 cad_ltype:Canton a owl:NamedIndividual ,
-                    add:LandmarkType ,
+                    addr:LandmarkType ,
                     skos:Concept ;
            skos:altLabel "Canton"@en ,
                          "Canton"@fr ;
@@ -613,7 +613,7 @@ cad_ltype:Canton a owl:NamedIndividual ,
                           "Canton"@fr .
 
 cad_ltype:Departement a owl:NamedIndividual ,
-                       add:LandmarkType ,
+                       addr:LandmarkType ,
                        skos:Concept ;
               skos:broader ltype:AdministrativeUnity ;
               skos:definition "Entité administrative décrivant un département "@fr ;
@@ -623,7 +623,7 @@ cad_ltype:Departement a owl:NamedIndividual ,
               skos:altLabel "French departement"@en .
 
 cad_ltype:Plot a owl:NamedIndividual ,
-                            add:LandmarkType ,
+                            addr:LandmarkType ,
                             skos:Concept ;
                    skos:definition "Parcelle située dans une section d'une commune"@fr ;
                    skos:inScheme cad:CadastreLandmarkList ;
@@ -631,7 +631,7 @@ cad_ltype:Plot a owl:NamedIndividual ,
                                   "Plot"@en .
 
 cad_ltype:Section a owl:NamedIndividual ,
-                            add:LandmarkType ,
+                            addr:LandmarkType ,
                             skos:Concept ;
                    skos:definition "Section cadastrale contentant tout ou partie des parcelles d'une commune, identifiée par une "@fr ;
                    skos:inScheme cad:CadastreLandmarkList ;
