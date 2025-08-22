@@ -38,7 +38,6 @@ WHERE {
 ### 2.1 Compute the temporal gap between two versions of a landmark
 * This step aims to compute temporal gaps between two versions of landmarks that have the same root landmark.
 * It's an intermediate step to build a temporal relations between versions of landmarks.
-* It's an intermediate step to build a temporal relations between versions of landmarks.
 * We keep only the positive or null gaps that will be usefull to compute *hasPreviousVersion/hasNextVersion* relations.
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -335,12 +334,16 @@ WHERE {
 	}
 }
 ```
-### 3.2 Create changes and events relative to property account changes
+
+## 4. Inferring landmarks identity
+Aggregate landmarks versions that seems to be the same real-world object.
+
+### 3.1 Create changes and events relative to property account changes
 Now, we want to search for the events related to a plot transfert to one property account to another one without split event. 
 
 *NB : In further steps, we will qualify in further details those changes that also might be a taxpayer change.*
 
-#### 3.2.1 Create FolioMutation event
+#### 4.1.1 Create FolioMutation event
 * Create *AttributeVersionDisappearance* Change
 * Create a *FolioMutation* Event
 
@@ -389,7 +392,7 @@ WHERE {
 	}
 }
 ```
-### 3.2.2 Create AttributeVersionAppearance change linked to a FolioMutation event
+### 4.1.2 Create AttributeVersionAppearance change linked to a FolioMutation event
 * Create an *AttributeVersionAppearance* Change connected to an already created *FolioMutation* Event.
 
 ```sparql
@@ -451,14 +454,10 @@ WHERE {SELECT DISTINCT ?nextPlot ?attNext ?event (IRI(CONCAT("http://rdf.geohist
     FILTER(sameTerm(?folio1,?tirede))
 }}
 ```
-
-## 4. Inferring landmarks identity
-Aggregate landmarks versions that seems to be the same real-world object.
-
-### 4.1 [Additionnal step for cadastre] Precise relative order of landmarks versions using documents
+### 4.2 Precise relative order of landmarks versions using documents
 Using the temporal relations and the events and changes we have created, we precise the relations between landmarks versions using *Previous/Next property account* attributes. 
 
-#### 4.1.1 Add *hasPreviousVersionInSRCOrder* and *hasNextVersionInSRCOrder* using FolioMutation events
+#### 4.2.1 Add *hasPreviousVersionInSRCOrder* and *hasNextVersionInSRCOrder* using FolioMutation events
 * Create links between landmark versions that are before and after an event of type *FolioMutation*.
 
 ```sparql
@@ -488,8 +487,8 @@ WHERE {
 } 
 ```
 
-#### 4.1.2 Order landmark versions with the same rootLandmark in the same Property Account
-##### 4.1.2.1 Landmark versions with a temporal relation *hasNextVersion*
+#### 4.2.2 Order landmark versions with the same rootLandmark in the same Property Account
+##### 4.2.2.1 Landmark versions with a temporal relation *hasNextVersion*
 * Create *hasPreviousVersionInSRCOrder / hasNextVersionInSRCOrder* : 
     * A *hasNextVersion* B
     * A in the same property account than B
@@ -535,7 +534,7 @@ WHERE {
 }
 }
 ```
-##### 4.1.2.2 Landmark versions with a temporal relation *hasOverlappingVersion*
+##### 4.2.2.2 Landmark versions with a temporal relation *hasOverlappingVersion*
 * Create *hasOverlappingVersionInSRCOrder / isOverlappedByVersionInSRCOrder* : 
     * A *hasOverlappingVersion* B
     * A in the same property account than B
@@ -580,12 +579,12 @@ WHERE {
 }}
 ```
 
-### 4.2. Create aggregation landmarks with landmarks versions that share the same identity
+### 4.3. Create aggregation landmarks with landmarks versions that share the same identity
 * We create links between landmarks versions that seems be the same object.
 
 *NB1 : Merge events have not been treated for the moment*
 
-#### 4.2.1 Links between landmark versions of plots created after the cadastre creation
+#### 4.3.1 Links between landmark versions of plots created after the cadastre creation
 First, we create the links between landmark version of plots created after the creation of the first matrice.
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -608,7 +607,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/tmp/siblings>{
     ?plot (add:hasNextVersionInSRCOrder|add:hasOverlappingVersionInSRCOrder)+ ?landmarkversion.
 } 
 ```
-#### 4.2.2 Links between landmark versions that seems to share the same identity
+#### 4.3.2 Links between landmark versions that seems to share the same identity
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -669,7 +668,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/tmp/siblings>{
     FILTER(YEAR(?start1) = YEAR(?start2))
 } 
 ```
-#### 4.2.3 Delete ambiguous sibling relations
+#### 4.3.3 Delete ambiguous sibling relations
 * Delete sibling relations when one landmark version have two plot IDs (meaning that it result from a merge of two other plots or parts of thoose plots)
 
 ```sparql
@@ -699,9 +698,9 @@ WHERE {
 }
 ```
 
-### 4.3 Links between property accounts and landmarks versions that are discribed in several mutation registers
+### 4.4 Links between property accounts and landmarks versions that are discribed in several mutation registers
 
-#### 4.3.1 Create links between property accounts from several mutation registers when they have the same taxpayer
+#### 4.4.1 Create links between property accounts from several mutation registers when they have the same taxpayer
 * Create link if taxpayers have a similarity link
 * *NB : We could had more constraints in future tests.*
 ```sparql
@@ -734,7 +733,7 @@ WHERE {
     ?taxpayer skos:exactMatch ?taxpayer2
 }
 ```
-#### 4.3.2 Create links between landmarks versions from several mutation registers
+#### 4.4.2 Create links between landmarks versions from several mutation registers
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -775,8 +774,8 @@ WHERE {
 }
 ```
 
-### 4.4 Create an aggregate landmark for each group of sibling landmarks versions
-#### 4.4.1 Create a unique label between landmarks that are siblings
+### 4.5 Create an aggregate landmark for each group of sibling landmarks versions
+#### 4.5.1 Create a unique label between landmarks that are siblings
 * Landmarks with the same label will be traces of the same landmark aggregation.
 * One landmark aggregation have at least one trace.
 
@@ -803,7 +802,7 @@ WHERE {
     ORDER BY ?sibling}
 }
 ```
-#### 4.4.2 Create a new landmark using siblings that have the same label (and are in the same aggregation)
+#### 4.5.2 Create a new landmark using siblings that have the same label (and are in the same aggregation)
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -826,7 +825,7 @@ WHERE {
     ?landmark add:hasAggregateLabel ?siblingLabel .
     ?landmark dcterms:identifier ?id.}
 ```
-#### 4.4.3 Create landmarks for landmarks versions that have no siblings
+#### 4.5.3 Create landmarks for landmarks versions that have no siblings
 * One landmark versions = one landmark (aggregation of one landmark version)
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
@@ -852,7 +851,7 @@ WHERE {
     ?landmark dcterms:identifier ?id.}
 ```
 
-### 4.5 Link landmarks versions aggregation with their root landmark
+### 4.6 Link landmarks versions aggregation with their root landmark
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -871,7 +870,7 @@ WHERE {
     GROUP BY ?aggLandmark ?root}
 ```
 
-### 4.6 Create landmark relation with cadastral section
+### 4.7 Create landmark relation with cadastral section
 ```sparql
 PREFIX lrtype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/>
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>

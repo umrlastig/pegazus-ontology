@@ -30,23 +30,11 @@ ORDER BY ?ID
 
 ## 2. How many plots are there in a given commune ?
 * There are two possible interpretation of this request :
-    * Number of plots on the map
-    * Number of plots aggregation (maps + register clusters of elements)
-### 2.1 Number of plots according to the map
-```sparql
-SELECT  (count(distinct ?plot) AS ?count)
-WHERE {
-    GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
-        ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.
-	}
-    #Select the commune where the plot is located
-    ?lr add:locatum ?plot; add:relatum ?section.
-    ?lr2 add:locatum ?section; add:relatum ?commune.
-    ?commune rdfs:label ?communeName
-    FILTER(?communeName = 'Gentilly')
-}
-```
-### 2.2 Number of plots according to the registers
+    * Number of plots on the map (at the creation of the cadastre)
+    * Number of plots over the cadastre validity period
+
+### 2.1 Number of plots according to the maps
+
 ```sparql
 SELECT  (count(distinct ?plot) AS ?count)
 WHERE {
@@ -62,8 +50,23 @@ WHERE {
 ```
 * Note it is possible to combine the two numbers
 
+### 2.2 Number of plots according to the registers
+```sparql
+SELECT  (count(distinct ?plot) AS ?count)
+WHERE {
+    GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
+        ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.
+	}
+    #Select the commune where the plot is located
+    ?lr add:locatum ?plot; add:relatum ?section.
+    ?lr2 add:locatum ?section; add:relatum ?commune.
+    ?commune rdfs:label ?communeName
+    FILTER(?communeName = 'Gentilly')
+}
+```
+
 ## 3. What is/are the nature.s of a plot XXX ?
-* NB : plots ID never are updated in case of split or merge. It means that the request will return natures of 1..n part of the plot dran on the map.
+* NB : plots ID never are updated in case of split or merge. It means that the request will return natures of 1..n parts of the plot which is drawn on the map.
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -100,7 +103,7 @@ WHERE {
 ORDER BY ?start ?end
 ```
 ## 4. What is/are the taxpayer.s of a plot XXX ?
-* NB : plots ID never are updated in case of split or merge. It means that the request will return natures of 1..n part of the plot dran on the map.
+* NB : plots ID never are updated in case of split or merge. It means that the request will return natures of 1..n parts of the plot drawn on the map.
 ```sparql
 PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
