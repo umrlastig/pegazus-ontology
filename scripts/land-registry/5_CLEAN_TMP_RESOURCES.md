@@ -1,18 +1,18 @@
 # 5. Clean knowledge graph
 ## 7.1 [NOT FOR THE MOMENT] Add root landmark has a trace of aggregation landmark
 ```
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
 
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
-    ?aggLandmark add:hasTrace ?root.
-    ?root add:isTraceOf ?aggLandmark.
+    ?aggLandmark addr:hasTrace ?root.
+    ?root addr:isTraceOf ?aggLandmark.
     }}
 WHERE {
     SELECT distinct ?aggLandmark ?root WHERE {
         GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
-        ?aggLandmark a add:Landmark; add:isLandmarkType cad_ltype:Plot .  }
-        ?otherLandmark add:hasRootLandmark ?root . 
+        ?aggLandmark a addr:Landmark; addr:isLandmarkType cad_ltype:Plot .  }
+        ?otherLandmark addr:hasRootLandmark ?root . 
     }
     GROUP BY ?aggLandmark ?root}
 ```
@@ -27,21 +27,21 @@ WHERE {
 ## 7.3 Clean tmp properties related to landmarks
 * To be shure
 ```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 DELETE {
-    ?obj add:hasAggregateLabel ?obj2
+    ?obj addr:hasAggregateLabel ?obj2
     }
 WHERE {
-    ?obj add:hasAggregateLabel ?obj2
+    ?obj addr:hasAggregateLabel ?obj2
 }
 ```
 * Execute the following request : 
 ```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 DELETE {
-    ?obj add:hasMergedValue ?obj2
+    ?obj addr:hasMergedValue ?obj2
     }
 WHERE {
-    ?obj add:hasMergedValue ?obj2
+    ?obj addr:hasMergedValue ?obj2
 }
 ```

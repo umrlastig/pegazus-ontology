@@ -1,12 +1,12 @@
 # Update initial data
 These requests are used to complete the initial data created from archival sources with Python.
 
-## 1. Add *add:hasTime* property on *rico:Record Resources*
-### 1.1 Add *add:hasTime* on each *rico:ResourcePart* of type *cad:CompteFoncier*
-* Using min and max time of a version of *add:Landmark*
+## 1. Add *addr:hasTime* property on *rico:Record Resources*
+### 1.1 Add *addr:hasTime* on each *rico:ResourcePart* of type *cad:CompteFoncier*
+* Using min and max time of a version of *addr:Landmark*
 
 ```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
 PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
@@ -14,25 +14,25 @@ PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
 PREFIX time: <http://www.w3.org/2006/time#>
 
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/landmarksversions>{
-    ?cf add:hasTime [
-        add:hasBeginning [add:timeStamp ?cfStart; add:timePrecision time:Year; add:timeCalendar time:Gregorian]; 
-		add:hasEnd [add:timeStamp ?cfEnd; add:timePrecision time:Year; add:timeCalendar time:Gregorian]].}}
+    ?cf addr:hasTime [
+        addr:hasBeginning [addr:timeStamp ?cfStart; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian]; 
+		addr:hasEnd [addr:timeStamp ?cfEnd; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian]].}}
 WHERE {
     SELECT ?cf (MIN(?start) AS ?cfStart) (MAX(?end) AS ?cfEnd) 
     WHERE { 
             ?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier.
             ?cf rico:hasOrHadConstituent ?classement.
             ?classement cad:isSourceType srctype:ArticleDeClassement.
-            ?classement cad:mentions/add:isAttributeVersionOf/add:isAttributeOf ?landmark.
-            ?landmark add:hasTime/add:hasBeginning/add:timeStamp ?start.
-            ?landmark add:hasTime/add:hasEnd/add:timeStamp ?end.
+            ?classement cad:mentions/addr:isAttributeVersionOf/addr:isAttributeOf ?landmark.
+            ?landmark addr:hasTime/addr:hasBeginning/addr:timeStamp ?start.
+            ?landmark addr:hasTime/addr:hasEnd/addr:timeStamp ?end.
         }
     GROUP BY ?cf
 }
 ```
-### 1.2. Add *add:hasTime* on each *rico:ResourcePart* of type *cad:ArticleDeClassement*
+### 1.2. Add *addr:hasTime* on each *rico:ResourcePart* of type *cad:ArticleDeClassement*
 ```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
@@ -40,25 +40,25 @@ PREFIX time: <http://www.w3.org/2006/time#>
 
 INSERT {
     GRAPH <http://rdf.geohistoricaldata.org/landmarksversions>{
-        ?classement add:hasTime[
-            add:hasBeginning[add:timeStamp ?startclassement; add:timePrecision time:Year; add:timeCalendar time:Gregorian];
-            add:hasEnd[add:timeStamp ?endclassement; add:timePrecision time:Year; add:timeCalendar time:Gregorian]].
+        ?classement addr:hasTime[
+            addr:hasBeginning[addr:timeStamp ?startclassement; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian];
+            addr:hasEnd[addr:timeStamp ?endclassement; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian]].
     }} 
 WHERE { 
 	?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier.
-    ?cf add:hasTime/add:hasBeginning/add:timeStamp ?startcf.
-    ?cf add:hasTime/add:hasEnd/add:timeStamp ?endcf.
+    ?cf addr:hasTime/addr:hasBeginning/addr:timeStamp ?startcf.
+    ?cf addr:hasTime/addr:hasEnd/addr:timeStamp ?endcf.
     ?cf rico:hasOrHadConstituent ?classement.
     ?classement cad:isSourceType srctype:ArticleDeClassement.
-    ?classement cad:mentions/add:isAttributeVersionOf/add:isAttributeOf ?landmark.
-    ?landmark add:hasTime/add:hasBeginning/add:timeStamp ?startclassement.
-    ?landmark add:hasTime/add:hasEnd/add:timeStamp ?endclassement.
+    ?classement cad:mentions/addr:isAttributeVersionOf/addr:isAttributeOf ?landmark.
+    ?landmark addr:hasTime/addr:hasBeginning/addr:timeStamp ?startclassement.
+    ?landmark addr:hasTime/addr:hasEnd/addr:timeStamp ?endclassement.
 }
 ```
 ## 2. Taxpayers in a property account
-### 2.1 Update *add:Event* related to the first taxpayer of a *cad:CompteFoncier*
+### 2.1 Update *addr:Event* related to the first taxpayer of a *cad:CompteFoncier*
 ```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
@@ -67,27 +67,27 @@ PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
 PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
-    ?event add:hasTime[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
+    ?event addr:hasTime[addr:timeStamp ?start; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian].
 	?event cad:isEventType cad_etype:OpenPropertyAccount.}
 }
 WHERE {SELECT ?cf ?start ?mutation ?version ?change ?event
     WHERE { 
         ?cf a rico:RecordResource.
         ?cf cad:isSourceType srctype:CompteFoncier.
-        ?cf add:hasTime[add:hasBeginning[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian]] .
+        ?cf addr:hasTime[addr:hasBeginning[addr:timeStamp ?start; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian]] .
         ?cf rico:hasOrHadConstituent ?mutation.
         ?mutation cad:isSourceType srctype:ArticleDeMutation.
-        ?mutation add:hasAttribute[add:hasAttributeVersion ?version].
-        ?version add:isMadeEffectiveBy ?change.
-        ?change add:isChangeType ctype:AttributeVersionAppearance.
-        ?change add:dependsOn ?event.
+        ?mutation addr:hasAttribute[addr:hasAttributeVersion ?version].
+        ?version addr:isMadeEffectiveBy ?change.
+        ?change addr:isChangeType ctype:AttributeVersionAppearance.
+        ?change addr:dependsOn ?event.
         FILTER NOT EXISTS{?event cad:isEventType cad_etype:TaxpayerMutation.}
     }
 }
 ```
-### 2.2 Update *add:Event* related to the last taxpayer of a property account
+### 2.2 Update *addr:Event* related to the last taxpayer of a property account
 ```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
@@ -96,20 +96,20 @@ PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
 PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
-    ?event add:hasTime[add:timeStamp ?end; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
+    ?event addr:hasTime[addr:timeStamp ?end; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian].
     ?event cad:isEventType cad_etype:ClosePropertyAccount.}
 }
 WHERE {SELECT ?cf ?end ?mutation ?version ?change ?event
     WHERE { 
         ?cf a rico:RecordResource.
         ?cf cad:isSourceType srctype:CompteFoncier.
-        ?cf add:hasTime[add:hasEnd[add:timeStamp ?end; add:timePrecision time:Year; add:timeCalendar time:Gregorian]] .
+        ?cf addr:hasTime[addr:hasEnd[addr:timeStamp ?end; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian]] .
         ?cf rico:hasOrHadConstituent ?mutation.
         ?mutation cad:isSourceType srctype:ArticleDeMutation.
-        ?mutation add:hasAttribute[add:hasAttributeVersion ?version].
-        ?version add:isOutdatedBy ?change.
-        ?change add:isChangeType ctype:AttributeVersionDisappearance.
-        ?change add:dependsOn ?event.
+        ?mutation addr:hasAttribute[addr:hasAttributeVersion ?version].
+        ?version addr:isOutdatedBy ?change.
+        ?change addr:isChangeType ctype:AttributeVersionDisappearance.
+        ?change addr:dependsOn ?event.
         FILTER NOT EXISTS{?event cad:isEventType cad_etype:TaxpayerMutation.}
     }
 }
@@ -120,31 +120,31 @@ WHERE {SELECT ?cf ?end ?mutation ?version ?change ?event
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 INSERT {
     GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
-        ?event2 add:hasTime[add:timeStamp ?end; 
-            add:timeCalendar time:Gregorian; 
-            add:timePrecision time:Year; 
+        ?event2 addr:hasTime[addr:timeStamp ?end; 
+            addr:timeCalendar time:Gregorian; 
+            addr:timePrecision time:Year; 
             cad:timeUncertainty cad:LatestTimeInstant].
     }
 }
 where {
     ?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier.
-    ?cf add:hasTime/add:hasBeginning/add:timeStamp ?start.
-    ?cf add:hasTime/add:hasEnd/add:timeStamp ?end.
+    ?cf addr:hasTime/addr:hasBeginning/addr:timeStamp ?start.
+    ?cf addr:hasTime/addr:hasEnd/addr:timeStamp ?end.
     ?cf rico:hasOrHadConstituent ?mutation.
-    ?mutation add:hasAttribute ?a.
-    ?a add:hasAttributeVersion ?v.
+    ?mutation addr:hasAttribute ?a.
+    ?a addr:hasAttributeVersion ?v.
     ?v cad:hasTaxpayer ?taxpayer.
     ?taxpayer rdfs:label ?labelT.
-    ?v add:isMadeEffectiveBy/add:dependsOn ?event1.
-    ?v add:isOutdatedBy/add:dependsOn ?event2.
-    ?event1 add:hasTime/add:timeStamp ?t1.
-	FILTER NOT EXISTS{?event2 add:hasTime/add:timeStamp ?t2.}
+    ?v addr:isMadeEffectiveBy/addr:dependsOn ?event1.
+    ?v addr:isOutdatedBy/addr:dependsOn ?event2.
+    ?event1 addr:hasTime/addr:timeStamp ?t1.
+	FILTER NOT EXISTS{?event2 addr:hasTime/addr:timeStamp ?t2.}
 }
 ```
 
@@ -152,38 +152,38 @@ where {
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 INSERT {
     GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
-        ?event1 add:hasTime[add:timeStamp ?start; 
-            add:timeCalendar time:Gregorian; 
-            add:timePrecision time:Year; 
+        ?event1 addr:hasTime[addr:timeStamp ?start; 
+            addr:timeCalendar time:Gregorian; 
+            addr:timePrecision time:Year; 
             cad:timeUncertainty cad:EarliestTimeInstant].
     }
 }
 where {
     ?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier.
-    ?cf add:hasTime/add:hasBeginning/add:timeStamp ?start.
-    ?cf add:hasTime/add:hasEnd/add:timeStamp ?end.
+    ?cf addr:hasTime/addr:hasBeginning/addr:timeStamp ?start.
+    ?cf addr:hasTime/addr:hasEnd/addr:timeStamp ?end.
     ?cf rico:hasOrHadConstituent ?mutation.
-    ?mutation add:hasAttribute ?a.
-    ?a add:hasAttributeVersion ?v.
+    ?mutation addr:hasAttribute ?a.
+    ?a addr:hasAttributeVersion ?v.
     ?v cad:hasTaxpayer ?taxpayer.
     ?taxpayer rdfs:label ?labelT.
-    ?v add:isMadeEffectiveBy/add:dependsOn ?event1.
-    ?v add:isOutdatedBy/add:dependsOn ?event2.
-    FILTER NOT EXISTS{?event1 add:hasTime/add:timeStamp ?t1.}
-	?event2 add:hasTime/add:timeStamp ?t2.
+    ?v addr:isMadeEffectiveBy/addr:dependsOn ?event1.
+    ?v addr:isOutdatedBy/addr:dependsOn ?event2.
+    FILTER NOT EXISTS{?event1 addr:hasTime/addr:timeStamp ?t1.}
+	?event2 addr:hasTime/addr:timeStamp ?t2.
 }
 ```
 ## 3. Create *cad:Taxpayer* aggregations
 ### 3.1 Create keys to compare taxpayers names
 ```sparql
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
 PREFIX jsfn: <http://www.ontotext.com/js#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -214,7 +214,7 @@ WHERE {
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX jsfn: <http://www.ontotext.com/js#>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/taxpayersmatching>{
     ?taxpayer skos:exactMatch ?taxpayer.
@@ -236,12 +236,12 @@ WHERE {
 ### 3.3 Initialized taxpayers aggregations
 ```sparql
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayersaggregations>{ 
 	?taxpayerAGG a cad:Taxpayer.
-    ?taxpayerAGG add:hasMergedValue ?mergedValue.
+    ?taxpayerAGG addr:hasMergedValue ?mergedValue.
 }}
 WHERE {
     BIND (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/taxpayer/","AGG_",STRUUID())) AS ?taxpayerAGG) 
@@ -253,15 +253,15 @@ WHERE {
     ORDER BY ?mergedValue}
 }
 ```
-### 3.4. Cast add:hasMergedValue elements as URIs
+### 3.4. Cast addr:hasMergedValue elements as URIs
 ```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX spif: <http://spinrdf.org/spif#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/taxpayersaggregations>{
-    ?taxpayerAGG add:hasTrace ?taxpayer.
-    ?taxpayer add:isTraceOf ?taxpayerAGG.
+    ?taxpayerAGG addr:hasTrace ?taxpayer.
+    ?taxpayer addr:isTraceOf ?taxpayerAGG.
     }}
 WHERE {
     SELECT ?taxpayerAGG ?taxpayer
@@ -271,7 +271,7 @@ WHERE {
         {
         SELECT ?taxpayerAGG ?strbn
         WHERE { 
-            ?taxpayerAGG add:hasMergedValue ?concatstrbn .
+            ?taxpayerAGG addr:hasMergedValue ?concatstrbn .
             ?strbn spif:split(?concatstrbn " ").
         }}
     }
@@ -281,7 +281,7 @@ WHERE {
 ```sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT { GRAPH <http://rdf.geohistoricaldata.org/taxpayersaggregations> {
@@ -296,7 +296,7 @@ WHERE {select distinct ?taxpayerAGG ?fulllabel ?label ?firstname ?address ?activ
 where {
     GRAPH <http://rdf.geohistoricaldata.org/taxpayersaggregations>{
         ?taxpayerAGG a cad:Taxpayer.
-        ?taxpayerAGG add:hasTrace ?taxpayer.
+        ?taxpayerAGG addr:hasTrace ?taxpayer.
     }
     GRAPH <http://rdf.geohistoricaldata.org/landmarksversions> {
         ?taxpayer a cad:Taxpayer.}
@@ -314,21 +314,21 @@ ORDER BY ?taxpayerAGG}
 ## 4. Create PlotTaxpayer attribute on landmarks versions
 ### 4.1. Initialise attribute of type *cad_atype:PlotTaxpayer*
 ```sparql
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions>{
-     ?plot add:hasAttribute[a add:Attribute; add:isAttributeType cad_atype:PlotTaxpayer].
+     ?plot addr:hasAttribute[a addr:Attribute; addr:isAttributeType cad_atype:PlotTaxpayer].
     }}
 WHERE { 
     GRAPH <http://rdf.geohistoricaldata.org/landmarksversions>{
-        ?plot a add:Landmark; add:isLandmarkType cad_ltype:Plot.
-        FILTER NOT EXISTS {?plot add:hasAttribute[add:isAttributeType cad_atype:PlotTaxpayer]}
+        ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot.
+        FILTER NOT EXISTS {?plot addr:hasAttribute[addr:isAttributeType cad_atype:PlotTaxpayer]}
     }
 }
 ```
-### 4.2. Create *add:AttributeVersion* of *PlotTaxpayer* attribute on each version of landmark
+### 4.2. Create *addr:AttributeVersion* of *PlotTaxpayer* attribute on each version of landmark
 
 <img src="./img/landmarksversions_taxpayerattributeversions.png" style="display: block;margin-left: auto;
 margin-right: auto;width: 100%;">
@@ -340,7 +340,7 @@ margin-right: auto;width: 100%;">
 PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
@@ -348,36 +348,36 @@ PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/
 PREFIX time: <http://www.w3.org/2006/time#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
-    ?attr add:hasAttributeVersion ?attrv;
-    	  add:changedBy ?change1;
-          add:changedBy ?change2.
-    ?attrv a add:AttributeVersion; 
+    ?attr addr:hasAttributeVersion ?attrv;
+    	  addr:changedBy ?change1;
+          addr:changedBy ?change2.
+    ?attrv a addr:AttributeVersion; 
              cad:hasTaxpayer ?taxpayerAGG.
-    ?event1 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
-    ?event2 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
-    ?change1 a add:Change; add:isChangeType ctype:AttributeVersionAppearance.
-    ?change2 a add:Change; add:isChangeType ctype:AttributeVersionDisappearance.
-    ?change1 add:makesEffective ?attrv.
-    ?change2 add:outdates ?attrv.
-    ?change1 add:dependsOn ?event1.
-    ?change2 add:dependsOn ?event2.
-    ?event1 add:hasTime[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
-    ?event2 add:hasTime[add:timeStamp ?end; add:timePrecision time:Year; add:timeCalendar time:Gregorian]
+    ?event1 a addr:Event; cad:isEventType cad_etype:TaxpayerEvent.
+    ?event2 a addr:Event; cad:isEventType cad_etype:TaxpayerEvent.
+    ?change1 a addr:Change; addr:isChangeType ctype:AttributeVersionAppearance.
+    ?change2 a addr:Change; addr:isChangeType ctype:AttributeVersionDisappearance.
+    ?change1 addr:makesEffective ?attrv.
+    ?change2 addr:outdates ?attrv.
+    ?change1 addr:dependsOn ?event1.
+    ?change2 addr:dependsOn ?event2.
+    ?event1 addr:hasTime[addr:timeStamp ?start; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian].
+    ?event2 addr:hasTime[addr:timeStamp ?end; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian]
     }}
 WHERE { 
     {SELECT ?landmark ?attr ?taxpayerAGG ?start ?end (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (UUID() AS ?attrv)
         WHERE {
 	?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier; rico:hasOrHadConstituent ?classement; rico:hasOrHadConstituent ?mutation.
     ?classement cad:isSourceType srctype:ArticleDeClassement;
-                cad:mentions/add:isAttributeVersionOf/add:isAttributeOf ?landmark.
-    ?landmark add:hasTime[add:hasBeginning/add:timeStamp ?startclassement;
-                          add:hasEnd/add:timeStamp ?endclassement];
-              add:hasAttribute ?attr.
-    ?attr add:isAttributeType cad_atype:PlotTaxpayer.
-    ?mutation add:hasAttribute/add:hasAttributeVersion ?taxpayerV.
-    ?taxpayerV cad:hasTaxpayer/add:isTraceOf ?taxpayerAGG;
-               add:isMadeEffectiveBy/add:dependsOn/add:hasTime/add:timeStamp ?starttaxpayer;
-               add:isOutdatedBy/add:dependsOn/add:hasTime/add:timeStamp ?endtaxpayer.
+                cad:mentions/addr:isAttributeVersionOf/addr:isAttributeOf ?landmark.
+    ?landmark addr:hasTime[addr:hasBeginning/addr:timeStamp ?startclassement;
+                          addr:hasEnd/addr:timeStamp ?endclassement];
+              addr:hasAttribute ?attr.
+    ?attr addr:isAttributeType cad_atype:PlotTaxpayer.
+    ?mutation addr:hasAttribute/addr:hasAttributeVersion ?taxpayerV.
+    ?taxpayerV cad:hasTaxpayer/addr:isTraceOf ?taxpayerAGG;
+               addr:isMadeEffectiveBy/addr:dependsOn/addr:hasTime/addr:timeStamp ?starttaxpayer;
+               addr:isOutdatedBy/addr:dependsOn/addr:hasTime/addr:timeStamp ?endtaxpayer.
     FILTER (?starttaxpayer < ?startclassement && ?endtaxpayer <= ?endclassement && ?endtaxpayer > ?startclassement)
     BIND((?startclassement) AS ?start)
     BIND((?endtaxpayer) AS ?end)
@@ -390,7 +390,7 @@ WHERE {
 PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
@@ -398,36 +398,36 @@ PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/
 PREFIX time: <http://www.w3.org/2006/time#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
-    ?attr add:hasAttributeVersion ?attrv;
-    	  add:changedBy ?change1;
-          add:changedBy ?change2.
-    ?attrv a add:AttributeVersion; 
+    ?attr addr:hasAttributeVersion ?attrv;
+    	  addr:changedBy ?change1;
+          addr:changedBy ?change2.
+    ?attrv a addr:AttributeVersion; 
              cad:hasTaxpayer ?taxpayerAGG.
-    ?event1 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
-    ?event2 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
-    ?change1 a add:Change; add:isChangeType ctype:AttributeVersionAppearance.
-    ?change2 a add:Change; add:isChangeType ctype:AttributeVersionDisappearance.
-    ?change1 add:makesEffective ?attrv.
-    ?change2 add:outdates ?attrv.
-    ?change1 add:dependsOn ?event1.
-    ?change2 add:dependsOn ?event2.
-    ?event1 add:hasTime[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
-    ?event2 add:hasTime[add:timeStamp ?end; add:timePrecision time:Year; add:timeCalendar time:Gregorian]
+    ?event1 a addr:Event; cad:isEventType cad_etype:TaxpayerEvent.
+    ?event2 a addr:Event; cad:isEventType cad_etype:TaxpayerEvent.
+    ?change1 a addr:Change; addr:isChangeType ctype:AttributeVersionAppearance.
+    ?change2 a addr:Change; addr:isChangeType ctype:AttributeVersionDisappearance.
+    ?change1 addr:makesEffective ?attrv.
+    ?change2 addr:outdates ?attrv.
+    ?change1 addr:dependsOn ?event1.
+    ?change2 addr:dependsOn ?event2.
+    ?event1 addr:hasTime[addr:timeStamp ?start; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian].
+    ?event2 addr:hasTime[addr:timeStamp ?end; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian]
     }}
 WHERE { 
     {SELECT ?landmark ?attr ?taxpayerAGG ?start ?end (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (UUID() AS ?attrv)
         WHERE {
 	?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier; rico:hasOrHadConstituent ?classement; rico:hasOrHadConstituent ?mutation.
     ?classement cad:isSourceType srctype:ArticleDeClassement;
-                cad:mentions/add:isAttributeVersionOf/add:isAttributeOf ?landmark.
-    ?landmark add:hasTime[add:hasBeginning/add:timeStamp ?startclassement;
-                          add:hasEnd/add:timeStamp ?endclassement];
-              add:hasAttribute ?attr.
-    ?attr add:isAttributeType cad_atype:PlotTaxpayer.
-    ?mutation add:hasAttribute/add:hasAttributeVersion ?taxpayerV.
-    ?taxpayerV cad:hasTaxpayer/add:isTraceOf ?taxpayerAGG;
-               add:isMadeEffectiveBy/add:dependsOn/add:hasTime/add:timeStamp ?starttaxpayer;
-               add:isOutdatedBy/add:dependsOn/add:hasTime/add:timeStamp ?endtaxpayer.
+                cad:mentions/addr:isAttributeVersionOf/addr:isAttributeOf ?landmark.
+    ?landmark addr:hasTime[addr:hasBeginning/addr:timeStamp ?startclassement;
+                          addr:hasEnd/addr:timeStamp ?endclassement];
+              addr:hasAttribute ?attr.
+    ?attr addr:isAttributeType cad_atype:PlotTaxpayer.
+    ?mutation addr:hasAttribute/addr:hasAttributeVersion ?taxpayerV.
+    ?taxpayerV cad:hasTaxpayer/addr:isTraceOf ?taxpayerAGG;
+               addr:isMadeEffectiveBy/addr:dependsOn/addr:hasTime/addr:timeStamp ?starttaxpayer;
+               addr:isOutdatedBy/addr:dependsOn/addr:hasTime/addr:timeStamp ?endtaxpayer.
     FILTER (?starttaxpayer >= ?startclassement && ?endtaxpayer <= ?endclassement)
     BIND((?starttaxpayer) AS ?start)
     BIND((?endtaxpayer) AS ?end)
@@ -440,7 +440,7 @@ WHERE {
 PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
@@ -448,36 +448,36 @@ PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/
 PREFIX time: <http://www.w3.org/2006/time#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
-    ?attr add:hasAttributeVersion ?attrv;
-    	  add:changedBy ?change1;
-          add:changedBy ?change2.
-    ?attrv a add:AttributeVersion; 
+    ?attr addr:hasAttributeVersion ?attrv;
+    	  addr:changedBy ?change1;
+          addr:changedBy ?change2.
+    ?attrv a addr:AttributeVersion; 
              cad:hasTaxpayer ?taxpayerAGG.
-    ?event1 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
-    ?event2 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
-    ?change1 a add:Change; add:isChangeType ctype:AttributeVersionAppearance.
-    ?change2 a add:Change; add:isChangeType ctype:AttributeVersionDisappearance.
-    ?change1 add:makesEffective ?attrv.
-    ?change2 add:outdates ?attrv.
-    ?change1 add:dependsOn ?event1.
-    ?change2 add:dependsOn ?event2.
-    ?event1 add:hasTime[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
-    ?event2 add:hasTime[add:timeStamp ?end; add:timePrecision time:Year; add:timeCalendar time:Gregorian]
+    ?event1 a addr:Event; cad:isEventType cad_etype:TaxpayerEvent.
+    ?event2 a addr:Event; cad:isEventType cad_etype:TaxpayerEvent.
+    ?change1 a addr:Change; addr:isChangeType ctype:AttributeVersionAppearance.
+    ?change2 a addr:Change; addr:isChangeType ctype:AttributeVersionDisappearance.
+    ?change1 addr:makesEffective ?attrv.
+    ?change2 addr:outdates ?attrv.
+    ?change1 addr:dependsOn ?event1.
+    ?change2 addr:dependsOn ?event2.
+    ?event1 addr:hasTime[addr:timeStamp ?start; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian].
+    ?event2 addr:hasTime[addr:timeStamp ?end; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian]
     }}
 WHERE { 
     {SELECT ?landmark ?attr ?taxpayerAGG ?start ?end (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (UUID() AS ?attrv)
         WHERE {
 	?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier; rico:hasOrHadConstituent ?classement; rico:hasOrHadConstituent ?mutation.
     ?classement cad:isSourceType srctype:ArticleDeClassement;
-                cad:mentions/add:isAttributeVersionOf/add:isAttributeOf ?landmark.
-    ?landmark add:hasTime[add:hasBeginning/add:timeStamp ?startclassement;
-                          add:hasEnd/add:timeStamp ?endclassement];
-              add:hasAttribute ?attr.
-    ?attr add:isAttributeType cad_atype:PlotTaxpayer.
-    ?mutation add:hasAttribute/add:hasAttributeVersion ?taxpayerV.
-    ?taxpayerV cad:hasTaxpayer/add:isTraceOf ?taxpayerAGG;
-               add:isMadeEffectiveBy/add:dependsOn/add:hasTime/add:timeStamp ?starttaxpayer;
-               add:isOutdatedBy/add:dependsOn/add:hasTime/add:timeStamp ?endtaxpayer.
+                cad:mentions/addr:isAttributeVersionOf/addr:isAttributeOf ?landmark.
+    ?landmark addr:hasTime[addr:hasBeginning/addr:timeStamp ?startclassement;
+                          addr:hasEnd/addr:timeStamp ?endclassement];
+              addr:hasAttribute ?attr.
+    ?attr addr:isAttributeType cad_atype:PlotTaxpayer.
+    ?mutation addr:hasAttribute/addr:hasAttributeVersion ?taxpayerV.
+    ?taxpayerV cad:hasTaxpayer/addr:isTraceOf ?taxpayerAGG;
+               addr:isMadeEffectiveBy/addr:dependsOn/addr:hasTime/addr:timeStamp ?starttaxpayer;
+               addr:isOutdatedBy/addr:dependsOn/addr:hasTime/addr:timeStamp ?endtaxpayer.
     FILTER (?starttaxpayer >= ?startclassement && ?endtaxpayer > ?endclassement && ?starttaxpayer < ?endclassement)
     BIND((?starttaxpayer) AS ?start)
     BIND((?endclassement) AS ?end)
@@ -490,7 +490,7 @@ WHERE {
 PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>
-PREFIX add: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX ofn: <http://www.ontotext.com/sparql/functions/>
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
@@ -498,36 +498,36 @@ PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/
 PREFIX time: <http://www.w3.org/2006/time#>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksversions/taxpayers> {
-    ?attr add:hasAttributeVersion ?attrv;
-    	  add:changedBy ?change1;
-          add:changedBy ?change2.
-    ?attrv a add:AttributeVersion; 
+    ?attr addr:hasAttributeVersion ?attrv;
+    	  addr:changedBy ?change1;
+          addr:changedBy ?change2.
+    ?attrv a addr:AttributeVersion; 
              cad:hasTaxpayer ?taxpayerAGG.
-    ?event1 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
-    ?event2 a add:Event; cad:isEventType cad_etype:TaxpayerEvent.
-    ?change1 a add:Change; add:isChangeType ctype:AttributeVersionAppearance.
-    ?change2 a add:Change; add:isChangeType ctype:AttributeVersionDisappearance.
-    ?change1 add:makesEffective ?attrv.
-    ?change2 add:outdates ?attrv.
-    ?change1 add:dependsOn ?event1.
-    ?change2 add:dependsOn ?event2.
-    ?event1 add:hasTime[add:timeStamp ?start; add:timePrecision time:Year; add:timeCalendar time:Gregorian].
-    ?event2 add:hasTime[add:timeStamp ?end; add:timePrecision time:Year; add:timeCalendar time:Gregorian]
+    ?event1 a addr:Event; cad:isEventType cad_etype:TaxpayerEvent.
+    ?event2 a addr:Event; cad:isEventType cad_etype:TaxpayerEvent.
+    ?change1 a addr:Change; addr:isChangeType ctype:AttributeVersionAppearance.
+    ?change2 a addr:Change; addr:isChangeType ctype:AttributeVersionDisappearance.
+    ?change1 addr:makesEffective ?attrv.
+    ?change2 addr:outdates ?attrv.
+    ?change1 addr:dependsOn ?event1.
+    ?change2 addr:dependsOn ?event2.
+    ?event1 addr:hasTime[addr:timeStamp ?start; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian].
+    ?event2 addr:hasTime[addr:timeStamp ?end; addr:timePrecision time:Year; addr:timeCalendar time:Gregorian]
     }}
 WHERE { 
     {SELECT ?landmark ?attr ?taxpayerAGG ?start ?end (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event1) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/",STRUUID())) AS ?event2) (UUID() AS ?attrv)
         WHERE {
 	?cf a rico:RecordPart; cad:isSourceType srctype:CompteFoncier; rico:hasOrHadConstituent ?classement; rico:hasOrHadConstituent ?mutation.
     ?classement cad:isSourceType srctype:ArticleDeClassement;
-                cad:mentions/add:isAttributeVersionOf/add:isAttributeOf ?landmark.
-    ?landmark add:hasTime[add:hasBeginning/add:timeStamp ?startclassement;
-                          add:hasEnd/add:timeStamp ?endclassement];
-              add:hasAttribute ?attr.
-    ?attr add:isAttributeType cad_atype:PlotTaxpayer.
-    ?mutation add:hasAttribute/add:hasAttributeVersion ?taxpayerV.
-    ?taxpayerV cad:hasTaxpayer/add:isTraceOf ?taxpayerAGG;
-               add:isMadeEffectiveBy/add:dependsOn/add:hasTime/add:timeStamp ?starttaxpayer;
-               add:isOutdatedBy/add:dependsOn/add:hasTime/add:timeStamp ?endtaxpayer.
+                cad:mentions/addr:isAttributeVersionOf/addr:isAttributeOf ?landmark.
+    ?landmark addr:hasTime[addr:hasBeginning/addr:timeStamp ?startclassement;
+                          addr:hasEnd/addr:timeStamp ?endclassement];
+              addr:hasAttribute ?attr.
+    ?attr addr:isAttributeType cad_atype:PlotTaxpayer.
+    ?mutation addr:hasAttribute/addr:hasAttributeVersion ?taxpayerV.
+    ?taxpayerV cad:hasTaxpayer/addr:isTraceOf ?taxpayerAGG;
+               addr:isMadeEffectiveBy/addr:dependsOn/addr:hasTime/addr:timeStamp ?starttaxpayer;
+               addr:isOutdatedBy/addr:dependsOn/addr:hasTime/addr:timeStamp ?endtaxpayer.
     FILTER (?starttaxpayer < ?startclassement && ?endtaxpayer > ?endclassement)
     BIND((?startclassement) AS ?start)
     BIND((?endclassement) AS ?end)
