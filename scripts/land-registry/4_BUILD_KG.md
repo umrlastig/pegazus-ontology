@@ -327,7 +327,7 @@ WHERE {
     	?j1 cad:isSourceType srctype:FolioNonBati.
 
     	?attrMention2 addr:hasAttributeVersion/cad:takenFrom ?tirede2.
-    	{?tirede2 cad:isSourceType srctype:FolioNonBati} UNION {FILTER(?tirede2 IN(cad_spval:CelluleVideSV,cad_spval:ResteSV))}
+    	{?tirede2 cad:isSourceType srctype:FolioNonBati} UNION {FILTER(?tirede2 IN(cad_spval:ResteSV))}
 
     	FILTER(!sameTerm(?landmarkversion, ?nextLandmark))
     	FILTER(YEAR(?sortie) = YEAR(?entree2))
@@ -671,7 +671,7 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/tmp/siblings>{
 #### 4.3.3 Delete ambiguous sibling relations
 * Delete sibling relations when one landmark version have two plot IDs (meaning that it result from a merge of two other plots or parts of thoose plots)
 
-```sparql
+```
 PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -955,6 +955,7 @@ PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkTy
 PREFIX cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/>
 PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cad_spval: <http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/>
 
 INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/natureattributeversions> {
     ?natV1 addr:toBeMergedWith ?natV1.

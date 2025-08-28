@@ -1,4 +1,4 @@
-@prefix add: <http://rdf.geohistoricaldata.org/def/address#> .
+@prefix addr: <http://rdf.geohistoricaldata.org/def/address#> .
 @prefix cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/> .
 @prefix ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -10,953 +10,953 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<_:N0490959506f8423e9901fa92b8709e9c> a add:Change ;
-    add:appliedTo landmark:8aeca660-ee93-4fef-b98a-026735807d82 ;
-    add:dependsOn <_:N988e119804104f27ba539fbfe8d137a5> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N06108696942a447eb7bdcee20c052c7c> a add:Change ;
-    add:appliedTo landmark:9a31660f-44c6-47dd-8cf4-17b08110f525 ;
-    add:dependsOn <_:N7162056cbcd349ee8f923576a40577f9> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N07cafe0f27e643d6bd80e6bb688a6f11> a add:Change ;
-    add:appliedTo landmark:da6a5c2c-e86d-43bb-8950-7169bd0df60a ;
-    add:dependsOn <_:N178d6b9055f940a785d843ab031fa13e> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N083cd208688641ceab2ef12e0d878eec> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:49e2cb25-9f61-4740-a09c-c307e1f3874f ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N0be9989df16f43698c72686f433b72ea> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:393aa8b1-e60f-43b7-9c9e-9737ad804edd ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N0dffb13d09124cb3be965061f4a66f02> a add:Change ;
-    add:appliedTo landmark:5d0cd9fe-6b99-416d-a1a3-d532d2d6d6fc ;
-    add:dependsOn <_:N4e90e3c1225145d0979ed70853c67341> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N0e695ab027ab407a959a0d4866f4fe27> a add:Change ;
-    add:appliedTo landmark:0dbf586a-7f6b-4cc1-a873-522a1bd44265 ;
-    add:dependsOn <_:Ne858cfcbb97349cfbbcb758c8d8ca231> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N0f2eb2d5a9784caebb34462a8701065e> a add:Change ;
-    add:appliedTo landmark:d3299a59-4982-4f6f-bf1d-a2f692c219c4 ;
-    add:dependsOn <_:N8fbf02560a1a45e08079452cb5c57cd2> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N122be87fcdfd46f596dfcc7008921562> a add:Change ;
-    add:appliedTo landmark:2f202433-cded-4857-a609-a1e0c548cb27 ;
-    add:dependsOn <_:N9c496dfbf5e84a0b8977112af6c754eb> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N152387e287a44d25a6d51c44c87ae971> a add:Change ;
-    add:appliedTo landmark:9a31660f-44c6-47dd-8cf4-17b08110f525 ;
-    add:dependsOn <_:N9c60dcc8ba724b71933c343968cc1236> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N173a9d58707d4446892c5bf1aa6d15c4> a add:Change ;
-    add:appliedTo landmark:21dace9f-5178-4cc4-9588-b3a3e4283272 ;
-    add:dependsOn <_:N9b8747f9ddd64fd48bbee4b28308df6e> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N18d0533edb6b4e9aa13a029f2379507d> a add:Change ;
-    add:appliedTo landmark:5fec0a47-aa74-4e02-aa66-77f156ea5327 ;
-    add:dependsOn <_:N45b4cd16659e492db44833eaf5b9e828> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N1db1be766d1642868eae395ef65b0e88> a add:Change ;
-    add:appliedTo landmark:0dbf586a-7f6b-4cc1-a873-522a1bd44265 ;
-    add:dependsOn <_:N3e2fb3cef50144d292edc5222f6ecaec> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N1e05949236944dd6854e85c8669584a0> a add:Change ;
-    add:appliedTo landmark:3904c8d6-366e-4d92-a960-3d9ea46d4912 ;
-    add:dependsOn <_:N64d783a330484c3091d349fb8cbaa9c1> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N234c491040934057ac4b2eb4bbf96a46> a add:Change ;
-    add:appliedTo landmark:23f82e12-bcad-49b8-bb09-6a538496b72f ;
-    add:dependsOn <_:Nb2aae54144d2459fa825064cbd4d9a7d> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N29989df7ba594ba2ab39558ca65c39f3> a add:Change ;
-    add:appliedTo landmark:8aeca660-ee93-4fef-b98a-026735807d82 ;
-    add:dependsOn <_:Naa7b3890524e401f825a71737f14750a> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N33a7799788b44bd8962067f073b5e9b5> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:8177082a-ed8d-417b-a60f-3e929cd1e97a ;
-    add:relatum landmark:5ec66ee4-1bb2-456b-bafc-02bf3c88e770 .
-
-<_:N3498f67530fc4d90bf28820a9ee4ab8e> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:dc71e0dd-c531-4556-b433-4c79769c088b ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N3535e7a08ffe4d8fb596e7feb6acd6d2> a add:Change ;
-    add:appliedTo landmark:72d1afeb-b46b-466f-a4cb-96753897f5ce ;
-    add:dependsOn <_:N8e6460a470e54f19a3e1e51ee36c4cc0> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N3708385eb78a4231a21682c1b88a0df8> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 ;
-    add:relatum landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 .
-
-<_:N3c407047818847628cf5ef2b7521577c> a add:Change ;
-    add:appliedTo landmark:dc71e0dd-c531-4556-b433-4c79769c088b ;
-    add:dependsOn <_:N7a7808eb1dbd490082bac21fe8454f5b> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N3d1b63ba66274de7bdc4bd883737c738> a add:Change ;
-    add:appliedTo landmark:8177082a-ed8d-417b-a60f-3e929cd1e97a ;
-    add:dependsOn <_:Na389bd3284fe42aca2662a3455a26def> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N422de20bd11b4259a1dc930d64e3c26d> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N49ce06e73ee24e809fddd0b1027644f3> a add:Change ;
-    add:appliedTo landmark:af64c1e7-5780-4937-a35e-f18cabfafec6 ;
-    add:dependsOn <_:Nf8a722fbe3ef40da836d64dfbb557a0b> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N5294bad1b409419d80cd77bcfa1ac506> a add:Change ;
-    add:appliedTo landmark:87d7c2f6-306b-45a1-a833-5e17821c3102 ;
-    add:dependsOn <_:Na36e5b2922c544de92057b25bb276a1e> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N554572dd5e2f4261a98b1109e535ae0e> a add:Change ;
-    add:appliedTo landmark:21dace9f-5178-4cc4-9588-b3a3e4283272 ;
-    add:dependsOn <_:Nc69921a980ed4cc0b1444ccbc7194f0e> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N55bf30e20fa74b838b9d39db73f2c3b3> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:72d1afeb-b46b-466f-a4cb-96753897f5ce ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N55fc8d5b139048dea442d671c4874fc4> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:0dbf586a-7f6b-4cc1-a873-522a1bd44265 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N578989fe05904d14a1cb89d8e5b3b3ff> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:ae9d96bb-1170-4522-998d-b66c7d8c3775 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N589022ceef7842989a9832bb85995f48> a add:Change ;
-    add:appliedTo landmark:a46424cb-2601-46db-a159-8545c4607ab2 ;
-    add:dependsOn <_:Nf67c65b1aec44dc3935cfc2062a77eaa> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N58f7595beaec4ddb870668891ea0f741> a add:Change ;
-    add:appliedTo landmark:648b7831-50ab-43ac-9396-12529056dc4f ;
-    add:dependsOn <_:N90a17f62f5594db9a6a13f36f2b344e0> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N59acaedecc0443ec9c1eccaad66963e5> a add:Change ;
-    add:appliedTo landmark:5ec66ee4-1bb2-456b-bafc-02bf3c88e770 ;
-    add:dependsOn <_:N6171771343014510850e0e3ce2d3cc36> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N5dfa2f6b1dac44adb1aa12cf3b3b58c8> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:648b7831-50ab-43ac-9396-12529056dc4f ;
-    add:relatum landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b .
-
-<_:N66f3a707f71c446eb59099fa4c1494aa> a add:Change ;
-    add:appliedTo landmark:5d0cd9fe-6b99-416d-a1a3-d532d2d6d6fc ;
-    add:dependsOn <_:N9f6abb296ef8494eadbe406dfb46d976> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N684c410d061c447d8a6c8ea4b5627c0d> a add:Change ;
-    add:appliedTo landmark:54db0315-d4bf-4505-a5c1-cba6ef681c8c ;
-    add:dependsOn <_:N4ceb7527c5ab45dba9bd6c5b5df2e45e> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N6db8b750606c4d3981ed588865b55aa9> a add:Change ;
-    add:appliedTo landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 ;
-    add:dependsOn <_:N60f82bc58b9f4a129d4904d88a2c793b> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N70b1710c65bd4aebbe63ea11448e7230> a add:Change ;
-    add:appliedTo landmark:8177082a-ed8d-417b-a60f-3e929cd1e97a ;
-    add:dependsOn <_:N470f63aa0dff4eadbcd4ea33924c12d6> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N714de4b4dbd34544b3824d7719f99ade> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:56897a8f-3fb1-4ff8-8992-883214285f10 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N71d929ccffc94ac1aeef7a560ab6ef6a> a add:Change ;
-    add:appliedTo landmark:56897a8f-3fb1-4ff8-8992-883214285f10 ;
-    add:dependsOn <_:Na5df81daa65f426889722ae93fa6fb21> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N742157e088054c9a9637dff9125eff4e> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:5fec0a47-aa74-4e02-aa66-77f156ea5327 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N74cbde4385a248119140f97c53ff8fac> a add:Change ;
-    add:appliedTo landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 ;
-    add:dependsOn <_:N6f9de656e5484be4b096351e86d9bacd> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N75db3a884a3c4588be49cc99beebc137> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:13b823a3-a9fe-40d1-b121-b6930d7b2c03 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N783be390bf27442f9818557a235a5455> a add:Change ;
-    add:appliedTo landmark:49e2cb25-9f61-4740-a09c-c307e1f3874f ;
-    add:dependsOn <_:Need4704fd5e3416b813b93ea03c4f922> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N788320cfae9c4bbbbcceea70ad3d9f7b> a add:Change ;
-    add:appliedTo landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b ;
-    add:dependsOn <_:N0f5ebdce9f194646b4dcc083813ecc9e> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N7bfe932762d94528ab95a30afa230886> a add:Change ;
-    add:appliedTo landmark:2f202433-cded-4857-a609-a1e0c548cb27 ;
-    add:dependsOn <_:N868038441cc4436982b027a9dbeb8a99> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N7ce2c95e3d7a48b892d2c797115fd280> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:3904c8d6-366e-4d92-a960-3d9ea46d4912 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N7eb84a4832c54c6b828a1d82a2c8647c> a add:Change ;
-    add:appliedTo landmark:3904c8d6-366e-4d92-a960-3d9ea46d4912 ;
-    add:dependsOn <_:Nbfe1e98af92e4da9a2c8565604091db1> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N803bc65742f444829513f5de9c441d00> a add:Change ;
-    add:appliedTo landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 ;
-    add:dependsOn <_:N9d91b901060e47e894263e1f5d56cc15> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N805ad457e4b240f09d15fd3ebbc00217> a add:Change ;
-    add:appliedTo landmark:13b823a3-a9fe-40d1-b121-b6930d7b2c03 ;
-    add:dependsOn <_:N1f1ab9932fec4283854c23df8d8c15ef> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N83c391b04b204fac84006c5a217d484b> a add:Change ;
-    add:appliedTo landmark:72d1afeb-b46b-466f-a4cb-96753897f5ce ;
-    add:dependsOn <_:N351a2154318b4526afa366cfd2f0b7e4> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N842edb1cf5e04dc19e52fd831a73045d> a add:Change ;
-    add:appliedTo landmark:ae9d96bb-1170-4522-998d-b66c7d8c3775 ;
-    add:dependsOn <_:N84205b2092364740850a2dfb10914201> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N8525da5f444f4afbbf858e8c5146480b> a add:Change ;
-    add:appliedTo landmark:56897a8f-3fb1-4ff8-8992-883214285f10 ;
-    add:dependsOn <_:N5103ad9065af4142829b03e3c14674ab> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N8573237978a947d69bb146a6ff0ba198> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:a46424cb-2601-46db-a159-8545c4607ab2 ;
-    add:relatum landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b .
-
-<_:N86095f130423485595db4b8ecb1d3915> a add:Change ;
-    add:appliedTo landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 ;
-    add:dependsOn <_:N247bf14eade54bcb801f92e2d363849e> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N88304fc7803b49f4afa736df537eeb4a> a add:Change ;
-    add:appliedTo landmark:3ea38f40-82cf-48f9-8ded-53d3c5e92125 ;
-    add:dependsOn <_:N33a8443196254fb1938294c1914d9ecd> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:N88de1eb11a364292bf43ef1bba3156d0> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:3ea38f40-82cf-48f9-8ded-53d3c5e92125 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N906ca90cec25490786851f69772add1c> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:da6a5c2c-e86d-43bb-8950-7169bd0df60a ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N94377ed34bcc4c4a8994784aaffa3a0e> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:5d0cd9fe-6b99-416d-a1a3-d532d2d6d6fc ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N9467082c60ca4c4dbefe68542406e0a5> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:d3299a59-4982-4f6f-bf1d-a2f692c219c4 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:N9836a17766234135a373386bd0bbd161> a add:Change ;
-    add:appliedTo landmark:dc71e0dd-c531-4556-b433-4c79769c088b ;
-    add:dependsOn <_:Neb5f911101ec4399bde6a05141445999> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N9cc050c117214725be635da0bef6a2ae> a add:Change ;
-    add:appliedTo landmark:aea3f2d9-4bc0-4176-ba88-a115a4ed76cc ;
-    add:dependsOn <_:N98596c084053492f964dc2e7df7df992> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:Na31870acbacf4ef4b650166579bdf214> a add:Change ;
-    add:appliedTo landmark:ae9d96bb-1170-4522-998d-b66c7d8c3775 ;
-    add:dependsOn <_:N4af8cd31d09b4df0812d0aa229489fe2> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Na71626d50d30415898a2f129a82942fb> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:87d7c2f6-306b-45a1-a833-5e17821c3102 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:Na76e4a29497d429d905f87292d0788cb> a add:Change ;
-    add:appliedTo landmark:af64c1e7-5780-4937-a35e-f18cabfafec6 ;
-    add:dependsOn <_:N2b6d6f7cc3ac4a2db1fb5098e35bc4cf> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:Nac3f15535f44426bb7dbbe8fa2b1ffe7> a add:Change ;
-    add:appliedTo landmark:3ea38f40-82cf-48f9-8ded-53d3c5e92125 ;
-    add:dependsOn <_:Nfa567c9565c549089c9297e77fb77c51> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:Nae3e94b7489b4fc3879e6ec3dd70a4af> a add:Change ;
-    add:appliedTo landmark:a46424cb-2601-46db-a159-8545c4607ab2 ;
-    add:dependsOn <_:N3954f542736846b6871f17b77a03d376> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:Nb02b1e449b1541ccbd5c56dff193556b> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:IsPartOf ;
-    add:locatum landmark:54db0315-d4bf-4505-a5c1-cba6ef681c8c ;
-    add:relatum landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b .
-
-<_:Nb15427a8c0424e938ef225f60370bbc4> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Along ;
-    add:locatum landmark:9a31660f-44c6-47dd-8cf4-17b08110f525 ;
-    add:relatum landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 .
-
-<_:Nb1d16ef8b1544d3882363d06463a4236> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:8aeca660-ee93-4fef-b98a-026735807d82 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:Nb512061afd304ee7aa8078a10587f488> a add:Change ;
-    add:appliedTo landmark:da6a5c2c-e86d-43bb-8950-7169bd0df60a ;
-    add:dependsOn <_:N31bda3ea35614e56b9b38d921905a700> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Nb5edcdb9ba1b464c89bbe3c6b44f1b2a> a add:Change ;
-    add:appliedTo landmark:648b7831-50ab-43ac-9396-12529056dc4f ;
-    add:dependsOn <_:N32f31c17f23b4c8cb1ab211664da58a5> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:Nb61b72f31dba4125bb68cf63d270ce38> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:af64c1e7-5780-4937-a35e-f18cabfafec6 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:Nb9014a65da7f4340a7d2d0db14e635a5> a add:Change ;
-    add:appliedTo landmark:aea3f2d9-4bc0-4176-ba88-a115a4ed76cc ;
-    add:dependsOn <_:N6a89e58238724b52a27cb210eb040744> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Nc3ca9c5f8a874d359cfbffab4f649bc6> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:21dace9f-5178-4cc4-9588-b3a3e4283272 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:Nc4814a07ff214bd0a9d244c5319b0459> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:23f82e12-bcad-49b8-bb09-6a538496b72f ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:Nc7ff31dc6ce0478784df3a2192fc1a4e> a add:Change ;
-    add:appliedTo landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 ;
-    add:dependsOn <_:N6b896856783245aaa10fc8ae33bb8def> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:Nca6a3a1c696048d5a89f549c7c3aca57> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:2f202433-cded-4857-a609-a1e0c548cb27 ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:Ncccd1e97eb8d4449a2a00f0f7d186195> a add:Change ;
-    add:appliedTo landmark:d3299a59-4982-4f6f-bf1d-a2f692c219c4 ;
-    add:dependsOn <_:N659ce547b60447bf86091d94584f00ad> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Ncee68691d1d5415ebf0d62aff909185f> a add:Change ;
-    add:appliedTo landmark:13b823a3-a9fe-40d1-b121-b6930d7b2c03 ;
-    add:dependsOn <_:N0088f6a35ea4486f8bed1aefa4ec198f> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Nd1ba12bdfe4c40eda6e3af08195dc499> a add:Change ;
-    add:appliedTo landmark:393aa8b1-e60f-43b7-9c9e-9737ad804edd ;
-    add:dependsOn <_:N5d7f648351084f5196950a25ef5afd95> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Nd23188c47030444a86c0e0911b8270f4> a add:Change ;
-    add:appliedTo landmark:5fec0a47-aa74-4e02-aa66-77f156ea5327 ;
-    add:dependsOn <_:N2bb3916086254bc3b3aa3c0096e3f6ab> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:Nd467f855a0ad4c0184532715b1e26f54> a add:Change ;
-    add:appliedTo landmark:54db0315-d4bf-4505-a5c1-cba6ef681c8c ;
-    add:dependsOn <_:N1e066ddc284a44a191e9e71c4dcb6c06> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Ne06f5342cc494bffa347cddb4f8679eb> a add:Change ;
-    add:appliedTo landmark:49e2cb25-9f61-4740-a09c-c307e1f3874f ;
-    add:dependsOn <_:Neae8bf513c2a475ebf2c9e72117fea2c> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Ne17cff9d3d4f451cacd2bd18d6861669> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 ;
-    add:relatum landmark:a46424cb-2601-46db-a159-8545c4607ab2 .
-
-<_:Ne51c83ab46a54b1ab132ddf5213a12ca> a add:Change ;
-    add:appliedTo landmark:393aa8b1-e60f-43b7-9c9e-9737ad804edd ;
-    add:dependsOn <_:Ndfc0c1e052d24685bade816a2834d491> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:Ne76b6baa7c394d3bb9b3c6f638834f2e> a add:Change ;
-    add:appliedTo landmark:87d7c2f6-306b-45a1-a833-5e17821c3102 ;
-    add:dependsOn <_:N7d4029ebd276412e9e82c98f55bbbbe3> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Nee05770563f347e2908b8057d2f5739a> a add:LandmarkRelation ;
-    add:isLandmarkRelationType lrtype:Within ;
-    add:locatum landmark:aea3f2d9-4bc0-4176-ba88-a115a4ed76cc ;
-    add:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
-
-<_:Nf0dc09f9fdfb4c7ba157b0868300b5eb> a add:Change ;
-    add:appliedTo landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 ;
-    add:dependsOn <_:Nb02f17cac51440dc85e478887758329a> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Nf21dbe55434f43f3b07f7215fb699b70> a add:Change ;
-    add:appliedTo landmark:5ec66ee4-1bb2-456b-bafc-02bf3c88e770 ;
-    add:dependsOn <_:N22d98e4d088c48cd87f80766760623fd> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Nf5f9da5e640842c784175bbf8825ca76> a add:Change ;
-    add:appliedTo landmark:23f82e12-bcad-49b8-bb09-6a538496b72f ;
-    add:dependsOn <_:N4f4e25c8ca6b4ecb95f4d2607ac1c703> ;
-    add:isChangeType ctype:LandmarkAppearance .
-
-<_:Nf99208239a05427b81bb3505c232b25f> a add:Change ;
-    add:appliedTo landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b ;
-    add:dependsOn <_:N9fe2d44ceb6446d9af59430c7489b0af> ;
-    add:isChangeType ctype:LandmarkDisappearance .
-
-<_:N0088f6a35ea4486f8bed1aefa4ec198f> a add:Event ;
-    add:hasTime <_:N917890699f4f4ecaa08528076b2ca1d0> .
-
-<_:N01995b2bcc1247f9b8aba90c91bfe310> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N075ab97543474d749942a86cccfe6b09> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N0bf9df1e7b744142a4c7b94a58cd6610> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N0f5ebdce9f194646b4dcc083813ecc9e> a add:Event ;
-    add:hasTime <_:Nf2e90165369949d094fcfbb86b23168c> .
-
-<_:N172a1f27deb841419f89ea5cc13ea6a8> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N178d6b9055f940a785d843ab031fa13e> a add:Event .
-
-<_:N1e05de5bdbc846b8be4ae7f4a8174514> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N1e066ddc284a44a191e9e71c4dcb6c06> a add:Event .
-
-<_:N1f1ab9932fec4283854c23df8d8c15ef> a add:Event .
-
-<_:N21d2992724f74ad793b3d1a350609d5a> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1967-12-31T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N22d98e4d088c48cd87f80766760623fd> a add:Event ;
-    add:hasTime <_:N4d2530314aee411fa2de9333f2587b36> .
-
-<_:N247bf14eade54bcb801f92e2d363849e> a add:Event .
-
-<_:N2b6d6f7cc3ac4a2db1fb5098e35bc4cf> a add:Event .
-
-<_:N2bb3916086254bc3b3aa3c0096e3f6ab> a add:Event .
-
-<_:N2e113d512f684dceba156db67dc295ba> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N31bda3ea35614e56b9b38d921905a700> a add:Event ;
-    add:hasTime <_:Nf56894f1f37b4b20a358618b86776016> .
-
-<_:N32f31c17f23b4c8cb1ab211664da58a5> a add:Event .
-
-<_:N33a8443196254fb1938294c1914d9ecd> a add:Event ;
-    add:hasTime <_:Nc362bb98e9924e43a5d2f79c10367a88> .
-
-<_:N351a2154318b4526afa366cfd2f0b7e4> a add:Event ;
-    add:hasTime <_:N8f94c674dc6d4c9391d3a6c3414990cd> .
-
-<_:N3954f542736846b6871f17b77a03d376> a add:Event ;
-    add:hasTime <_:Ne43df11fb8404e449ceb96aae83110d5> .
-
-<_:N3ca5b6fbbe12482c9fc31306a996faad> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N3e2fb3cef50144d292edc5222f6ecaec> a add:Event .
-
-<_:N45b4cd16659e492db44833eaf5b9e828> a add:Event ;
-    add:hasTime <_:N9781b410b5684e398519651885649fd9> .
-
-<_:N470f63aa0dff4eadbcd4ea33924c12d6> a add:Event .
-
-<_:N483bec7a02a345bbbebfc9c309a88d3e> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N4af8cd31d09b4df0812d0aa229489fe2> a add:Event ;
-    add:hasTime <_:Nb3728b03383a4c42b70255de6d109c1d> .
-
-<_:N4b6a1ccd87be4d66aecb6825c346f1b3> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N4ceb7527c5ab45dba9bd6c5b5df2e45e> a add:Event .
-
-<_:N4d2530314aee411fa2de9333f2587b36> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1967-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N4e90e3c1225145d0979ed70853c67341> a add:Event ;
-    add:hasTime <_:N971e30e728b54706b98b10ac815f43e8> .
-
-<_:N4f4e25c8ca6b4ecb95f4d2607ac1c703> a add:Event ;
-    add:hasTime <_:N1e05de5bdbc846b8be4ae7f4a8174514> .
-
-<_:N5103ad9065af4142829b03e3c14674ab> a add:Event ;
-    add:hasTime <_:N172a1f27deb841419f89ea5cc13ea6a8> .
-
-<_:N5d7f648351084f5196950a25ef5afd95> a add:Event ;
-    add:hasTime <_:N0bf9df1e7b744142a4c7b94a58cd6610> .
-
-<_:N60f82bc58b9f4a129d4904d88a2c793b> a add:Event ;
-    add:hasTime <_:Nf0217ce31b6f40908438e47b4603b490> .
-
-<_:N6171771343014510850e0e3ce2d3cc36> a add:Event .
-
-<_:N64d783a330484c3091d349fb8cbaa9c1> a add:Event .
-
-<_:N659ce547b60447bf86091d94584f00ad> a add:Event ;
-    add:hasTime <_:N8dc17a13e222421e81c240549b6c78f7> .
-
-<_:N6a89e58238724b52a27cb210eb040744> a add:Event ;
-    add:hasTime <_:Nfe1e0a0fae98408db43168394c8937b2> .
-
-<_:N6b896856783245aaa10fc8ae33bb8def> a add:Event .
-
-<_:N6f9de656e5484be4b096351e86d9bacd> a add:Event ;
-    add:hasTime <_:N71944e5df73e4a308122b699e4752442> .
-
-<_:N7162056cbcd349ee8f923576a40577f9> a add:Event .
-
-<_:N71944e5df73e4a308122b699e4752442> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1789-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N72e289c2808846ddacf2447a266532c2> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1967-12-31T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N7a7808eb1dbd490082bac21fe8454f5b> a add:Event ;
-    add:hasTime <_:Nf289a8112b9841a383a3b7e12e5602b4> .
-
-<_:N7d4029ebd276412e9e82c98f55bbbbe3> a add:Event ;
-    add:hasTime <_:Na06f9fc69c934c179978a590f7390cab> .
-
-<_:N8302444e072a48268e291f9597a534a1> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N84205b2092364740850a2dfb10914201> a add:Event .
-
-<_:N868038441cc4436982b027a9dbeb8a99> a add:Event ;
-    add:hasTime <_:N01995b2bcc1247f9b8aba90c91bfe310> .
-
-<_:N8dc17a13e222421e81c240549b6c78f7> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N8e6460a470e54f19a3e1e51ee36c4cc0> a add:Event ;
-    add:hasTime <_:N3ca5b6fbbe12482c9fc31306a996faad> .
-
-<_:N8f94c674dc6d4c9391d3a6c3414990cd> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N8fbf02560a1a45e08079452cb5c57cd2> a add:Event ;
-    add:hasTime <_:Nb573f989e00c44e7989e876e6785edb1> .
-
-<_:N90a17f62f5594db9a6a13f36f2b344e0> a add:Event ;
-    add:hasTime <_:Nd0dcea1bf03347e7bc9fe2ca7241559c> .
-
-<_:N917890699f4f4ecaa08528076b2ca1d0> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N958939a531aa4374b95d3a419f1a52e5> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1789-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N971e30e728b54706b98b10ac815f43e8> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N9781b410b5684e398519651885649fd9> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:N98596c084053492f964dc2e7df7df992> a add:Event .
-
-<_:N988e119804104f27ba539fbfe8d137a5> a add:Event ;
-    add:hasTime <_:Na945d970b9e14ef7b858b268a6ae5956> .
-
-<_:N9b8747f9ddd64fd48bbee4b28308df6e> a add:Event .
-
-<_:N9c496dfbf5e84a0b8977112af6c754eb> a add:Event .
-
-<_:N9c60dcc8ba724b71933c343968cc1236> a add:Event .
-
-<_:N9d91b901060e47e894263e1f5d56cc15> a add:Event ;
-    add:hasTime <_:N72e289c2808846ddacf2447a266532c2> .
-
-<_:N9f6abb296ef8494eadbe406dfb46d976> a add:Event .
-
-<_:N9fe2d44ceb6446d9af59430c7489b0af> a add:Event ;
-    add:hasTime <_:N21d2992724f74ad793b3d1a350609d5a> .
-
-<_:Na06f9fc69c934c179978a590f7390cab> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Na36e5b2922c544de92057b25bb276a1e> a add:Event ;
-    add:hasTime <_:N075ab97543474d749942a86cccfe6b09> .
-
-<_:Na389bd3284fe42aca2662a3455a26def> a add:Event ;
-    add:hasTime <_:N958939a531aa4374b95d3a419f1a52e5> .
-
-<_:Na5df81daa65f426889722ae93fa6fb21> a add:Event ;
-    add:hasTime <_:N8302444e072a48268e291f9597a534a1> .
-
-<_:Na945d970b9e14ef7b858b268a6ae5956> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Naa7b3890524e401f825a71737f14750a> a add:Event .
-
-<_:Nb02f17cac51440dc85e478887758329a> a add:Event .
-
-<_:Nb2aae54144d2459fa825064cbd4d9a7d> a add:Event .
-
-<_:Nb3728b03383a4c42b70255de6d109c1d> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Nb573f989e00c44e7989e876e6785edb1> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Nbfe1e98af92e4da9a2c8565604091db1> a add:Event ;
-    add:hasTime <_:Ne5826d3e9d8f4459a659efe18e1b3d9e> .
-
-<_:Nc362bb98e9924e43a5d2f79c10367a88> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Nc69921a980ed4cc0b1444ccbc7194f0e> a add:Event ;
-    add:hasTime <_:Nd0365ea4bcc44bd7828905cd2abb6de5> .
-
-<_:Nd0365ea4bcc44bd7828905cd2abb6de5> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Nd0dcea1bf03347e7bc9fe2ca7241559c> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1789-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Nd77ed4c5360d4b3a93b49413e40e459e> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1800-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Ndfc0c1e052d24685bade816a2834d491> a add:Event .
-
-<_:Ndfec6e7457b34c62bb313f60780083f7> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Ne43df11fb8404e449ceb96aae83110d5> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1967-12-31T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Ne5826d3e9d8f4459a659efe18e1b3d9e> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Ne858cfcbb97349cfbbcb758c8d8ca231> a add:Event ;
-    add:hasTime <_:N4b6a1ccd87be4d66aecb6825c346f1b3> .
-
-<_:Neae8bf513c2a475ebf2c9e72117fea2c> a add:Event ;
-    add:hasTime <_:N2e113d512f684dceba156db67dc295ba> .
-
-<_:Neb5f911101ec4399bde6a05141445999> a add:Event .
-
-<_:Need4704fd5e3416b813b93ea03c4f922> a add:Event .
-
-<_:Nf0217ce31b6f40908438e47b4603b490> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1800-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Nf289a8112b9841a383a3b7e12e5602b4> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Nf2e90165369949d094fcfbb86b23168c> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1795-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Nf56894f1f37b4b20a358618b86776016> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-<_:Nf67c65b1aec44dc3935cfc2062a77eaa> a add:Event ;
-    add:hasTime <_:Nd77ed4c5360d4b3a93b49413e40e459e> .
-
-<_:Nf8a722fbe3ef40da836d64dfbb557a0b> a add:Event ;
-    add:hasTime <_:N483bec7a02a345bbbebfc9c309a88d3e> .
-
-<_:Nfa567c9565c549089c9297e77fb77c51> a add:Event ;
-    add:hasTime <_:Ndfec6e7457b34c62bb313f60780083f7> .
-
-<_:Nfe1e0a0fae98408db43168394c8937b2> a add:TimeInstant ;
-    add:timeCalendar time:Gregorian ;
-    add:timePrecision time:Year ;
-    add:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
-
-landmark:0dbf586a-7f6b-4cc1-a873-522a1bd44265 a add:Landmark ;
+<_:N0490959506f8423e9901fa92b8709e9c> a addr:Change ;
+    addr:appliedTo landmark:8aeca660-ee93-4fef-b98a-026735807d82 ;
+    addr:dependsOn <_:N988e119804104f27ba539fbfe8d137a5> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N06108696942a447eb7bdcee20c052c7c> a addr:Change ;
+    addr:appliedTo landmark:9a31660f-44c6-47dd-8cf4-17b08110f525 ;
+    addr:dependsOn <_:N7162056cbcd349ee8f923576a40577f9> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N07cafe0f27e643d6bd80e6bb688a6f11> a addr:Change ;
+    addr:appliedTo landmark:da6a5c2c-e86d-43bb-8950-7169bd0df60a ;
+    addr:dependsOn <_:N178d6b9055f940a785d843ab031fa13e> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N083cd208688641ceab2ef12e0d878eec> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:49e2cb25-9f61-4740-a09c-c307e1f3874f ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N0be9989df16f43698c72686f433b72ea> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:393aa8b1-e60f-43b7-9c9e-9737ad804edd ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N0dffb13d09124cb3be965061f4a66f02> a addr:Change ;
+    addr:appliedTo landmark:5d0cd9fe-6b99-416d-a1a3-d532d2d6d6fc ;
+    addr:dependsOn <_:N4e90e3c1225145d0979ed70853c67341> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N0e695ab027ab407a959a0d4866f4fe27> a addr:Change ;
+    addr:appliedTo landmark:0dbf586a-7f6b-4cc1-a873-522a1bd44265 ;
+    addr:dependsOn <_:Ne858cfcbb97349cfbbcb758c8d8ca231> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N0f2eb2d5a9784caebb34462a8701065e> a addr:Change ;
+    addr:appliedTo landmark:d3299a59-4982-4f6f-bf1d-a2f692c219c4 ;
+    addr:dependsOn <_:N8fbf02560a1a45e08079452cb5c57cd2> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N122be87fcdfd46f596dfcc7008921562> a addr:Change ;
+    addr:appliedTo landmark:2f202433-cded-4857-a609-a1e0c548cb27 ;
+    addr:dependsOn <_:N9c496dfbf5e84a0b8977112af6c754eb> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N152387e287a44d25a6d51c44c87ae971> a addr:Change ;
+    addr:appliedTo landmark:9a31660f-44c6-47dd-8cf4-17b08110f525 ;
+    addr:dependsOn <_:N9c60dcc8ba724b71933c343968cc1236> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N173a9d58707d4446892c5bf1aa6d15c4> a addr:Change ;
+    addr:appliedTo landmark:21dace9f-5178-4cc4-9588-b3a3e4283272 ;
+    addr:dependsOn <_:N9b8747f9ddd64fd48bbee4b28308df6e> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N18d0533edb6b4e9aa13a029f2379507d> a addr:Change ;
+    addr:appliedTo landmark:5fec0a47-aa74-4e02-aa66-77f156ea5327 ;
+    addr:dependsOn <_:N45b4cd16659e492db44833eaf5b9e828> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N1db1be766d1642868eae395ef65b0e88> a addr:Change ;
+    addr:appliedTo landmark:0dbf586a-7f6b-4cc1-a873-522a1bd44265 ;
+    addr:dependsOn <_:N3e2fb3cef50144d292edc5222f6ecaec> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N1e05949236944dd6854e85c8669584a0> a addr:Change ;
+    addr:appliedTo landmark:3904c8d6-366e-4d92-a960-3d9ea46d4912 ;
+    addr:dependsOn <_:N64d783a330484c3091d349fb8cbaa9c1> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N234c491040934057ac4b2eb4bbf96a46> a addr:Change ;
+    addr:appliedTo landmark:23f82e12-bcad-49b8-bb09-6a538496b72f ;
+    addr:dependsOn <_:Nb2aae54144d2459fa825064cbd4d9a7d> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N29989df7ba594ba2ab39558ca65c39f3> a addr:Change ;
+    addr:appliedTo landmark:8aeca660-ee93-4fef-b98a-026735807d82 ;
+    addr:dependsOn <_:Naa7b3890524e401f825a71737f14750a> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N33a7799788b44bd8962067f073b5e9b5> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:8177082a-ed8d-417b-a60f-3e929cd1e97a ;
+    addr:relatum landmark:5ec66ee4-1bb2-456b-bafc-02bf3c88e770 .
+
+<_:N3498f67530fc4d90bf28820a9ee4ab8e> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:dc71e0dd-c531-4556-b433-4c79769c088b ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N3535e7a08ffe4d8fb596e7feb6acd6d2> a addr:Change ;
+    addr:appliedTo landmark:72d1afeb-b46b-466f-a4cb-96753897f5ce ;
+    addr:dependsOn <_:N8e6460a470e54f19a3e1e51ee36c4cc0> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N3708385eb78a4231a21682c1b88a0df8> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 ;
+    addr:relatum landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 .
+
+<_:N3c407047818847628cf5ef2b7521577c> a addr:Change ;
+    addr:appliedTo landmark:dc71e0dd-c531-4556-b433-4c79769c088b ;
+    addr:dependsOn <_:N7a7808eb1dbd490082bac21fe8454f5b> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N3d1b63ba66274de7bdc4bd883737c738> a addr:Change ;
+    addr:appliedTo landmark:8177082a-ed8d-417b-a60f-3e929cd1e97a ;
+    addr:dependsOn <_:Na389bd3284fe42aca2662a3455a26def> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N422de20bd11b4259a1dc930d64e3c26d> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N49ce06e73ee24e809fddd0b1027644f3> a addr:Change ;
+    addr:appliedTo landmark:af64c1e7-5780-4937-a35e-f18cabfafec6 ;
+    addr:dependsOn <_:Nf8a722fbe3ef40da836d64dfbb557a0b> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N5294bad1b409419d80cd77bcfa1ac506> a addr:Change ;
+    addr:appliedTo landmark:87d7c2f6-306b-45a1-a833-5e17821c3102 ;
+    addr:dependsOn <_:Na36e5b2922c544de92057b25bb276a1e> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N554572dd5e2f4261a98b1109e535ae0e> a addr:Change ;
+    addr:appliedTo landmark:21dace9f-5178-4cc4-9588-b3a3e4283272 ;
+    addr:dependsOn <_:Nc69921a980ed4cc0b1444ccbc7194f0e> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N55bf30e20fa74b838b9d39db73f2c3b3> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:72d1afeb-b46b-466f-a4cb-96753897f5ce ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N55fc8d5b139048dea442d671c4874fc4> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:0dbf586a-7f6b-4cc1-a873-522a1bd44265 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N578989fe05904d14a1cb89d8e5b3b3ff> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:ae9d96bb-1170-4522-998d-b66c7d8c3775 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N589022ceef7842989a9832bb85995f48> a addr:Change ;
+    addr:appliedTo landmark:a46424cb-2601-46db-a159-8545c4607ab2 ;
+    addr:dependsOn <_:Nf67c65b1aec44dc3935cfc2062a77eaa> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N58f7595beaec4ddb870668891ea0f741> a addr:Change ;
+    addr:appliedTo landmark:648b7831-50ab-43ac-9396-12529056dc4f ;
+    addr:dependsOn <_:N90a17f62f5594db9a6a13f36f2b344e0> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N59acaedecc0443ec9c1eccaad66963e5> a addr:Change ;
+    addr:appliedTo landmark:5ec66ee4-1bb2-456b-bafc-02bf3c88e770 ;
+    addr:dependsOn <_:N6171771343014510850e0e3ce2d3cc36> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N5dfa2f6b1dac44adb1aa12cf3b3b58c8> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:648b7831-50ab-43ac-9396-12529056dc4f ;
+    addr:relatum landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b .
+
+<_:N66f3a707f71c446eb59099fa4c1494aa> a addr:Change ;
+    addr:appliedTo landmark:5d0cd9fe-6b99-416d-a1a3-d532d2d6d6fc ;
+    addr:dependsOn <_:N9f6abb296ef8494eadbe406dfb46d976> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N684c410d061c447d8a6c8ea4b5627c0d> a addr:Change ;
+    addr:appliedTo landmark:54db0315-d4bf-4505-a5c1-cba6ef681c8c ;
+    addr:dependsOn <_:N4ceb7527c5ab45dba9bd6c5b5df2e45e> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N6db8b750606c4d3981ed588865b55aa9> a addr:Change ;
+    addr:appliedTo landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 ;
+    addr:dependsOn <_:N60f82bc58b9f4a129d4904d88a2c793b> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N70b1710c65bd4aebbe63ea11448e7230> a addr:Change ;
+    addr:appliedTo landmark:8177082a-ed8d-417b-a60f-3e929cd1e97a ;
+    addr:dependsOn <_:N470f63aa0dff4eadbcd4ea33924c12d6> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N714de4b4dbd34544b3824d7719f99ade> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:56897a8f-3fb1-4ff8-8992-883214285f10 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N71d929ccffc94ac1aeef7a560ab6ef6a> a addr:Change ;
+    addr:appliedTo landmark:56897a8f-3fb1-4ff8-8992-883214285f10 ;
+    addr:dependsOn <_:Na5df81daa65f426889722ae93fa6fb21> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N742157e088054c9a9637dff9125eff4e> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:5fec0a47-aa74-4e02-aa66-77f156ea5327 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N74cbde4385a248119140f97c53ff8fac> a addr:Change ;
+    addr:appliedTo landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 ;
+    addr:dependsOn <_:N6f9de656e5484be4b096351e86d9bacd> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N75db3a884a3c4588be49cc99beebc137> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:13b823a3-a9fe-40d1-b121-b6930d7b2c03 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N783be390bf27442f9818557a235a5455> a addr:Change ;
+    addr:appliedTo landmark:49e2cb25-9f61-4740-a09c-c307e1f3874f ;
+    addr:dependsOn <_:Need4704fd5e3416b813b93ea03c4f922> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N788320cfae9c4bbbbcceea70ad3d9f7b> a addr:Change ;
+    addr:appliedTo landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b ;
+    addr:dependsOn <_:N0f5ebdce9f194646b4dcc083813ecc9e> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N7bfe932762d94528ab95a30afa230886> a addr:Change ;
+    addr:appliedTo landmark:2f202433-cded-4857-a609-a1e0c548cb27 ;
+    addr:dependsOn <_:N868038441cc4436982b027a9dbeb8a99> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N7ce2c95e3d7a48b892d2c797115fd280> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:3904c8d6-366e-4d92-a960-3d9ea46d4912 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N7eb84a4832c54c6b828a1d82a2c8647c> a addr:Change ;
+    addr:appliedTo landmark:3904c8d6-366e-4d92-a960-3d9ea46d4912 ;
+    addr:dependsOn <_:Nbfe1e98af92e4da9a2c8565604091db1> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N803bc65742f444829513f5de9c441d00> a addr:Change ;
+    addr:appliedTo landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 ;
+    addr:dependsOn <_:N9d91b901060e47e894263e1f5d56cc15> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N805ad457e4b240f09d15fd3ebbc00217> a addr:Change ;
+    addr:appliedTo landmark:13b823a3-a9fe-40d1-b121-b6930d7b2c03 ;
+    addr:dependsOn <_:N1f1ab9932fec4283854c23df8d8c15ef> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N83c391b04b204fac84006c5a217d484b> a addr:Change ;
+    addr:appliedTo landmark:72d1afeb-b46b-466f-a4cb-96753897f5ce ;
+    addr:dependsOn <_:N351a2154318b4526afa366cfd2f0b7e4> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N842edb1cf5e04dc19e52fd831a73045d> a addr:Change ;
+    addr:appliedTo landmark:ae9d96bb-1170-4522-998d-b66c7d8c3775 ;
+    addr:dependsOn <_:N84205b2092364740850a2dfb10914201> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N8525da5f444f4afbbf858e8c5146480b> a addr:Change ;
+    addr:appliedTo landmark:56897a8f-3fb1-4ff8-8992-883214285f10 ;
+    addr:dependsOn <_:N5103ad9065af4142829b03e3c14674ab> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N8573237978a947d69bb146a6ff0ba198> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:a46424cb-2601-46db-a159-8545c4607ab2 ;
+    addr:relatum landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b .
+
+<_:N86095f130423485595db4b8ecb1d3915> a addr:Change ;
+    addr:appliedTo landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 ;
+    addr:dependsOn <_:N247bf14eade54bcb801f92e2d363849e> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N88304fc7803b49f4afa736df537eeb4a> a addr:Change ;
+    addr:appliedTo landmark:3ea38f40-82cf-48f9-8ded-53d3c5e92125 ;
+    addr:dependsOn <_:N33a8443196254fb1938294c1914d9ecd> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:N88de1eb11a364292bf43ef1bba3156d0> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:3ea38f40-82cf-48f9-8ded-53d3c5e92125 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N906ca90cec25490786851f69772add1c> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:da6a5c2c-e86d-43bb-8950-7169bd0df60a ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N94377ed34bcc4c4a8994784aaffa3a0e> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:5d0cd9fe-6b99-416d-a1a3-d532d2d6d6fc ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N9467082c60ca4c4dbefe68542406e0a5> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:d3299a59-4982-4f6f-bf1d-a2f692c219c4 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:N9836a17766234135a373386bd0bbd161> a addr:Change ;
+    addr:appliedTo landmark:dc71e0dd-c531-4556-b433-4c79769c088b ;
+    addr:dependsOn <_:Neb5f911101ec4399bde6a05141445999> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N9cc050c117214725be635da0bef6a2ae> a addr:Change ;
+    addr:appliedTo landmark:aea3f2d9-4bc0-4176-ba88-a115a4ed76cc ;
+    addr:dependsOn <_:N98596c084053492f964dc2e7df7df992> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:Na31870acbacf4ef4b650166579bdf214> a addr:Change ;
+    addr:appliedTo landmark:ae9d96bb-1170-4522-998d-b66c7d8c3775 ;
+    addr:dependsOn <_:N4af8cd31d09b4df0812d0aa229489fe2> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Na71626d50d30415898a2f129a82942fb> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:87d7c2f6-306b-45a1-a833-5e17821c3102 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:Na76e4a29497d429d905f87292d0788cb> a addr:Change ;
+    addr:appliedTo landmark:af64c1e7-5780-4937-a35e-f18cabfafec6 ;
+    addr:dependsOn <_:N2b6d6f7cc3ac4a2db1fb5098e35bc4cf> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:Nac3f15535f44426bb7dbbe8fa2b1ffe7> a addr:Change ;
+    addr:appliedTo landmark:3ea38f40-82cf-48f9-8ded-53d3c5e92125 ;
+    addr:dependsOn <_:Nfa567c9565c549089c9297e77fb77c51> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:Nae3e94b7489b4fc3879e6ec3dd70a4af> a addr:Change ;
+    addr:appliedTo landmark:a46424cb-2601-46db-a159-8545c4607ab2 ;
+    addr:dependsOn <_:N3954f542736846b6871f17b77a03d376> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:Nb02b1e449b1541ccbd5c56dff193556b> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:IsPartOf ;
+    addr:locatum landmark:54db0315-d4bf-4505-a5c1-cba6ef681c8c ;
+    addr:relatum landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b .
+
+<_:Nb15427a8c0424e938ef225f60370bbc4> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Along ;
+    addr:locatum landmark:9a31660f-44c6-47dd-8cf4-17b08110f525 ;
+    addr:relatum landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 .
+
+<_:Nb1d16ef8b1544d3882363d06463a4236> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:8aeca660-ee93-4fef-b98a-026735807d82 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:Nb512061afd304ee7aa8078a10587f488> a addr:Change ;
+    addr:appliedTo landmark:da6a5c2c-e86d-43bb-8950-7169bd0df60a ;
+    addr:dependsOn <_:N31bda3ea35614e56b9b38d921905a700> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Nb5edcdb9ba1b464c89bbe3c6b44f1b2a> a addr:Change ;
+    addr:appliedTo landmark:648b7831-50ab-43ac-9396-12529056dc4f ;
+    addr:dependsOn <_:N32f31c17f23b4c8cb1ab211664da58a5> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:Nb61b72f31dba4125bb68cf63d270ce38> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:af64c1e7-5780-4937-a35e-f18cabfafec6 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:Nb9014a65da7f4340a7d2d0db14e635a5> a addr:Change ;
+    addr:appliedTo landmark:aea3f2d9-4bc0-4176-ba88-a115a4ed76cc ;
+    addr:dependsOn <_:N6a89e58238724b52a27cb210eb040744> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Nc3ca9c5f8a874d359cfbffab4f649bc6> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:21dace9f-5178-4cc4-9588-b3a3e4283272 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:Nc4814a07ff214bd0a9d244c5319b0459> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:23f82e12-bcad-49b8-bb09-6a538496b72f ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:Nc7ff31dc6ce0478784df3a2192fc1a4e> a addr:Change ;
+    addr:appliedTo landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 ;
+    addr:dependsOn <_:N6b896856783245aaa10fc8ae33bb8def> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:Nca6a3a1c696048d5a89f549c7c3aca57> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:2f202433-cded-4857-a609-a1e0c548cb27 ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:Ncccd1e97eb8d4449a2a00f0f7d186195> a addr:Change ;
+    addr:appliedTo landmark:d3299a59-4982-4f6f-bf1d-a2f692c219c4 ;
+    addr:dependsOn <_:N659ce547b60447bf86091d94584f00ad> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Ncee68691d1d5415ebf0d62aff909185f> a addr:Change ;
+    addr:appliedTo landmark:13b823a3-a9fe-40d1-b121-b6930d7b2c03 ;
+    addr:dependsOn <_:N0088f6a35ea4486f8bed1aefa4ec198f> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Nd1ba12bdfe4c40eda6e3af08195dc499> a addr:Change ;
+    addr:appliedTo landmark:393aa8b1-e60f-43b7-9c9e-9737ad804edd ;
+    addr:dependsOn <_:N5d7f648351084f5196950a25ef5afd95> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Nd23188c47030444a86c0e0911b8270f4> a addr:Change ;
+    addr:appliedTo landmark:5fec0a47-aa74-4e02-aa66-77f156ea5327 ;
+    addr:dependsOn <_:N2bb3916086254bc3b3aa3c0096e3f6ab> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:Nd467f855a0ad4c0184532715b1e26f54> a addr:Change ;
+    addr:appliedTo landmark:54db0315-d4bf-4505-a5c1-cba6ef681c8c ;
+    addr:dependsOn <_:N1e066ddc284a44a191e9e71c4dcb6c06> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Ne06f5342cc494bffa347cddb4f8679eb> a addr:Change ;
+    addr:appliedTo landmark:49e2cb25-9f61-4740-a09c-c307e1f3874f ;
+    addr:dependsOn <_:Neae8bf513c2a475ebf2c9e72117fea2c> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Ne17cff9d3d4f451cacd2bd18d6861669> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 ;
+    addr:relatum landmark:a46424cb-2601-46db-a159-8545c4607ab2 .
+
+<_:Ne51c83ab46a54b1ab132ddf5213a12ca> a addr:Change ;
+    addr:appliedTo landmark:393aa8b1-e60f-43b7-9c9e-9737ad804edd ;
+    addr:dependsOn <_:Ndfc0c1e052d24685bade816a2834d491> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:Ne76b6baa7c394d3bb9b3c6f638834f2e> a addr:Change ;
+    addr:appliedTo landmark:87d7c2f6-306b-45a1-a833-5e17821c3102 ;
+    addr:dependsOn <_:N7d4029ebd276412e9e82c98f55bbbbe3> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Nee05770563f347e2908b8057d2f5739a> a addr:LandmarkRelation ;
+    addr:isLandmarkRelationType lrtype:Within ;
+    addr:locatum landmark:aea3f2d9-4bc0-4176-ba88-a115a4ed76cc ;
+    addr:relatum landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 .
+
+<_:Nf0dc09f9fdfb4c7ba157b0868300b5eb> a addr:Change ;
+    addr:appliedTo landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 ;
+    addr:dependsOn <_:Nb02f17cac51440dc85e478887758329a> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Nf21dbe55434f43f3b07f7215fb699b70> a addr:Change ;
+    addr:appliedTo landmark:5ec66ee4-1bb2-456b-bafc-02bf3c88e770 ;
+    addr:dependsOn <_:N22d98e4d088c48cd87f80766760623fd> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Nf5f9da5e640842c784175bbf8825ca76> a addr:Change ;
+    addr:appliedTo landmark:23f82e12-bcad-49b8-bb09-6a538496b72f ;
+    addr:dependsOn <_:N4f4e25c8ca6b4ecb95f4d2607ac1c703> ;
+    addr:isChangeType ctype:LandmarkAppearance .
+
+<_:Nf99208239a05427b81bb3505c232b25f> a addr:Change ;
+    addr:appliedTo landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b ;
+    addr:dependsOn <_:N9fe2d44ceb6446d9af59430c7489b0af> ;
+    addr:isChangeType ctype:LandmarkDisappearance .
+
+<_:N0088f6a35ea4486f8bed1aefa4ec198f> a addr:Event ;
+    addr:hasTime <_:N917890699f4f4ecaa08528076b2ca1d0> .
+
+<_:N01995b2bcc1247f9b8aba90c91bfe310> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N075ab97543474d749942a86cccfe6b09> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N0bf9df1e7b744142a4c7b94a58cd6610> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N0f5ebdce9f194646b4dcc083813ecc9e> a addr:Event ;
+    addr:hasTime <_:Nf2e90165369949d094fcfbb86b23168c> .
+
+<_:N172a1f27deb841419f89ea5cc13ea6a8> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N178d6b9055f940a785d843ab031fa13e> a addr:Event .
+
+<_:N1e05de5bdbc846b8be4ae7f4a8174514> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N1e066ddc284a44a191e9e71c4dcb6c06> a addr:Event .
+
+<_:N1f1ab9932fec4283854c23df8d8c15ef> a addr:Event .
+
+<_:N21d2992724f74ad793b3d1a350609d5a> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1967-12-31T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N22d98e4d088c48cd87f80766760623fd> a addr:Event ;
+    addr:hasTime <_:N4d2530314aee411fa2de9333f2587b36> .
+
+<_:N247bf14eade54bcb801f92e2d363849e> a addr:Event .
+
+<_:N2b6d6f7cc3ac4a2db1fb5098e35bc4cf> a addr:Event .
+
+<_:N2bb3916086254bc3b3aa3c0096e3f6ab> a addr:Event .
+
+<_:N2e113d512f684dceba156db67dc295ba> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N31bda3ea35614e56b9b38d921905a700> a addr:Event ;
+    addr:hasTime <_:Nf56894f1f37b4b20a358618b86776016> .
+
+<_:N32f31c17f23b4c8cb1ab211664da58a5> a addr:Event .
+
+<_:N33a8443196254fb1938294c1914d9ecd> a addr:Event ;
+    addr:hasTime <_:Nc362bb98e9924e43a5d2f79c10367a88> .
+
+<_:N351a2154318b4526afa366cfd2f0b7e4> a addr:Event ;
+    addr:hasTime <_:N8f94c674dc6d4c9391d3a6c3414990cd> .
+
+<_:N3954f542736846b6871f17b77a03d376> a addr:Event ;
+    addr:hasTime <_:Ne43df11fb8404e449ceb96aae83110d5> .
+
+<_:N3ca5b6fbbe12482c9fc31306a996faad> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N3e2fb3cef50144d292edc5222f6ecaec> a addr:Event .
+
+<_:N45b4cd16659e492db44833eaf5b9e828> a addr:Event ;
+    addr:hasTime <_:N9781b410b5684e398519651885649fd9> .
+
+<_:N470f63aa0dff4eadbcd4ea33924c12d6> a addr:Event .
+
+<_:N483bec7a02a345bbbebfc9c309a88d3e> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N4af8cd31d09b4df0812d0aa229489fe2> a addr:Event ;
+    addr:hasTime <_:Nb3728b03383a4c42b70255de6d109c1d> .
+
+<_:N4b6a1ccd87be4d66aecb6825c346f1b3> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N4ceb7527c5ab45dba9bd6c5b5df2e45e> a addr:Event .
+
+<_:N4d2530314aee411fa2de9333f2587b36> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1967-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N4e90e3c1225145d0979ed70853c67341> a addr:Event ;
+    addr:hasTime <_:N971e30e728b54706b98b10ac815f43e8> .
+
+<_:N4f4e25c8ca6b4ecb95f4d2607ac1c703> a addr:Event ;
+    addr:hasTime <_:N1e05de5bdbc846b8be4ae7f4a8174514> .
+
+<_:N5103ad9065af4142829b03e3c14674ab> a addr:Event ;
+    addr:hasTime <_:N172a1f27deb841419f89ea5cc13ea6a8> .
+
+<_:N5d7f648351084f5196950a25ef5afd95> a addr:Event ;
+    addr:hasTime <_:N0bf9df1e7b744142a4c7b94a58cd6610> .
+
+<_:N60f82bc58b9f4a129d4904d88a2c793b> a addr:Event ;
+    addr:hasTime <_:Nf0217ce31b6f40908438e47b4603b490> .
+
+<_:N6171771343014510850e0e3ce2d3cc36> a addr:Event .
+
+<_:N64d783a330484c3091d349fb8cbaa9c1> a addr:Event .
+
+<_:N659ce547b60447bf86091d94584f00ad> a addr:Event ;
+    addr:hasTime <_:N8dc17a13e222421e81c240549b6c78f7> .
+
+<_:N6a89e58238724b52a27cb210eb040744> a addr:Event ;
+    addr:hasTime <_:Nfe1e0a0fae98408db43168394c8937b2> .
+
+<_:N6b896856783245aaa10fc8ae33bb8def> a addr:Event .
+
+<_:N6f9de656e5484be4b096351e86d9bacd> a addr:Event ;
+    addr:hasTime <_:N71944e5df73e4a308122b699e4752442> .
+
+<_:N7162056cbcd349ee8f923576a40577f9> a addr:Event .
+
+<_:N71944e5df73e4a308122b699e4752442> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1789-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N72e289c2808846ddacf2447a266532c2> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1967-12-31T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N7a7808eb1dbd490082bac21fe8454f5b> a addr:Event ;
+    addr:hasTime <_:Nf289a8112b9841a383a3b7e12e5602b4> .
+
+<_:N7d4029ebd276412e9e82c98f55bbbbe3> a addr:Event ;
+    addr:hasTime <_:Na06f9fc69c934c179978a590f7390cab> .
+
+<_:N8302444e072a48268e291f9597a534a1> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N84205b2092364740850a2dfb10914201> a addr:Event .
+
+<_:N868038441cc4436982b027a9dbeb8a99> a addr:Event ;
+    addr:hasTime <_:N01995b2bcc1247f9b8aba90c91bfe310> .
+
+<_:N8dc17a13e222421e81c240549b6c78f7> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N8e6460a470e54f19a3e1e51ee36c4cc0> a addr:Event ;
+    addr:hasTime <_:N3ca5b6fbbe12482c9fc31306a996faad> .
+
+<_:N8f94c674dc6d4c9391d3a6c3414990cd> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N8fbf02560a1a45e08079452cb5c57cd2> a addr:Event ;
+    addr:hasTime <_:Nb573f989e00c44e7989e876e6785edb1> .
+
+<_:N90a17f62f5594db9a6a13f36f2b344e0> a addr:Event ;
+    addr:hasTime <_:Nd0dcea1bf03347e7bc9fe2ca7241559c> .
+
+<_:N917890699f4f4ecaa08528076b2ca1d0> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N958939a531aa4374b95d3a419f1a52e5> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1789-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N971e30e728b54706b98b10ac815f43e8> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N9781b410b5684e398519651885649fd9> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:N98596c084053492f964dc2e7df7df992> a addr:Event .
+
+<_:N988e119804104f27ba539fbfe8d137a5> a addr:Event ;
+    addr:hasTime <_:Na945d970b9e14ef7b858b268a6ae5956> .
+
+<_:N9b8747f9ddd64fd48bbee4b28308df6e> a addr:Event .
+
+<_:N9c496dfbf5e84a0b8977112af6c754eb> a addr:Event .
+
+<_:N9c60dcc8ba724b71933c343968cc1236> a addr:Event .
+
+<_:N9d91b901060e47e894263e1f5d56cc15> a addr:Event ;
+    addr:hasTime <_:N72e289c2808846ddacf2447a266532c2> .
+
+<_:N9f6abb296ef8494eadbe406dfb46d976> a addr:Event .
+
+<_:N9fe2d44ceb6446d9af59430c7489b0af> a addr:Event ;
+    addr:hasTime <_:N21d2992724f74ad793b3d1a350609d5a> .
+
+<_:Na06f9fc69c934c179978a590f7390cab> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Na36e5b2922c544de92057b25bb276a1e> a addr:Event ;
+    addr:hasTime <_:N075ab97543474d749942a86cccfe6b09> .
+
+<_:Na389bd3284fe42aca2662a3455a26def> a addr:Event ;
+    addr:hasTime <_:N958939a531aa4374b95d3a419f1a52e5> .
+
+<_:Na5df81daa65f426889722ae93fa6fb21> a addr:Event ;
+    addr:hasTime <_:N8302444e072a48268e291f9597a534a1> .
+
+<_:Na945d970b9e14ef7b858b268a6ae5956> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Naa7b3890524e401f825a71737f14750a> a addr:Event .
+
+<_:Nb02f17cac51440dc85e478887758329a> a addr:Event .
+
+<_:Nb2aae54144d2459fa825064cbd4d9a7d> a addr:Event .
+
+<_:Nb3728b03383a4c42b70255de6d109c1d> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Nb573f989e00c44e7989e876e6785edb1> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Nbfe1e98af92e4da9a2c8565604091db1> a addr:Event ;
+    addr:hasTime <_:Ne5826d3e9d8f4459a659efe18e1b3d9e> .
+
+<_:Nc362bb98e9924e43a5d2f79c10367a88> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1811-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Nc69921a980ed4cc0b1444ccbc7194f0e> a addr:Event ;
+    addr:hasTime <_:Nd0365ea4bcc44bd7828905cd2abb6de5> .
+
+<_:Nd0365ea4bcc44bd7828905cd2abb6de5> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Nd0dcea1bf03347e7bc9fe2ca7241559c> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1789-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Nd77ed4c5360d4b3a93b49413e40e459e> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1800-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Ndfc0c1e052d24685bade816a2834d491> a addr:Event .
+
+<_:Ndfec6e7457b34c62bb313f60780083f7> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1847-12-31T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Ne43df11fb8404e449ceb96aae83110d5> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1967-12-31T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Ne5826d3e9d8f4459a659efe18e1b3d9e> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Ne858cfcbb97349cfbbcb758c8d8ca231> a addr:Event ;
+    addr:hasTime <_:N4b6a1ccd87be4d66aecb6825c346f1b3> .
+
+<_:Neae8bf513c2a475ebf2c9e72117fea2c> a addr:Event ;
+    addr:hasTime <_:N2e113d512f684dceba156db67dc295ba> .
+
+<_:Neb5f911101ec4399bde6a05141445999> a addr:Event .
+
+<_:Need4704fd5e3416b813b93ea03c4f922> a addr:Event .
+
+<_:Nf0217ce31b6f40908438e47b4603b490> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1800-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Nf289a8112b9841a383a3b7e12e5602b4> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Nf2e90165369949d094fcfbb86b23168c> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1795-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Nf56894f1f37b4b20a358618b86776016> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+<_:Nf67c65b1aec44dc3935cfc2062a77eaa> a addr:Event ;
+    addr:hasTime <_:Nd77ed4c5360d4b3a93b49413e40e459e> .
+
+<_:Nf8a722fbe3ef40da836d64dfbb557a0b> a addr:Event ;
+    addr:hasTime <_:N483bec7a02a345bbbebfc9c309a88d3e> .
+
+<_:Nfa567c9565c549089c9297e77fb77c51> a addr:Event ;
+    addr:hasTime <_:Ndfec6e7457b34c62bb313f60780083f7> .
+
+<_:Nfe1e0a0fae98408db43168394c8937b2> a addr:TimeInstant ;
+    addr:timeCalendar time:Gregorian ;
+    addr:timePrecision time:Year ;
+    addr:timeStamp "1845-01-01T00:00:00"^^xsd:dateTimeStamp .
+
+landmark:0dbf586a-7f6b-4cc1-a873-522a1bd44265 a addr:Landmark ;
     rdfs:label "Section M du Moulin de la Roche"^^xsd:string ;
     dcterms:identifier "M"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:13b823a3-a9fe-40d1-b121-b6930d7b2c03 a add:Landmark ;
+landmark:13b823a3-a9fe-40d1-b121-b6930d7b2c03 a addr:Landmark ;
     rdfs:label "Section I de Bicêtre"^^xsd:string ;
     dcterms:identifier "I"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:21dace9f-5178-4cc4-9588-b3a3e4283272 a add:Landmark ;
+landmark:21dace9f-5178-4cc4-9588-b3a3e4283272 a addr:Landmark ;
     rdfs:label "Section A dite de la Santé"^^xsd:string ;
     dcterms:identifier "A"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:23f82e12-bcad-49b8-bb09-6a538496b72f a add:Landmark ;
+landmark:23f82e12-bcad-49b8-bb09-6a538496b72f a addr:Landmark ;
     rdfs:label "Section H des Petits Jardins"^^xsd:string ;
     dcterms:identifier "H"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:2f202433-cded-4857-a609-a1e0c548cb27 a add:Landmark ;
+landmark:2f202433-cded-4857-a609-a1e0c548cb27 a addr:Landmark ;
     rdfs:label "Section P du Bourg"^^xsd:string ;
     dcterms:identifier "P"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:3904c8d6-366e-4d92-a960-3d9ea46d4912 a add:Landmark ;
+landmark:3904c8d6-366e-4d92-a960-3d9ea46d4912 a addr:Landmark ;
     rdfs:label "Section K du Fort"^^xsd:string ;
     dcterms:identifier "K"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:393aa8b1-e60f-43b7-9c9e-9737ad804edd a add:Landmark ;
+landmark:393aa8b1-e60f-43b7-9c9e-9737ad804edd a addr:Landmark ;
     rdfs:label "Section L des Martinets"^^xsd:string ;
     dcterms:identifier "L"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:3ea38f40-82cf-48f9-8ded-53d3c5e92125 a add:Landmark ;
+landmark:3ea38f40-82cf-48f9-8ded-53d3c5e92125 a addr:Landmark ;
     rdfs:label "Section A de la Santé"^^xsd:string ;
     dcterms:identifier "A"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:49e2cb25-9f61-4740-a09c-c307e1f3874f a add:Landmark ;
+landmark:49e2cb25-9f61-4740-a09c-c307e1f3874f a addr:Landmark ;
     rdfs:label "Section N du Chaperon Vert"^^xsd:string ;
     dcterms:identifier "N"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:54db0315-d4bf-4505-a5c1-cba6ef681c8c a add:Landmark ;
+landmark:54db0315-d4bf-4505-a5c1-cba6ef681c8c a addr:Landmark ;
     rdfs:label "Archives Départementales du Val-de-Marne"^^xsd:string ;
     dcterms:identifier "AD94"^^xsd:string ;
-    add:isLandmarkType ltype:Structure .
+    addr:isLandmarkType ltype:Structure .
 
-landmark:56897a8f-3fb1-4ff8-8992-883214285f10 a add:Landmark ;
+landmark:56897a8f-3fb1-4ff8-8992-883214285f10 a addr:Landmark ;
     rdfs:label "Section C de la Maison Blanche"^^xsd:string ;
     dcterms:identifier "C"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:5d0cd9fe-6b99-416d-a1a3-d532d2d6d6fc a add:Landmark ;
+landmark:5d0cd9fe-6b99-416d-a1a3-d532d2d6d6fc a addr:Landmark ;
     rdfs:label "Section O des Hautes Bornes"^^xsd:string ;
     dcterms:identifier "O"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:5ec66ee4-1bb2-456b-bafc-02bf3c88e770 a add:Landmark ;
+landmark:5ec66ee4-1bb2-456b-bafc-02bf3c88e770 a addr:Landmark ;
     rdfs:label "Val-de-Marne"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Departement ;
-    add:numInsee "94"^^xsd:string .
+    addr:isLandmarkType cad_ltype:Departement ;
+    addr:numInsee "94"^^xsd:string .
 
-landmark:5fec0a47-aa74-4e02-aa66-77f156ea5327 a add:Landmark ;
+landmark:5fec0a47-aa74-4e02-aa66-77f156ea5327 a addr:Landmark ;
     rdfs:label "Section F dite des Maisons"^^xsd:string ;
     dcterms:identifier "F"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:648b7831-50ab-43ac-9396-12529056dc4f a add:Landmark ;
+landmark:648b7831-50ab-43ac-9396-12529056dc4f a addr:Landmark ;
     rdfs:label "Paris"^^xsd:string ;
-    add:isLandmarkType ltype:Commune ;
-    add:numInsee "75056"^^xsd:string ;
+    addr:isLandmarkType ltype:Commune ;
+    addr:numInsee "75056"^^xsd:string ;
     pwikidata:P8422 "26207"^^xsd:string .
 
-landmark:72d1afeb-b46b-466f-a4cb-96753897f5ce a add:Landmark ;
+landmark:72d1afeb-b46b-466f-a4cb-96753897f5ce a addr:Landmark ;
     rdfs:label "Section D de Bicêtre"^^xsd:string ;
     dcterms:identifier "D"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:8177082a-ed8d-417b-a60f-3e929cd1e97a a add:Landmark ;
+landmark:8177082a-ed8d-417b-a60f-3e929cd1e97a a addr:Landmark ;
     rdfs:label "Créteil"^^xsd:string ;
-    add:isLandmarkType ltype:Commune ;
-    add:numInsee "94028"^^xsd:string ;
+    addr:isLandmarkType ltype:Commune ;
+    addr:numInsee "94028"^^xsd:string ;
     pwikidata:P8422 "11051"^^xsd:string .
 
-landmark:87d7c2f6-306b-45a1-a833-5e17821c3102 a add:Landmark ;
+landmark:87d7c2f6-306b-45a1-a833-5e17821c3102 a addr:Landmark ;
     rdfs:label "Section B du Petit Gentilly"^^xsd:string ;
     dcterms:identifier "B"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:8aeca660-ee93-4fef-b98a-026735807d82 a add:Landmark ;
+landmark:8aeca660-ee93-4fef-b98a-026735807d82 a addr:Landmark ;
     rdfs:label "Section C dite de la Glacière"^^xsd:string ;
     dcterms:identifier "C"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:9a31660f-44c6-47dd-8cf4-17b08110f525 a add:Landmark ;
+landmark:9a31660f-44c6-47dd-8cf4-17b08110f525 a addr:Landmark ;
     rdfs:label "10 Rue des Archives"^^xsd:string ;
     dcterms:identifier "10"^^xsd:string ;
-    add:isLandmarkType ltype:HouseNumber .
+    addr:isLandmarkType ltype:HouseNumber .
 
-landmark:ae9d96bb-1170-4522-998d-b66c7d8c3775 a add:Landmark ;
+landmark:ae9d96bb-1170-4522-998d-b66c7d8c3775 a addr:Landmark ;
     rdfs:label "Section R du Bas du Bourg"^^xsd:string ;
     dcterms:identifier "R"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:aea3f2d9-4bc0-4176-ba88-a115a4ed76cc a add:Landmark ;
+landmark:aea3f2d9-4bc0-4176-ba88-a115a4ed76cc a addr:Landmark ;
     rdfs:label "Section G des Sablons"^^xsd:string ;
     dcterms:identifier "G"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:af64c1e7-5780-4937-a35e-f18cabfafec6 a add:Landmark ;
+landmark:af64c1e7-5780-4937-a35e-f18cabfafec6 a addr:Landmark ;
     rdfs:label "Section Q de la Rue Frileuse"^^xsd:string ;
     dcterms:identifier "Q"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:d3299a59-4982-4f6f-bf1d-a2f692c219c4 a add:Landmark ;
+landmark:d3299a59-4982-4f6f-bf1d-a2f692c219c4 a addr:Landmark ;
     rdfs:label "Section E de Gentilly"^^xsd:string ;
     dcterms:identifier "E"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:da6a5c2c-e86d-43bb-8950-7169bd0df60a a add:Landmark ;
+landmark:da6a5c2c-e86d-43bb-8950-7169bd0df60a a addr:Landmark ;
     rdfs:label "Section D dite de la Barrière de Fontainebleau"^^xsd:string ;
     dcterms:identifier "D"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:dc71e0dd-c531-4556-b433-4c79769c088b a add:Landmark ;
+landmark:dc71e0dd-c531-4556-b433-4c79769c088b a addr:Landmark ;
     rdfs:label "Section E dite du Bel Air"^^xsd:string ;
     dcterms:identifier "E"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Section .
+    addr:isLandmarkType cad_ltype:Section .
 
-landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 a add:Landmark ;
+landmark:0b23b428-909d-42c0-bd76-dad84d061cb4 a addr:Landmark ;
     rdfs:label "Villejuif"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Canton .
+    addr:isLandmarkType cad_ltype:Canton .
 
-landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 a add:Landmark ;
+landmark:2dae5e93-2c68-41c0-b736-e8b290b778c0 a addr:Landmark ;
     rdfs:label "Rue des Archives"^^xsd:string ;
-    add:isLandmarkType ltype:Thoroughfare .
+    addr:isLandmarkType ltype:Thoroughfare .
 
-landmark:a46424cb-2601-46db-a159-8545c4607ab2 a add:Landmark ;
+landmark:a46424cb-2601-46db-a159-8545c4607ab2 a addr:Landmark ;
     rdfs:label "Sceaux"^^xsd:string ;
-    add:isLandmarkType ltype:Arrondisement .
+    addr:isLandmarkType ltype:Arrondisement .
 
-landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b a add:Landmark ;
+landmark:fc109bfa-345c-4ee6-83a0-b2f084d4230b a addr:Landmark ;
     rdfs:label "Seine"^^xsd:string ;
-    add:isLandmarkType cad_ltype:Departement ;
-    add:numInsee "75"^^xsd:string .
+    addr:isLandmarkType cad_ltype:Departement ;
+    addr:numInsee "75"^^xsd:string .
 
-landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 a add:Landmark ;
+landmark:45f1621b-f88e-4800-9bba-55d8dd1087f4 a addr:Landmark ;
     rdfs:label "Gentilly"^^xsd:string ;
-    add:isLandmarkType ltype:Commune ;
-    add:numInsee "94037"^^xsd:string ;
+    addr:isLandmarkType ltype:Commune ;
+    addr:numInsee "94037"^^xsd:string ;
     pwikidata:P8422 "15323"^^xsd:string .
 
