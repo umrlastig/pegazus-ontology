@@ -6,6 +6,7 @@
     * Root landmarks are the plots vectorized from the cadastral index map.
     * Others versions of landmarks are all the resources built from each table line of the mutation registers (one line = 1 plot version)
     * The relation between root landmarks and their landmark versions is created using the cadastral number plots. These numbers (=IDs) are not unique  : plots keep the same number in case or split in 2..n plots or merge with others plots.
+
 ```sparql
 PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
 PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
@@ -368,6 +369,8 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/changes_events>{
     ?change addr:appliedTo ?att.
     ?change addr:dependsOn ?event.
     ?event addr:hasChange ?change.
+    #?change addr:outdates ?attV.
+    #?attV addr:isOutdatedBy ?change.
     }}
 WHERE{
     SELECT ?plot ?att ?attV ?end (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/", STRUUID())) AS ?event) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change)
@@ -413,8 +416,10 @@ INSERT { GRAPH <http://rdf.geohistoricaldata.org/changes_events>{
     ?event addr:hasChange ?change.
     ?attNext addr:changedBy ?change2.
     ?change2 addr:appliedTo ?attNext.
+    #?change2 addr:makesEffective ?attNextV.
+    #?attNextV addr:isMadeEffectiveBy ?change2.
 }}
-WHERE {SELECT DISTINCT ?nextPlot ?attNext ?event (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
+WHERE {SELECT DISTINCT ?nextPlot ?attNext ?attNextV ?event (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?change2)
 	WHERE { 
     {SELECT DISTINCT ?plot ?portea ?folio1 ?end ?change ?event
 	WHERE {?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot.
@@ -430,15 +435,16 @@ WHERE {SELECT DISTINCT ?nextPlot ?attNext ?event (IRI(CONCAT("http://rdf.geohist
            ?plot addr:hasTime/addr:hasEnd/addr:timeStamp ?end.
         	BIND(YEAR(?end) AS ?endY)}}
     
-    {SELECT DISTINCT ?nextPlot ?attNext ?folio ?classementid ?classement ?tirede
+    {SELECT DISTINCT ?nextPlot ?attNext ?attNextV ?folio ?classementid ?classement ?tirede
      WHERE{
         ?nextPlot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot.
     	?nextPlot addr:hasAttribute ?attNext.
         ?attNext addr:isAttributeType cad_atype:PlotMention.
-        ?attNext addr:hasAttributeVersion[cad:takenFrom ?tirede;
+        ?attNext addr:hasAttributeVersion ?attNextV.
+        ?attNextV cad:takenFrom ?tirede;
     		cad:isMentionnedIn/rico:isOrWasConstituentOf+ ?folio;
     		cad:isMentionnedIn/rico:isOrWasConstituentOf ?cf;
-            cad:isMentionnedIn ?classement].
+            cad:isMentionnedIn ?classement.
     	?classement dcterms:identifier ?classementid.
     
         FILTER NOT EXISTS {?nextPlot addr:changedBy ?change3.
@@ -548,7 +554,9 @@ PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkTy
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
 
-INSERT {GRAPH <http://rdf.geohistoricaldata.org/order>{?landmarkversion addr:hasOverlappingVersionInSRCOrder ?landmarkversion2. ?landmarkversion2 addr:isOverlappedByVersionInSRCOrder ?landmarkversion.}}
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/order>{
+    ?landmarkversion addr:hasOverlappingVersionInSRCOrder ?landmarkversion2. 
+    ?landmarkversion2 addr:isOverlappedByVersionInSRCOrder ?landmarkversion.}}
 WHERE {
 	SELECT ?landmarkversion ?landmarkversion2 
     WHERE { 
@@ -870,7 +878,235 @@ WHERE {
     GROUP BY ?aggLandmark ?root}
 ```
 
-### 4.7 Create landmark relation with cadastral section
+### 4.7 Add initial factoïd graph informations to the graph of facts.
+#### 4.7.1 Create *hasTrace* and *isSiblingOf* if map factoid as equivalent in aggregated landmarks
+* The aggregated version as to be the unique representation of a given plot id at the time of the first mutation register creation.
+
+*First land registry*
+```sparql
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/siblings>{
+    ?plot addr:isSibling ?root.
+    ?root addr:isSibling ?plot.}
+    GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
+    ?plot addr:hasTrace ?root.
+    ?root addr:isTraceOf ?plot.}}
+WHERE {
+    GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> { 
+            ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot;
+                  dcterms:identifier ?id;
+                  addr:hasTrace ?factoid;
+        		  addr:hasRootLandmark ?root.
+          }
+      ?factoid addr:hasTime [ addr:hasBeginning [ addr:timeStamp ?start ] ].
+      ?factoid addr:hasTime [ addr:hasEnd [ addr:timeStamp ?end ] ].
+
+      FILTER(?start = "1813-01-01T00:00:00"^^xsd:dateTimeStamp)
+  {
+    SELECT ?id
+    WHERE {
+      GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> { 
+        ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot;
+              dcterms:identifier ?id;
+              addr:hasTrace ?factoid.
+      }
+      ?factoid addr:hasTime [ addr:hasBeginning [ addr:timeStamp ?start ] ].
+      ?factoid addr:hasTime [ addr:hasEnd [ addr:timeStamp ?end ] ].
+
+      FILTER(?start = "1813-01-01T00:00:00"^^xsd:dateTimeStamp)
+    }
+    GROUP BY ?id
+    HAVING (COUNT(?id) = 1)
+  }
+}
+```
+*Second land registry*
+```sparql
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/tmp/siblings>{
+    ?plot addr:isSibling ?root.
+    ?root addr:isSibling ?plot.}
+    GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
+    ?plot addr:hasTrace ?root.
+    ?root addr:isTraceOf ?plot.}}
+WHERE {
+    GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> { 
+            ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot;
+                  dcterms:identifier ?id;
+                  addr:hasTrace ?factoid;
+        		  addr:hasRootLandmark ?root.
+          }
+      ?factoid addr:hasTime [ addr:hasBeginning [ addr:timeStamp ?start ] ].
+      ?factoid addr:hasTime [ addr:hasEnd [ addr:timeStamp ?end ] ].
+
+      FILTER(?start = "1848-04-01T00:00:00"^^xsd:dateTimeStamp)
+  {
+    SELECT ?id
+    WHERE {
+      GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> { 
+        ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot;
+              dcterms:identifier ?id;
+              addr:hasTrace ?factoid.
+      }
+      ?factoid addr:hasTime [ addr:hasBeginning [ addr:timeStamp ?start ] ].
+      ?factoid addr:hasTime [ addr:hasEnd [ addr:timeStamp ?end ] ].
+
+      FILTER(?start = "1848-04-01T00:00:00"^^xsd:dateTimeStamp)
+    }
+    GROUP BY ?id
+    HAVING (COUNT(?id) = 1)
+  }
+}
+```
+#### 4.7.2 Create new ressources in the graph of facts for the plots of the map that have several correspondent at the beginning of the mutation register (and are considered as different from them)
+*First land registry*
+```
+```sparql
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
+    ?newPlot a addr:Landmark.
+    ?newPlot addr:isLandmarkType cad_ltype:Plot.
+    ?newPlot dcterms:identifier ?id.
+    ?newPlot addr:hasTrace ?plot.
+    ?plot addr:isTraceOf ?newPlot.
+    ?newPlot addr:hasRootLandmark ?plot.
+    ?plot addr:isRootLandmarkOf ?newPlot.
+    }}
+WHERE { 
+    {SELECT ?plot ?id
+    WHERE {
+        GRAPH <http://rdf.geohistoricaldata.org/rootlandmarks> { 
+                ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot;
+                      dcterms:identifier ?id.
+              }
+      {
+        SELECT ?id
+        WHERE {
+          GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> { 
+            ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot;
+                  dcterms:identifier ?id;
+                  addr:hasTrace ?factoid.
+          }
+          ?factoid addr:hasTime [ addr:hasBeginning [ addr:timeStamp ?start ] ].
+          ?factoid addr:hasTime [ addr:hasEnd [ addr:timeStamp ?end ] ].
+
+          FILTER(?start = "1813-01-01T00:00:00"^^xsd:dateTimeStamp)
+        }
+        GROUP BY ?id
+        HAVING (COUNT(?id) > 1)
+      }
+    }}
+    BIND(URI(CONCAT('http://rdf.geohistoricaldata.org/id/landmark/AGG_', STRUUID())) AS ?newPlot)
+}
+```
+```
+*Second land registry*
+```sparql
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
+    ?newPlot a addr:Landmark.
+    ?newPlot addr:isLandmarkType cad_ltype:Plot.
+    ?newPlot dcterms:identifier ?id.
+    ?newPlot addr:hasTrace ?plot.
+    ?plot addr:isTraceOf ?newPlot.
+    ?newPlot addr:hasRootLandmark ?plot.
+    ?plot addr:isRootLandmarkOf ?newPlot.
+    }}
+WHERE { 
+    {SELECT ?plot ?id
+    WHERE {
+        GRAPH <http://rdf.geohistoricaldata.org/rootlandmarks> { 
+                ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot;
+                      dcterms:identifier ?id.
+              }
+      {
+        SELECT ?id
+        WHERE {
+          GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> { 
+            ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot;
+                  dcterms:identifier ?id;
+                  addr:hasTrace ?factoid.
+          }
+          ?factoid addr:hasTime [ addr:hasBeginning [ addr:timeStamp ?start ] ].
+          ?factoid addr:hasTime [ addr:hasEnd [ addr:timeStamp ?end ] ].
+
+          FILTER(?start = "1848-04-01T00:00:00"^^xsd:dateTimeStamp)
+        }
+        GROUP BY ?id
+        HAVING (COUNT(?id) > 1)
+      }
+    }}
+    BIND(URI(CONCAT('http://rdf.geohistoricaldata.org/id/landmark/AGG_', STRUUID())) AS ?newPlot)
+}
+```
+### 4.8 Create change and events of appearance and disappearance of the landmarks in the graph of facts
+```sparql
+PREFIX cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
+PREFIX cad: <http://rdf.geohistoricaldata.org/def/cadastre#>
+PREFIX cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/>
+PREFIX ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/>
+PREFIX time: <http://www.w3.org/2006/time#>
+
+INSERT { GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> {
+    ?eventDis a addr:Event.
+    ?changeDis a addr:Change.
+    ?changeDis addr:isChangeType ctype:LandmarkDisappearance.
+    ?changeDis addr:dependsOn ?eventDis.
+    ?eventDis addr:hasTime [a addr:TimeInstant ;
+           addr:timeCalendar time:Gregorian ;
+    	   addr:timePrecision time:Year ;
+           addr:timeStamp ?maxEnd
+    ].
+    ?changeDis addr:appliedTo ?plot.
+    ?plot addr:changedBy ?changeDis.
+        
+    ?eventApp a addr:Event.
+    ?changeApp a addr:Change.
+    ?changeApp addr:isChangeType ctype:LandmarkAppearance.
+    ?changeApp addr:dependsOn ?eventApp.
+    ?eventApp addr:hasTime [a addr:TimeInstant ;
+           addr:timeCalendar time:Gregorian ;
+    	   addr:timePrecision time:Year ;
+           addr:timeStamp ?minStart
+    ].
+    ?changeApp addr:appliedTo ?plot.
+    ?plot addr:changedBy ?changeApp.
+    }
+}
+WHERE {
+    {SELECT ?plot (MIN(?start) AS ?minStart) (MAX(?end) AS ?maxEnd) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/", STRUUID())) AS ?eventApp) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?changeApp) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/event/", STRUUID())) AS ?eventDis) (IRI(CONCAT("http://rdf.geohistoricaldata.org/id/change/",STRUUID())) AS ?changeDis) 
+    WHERE { 
+        GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations> { 
+                ?plot a addr:Landmark; addr:isLandmarkType cad_ltype:Plot;
+                      dcterms:identifier ?id;
+                      addr:hasTrace ?factoid.
+              }
+              ?factoid addr:hasTime [ addr:hasBeginning [ addr:timeStamp ?start ] ].
+              ?factoid addr:hasTime [ addr:hasEnd [ addr:timeStamp ?end ] ].
+    }
+    GROUP BY ?plot }
+}
+```
+### 4.9 Create landmark relation with cadastral section
 ```sparql
 PREFIX lrtype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/>
 PREFIX addr: <http://rdf.geohistoricaldata.org/def/address#>
@@ -880,7 +1116,7 @@ INSERT {GRAPH <http://rdf.geohistoricaldata.org/landmarksaggregations>{
     ?lrAGG a addr:LandmarkRelation.
     ?lrAGG addr:isLandmarkRelationType lrtype:Within.
     ?lrAGG addr:locatum ?plotAGG.
-    ?lrAGG addr:relatum ?relatum
+    ?lrAGG addr:relatum ?relatum.
     }}
 WHERE {SELECT ?plot ?plotAGG ?relatum (UUID() AS ?lrAGG)
 	WHERE {
@@ -893,6 +1129,7 @@ WHERE {SELECT ?plot ?plotAGG ?relatum (UUID() AS ?lrAGG)
 	?plot addr:isRootLandmarkOf ?plotAGG
     }}
 ```
+
 ## 5. Inferring attribute versions
 ### 5.1 Initialised the attributes of the aggregations using the list of attributes of the landmarks versions
 ```sparql
