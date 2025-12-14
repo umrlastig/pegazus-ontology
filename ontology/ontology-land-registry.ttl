@@ -37,6 +37,9 @@
 @prefix mlclasse: <http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/>.
 @prefix activity: <http://rdf.geohistoricaldata.org/id/codes/cadastre/activity/>.
 
+# Annotation Property for deprecation
+cad:isDeprecated a owl:AnnotationProperty .
+
 #################################################################
 #    Ontology metadata
 #################################################################
@@ -327,16 +330,35 @@ cad:taxpayerFirstName
     a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
+    cad:isDeprecated true ;
+    rdfs:comment "DEPRECIEE EN 03/2025, replacée par cad:taxpayerFirstNames. Prénom(s) d'un contribuable"@fr,
+                 "DEPRECATED IN 03/2025, replaced by cad:taxpayerFirstNames. First name(s) of a taxpayer"@en ;
+    rdfs:label "prénom(s)"@fr, "first name(s)"@en .
+
+cad:taxpayerFirstNames
+    a owl:DatatypeProperty ;
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range xsd:string ;
     rdfs:comment "Prénom(s) d'un contribuable"@fr,
                  "First name(s) of a taxpayer"@en ;
-    rdfs:label "prénom(s)"@fr, "first name(s)"@en .
+    rdfs:label "prénom(s)"@fr, "first name(s)"@en ;
+    owl:equivalentProperty cad:taxpayerFirstName.
 
 cad:taxpayerStatus a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
+    cad:isDeprecated true ;
+    rdfs:comment "DEPRECIE EN 03/2025. Statut d'un contribuable (M, Mme, Veuve, Veuf, Fils, Fille, Mineur, Héritiers)"@fr ,
+                 "DEPRECATED IN 03/2025. Status of a taxpayer (Mr, Mrs, Widow, Widower, Son, Daughter, Minor, Heirs)"@en ;
+    rdfs:label "statut"@fr, "status"@en .
+
+cad:taxpayerFamilyStatus a owl:DatatypeProperty ;
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range xsd:string ;
     rdfs:comment "Statut d'un contribuable (M, Mme, Veuve, Veuf, Fils, Fille, Mineur, Héritiers)"@fr ,
                  "Status of a taxpayer (Mr, Mrs, Widow, Widower, Son, Daughter, Minor, Heirs)"@en ;
-    rdfs:label "statut"@fr, "family status"@en .
+    rdfs:label "statut familial"@fr, "family status"@en ;
+    owl:equivalentProperty cad:taxpayerStatus.
 
 cad:taxpayerAddress a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
@@ -349,6 +371,12 @@ cad:taxpayerActivity a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:comment "Activité d'un contribuable"@fr, "Activity of a taxpayer"@en ;
     rdfs:label "activité"@fr, "activity"@en.
+
+cad:taxpayerTitle a owl:DatatypeProperty ;
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Civilité, titre de noblesse ou honorifique"@fr, "Civility"@en ;
+    rdfs:label "titre"@fr, "title"@en.
 
 cad:hasNumFolio a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
@@ -542,7 +570,7 @@ cad_atype:TaxpayerTitle a cad:TaxpayerAttributeType,
         skos:Concept ;
     skos:altLabel "Civilité"@fr ;
     skos:broader cad_atype:TaxpayerFullLabel ;
-    skos:definition "Civilité (Monsieur, Madame, Mademoiselle)"@fr ;
+    skos:definition "Civilité (Monsieur, Madame, Mademoiselle, etc.)"@fr ;
     skos:inScheme cad:CadastreAttributeList ;
     skos:prefLabel "Title"@en,
         "Titre de civilité"@fr .
