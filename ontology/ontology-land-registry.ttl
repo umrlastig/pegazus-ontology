@@ -1,49 +1,38 @@
-#Others ontologies
+@prefix addr: <http://rdf.geohistoricaldata.org/def/address#> .
+@prefix cad: <http://rdf.geohistoricaldata.org/def/cadastre#> .
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix igeo: <http://rdf.insee.fr/def/geo#> .
+@prefix ltype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkType/> .
+@prefix organization: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix pwikidata: <https://www.wikidata.org/wiki/Property:> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix time: <http://www.w3.org/2006/time#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix cc: <http://creativecommons.org/ns#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix organization: <http://www.w3.org/ns/org#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
-@prefix pwikidata: <https://www.wikidata.org/wiki/Property:> .
-@prefix igeo:  <http://rdf.insee.fr/def/geo#> .
 
-# Core ontology
-@prefix addr: <http://rdf.geohistoricaldata.org/def/address#> .
-@prefix atype: <http://rdf.geohistoricaldata.org/id/codes/address/attributeType/> .
-@prefix ctype: <http://rdf.geohistoricaldata.org/id/codes/address/changeType/> .
-@prefix ltype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkType/> .
-@prefix lrtype: <http://rdf.geohistoricaldata.org/id/codes/address/landmarkRelationType/> .
-
-#Land registry extension 
-@prefix cad: <http://rdf.geohistoricaldata.org/def/cadastre#> .
-# Skos Concepts Cadastre extension
+# --- Prefixes for ConceptSchemes ---
 @prefix cad_atype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/> .
-@prefix cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/> .
-@prefix cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/> .
 @prefix cad_ctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/changeType/> .
-@prefix cad_spval: <http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/>.
+@prefix cad_etype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/> .
+@prefix cad_ltype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/> .
+@prefix cad_spval: <http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/> .
+@prefix mlclasse: <http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/> .
 @prefix pnature: <http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/> .
-@prefix srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/>.
-@prefix mlclasse: <http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/>.
-@prefix activity: <http://rdf.geohistoricaldata.org/id/codes/cadastre/activity/>.
+@prefix srctype: <http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/> .
 
-# Annotation Property for deprecation
-cad:isDeprecated a owl:AnnotationProperty .
+# --- Prexixes for individuals ---
+@prefix activity: <http://rdf.geohistoricaldata.org/id/codes/cadastre/activity/> .
 
-#################################################################
-#    Ontology metadata
-#################################################################
-
+# ---- Ontology metadata ----
 <http://rdf.geohistoricaldata.org/def/cadastre#> a owl:Ontology, voaf:Vocabulary ;
         dcterms:creator [
 	      a foaf:Person ;
@@ -60,21 +49,21 @@ cad:isDeprecated a owl:AnnotationProperty .
 	          organization:organization <http://www.umr-lastig.fr/> ;
 	          organization:role [
 	              a organization:Role ;
-	              rdfs:label "Doctorante"@fr, "PhD Student"@en ;
+	              rdfs:label "PhD"@fr, "PhD"@en ;
 	            ] ;
 	        ] ;
 	      foaf:family_name "Tual" ;
 	      foaf:firstName "Solenn" ;
-	      foaf:mbox <mailto:solenn.tual@ign.fr> ;
+	      foaf:mbox <mailto:solenntual.pro@gmail.com> ;
 	      foaf:name "Solenn Tual" ;
           foaf:workInfoHomepage <https://www.umr-lastig.fr/solenn-tual/> ;
 	    ] ; 
-        dcterms:description "Extension de l'ontologie PeGaZus pour descrire le contenu des séries du cadastre napoléonien"@fr, 
-		                    "Extension of the PeGaZus ontology to describe the Napoleonic land registry landmarks, documents and related information."@en;
+        dcterms:description "Extension de l'ontologie PeGaZus pour décrire les informations sur les parcelles, et les entités liées, présentes dans le cadastre ancien."@fr, 
+		                    "Extension of the PeGaZus ontology to describe the information about land plots and associated entities evocated in the land registry documents."@en;
         dcterms:issued "2024-01-24"^^xsd:date ;
         dcterms:modified "2024-07-12"^^xsd:date ;
         dcterms:publisher <http://fr.dbpedia.org/resource/Institut_national_de_l%27information_g%C3%A9ographique_et_foresti%C3%A8re> ;
-        dcterms:title "Ontologie PeGaZus, extension cadastre napoléonien"@fr, "Ontology PeGaZus, extension related to the Napoleonic Land Registry"@en ;
+        dcterms:title "Ontologie PeGaZus, extension dédiée à la représentation des parcelles cadastrales"@fr, "Ontology PeGaZus, extension related to the French 19th-century Land Registry"@en ;
         vann:preferredNamespacePrefix "cad" ;
 		vann:preferredNamespaceUri <http://rdf.geohistoricaldata.org/def/cadastre#> ;
 		dcterms:rights "Copyright 2024, IGN" ;
@@ -82,56 +71,76 @@ cad:isDeprecated a owl:AnnotationProperty .
 		cc:license <http://creativecommons.org/licenses/by/2.0/> ;
 		cc:license <http://opendatacommons.org/licenses/by/> ;
     #owl:priorVersion <> ;
-		owl:versionInfo "Version 0.1 - 2024-07-12" .
+	owl:versionInfo "Version 0.1 - 2024-07-12" .
 
-#################################################################
-#    Annotation properties
-#################################################################
+# ---- Annotation properties ----
 owl:maxQualifiedCardinality a owl:AnnotationProperty .
 skos:altLabel a owl:AnnotationProperty .
 skos:broader a owl:AnnotationProperty .
 skos:definition a owl:AnnotationProperty .
 skos:inScheme a owl:AnnotationProperty .
 skos:prefLabel a owl:AnnotationProperty .
+cad:isDeprecated a owl:AnnotationProperty .
 
-#################################################################
-#    Classes
-#################################################################
-
-# ---- Our classes ----
+# ---- Classes ----
 cad:EventType a owl:Class ;
-            rdfs:subClassOf skos:Concept ;
-            rdfs:label "Type d'évènement"@fr, "Event type"@en .
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Type d'évènement"@fr, "Event type"@en ;
+    rdfs:comment "Type d'évènement. La classe addr:Event est décrite dans l'ontologie PeGaZus."@fr,
+                "Type of event. The class addr:Event is described in the PeGaZus ontology."@en ;
+    owl:disjointWith cad:MLClasse, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
+
+cad:Class a owl:Class ;
+    rdfs:label "Classe d'un document ou d'un texte"@fr, 
+                "Class of a document or text"@en;
+    rdfs:comment "Classe d'un document ou d'une zone de document, attribuée manuellement ou automatiquement par un utilisateur."@fr,
+                "Class of a document or a document area, assigned manually or automatically by a user."@en ;
+    owl:disjointWith cad:EventType, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
+
+cad:NamedEntity a owl:Class ;
+    owl:subClassOf cad:Class;
+    rdfs:label "Named entity"@en, "Entité nommée"@fr ;
+    rdfs:comment "Entité nommée mentionnée dans une source, identifiée par un processus manuel ou automatique."@fr,
+                "Named entity mentioned in a source, identified by a manual or automatic process."@en ;
+    owl:disjointWith cad:EventType, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
 
 cad:MLClasse a owl:Class ;
     rdfs:subClassOf skos:Concept ;
-    rdfs:label "Classe d'un document"@fr, "Class of a document provided by a classification task."@en.
-
-cad:NamedEntity a owl:Class ;
-    rdfs:label "Named entity"@en, "Entité nommée"@fr .
+    rdfs:label "Type de classe d'un document."@fr, "Type of class of a document."@en;
+    rdfs:comment "Classe d'un document. Diffère d'une source car relève d'une attribution (manuelle ou automatique) par un utilisateur."@fr,
+        "Class of a document. It differs from a source as it is the result of an assignment by a user. They are the result of a manual or automatic assignment process."@en;
+    owl:disjointWith cad:EventType, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
 
 cad:Nature a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Plot nature"@en, "Nature de parcelle"@fr ;
-    rdfs:comment "Nature d'une parcelle correspondant à une occupation ou à un usage du sol"@fr ,
-                 "Nature of a plot corresponding to a land use or occupation"@en .
+    rdfs:comment "Nature de parcelle, correspond à une occupation ou un usage du sol."@fr ,
+                "Nature de parcelle, corresponds to a land use or occupation."@en ;
+    owl:disjointWith cad:EventType, cad:MLClasse, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
 
 cad:Source a owl:Class ;
     rdfs:subClassOf skos:Concept ;
-    rdfs:label "Type de source"@fr, "Type of source"@en.
+    rdfs:label "Type de source"@fr, "Type of source"@en;
+    rdfs:comment "Type d'une source à l'origine d'une information."@fr,
+                "Type of a source at the origin of a piece of information."@en ;
+    owl:disjointWith cad:EventType, cad:MLClasse, cad:Nature, cad:SpecialCellValue, cad:Taxpayer.
 
 cad:SpecialCellValue a owl:Class;
     rdfs:subClassOf skos:Concept ;
     skos:prefLabel "Special cell value"@en, "Valeur spéciale"@fr ;
     rdfs:label "Valeur spéciale liée au fonctionnement des documents cadastraux"@fr, "Special value related to the operation of cadastral documents"@en ;
-    rdfs:comment "Valeur spéciale liée au fonctionnement des documents cadastraux, par exemple les mentions de construction, destruction dans les colonnes réservées aux numéros de folio."@fr.
+    rdfs:comment "Valeur spéciale liée au fonctionnement des documents cadastraux, par exemple les mentions de construction, destruction, augmentation de bâtiments indiquées dans les colonnes destinées aux numéros de folio."@fr,
+                 "Special value related to the operation of cadastral documents, for example the mentions of construction, destruction, modifications of buildings indicated in the columns intended for folio numbers."@en;
+    owl:disjointWith cad:EventType, cad:MLClasse, cad:Nature, cad:Source, cad:Taxpayer.
 
 cad:Taxpayer a owl:Class;
-    rdfs:label "Taxpayer"@en, "contribuable"@fr ;
+    rdfs:label "Taxpayer"@en, "Contribuable"@fr ;
     skos:altLabel "Owner"@en, "Propriétaire ou usufruitier"@fr ;
-    rdfs:comment "Propriétaire ou usufruitier : personne redevable de l'impôt foncier pour les terres dont elle a la pleine propriété ou l'usufruit."@fr .
+    rdfs:comment "Propriétaire ou usufruitier : personne redevable de l'impôt foncier pour les terres dont elle a la pleine propriété ou l'usufruit."@fr ,
+                "Owner or usufructuary: person liable for property tax for land for which they have full ownership or usufruct."@en ;
+    owl:disjointWith cad:EventType, cad:MLClasse, cad:Nature, cad:Source, cad:SpecialCellValue.
 
-# ---- Imported classes ----
+# ---- Class from other ontologies copied to ease the use of the ontology ----
 skos:Concept a owl:Class .
 skos:ConceptScheme a owl:Class .
 rico:RecordSet a owl:Class  .
@@ -142,53 +151,71 @@ prov:Activity a owl:Class .
 prov:Agent a owl:Class .
 prov:SoftwareAgent a owl:Class .
 
-#################################################################
-#    Objectype properties
-#################################################################
-
+# ---- Object Properties ----
 cad:hasPreviousVersionInSRCOrder a owl:ObjectProperty ;
     rdfs:label "a pour version précédente dans les documents"@fr,
                "has previous version in the source order"@en ;
-    owl:inverseOf cad:hasNextVersionInSRCOrder.
+    owl:inverseOf cad:hasNextVersionInSRCOrder;
+    rdfs:comment "Cette propriété est utilisée dans l'algorithme de peuplement de l'ontologie PeGaZuS. Elle n'est pas utilisée dans le graphe final."@fr ;
+    rdfs:comment "This property is used in the population algorithm of the PeGaZuS ontology. It is not used in the final graph."@en .
 
 cad:hasNextVersionInSRCOrder a owl:ObjectProperty ;
     rdfs:label "a pour version suivante dans les documents"@fr,
                "has next version in the source order"@en ;
-    owl:inverseOf cad:hasPreviousVersionInSRCOrder.
+    owl:inverseOf cad:hasPreviousVersionInSRCOrder;
+    rdfs:comment "Cette propriété est utilisée dans l'algorithme de peuplement de l'ontologie PeGaZuS. Elle n'est pas utilisée dans le graphe final."@fr ;
+    rdfs:comment "This property is used in the population algorithm of the PeGaZuS ontology. It is not used in the final graph."@en .
 
 cad:hasOverlappingVersionInSRCOrder a owl:ObjectProperty ;
-    owl:inverseOf cad:isOverlappedByVersionInSRCOrder.
+    rdfs:label "a pour version qui se chevauche dans les documents"@fr,
+               "has overlapping version in the source order"@en ;
+    owl:inverseOf cad:isOverlappedByVersionInSRCOrder;
+    rdfs:comment "Cette propriété est utilisée dans l'algorithme de peuplement de l'ontologie PeGaZuS. Elle n'est pas utilisée dans le graphe final."@fr ;
+    rdfs:comment "This property is used in the population algorithm of the PeGaZuS ontology. It is not used in the final graph."@en .
 
 cad:isOverlappedByVersionInSRCOrder a owl:ObjectProperty ;
-    owl:inverseOf cad:hasOverlappingVersionInSRCOrder.
+    rdfs:label "est chevauchée par la version dans les documents"@fr,
+               "is overlapped by version in the source order"@en ;
+    owl:inverseOf cad:hasOverlappingVersionInSRCOrder;
+    rdfs:comment "Cette propriété est utilisée dans l'algorithme de peuplement de l'ontologie PeGaZuS. Elle n'est pas utilisée dans le graphe final."@fr ;
+    rdfs:comment "This property is used in the population algorithm of the PeGaZuS ontology. It is not used in the final graph."@en .
 
 cad:hasPlotNature a owl:ObjectProperty ;
     rdfs:domain addr:AttributeVersion ;
     rdfs:range cad:Nature ;
     rdfs:label "a pour nature"@fr ,
         "has plot nature"@en;
-    owl:inverseOf cad:isPlotNatureOf.
+    owl:inverseOf cad:isPlotNatureOf;
+    rdfs:comment "Relie une version d'attribut à une nature de parcelle (correspondant à une occupation ou à un usage du sol)."@fr ,
+                    "Links an attribute version to a plot nature (corresponding to a land use or occupation)."@en .
 
 cad:isPlotNatureOf a owl:ObjectProperty ;
     rdfs:domain cad:Nature ;
     rdfs:range addr:AttributeVersion ;
     rdfs:label "est une nature de "@fr ,
                 "is plot nature of"@en;
-    owl:inverseOf cad:hasPlotNature.
+    owl:inverseOf cad:hasPlotNature;
+    rdfs:comment "Relie une nature de parcelle (correspondant à une occupation ou à un usage du sol) à une version d'attribut."@fr ,
+                    "Links a plot nature (corresponding to a land use or occupation) to an attribute version."@en .
 
 cad:hasTaxpayer a owl:ObjectProperty ;
-                    rdfs:domain addr:AttributeVersion ;
-                    rdfs:range cad:Taxpayer ;
-                    rdfs:label "a pour contribuable"@fr ,
-                               "has taxpayer"@en ;
-                    owl:inverseOf cad:isTaxpayerOf.
+    rdfs:domain addr:AttributeVersion ;
+    rdfs:range cad:Taxpayer ;
+    rdfs:label "a pour contribuable"@fr ,
+                "has taxpayer"@en ;
+    owl:inverseOf cad:isTaxpayerOf;
+    rdfs:comment "Relie une version d'attribut à un contribuable."@fr ,
+                    "Links an attribute version to a taxpayer."@en .
+
 
 cad:isTaxpayerOf a owl:ObjectProperty ;
                     rdfs:domain cad:Taxpayer ;
                     rdfs:range addr:AttributeVersion ;
                     rdfs:label "est le contribuable associé à"@fr ,
                                "is taxpayer of"@en ;
-                    owl:inverseOf cad:hasTaxpayer.
+                    owl:inverseOf cad:hasTaxpayer;
+                    rdfs:comment "Relie un contribuable à une version d'attribut."@fr ,
+                                "Links a taxpayer to an attribute version."@en .
 
 cad:hasPlotAddress a owl:ObjectProperty ;
     rdfs:domain addr:AttributeVersion ;
@@ -199,7 +226,9 @@ cad:hasPlotAddress a owl:ObjectProperty ;
                   ] ;
     rdfs:label "a pour adresse"@fr ,
                "has address"@en ;
-    owl:inverseOf cad:isPlotAddressOf.
+    owl:inverseOf cad:isPlotAddressOf;
+    rdfs:comment "Relie une version d'attribut à une adresse ou une relation spatiale avec d'autres repères géographiques."@fr ,
+                    "Links an attribute version to an address or a spatial relation with other geographical landmarks."@en .
 
 cad:isPlotAddressOf a owl:ObjectProperty ;
     rdfs:domain [ a owl:Class ;
@@ -210,60 +239,117 @@ cad:isPlotAddressOf a owl:ObjectProperty ;
     rdfs:range addr:AttributeVersion ;
     rdfs:label "est l'adresse associée à"@fr ,
                "is address of"@en ;
-    owl:inverseOf cad:hasPlotAddress.
+    owl:inverseOf cad:hasPlotAddress;
+    rdfs:comment "Relie une adresse ou une relation spatiale avec d'autres repères géographiques à une version d'attribut."@fr ,
+                "Links an address or a spatial relation with other geographical landmarks to an attribute version."@en .
 
-cad:hasEquivalentFolio a owl:ObjectypeProperty ;
-    rdfs:label "a pour folio équivalent"@fr,
-               "has equivalent folio"@en .
+cad:hasEquivalentFolio a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ;
+                    owl:unionOf ( rico:Instantiation
+                                  rico:RecordResource
+                                )
+                  ] ;
+    rdfs:range [ a owl:Class ;
+                    owl:unionOf ( rico:Instantiation
+                                  rico:RecordResource
+                                )
+                  ] ;
+    rdfs:label "a pour folio équivalent"@fr ,
+               "has equivalent folio"@en ;
+    rdfs:comment "Cette propriété permet d'attribuer d'associer deux comptes fonciers d'un même contribuable dans une même commune dont l'un est la continuation de l'autre."@fr,
+                "This property allows to associate two land registry folios of the same taxpayer in the same municipality, one being the continuation of the other."@en .
 
 cad:isSourceType a owl:ObjectProperty ;
-                    rdfs:domain rico:RecordResource ;
-                    rdfs:range cad:Source ;
-                    rdfs:comment "Décrit le type de source (concept)."@fr ;
-                    rdfs:label "est une source de type"@fr ,
-                               "is source type"@en .
+    rdfs:domain [ a owl:Class ;
+                    owl:unionOf ( rico:RecordResource
+                                  rico:Instantiation
+                                )
+                  ] ;
+    rdfs:range cad:Source ;
+    rdfs:label "est une source de type"@fr ,
+                "is source type"@en ;
+    rdfs:comment "Cette propriété permet d'associer une source a un type de source ."@fr,
+        "This property allows to associate a source to a source type."@en .
 
 cad:hasClasse a owl:ObjectProperty ;
-                    rdfs:comment "Indique qu'un document ou d'une zone de document possède au moins une classe attribuée manuellement ou automatique."@fr ;
-                    rdfs:label "a au moins une classe"@fr ,
-                               "has at least one classe"@en .
+    rdfs:domain owl:Thing ;
+    rdfs:range cad:Class ;
+    rdfs:comment "Indique qu'un document ou d'une zone de document possède au moins une classe attribuée manuellement ou automatique."@fr ,
+    "Indicates that a document or a document area has at least one class assigned manually or automatically."@en ;
+    rdfs:label "a pour classe"@fr ,
+                "has class"@en .
+
+cad:isClasseOf a owl:ObjectProperty ;
+    rdfs:domain cad:Class ;
+    rdfs:range owl:Thing ;
+    rdfs:label "classe attribuée à"@fr ,
+                "is class of"@en ;
+    owl:inverseOf cad:hasClasse .
 
 cad:hasClasseValue a owl:ObjectProperty ;
-                    rdfs:comment "Classe attribuée à un document ou à une zone de document par un prov:Agent."@fr ;
-                    rdfs:label "a pour classe"@fr ,
-                               "has classe value"@en .
+    rdfs:domain cad:Class ;
+    rdfs:range cad:MLClasse ;
+    rdfs:comment "Valeur d'une classe assignée à un document ou à une zone de document."@fr,
+                 "Value of a class assigned to a document or a document area."@en ;
+    rdfs:label "a pour valeur de classe"@fr ,
+                "has class value"@en ;
+    owl:inverseOf cad:isClasseValueOf.
+
+cad:isClasseValueOf a owl:ObjectProperty ;
+    rdfs:domain cad:MLClasse ;
+    rdfs:range cad:Class ;
+    rdfs:label "est la valeur de classe attribuée à"@fr ,
+                "is class value of"@en ;
+    owl:inverseOf cad:hasClasseValue .
 
 cad:mentions a owl:ObjectProperty;
-    rdfs:domain rico:RecordResource;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( rico:RecordResource
+                          rico:Instantiation
+                        )
+            ] ;
+    rdfs:range owl:Thing ;
     rdfs:comment "Une source mentionne un objet."@fr;
-    rdfs:label "mentionne";
+    rdfs:label "mentionne"@fr,
+               "mentions"@en ;
     owl:inverseOf cad:isMentionnedIn.
 
 cad:isMentionnedIn a owl:ObjectProperty;
-    rdfs:range rico:RecordResource;
+    rdfs:domain owl:Thing ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( rico:RecordResource
+                          rico:Instantiation
+                        )
+            ] ;
     rdfs:comment "Un objet est mentionné dans une source."@fr;
-    rdfs:label "est mentionné dans";
+    rdfs:label "est mentionné dans"@fr,"is mentionned in"@en ;
     owl:inverseOf cad:mentions.
 
 cad:takenFrom a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
     rdfs:range [ a owl:Class ;
             owl:unionOf ( rico:RecordResource
+                          rico:Instantiation
                           cad:SpecialCellValue
                         )
             ] ;
     rdfs:label "tiré de"@fr,
                "taken from"@en ;
-    rdfs:comment "Numéro du folio où est décrit l'état de parcelle précédent ou l'événement qui initialise l'état considéré."@fr .
+    rdfs:comment "Folio où est décrit l'état de parcelle précédent OU autre information sur l'état précédent d'une parcelle."@fr ,
+                "Folio where the previous plot state is described OR other information about the previous state of a plot."@en .
 
 cad:passedTo a owl:ObjectProperty;
+    rdfs:domain owl:Thing ;
     rdfs:range [ a owl:Class ;
         owl:unionOf ( rico:RecordResource
+                        rico:Instantiation
                         cad:SpecialCellValue
                     )
         ] ;
     rdfs:label "passé à"@fr,
             "passed to"@en ;
-    rdfs:comment "Numéro du folio où est décrit l'état de parcelle suivant ou l'événement qui met fin à un état considéré."@fr .
+    rdfs:comment "Folio où est décrit l'état de parcelle suivant OU autre information sur l'état suivant d'une parcelle."@fr,
+                "Folio where the following plot state is described OR other information about the previous or following state of a plot."@en .
 
 cad:isEventType a owl:ObjectProperty ;
     rdfs:domain addr:Event ;
@@ -272,29 +358,40 @@ cad:isEventType a owl:ObjectProperty ;
                "is event type"@en .
 
 cad:fromSource a owl:ObjectProperty ;
-    rdfs:comment "Un élément est affirmé dans une source."@fr ;
-    rdfs:label "affirmé dans"@fr ;
-    owl:inverseOf cad:isSourceFor.
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing ;
+    rdfs:comment "Déprécié depuis 03/2025. Un élément est affirmé dans une source."@fr ;
+    rdfs:label "affirmé dans"@fr .
+
+cad:sourcedFrom a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing ;
+    rdfs:comment "Une affirmation est sourcée à partir d'une source ."@fr ;
+    rdfs:label "a pour source"@fr, "sourced from"@en ;
+    owl:equivalentProperty cad:fromSource.
 
 cad:isSourceOf a owl:ObjectProperty ;
-    rdfs:comment "Une source fourni une information."@fr ;
-    rdfs:label "est la source de"@fr ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing ;
+    rdfs:comment "Une source atteste une information."@fr ;
+    rdfs:label "est la source de"@fr ,"is source of"@en ;
     owl:inverseOf cad:fromSource.
 
 cad:hasNamedEntity a owl:ObjectProperty ;
-    rdfs:domain rico:Instanciation ;
+    rdfs:domain owl:Thing ;
     rdfs:range cad:NamedEntity ;
-    rdfs:label "a pour entité nommée"@fr,
-               "has named entity"@en ;
-    rdfs:comment "Entité nommée mentionnée dans une source."@fr .
+    rdfs:label "possède l'entité nommée"@fr,
+               "includes named entity"@en ;
+    rdfs:comment "Un texte contient une entité nommée identifiée par un processus manuel ou automatique."@fr,
+                "A text contains a named entity identified by a manual or automatic process."@en .
 
 cad:isNamedEntityType a owl:ObjectProperty ;
+    rdfs:label "est une entité nommée de type"@fr,
+                "is named entity of type"@en ;
     rdfs:domain cad:NamedEntity ;
-    rdfs:range cad:MLClasse ;
-    rdfs:label "est une entité nommée de type "@fr,
-               "is named entity of type"@en .
+    rdfs:range cad:MLClasse .
 
-# --------- Imported properties ---------
+# --------- Properties copied to avoid importation ---------
 rico:hasCreationDate a owl:ObjectProperty .
 rico:isCreationDateOf a owl:ObjectProperty .
 rico:includesOrIncluded a owl:ObjectProperty .
@@ -314,20 +411,16 @@ prov:wasAssociatedWith a owl:ObjectProperty .
 prov:used a owl:ObjectProperty .
 prov:wasGeneratedBy a owl:ObjectProperty .
 
-#################################################################
-#    Datatype properties
-#################################################################
+# ---- Datatype properties --- 
 
-cad:taxpayerLabel 
-    a owl:DatatypeProperty ;
+cad:taxpayerLabel a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
     rdfs:comment "Identité complète d'un contribuable : nom de famille (personne physique), raison sociale (personne morale)"@fr,
                  "Full identity of a taxpayer: name (individual), company name (legal entity)"@en ;
     rdfs:label "nom"@fr, "name"@en .
 
-cad:taxpayerFirstName
-    a owl:DatatypeProperty ;
+cad:taxpayerFirstName a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
     cad:isDeprecated true ;
@@ -335,8 +428,7 @@ cad:taxpayerFirstName
                  "DEPRECATED IN 03/2025, replaced by cad:taxpayerFirstNames. First name(s) of a taxpayer"@en ;
     rdfs:label "prénom(s)"@fr, "first name(s)"@en .
 
-cad:taxpayerFirstNames
-    a owl:DatatypeProperty ;
+cad:taxpayerFirstNames a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
     rdfs:comment "Prénom(s) d'un contribuable"@fr,
@@ -347,9 +439,8 @@ cad:taxpayerFirstNames
 cad:taxpayerStatus a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    cad:isDeprecated true ;
-    rdfs:comment "DEPRECIE EN 03/2025. Statut d'un contribuable (M, Mme, Veuve, Veuf, Fils, Fille, Mineur, Héritiers)"@fr ,
-                 "DEPRECATED IN 03/2025. Status of a taxpayer (Mr, Mrs, Widow, Widower, Son, Daughter, Minor, Heirs)"@en ;
+    rdfs:comment "Statut d'un contribuable (M, Mme, Veuve, Veuf, Fils, Fille, Mineur, Héritiers)"@fr ,
+                 "Status of a taxpayer (Mr, Mrs, Widow, Widower, Son, Daughter, Minor, Heirs)"@en ;
     rdfs:label "statut"@fr, "status"@en .
 
 cad:taxpayerFamilyStatus a owl:DatatypeProperty ;
@@ -379,43 +470,56 @@ cad:taxpayerTitle a owl:DatatypeProperty ;
     rdfs:label "titre"@fr, "title"@en.
 
 cad:hasNumFolio a owl:DatatypeProperty ;
+    rdfs:domain [ a owl:Class ;
+                    owl:unionOf ( rico:Instantiation
+                                  rico:RecordResource
+                                )
+                  ] ;
     rdfs:range xsd:string ;
     rdfs:comment "Numéro de folio (associé à une page entière ou à une partie de page) "@fr, "folio number (associated to a mutation register page or part of page)"@en ;
     rdfs:label "a pour numéro de folio"@fr,
                "has folio number"@en .
 
 cad:hasAlternativeNumFolio a owl:DatatypeProperty ;
+    rdfs:domain [ a owl:Class ;
+                    owl:unionOf ( rico:Instantiation
+                                  rico:RecordResource
+                                )
+                  ] ;
     rdfs:range xsd:string ;
     rdfs:comment "Numéro de folio alternatif (ex: ancien numéro)"@fr, "Alternative folio number (e.g. former number)"@en;
     rdfs:label "a pour numéro de folio alternatif"@fr, "has alternative folio number"@en .
 
 cad:transcription a owl:DatatypeProperty ;
   rdfs:domain [ a owl:Class ;
-                    owl:unionOf ( rico:Instanciation
+                    owl:unionOf ( rico:Instantiation
                                   cad:NamedEntity
                                 )
                   ] ;
   rdfs:range rdfs:Literal ;
   rdfs:label "transcription"@en, "transcription"@fr;
-  rdfs:comment "Transcription d'une zone our d'une entité obtenue automatiquement ou manuellement à partir d'un document (numérisé)."@fr,
+  rdfs:comment "Transcription d'une zone ou d'une entité obtenue automatiquement ou manuellement à partir d'un document (numérisé)."@fr,
                 "Transcription of an area or an entity obtained automatically or manually from a (scanned) document."@en.
 
 cad:coordinatesInImageSystem a owl:DatatypeProperty ;
+  rdfs:domain rico:Instantiation ;
   rdfs:range rdfs:Literal ;
   rdfs:label "coordinates in image"@en, "coordonnées dans l'image"@fr;
   rdfs:comment "Coordonnées (référentiel image) d'une zone annotée (manuellement ou automatiquement) dans un document numérisé.".
 
 cad:lineOrderInArea a owl:DatatypeProperty ;
+    rdfs:domain rico:Instantiation ;
     rdfs:range xsd:integer ;
     rdfs:label "line order in area"@en, "ordre de ligne dans la zone"@fr;
     rdfs:comment "Ordre de la ligne dans la zone annotée (manuellement ou automatiquement) dans un document numérisé.".
 
 cad:URL a owl:DatatypeProperty ;
+  rdfs:domain owl:Thing ;
   rdfs:range rdfs:Literal ;
   rdfs:label "url de la source"@fr, "source URL"@en;
   rdfs:comment 'Correspond à l\'URL de la source (image, base de donnée)'.
 
-# ---- Imported properties ----
+# ---- Properties copied here to avoid imports ----
 rdfs:label a owl:DatatypeProperty.
 dcterms:identifier a owl:DatatypeProperty.
 pwikidata:P8422 a owl:DatatypeProperty;
@@ -424,11 +528,8 @@ igeo:codeINSEE  a owl:DatatypeProperty .
 rico:identifier a owl:DatatypeProperty .
 rico:name a owl:DatatypeProperty .
 
-#################################################################
-#    Named Individuals
-#################################################################
+# ---- Named Individuals ----
 
-####################### Lists
 cad:CadastreAttributeList a owl:NamedIndividual,
     skos:ConceptScheme ;
     rdfs:comment "Liste des différents rôles spécifique au cadastre pouvant être joués par un attribut, représentés comme une liste de concepts SKOS."@fr ;
@@ -476,11 +577,9 @@ cad:SpecialCellValuesList a owl:NamedIndividual ,
     rdfs:label "Type de valeurs spéciales"@fr ,
                "Type of special values"@en .
 
-#################################################################
-#    SKOS Concepts
-#################################################################
+# ---- SKOS Concepts ----
 
-########## CadastreAttributesList
+# ---- CadastreAttributesList ----
 cad_atype:PlotAddress a addr:AttributeType,
         owl:NamedIndividual,
         skos:Concept ;
@@ -494,10 +593,10 @@ cad_atype:PlotAddress a addr:AttributeType,
 cad_atype:PlotMention a addr:AttributeType,
         owl:NamedIndividual,
         skos:Concept ;
-    skos:definition "Mention d'une personne/d'une parcelle dans un document"@fr ;
+    skos:definition "Détail des mentions précédente.s, courante, suivante.s associées à une parcelle (d'après les colonnes Tiré de, Porté et du numéro de folio courant)."@fr ;
     skos:inScheme cad:CadastreAttributeList ;
-    skos:prefLabel "Mention"@en,
-        "Mention"@fr .
+    skos:prefLabel "mention"@en,
+        "mention"@fr .
 
 cad_atype:PlotNature a addr:AttributeType,
         owl:NamedIndividual,
@@ -537,7 +636,7 @@ cad_atype:TaxpayerAddress a cad:TaxpayerAttributeType,
     skos:prefLabel "Address"@en,
         "Adresse du propriétaire"@fr .
 
-cad_atype:TaxpayerFirstName a cad:TaxpayerAttributeType,
+cad_atype:TaxpayerFirstNames a cad:TaxpayerAttributeType,
         owl:NamedIndividual,
         skos:Concept ;
     skos:broader cad_atype:TaxpayerFullLabel ;
@@ -546,7 +645,7 @@ cad_atype:TaxpayerFirstName a cad:TaxpayerAttributeType,
     skos:prefLabel "First name"@en,
         "Prénom"@fr .
 
-cad_atype:TaxpayerName a cad:TaxpayerAttributeType,
+cad_atype:TaxpayerLastName a cad:TaxpayerAttributeType,
         owl:NamedIndividual,
         skos:Concept ;
     skos:altLabel "Nom de famille,Raison sociale,Expression référentielle"@fr ;
@@ -556,7 +655,7 @@ cad_atype:TaxpayerName a cad:TaxpayerAttributeType,
     skos:prefLabel "Last name"@en,
         "Nom"@fr .
 
-cad_atype:TaxpayerStatus a cad:TaxpayerAttributeType,
+cad_atype:TaxpayerFamilyStatus a cad:TaxpayerAttributeType,
         owl:NamedIndividual,
         skos:Concept ;
     skos:broader cad_atype:TaxpayerFullLabel ;
@@ -666,12 +765,7 @@ cad_ltype:Section a owl:NamedIndividual ,
                    skos:prefLabel "Section"@fr ,
                                   "Section"@en .
 
-########## NatureList
-
-@prefix cad: <http://rdf.geohistoricaldata.org/def/cadastre#> .
-@prefix pnature: <http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+# --- NatureList ---
 
 pnature:Abreuvoir a cad:Nature,
         skos:Concept ;
@@ -2399,7 +2493,7 @@ srctype:ZoneDePage a cad:Source,
     skos:inScheme cad:CadastreSourceList ;
     skos:prefLabel "Zone située dans une page de registre cadastral"@fr .
 
-########## MLClassesList
+# --- MLClassesList ---
 
 mlclasse:CrossedOut a cad:MLClasse,
         owl:NamedIndividual,
@@ -2500,14 +2594,14 @@ mlclasse:MATArticleDeClassement a cad:MLClasse,
     skos:broader mlclasse:DocumentsTypes ;
     skos:definition "Compte foncier au sens document du terme : groupe de ligne associée à un propriétaire dans un folio de la matrice."@fr ;
     skos:inScheme cad:MLClassesList ;
-    skos:prefLabel "NaN"^^xsd:double .
+    skos:prefLabel "NaN"^^xsd:string .
 
 mlclasse:MATArticleDeMutation a cad:MLClasse,
         owl:NamedIndividual,
         skos:Concept ;
     skos:broader mlclasse:DocumentsTypes ;
     skos:inScheme cad:MLClassesList ;
-    skos:prefLabel "NaN"^^xsd:double .
+    skos:prefLabel "NaN"^^xsd:string .
 
 mlclasse:MATEntityTypes a cad:MLClasse,
         owl:NamedIndividual,
@@ -2521,7 +2615,7 @@ mlclasse:MATFolioArea a cad:MLClasse,
         skos:Concept ;
     skos:broader mlclasse:DocumentsTypes ;
     skos:inScheme cad:MLClassesList ;
-    skos:prefLabel "NaN"^^xsd:double .
+    skos:prefLabel "NaN"^^xsd:string .
 
 mlclasse:MATMainTable a cad:MLClasse,
         owl:NamedIndividual,
@@ -2680,7 +2774,7 @@ mlclasse:NamedEntityTypes a cad:MLClasse,
     skos:inScheme cad:MLClassesList ;
     skos:prefLabel "Types d'entités"@fr .
 
-########## SpecialValueList
+# --- SpecialValueList ---
 
 cad_spval:AdditionConstructionSV a cad:SpecialCellValue,
         owl:NamedIndividual,

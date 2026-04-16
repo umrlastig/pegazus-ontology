@@ -1,0 +1,1627 @@
+<h2 id="overv" class="list">Ontologie PeGaZus, extension dédiée à la représentation des parcelles cadastrales: Aper&ccedil;u <span class="backlink"> retour au <a href="#toc">sommaire</a></span></h2>
+<span class="markdown">
+Cette ontologie a les classes et propri&eacute;t&eacute;s suivantes.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#Nature"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#Nature">
+         <span>Nature de parcelle</span>
+      </a>
+   </li>
+   <li>
+      <a href="#EventType"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#EventType">
+         <span>Type d'évènement</span>
+      </a>
+   </li>
+   <li>
+      <a href="#MLClasse"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#MLClasse">
+         <span>Type de classe d'un document.</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Source"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#Source">
+         <span>Type de source</span>
+      </a>
+   </li>
+   <li>
+      <a href="#SpecialCellValue"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#SpecialCellValue">
+         <span>Valeur spéciale liée au fonctionnement des documents cadastraux</span>
+      </a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#hasPlotAddress"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasPlotAddress">
+         <span>a pour adresse</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasClasse"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasClasse">
+         <span>a pour classe</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasTaxpayer"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasTaxpayer">
+         <span>a pour contribuable</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasEquivalentFolio"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasEquivalentFolio">
+         <span>a pour folio équivalent</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasPlotNature"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasPlotNature">
+         <span>a pour nature</span>
+      </a>
+   </li>
+   <li>
+      <a href="#sourcedFrom"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#sourcedFrom">
+         <span>a pour source</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasClasseValue"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasClasseValue">
+         <span>a pour valeur de classe</span>
+      </a>
+   </li>
+   <li>
+      <a href="#fromSource"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#fromSource">
+         <span>affirmé dans</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isClasseOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isClasseOf">
+         <span>classe attribuée à</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isPlotAddressOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isPlotAddressOf">
+         <span>est l'adresse associée à</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isSourceOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isSourceOf">
+         <span>est la source de</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isClasseValueOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isClasseValueOf">
+         <span>est la valeur de classe attribuée à</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isTaxpayerOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isTaxpayerOf">
+         <span>est le contribuable associé à</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isMentionnedIn"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isMentionnedIn">
+         <span>est mentionné dans</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isEventType"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isEventType">
+         <span>est un événement de type</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isNamedEntityType"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isNamedEntityType">
+         <span>est une entité nommée de type</span>
+      </a>
+   </li>
+   <li>
+      <a href="#isPlotNatureOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isPlotNatureOf">
+         <span>est une nature de </span>
+      </a>
+   </li>
+   <li>
+      <a href="#isSourceType"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isSourceType">
+         <span>est une source de type</span>
+      </a>
+   </li>
+   <li>
+      <a href="#mentions"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#mentions">
+         <span>mentionne</span>
+      </a>
+   </li>
+   <li>
+      <a href="#passedTo"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#passedTo">
+         <span>passé à</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasNamedEntity"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasNamedEntity">
+         <span>possède l'entité nommée</span>
+      </a>
+   </li>
+   <li>
+      <a href="#takenFrom"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#takenFrom">
+         <span>tiré de</span>
+      </a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#hasNumFolio"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasNumFolio">
+         <span>a pour numéro de folio</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasAlternativeNumFolio"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasAlternativeNumFolio">
+         <span>a pour numéro de folio alternatif</span>
+      </a>
+   </li>
+   <li>
+      <a href="#taxpayerActivity"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerActivity">
+         <span>activité</span>
+      </a>
+   </li>
+   <li>
+      <a href="#taxpayerAddress"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerAddress">
+         <span>adresse</span>
+      </a>
+   </li>
+   <li>
+      <a href="#coordinatesInImageSystem"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#coordinatesInImageSystem">
+         <span>coordonnées dans l'image</span>
+      </a>
+   </li>
+   <li>
+      <a href="#taxpayerLabel"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerLabel">
+         <span>nom</span>
+      </a>
+   </li>
+   <li>
+      <a href="#lineOrderInArea"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#lineOrderInArea">
+         <span>ordre de ligne dans la zone</span>
+      </a>
+   </li>
+   <li>
+      <a href="#taxpayerFirstName"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerFirstName">
+         <span>prénom(s)</span>
+      </a>
+   </li>
+   <li>
+      <a href="#taxpayerFirstNames"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerFirstNames">
+         <span>prénom(s)</span>
+      </a>
+   </li>
+   <li>
+      <a href="#taxpayerStatus"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerStatus">
+         <span>statut</span>
+      </a>
+   </li>
+   <li>
+      <a href="#taxpayerFamilyStatus"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerFamilyStatus">
+         <span>statut familial</span>
+      </a>
+   </li>
+   <li>
+      <a href="#taxpayerTitle"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerTitle">
+         <span>titre</span>
+      </a>
+   </li>
+   <li>
+      <a href="#transcription"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#transcription">
+         <span>transcription</span>
+      </a>
+   </li>
+   <li>
+      <a href="#URL"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#URL">
+         <span>url de la source</span>
+      </a>
+   </li>
+</ul><h4>Individus nomm&eacute;s</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#" title="http://rdf.geohistoricaldata.org/def/cadastre#">
+         <span></span>
+      </a>
+   </li>
+   <li>
+      <a href="#hasPlotAddress"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasPlotAddress">a pour adresse</a>
+   </li>
+   <li>
+      <a href="#hasClasse"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasClasse">a pour classe</a>
+   </li>
+   <li>
+      <a href="#hasTaxpayer"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasTaxpayer">a pour contribuable</a>
+   </li>
+   <li>
+      <a href="#hasEquivalentFolio"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasEquivalentFolio">a pour folio équivalent</a>
+   </li>
+   <li>
+      <a href="#hasPlotNature"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasPlotNature">a pour nature</a>
+   </li>
+   <li>
+      <a href="#hasNumFolio"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasNumFolio">a pour numéro de folio</a>
+   </li>
+   <li>
+      <a href="#hasAlternativeNumFolio"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasAlternativeNumFolio">a pour numéro de folio alternatif</a>
+   </li>
+   <li>
+      <a href="#sourcedFrom"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#sourcedFrom">a pour source</a>
+   </li>
+   <li>
+      <a href="#hasClasseValue"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasClasseValue">a pour valeur de classe</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Abreuvoir"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Abreuvoir">Abreuvoir</a>
+   </li>
+   <li>
+      <a href="#taxpayerActivity"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerActivity">activité</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerActivity"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerActivity">Activité</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/AdditionConstructionSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/AdditionConstructionSV">Addition à une construction</a>
+   </li>
+   <li>
+      <a href="#taxpayerAddress"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerAddress">adresse</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotAddress"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotAddress">Adresse de la parcelle</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerAddress"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerAddress">Adresse du propriétaire</a>
+   </li>
+   <li>
+      <a href="#fromSource"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#fromSource">affirmé dans</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ajonc"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ajonc">Ajonc</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Allee"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Allee">Allée</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PreviousPlotNumber"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PreviousPlotNumber">Ancien numéro de parcelle</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PreviousNature"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PreviousNature">Ancienne nature de la parcelle</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/changeType/TaxpayerAppearance"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/changeType/TaxpayerAppearance">Apparition d'un contribuable</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Appenti"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Appenti">Appenti</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/DocumentOutdated"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/DocumentOutdated">Archivage d'un document</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ardoisiere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ardoisiere">Ardoisière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Argilliere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Argilliere">Argillière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Arrondissement"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Arrondissement">Arrondissement</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/ArticleDeClassement"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/ArticleDeClassement">Article de classement</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/ArticleDeMutation"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/ArticleDeMutation">Article de mutation</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Atelier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Atelier">Atelier</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotAttribute"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotAttribute">Attribut de parcelle</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerAttribute"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerAttribute">Attribut de personne</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Addition"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Addition">Augmentation</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/AugmentationSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/AugmentationSV">Augmentation</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Aulnaie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Aulnaie">Aulnaie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Barraque"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Barraque">Baraque</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Bassin"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Bassin">Bassin</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Batterie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Batterie">Batterie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Bief"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Bief">Bief</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Bois"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Bois">Bois</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/BoisAgrement"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/BoisAgrement">Bois d'agrément</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Broussaille"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Broussaille">Brousaille</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Bruyere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Bruyere">Bruyère</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Buissiere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Buissiere">Buissières</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Batiment"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Batiment">Bâtiment</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/BatimentRural"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/BatimentRural">Bâtiment rural</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/Cadastre"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/Cadastre">Cadastre</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/CadastreOutdated"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/CadastreOutdated">Cadastre archivé</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Canal"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Canal">Canal</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/CanalAgrement"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/CanalAgrement">Canal d'agrément</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Canton"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Canton">Canton</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Carriere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Carriere">Carrière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/CelluleVide"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/CelluleVide">Cellule vide</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cerisaies"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cerisaies">Cerisaies</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Chantier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Chantier">Chantier</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Charmille"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Charmille">Charmille</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Chemin"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Chemin">Chemin</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/ChemindeFer"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/ChemindeFer">Chemin de fer</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cheneviere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cheneviere">Chenevière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Chataigneraie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Chataigneraie">Châtaigneraies</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cimetiere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cimetiere">Cimetiere</a>
+   </li>
+   <li>
+      <a href="#isClasseOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isClasseOf">classe attribuée à</a>
+   </li>
+   <li>
+      <a href="#Class"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#Class">Classe d'un document ou d'un texte</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Clos"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Clos">Clos</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/CompteFoncier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/CompteFoncier">Compte foncier</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/ConsideredAsRuined"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/ConsideredAsRuined">Considéré comme en ruines</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Construction"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Construction">Construction d'un bâtiment</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/ConstructionNouvelleSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/ConstructionNouvelleSV">Construction nouvelle</a>
+   </li>
+   <li>
+      <a href="#Taxpayer"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#Taxpayer">Contribuable</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotTaxpayer"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotTaxpayer">Contribuable</a>
+   </li>
+   <li>
+      <a href="#coordinatesInImageSystem"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#coordinatesInImageSystem">coordonnées dans l'image</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cour"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cour">Cour</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/CourCommune"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/CourCommune">Cour commune</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/CoursDEau"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/CoursDEau">Cours d'eau</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Courtil"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Courtil">Courtil</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSCover"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSCover">Couverture décrivant une section dans un registre d'états de sections</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Crayere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Crayere">Crayère</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cressonniere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cressonniere">Cressonnière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/DocumentCreation"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/DocumentCreation">Création d'un document</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cuisine"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cuisine">Cuisine</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/StartTime"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/StartTime">Date d'entrée</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/EndTime"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/EndTime">Date de sortie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Digue"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Digue">Digue</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Reduction"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Reduction">Diminution</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/DiminutionSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/DiminutionSV">Diminution</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/changeType/TaxpayerDisappearance"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/changeType/TaxpayerDisappearance">Disparition d'un contribuable</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Split"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Split">Division d'un objet</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/DoubleEmploiSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/DoubleEmploiSV">Double emploi</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/DoublePage"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/DoublePage">Double page</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Douve"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Douve">Douve</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Dune"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Dune">Dune</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/DemolitionSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/DemolitionSV">Démolition</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Demotion"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Demotion">Démolition d'un bâtiment</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Departement"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Departement">Département</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Dependance"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Dependance">Dépendance</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Eau"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Eau">Eau</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ecluse"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ecluse">Ecluse</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ecurie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ecurie">Ecurie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Eglise"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Eglise">Eglise</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/RuinesSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/RuinesSV">En ruines</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/TableHeader"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/TableHeader">En-tête de tableau</a>
+   </li>
+   <li>
+      <a href="#NamedEntity"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#NamedEntity">Entité nommée</a>
+   </li>
+   <li>
+      <a href="#isPlotAddressOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isPlotAddressOf">est l'adresse associée à</a>
+   </li>
+   <li>
+      <a href="#isSourceOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isSourceOf">est la source de</a>
+   </li>
+   <li>
+      <a href="#isClasseValueOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isClasseValueOf">est la valeur de classe attribuée à</a>
+   </li>
+   <li>
+      <a href="#isTaxpayerOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isTaxpayerOf">est le contribuable associé à</a>
+   </li>
+   <li>
+      <a href="#isMentionnedIn"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isMentionnedIn">est mentionné dans</a>
+   </li>
+   <li>
+      <a href="#isEventType"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isEventType">est un événement de type</a>
+   </li>
+   <li>
+      <a href="#isNamedEntityType"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isNamedEntityType">est une entité nommée de type</a>
+   </li>
+   <li>
+      <a href="#isPlotNatureOf"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isPlotNatureOf">est une nature de </a>
+   </li>
+   <li>
+      <a href="#isSourceType"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#isSourceType">est une source de type</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/EtablissementDeBains"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/EtablissementDeBains">Etablissement de bains</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Etang"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Etang">Etang</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/EtangEmpoissonne"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/EtangEmpoissonne">Etang empoissonné</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections">Etats de sections</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Av_1822"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Av_1822">Etats de sections antérieurs à 1822</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Av_1822_Bati"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Av_1822_Bati">Etats de sections antérieurs à 1822 (propriétés bâties)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Av_1822_NonBati"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Av_1822_NonBati">Etats de sections antérieurs à 1822 (propriétés non bâties)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Ap_1822"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Ap_1822">Etats de sections postérieurs à 1822</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Scp_Seine_1835"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/EtatsDeSections_Scp_Seine_1835">Etats de sections spécifiques à la rénovation du cadastre de la Seine (1835-1845)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Etendoir"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Etendoir">Etendoir</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/EvaluationSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/EvaluationSV">Evaluation</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/ChangeWithoutConstruction"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/ChangeWithoutConstruction">Evolution de nature n'impliquant pas de bâtiment</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/CadastreAdminEvent"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/CadastreAdminEvent">Evènement concernant le cadastre et ses documents</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/PlotNatureEvent"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/PlotNatureEvent">Evènement impliquant la nature d'une parcelle</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/BuiltPlotEvent"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/BuiltPlotEvent">Evènement impliquant un bâtiment existant</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/LandmarkEvent"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/LandmarkEvent">Evènement impliquant un landmark (identité)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/EventMentionnedinFoliosColumns"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/EventMentionnedinFoliosColumns">Evènement mentionné dans les colonnes dédiées aux folios</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fabrique"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fabrique">Fabrique</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Falaise"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Falaise">Falaise</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fleur"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fleur">Fleurs</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/Folio"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/Folio">Folio</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/FolioBati"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/FolioBati">Folio (Bâti)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/FolioNonBati"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/FolioNonBati">Folio (Non Bâti)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fontaine"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fontaine">Fontaine</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fosse"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fosse">Fossé</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fougeraie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fougeraie">Fougeraie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Four"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Four">Four</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fournil"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fournil">Fournil</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fraisier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Fraisier">Fraisiers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Framboisier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Framboisier">Framboisiers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Friche"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Friche">Friche</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Merge"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Merge">Fusion d'objets entiers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/PartialMerge"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/PartialMerge">Fusion impliquant la fusion d'objets entiers ou subdivisés</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Genet"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Genet">Genêt</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Graviere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Graviere">Gravière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Groseillier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Groseillier">Groseillier</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Gue"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Gue">Gué</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Hangar"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Hangar">Hangar</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Herbage"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Herbage">Herbage</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Houblonniere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Houblonniere">Houblonnière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/IdemSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/IdemSV">Idem</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/IdemPrecedentSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/IdemPrecedentSV">Idem au précédent</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/IdemSuivantSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/IdemSuivantSV">Idem au précédent</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/SectionIdentifier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/SectionIdentifier">Identifiant de section</a>
+   </li>
+   <li>
+      <a href="#https://www.wikidata.org/wiki/Property:P8422" title="https://www.wikidata.org/wiki/Property:P8422">identifiant Ldh/EHESS/Cassini</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerFullLabel"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerFullLabel">Identité complète</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/CadastreCreation"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/CadastreCreation">Initialisation d'un cadastre</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/FicheInventaire"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/FicheInventaire">Inventaire des archives</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Jardin"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Jardin">Jardin</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/JardinDAgrement"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/JardinDAgrement">Jardin d'agrément</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/JardinMarais"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/JardinMarais">Jardin Marais</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/JardinMaraicher"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/JardinMaraicher">Jardin Maraîcher</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Jonc"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Jonc">Jonc</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lac"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lac">Lac</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lagune"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lagune">Lagune</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lande"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lande">Lande</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lavande"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lavande">Lavande</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lavoir"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Lavoir">Lavoir</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/NamedPlace"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/NamedPlace">Lieu-dit ou adresse</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/TableLine"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/TableLine">Ligne de tableau</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/LigneEtatDeSection"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/LigneEtatDeSection">Ligne de tableau d'états de sections</a>
+   </li>
+   <li>
+      <a href="#MLClassesList"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#MLClassesList">Liste de classes</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/MachineAVapeur"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/MachineAVapeur">Machine à vapeur</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Magasin"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Magasin">Magasin</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Maison"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Maison">Maison</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Marniere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Marniere">Manière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Manufacture"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Manufacture">Manufacture</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Marais"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Marais">Marais</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/MaraisSalant"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/MaraisSalant">Marais salant</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Mare"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Mare">Mare</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Marecage"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Marecage">Marécage</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale">Matrice cadastrale</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1807_1822_Bati_NonBati"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1807_1822_Bati_NonBati">Matrice de rôles des propriétés bâties et non bâties (1807-1822)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1882_1911_Bati"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1882_1911_Bati">Matrice des propriétés bâties (1882-1911)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1911_Renovation_Bati"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1911_Renovation_Bati">Matrice des propriétés bâties (1911-rénovation)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1822_1914_NonBati"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1822_1914_NonBati">Matrice des propriétés non bâties (1822-1914)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1914_Renovation_NonBati"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/MatriceCadastrale1914_Renovation_NonBati">Matrice des propriétés non bâties (1914-rénovation)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Meloniere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Meloniere">Melonière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotMention"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotMention">mention</a>
+   </li>
+   <li>
+      <a href="#mentions"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#mentions">mentionne</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Mine"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Mine">Mine</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Miniere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Miniere">Minière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Moulin"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Moulin">Moulin</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/MoulinAEau"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/MoulinAEau">Moulin à eau</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/MoulinAVent"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/MoulinAVent">Moulin à vent</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/TaxpayerMutation"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/TaxpayerMutation">Mutation de propriétaire</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATArticleDeClassement"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATArticleDeClassement">NaN</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATArticleDeMutation"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATArticleDeMutation">NaN</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATFolioArea"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATFolioArea">NaN</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotNature"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/PlotNature">Nature</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/Nature"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/Nature">Nature</a>
+   </li>
+   <li>
+      <a href="#Nature"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#Nature">Nature de parcelle</a>
+   </li>
+   <li>
+      <a href="#taxpayerLabel"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerLabel">nom</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerLastName"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerLastName">Nom</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/OwnerNumber"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/OwnerNumber">Numéro de folio du propriétaire</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PlotNumber"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PlotNumber">Numéro de parcelle</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Neant"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Neant">Néant</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/ObjetDAgrement"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/ObjetDAgrement">Objet d'agrément</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/OmissionSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/OmissionSV">Omission</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Omission"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Omission">Omission de déclaration qui entraine une réintégration a posteriori de l'article de classement dans un folio</a>
+   </li>
+   <li>
+      <a href="#lineOrderInArea"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#lineOrderInArea">ordre de ligne dans la zone</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ormaie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ormaie">Ormaie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Oseraie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Oseraie">Oseraie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/Ouvrage"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/Ouvrage">Ouvrage</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PageDeRegistre"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PageDeRegistre">Page de registre cadastral</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATMainTable"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATMainTable">Page de tableau principal</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/Page"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/Page">Page simple</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSBlankTab"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSBlankTab">Page vide</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Palus"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Palus">Palus</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Plot"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Plot">Parcelle</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/NatureBatie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/NatureBatie">Parcelle imposée au titre des propriétés bâties</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/NatureNonBatie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/NatureNonBatie">Parcelle imposée au titre des propriétés no bâties</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Parterre"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Parterre">Parterre</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/PartieSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/PartieSV">Partie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Passage"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Passage">Passage</a>
+   </li>
+   <li>
+      <a href="#passedTo"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#passedTo">passé à</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/VoiePubliqueSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/VoiePubliqueSV">Passé à la voie publique</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Peuplier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Peuplier">Peuplier</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pin"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pin">Pin</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/PieceDEau"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/PieceDEau">Pièce d'eau</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/PieceDEauAgrement"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/PieceDEauAgrement">Pièce d'eau d'agrément</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Plage"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Plage">Plage</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/Plan"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/Plan">Plan</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanVectorise"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanVectorise">Plan géoréférencé</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanParcellaire"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanParcellaire">Plan parcellaire</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanParcellaireMinute"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanParcellaireMinute">Plan parcellaire : minute</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanParcellaireFinal"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanParcellaireFinal">Plan parcellaire final</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanParcellaireIssuDAtlas"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanParcellaireIssuDAtlas">Plan parcellaire issu d'atlas</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanGeoreference"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/PlanGeoreference">Plan vectorisé</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Plantation"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Plantation">Plantation</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Abricotier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Abricotier">Plantation d'abricotiers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Acacia"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Acacia">Plantation d'acacias</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Amandier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Amandier">Plantation d'amandiers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Asperges"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Asperges">Plantation d'asperges</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Olivier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Olivier">Plantation d'oliviers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Oranger"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Oranger">Plantation d'orangers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cassis"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cassis">Plantation de cassis</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Citronnier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Citronnier">Plantation de citronnier</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cedratiers"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Cedratiers">Plantation de cédratier</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Figuier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Figuier">Plantation de figuiers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Murier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Murier">Plantation de mûriers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Noisetier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Noisetier">Plantation de noisetiers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Noyer"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Noyer">Plantation de noyers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Poirier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Poirier">Plantation de poiriers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pecher"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pecher">Plantation de pêchers</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Platriere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Platriere">Plâtrière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pommeraie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pommeraie">Pommeraie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PassedTo"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PassedTo">Porté à</a>
+   </li>
+   <li>
+      <a href="#hasNamedEntity"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#hasNamedEntity">possède l'entité nommée</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Potager"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Potager">Potager</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Poudriere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Poudriere">Poudrière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pre"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pre">Pre</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/Owner"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/Owner">Propriétaire</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/PrePlante"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/PrePlante">Pré planté</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerFirstNames"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerFirstNames">Prénom</a>
+   </li>
+   <li>
+      <a href="#taxpayerFirstName"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerFirstName">prénom(s)</a>
+   </li>
+   <li>
+      <a href="#taxpayerFirstNames"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerFirstNames">prénom(s)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Patis"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Patis">Pâtis</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Paturage"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Paturage">Pâturage</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pature"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pature">Pâture</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pepiniere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Pepiniere">Pépinière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/RegistreCadastral"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/RegistreCadastral">Registre cadastral</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/ResteSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/ResteSV">Reste</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Rigole"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Rigole">Rigole</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Riziere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Riziere">Rizière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Rocher"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Rocher">Rocher</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Rosier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Rosier">Rosier</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Routoir"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Routoir">Routoir</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ruine"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Ruine">Ruine</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSIntermediateSummary"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSIntermediateSummary">Récapitulatif intermédiaire (par page, par nature etc)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Reservoir"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Reservoir">Réservoir</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSSummary"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSSummary">Résumé final d'une section</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Sabliere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Sabliere">Sablière</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Salin"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Salin">Salin</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Sapin"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Sapin">Sapin</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Saulaie"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Saulaie">Saulaie</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Section"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/landmarkType/Section">Section</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Serre"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Serre">Serre</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Sol"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Sol">Sol</a>
+   </li>
+   <li>
+      <a href="#taxpayerStatus"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerStatus">statut</a>
+   </li>
+   <li>
+      <a href="#taxpayerFamilyStatus"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerFamilyStatus">statut familial</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerFamilyStatus"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerFamilyStatus">Statut familial</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/TextStyles"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/TextStyles">Style du texte</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/SplitWithStay"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/SplitWithStay">Subdivision d'une parcelle qui reste dans le compte foncier initial</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Sucession"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Sucession">Sucession</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Sechoir"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Sechoir">Séchoir</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/TableauAssemblage"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/TableauAssemblage">Tableau d'assemblage</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSTabP2"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSTabP2">Tableau principal d'état de section (deuxième page si double page)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSTabP1"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSTabP1">Tableau principal d'état de section (première page si double page)</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Terrain"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Terrain">Terrain</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerrainDAgregemnt"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerrainDAgregemnt">Terrain d'agrément</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerrainABatir"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerrainABatir">Terrain à bâtir</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Terre"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Terre">Terre</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerreLabourable"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerreLabourable">Terre labourable</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerrePlantee"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerrePlantee">Terre plantée</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerreVaine"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerreVaine">Terre vaine</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerreAVigne"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/TerreAVigne">Terre à vigne</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/CrossedOut"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/CrossedOut">Texte barré/rayé</a>
+   </li>
+   <li>
+      <a href="#takenFrom"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#takenFrom">tiré de</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/TakenFrom"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/TakenFrom">Tiré de</a>
+   </li>
+   <li>
+      <a href="#taxpayerTitle"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#taxpayerTitle">titre</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerTitle"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/attributeType/TaxpayerTitle">Titre de civilité</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Tourbiere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Tourbiere">Tourbière</a>
+   </li>
+   <li>
+      <a href="#transcription"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#transcription">transcription</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Truffiere"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Truffiere">Truffière</a>
+   </li>
+   <li>
+      <a href="#CadastreAttributeList"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#CadastreAttributeList">Type d'attributs spécifiques aux objets du cadastre</a>
+   </li>
+   <li>
+      <a href="#EventType"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#EventType">Type d'évènement</a>
+   </li>
+   <li>
+      <a href="#CadastreEventList"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#CadastreEventList">Type d'événements spécifiques au cadastre</a>
+   </li>
+   <li>
+      <a href="#CadastreChangeList"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#CadastreChangeList">Type de changements spécifiques au cadastre</a>
+   </li>
+   <li>
+      <a href="#MLClasse"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#MLClasse">Type de classe d'un document.</a>
+   </li>
+   <li>
+      <a href="#NatureList"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#NatureList">Type de natures de parcelles</a>
+   </li>
+   <li>
+      <a href="#CadastreLandmarkList"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#CadastreLandmarkList">Type de repère spécifiques au cadastre</a>
+   </li>
+   <li>
+      <a href="#Source"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#Source">Type de source</a>
+   </li>
+   <li>
+      <a href="#CadastreSourceList"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#CadastreSourceList">Type de sources</a>
+   </li>
+   <li>
+      <a href="#SpecialCellValuesList"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#SpecialCellValuesList">Type de valeurs spéciales</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/NamedEntityTypes"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/NamedEntityTypes">Types d'entités</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATEntityTypes"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/MATEntityTypes">Types d'entités présentes dans les matrices</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSEntityTypes"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/ETSEntityTypes">Types d'entités présentes dans les états de sections</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/DocumentsTypes"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/DocumentsTypes">Types de document</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PageClasses"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/mlClasse/PageClasses">Types de pages</a>
+   </li>
+   <li>
+      <a href="#URL"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#URL">url de la source</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/ValeurBarreeSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/ValeurBarreeSV">Valeur barrée</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/InconnuSV"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/specialCellValue/InconnuSV">Valeur inconnue</a>
+   </li>
+   <li>
+      <a href="#SpecialCellValue"
+         title="http://rdf.geohistoricaldata.org/def/cadastre#SpecialCellValue">Valeur spéciale liée au fonctionnement des documents cadastraux</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Sale"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/eventType/Sale">Vente</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Verger"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Verger">Verger</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Vigne"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Vigne">Vigne</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Vivier"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/plotNature/Vivier">Viver</a>
+   </li>
+   <li>
+      <a href="#http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/ZoneDePage"
+         title="http://rdf.geohistoricaldata.org/id/codes/cadastre/sourceType/ZoneDePage">Zone située dans une page de registre cadastral</a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 
