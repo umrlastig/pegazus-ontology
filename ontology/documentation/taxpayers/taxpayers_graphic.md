@@ -1,6 +1,6 @@
-# Illustration of Taxpayers
+# Graphic documentation of Taxpayers
 
-This page proposes a graphic representation of the ontology.
+This page proposes a graphic representation of the ```Taxpayer``` modelet of the *PeGazUs* ontology.
 Please refer to the ontology to get the full definitions of each property.
 
 ## Ontology
@@ -40,7 +40,21 @@ graph
     class LabelLit,NameLit,LastNameLit,FirstNamesLit,ActivityLit,AddressLit,TitleLit,OrganisationNameLit,MaidenNameLit,FamilyStatusLit vowlLiteral;
 ```
 ### Object properties
+```mermaid
+graph 
+    %% 1. Nodes
+    TaxpayerNode(("cad:Taxpayer"))
+    AddressEnt(("addr:Landmark"))
 
+    %% 2. Connect the unique IDs
+    TaxpayerNode == "cad:taxpayerAddressEntity" ==> AddressEnt
+
+    %% 3. Apply WebVOWL Style
+    classDef vowlClass fill:#aaccff,stroke:#3366cc,stroke-width:2px,color:#000,font-weight:bold;
+
+    class TaxpayerNode,AddressEnt vowlClass;
+```
 ### Note
-
-## Examples
+* ```cad:taxpayerLabel``` is a super-property for ```cad:taxpayerFullName``` and ```cad:taxpayerOrganisationName```.
+* ```cad:taxpayerAddressEntity``` can be used when the value associated to ```cad:taxpayerAddress``` as been linked to a geographical entity of a KG. For instance, it can be an ```addr:Landmark``` entity.
+* Upcomming developpements will create object properties for actitivies, family status and titles.
