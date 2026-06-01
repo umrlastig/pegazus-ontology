@@ -1,5 +1,6 @@
 @prefix : <http://rdf.geohistoricaldata.org/def/address#> .
 @base <http://rdf.geohistoricaldata.org/def/address#> .
+@prefix addr: <http://rdf.geohistoricaldata.org/def/address#> .
 
 #Others namespaces
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -15,6 +16,7 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix cc: <http://creativecommons.org/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 # Core namespaces
 @prefix atype: <http://rdf.geohistoricaldata.org/id/codes/address/attributeType/> .

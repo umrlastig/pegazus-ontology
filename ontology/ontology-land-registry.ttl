@@ -49,7 +49,7 @@
 	          organization:organization <http://www.umr-lastig.fr/> ;
 	          organization:role [
 	              a organization:Role ;
-	              rdfs:label "PhD"@fr, "PhD"@en ;
+	              rdfs:label "Docteure en Sciences et Technologies de l'Information Géohgraphique"@fr, "PhD in Sciences and Technologies of Geographic Information"@en ;
 	            ] ;
 	        ] ;
 	      foaf:family_name "Tual" ;
@@ -61,7 +61,8 @@
         dcterms:description "Extension de l'ontologie PeGaZus pour décrire les informations sur les parcelles, et les entités liées, présentes dans le cadastre ancien."@fr, 
 		                    "Extension of the PeGaZus ontology to describe the information about land plots and associated entities evocated in the land registry documents."@en;
         dcterms:issued "2024-01-24"^^xsd:date ;
-        dcterms:modified "2024-07-12"^^xsd:date ;
+        dcterms:modified "2025-07-12"^^xsd:date ;
+        dcterms:modified "2026-04-17"^^xsd:date ;
         dcterms:publisher <http://fr.dbpedia.org/resource/Institut_national_de_l%27information_g%C3%A9ographique_et_foresti%C3%A8re> ;
         dcterms:title "Ontologie PeGaZus, extension dédiée à la représentation des parcelles cadastrales"@fr, "Ontology PeGaZus, extension related to the French 19th-century Land Registry"@en ;
         vann:preferredNamespacePrefix "cad" ;
@@ -71,7 +72,7 @@
 		cc:license <http://creativecommons.org/licenses/by/2.0/> ;
 		cc:license <http://opendatacommons.org/licenses/by/> ;
     #owl:priorVersion <> ;
-	owl:versionInfo "Version 0.1 - 2024-07-12" .
+	owl:versionInfo "Version 2.0 - 2026-04-17" .
 
 # ---- Annotation properties ----
 owl:maxQualifiedCardinality a owl:AnnotationProperty .
@@ -86,59 +87,66 @@ cad:isDeprecated a owl:AnnotationProperty .
 cad:EventType a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Type d'évènement"@fr, "Event type"@en ;
+    skos:prefLabel "Type d'évènement"@fr, "Event type"@en ;
     rdfs:comment "Type d'évènement. La classe addr:Event est décrite dans l'ontologie PeGaZus."@fr,
                 "Type of event. The class addr:Event is described in the PeGaZus ontology."@en ;
-    owl:disjointWith cad:MLClasse, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
+    owl:disjointWith cad:Class, cad:MLClasse, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer, cad:NamedEntity.
 
 cad:Class a owl:Class ;
     rdfs:label "Classe d'un document ou d'un texte"@fr, 
                 "Class of a document or text"@en;
-    rdfs:comment "Classe d'un document ou d'une zone de document, attribuée manuellement ou automatiquement par un utilisateur."@fr,
-                "Class of a document or a document area, assigned manually or automatically by a user."@en ;
+    skos:prefLabel "Classe d'un document ou d'un texte"@fr, "Class of a document or text"@en ;
+    rdfs:comment "Classe d'un document, d'une zone de document ou d'un extrait de texte, attribuée manuellement ou automatiquement par un utilisateur."@fr,
+                "Class of a document, of a document area or of a text, assigned manually or automatically by a user."@en ;
     owl:disjointWith cad:EventType, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
 
 cad:NamedEntity a owl:Class ;
-    owl:subClassOf cad:Class;
+    rdfs:subClassOf cad:Class ;
     rdfs:label "Named entity"@en, "Entité nommée"@fr ;
+    skos:prefLabel "Named entity"@en, "Entité nommée"@fr ;
     rdfs:comment "Entité nommée mentionnée dans une source, identifiée par un processus manuel ou automatique."@fr,
                 "Named entity mentioned in a source, identified by a manual or automatic process."@en ;
-    owl:disjointWith cad:EventType, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
+    owl:disjointWith cad:EventType, cad:MLClasse, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
 
 cad:MLClasse a owl:Class ;
-    rdfs:subClassOf skos:Concept ;
-    rdfs:label "Type de classe d'un document."@fr, "Type of class of a document."@en;
+    rdfs:subClassOf cad:Class ;
+    rdfs:label "Classe d'un document."@fr, "Class of a document."@en;
+    skos:prefLabel "Classe d'un document"@fr, "Class of a document"@en ;
     rdfs:comment "Classe d'un document. Diffère d'une source car relève d'une attribution (manuelle ou automatique) par un utilisateur."@fr,
         "Class of a document. It differs from a source as it is the result of an assignment by a user. They are the result of a manual or automatic assignment process."@en;
-    owl:disjointWith cad:EventType, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
+    owl:disjointWith cad:EventType, cad:NamedEntity, cad:Nature, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
 
 cad:Nature a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Plot nature"@en, "Nature de parcelle"@fr ;
+    skos:prefLabel "Plot nature"@en, "Nature de parcelle"@fr ;
     rdfs:comment "Nature de parcelle, correspond à une occupation ou un usage du sol."@fr ,
                 "Nature de parcelle, corresponds to a land use or occupation."@en ;
-    owl:disjointWith cad:EventType, cad:MLClasse, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
+    owl:disjointWith cad:EventType, cad:Class, cad:Source, cad:SpecialCellValue, cad:Taxpayer.
 
 cad:Source a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Type de source"@fr, "Type of source"@en;
+    skos:prefLabel "Type de source"@fr, "Type of source"@en ;
     rdfs:comment "Type d'une source à l'origine d'une information."@fr,
                 "Type of a source at the origin of a piece of information."@en ;
-    owl:disjointWith cad:EventType, cad:MLClasse, cad:Nature, cad:SpecialCellValue, cad:Taxpayer.
+    owl:disjointWith cad:EventType, cad:Class,cad:MLClasse, cad:Nature, cad:SpecialCellValue, cad:Taxpayer, cad:NamedEntity.
 
 cad:SpecialCellValue a owl:Class;
     rdfs:subClassOf skos:Concept ;
-    skos:prefLabel "Special cell value"@en, "Valeur spéciale"@fr ;
     rdfs:label "Valeur spéciale liée au fonctionnement des documents cadastraux"@fr, "Special value related to the operation of cadastral documents"@en ;
+    skos:prefLabel "Special cell value"@en, "Valeur spéciale"@fr ;
     rdfs:comment "Valeur spéciale liée au fonctionnement des documents cadastraux, par exemple les mentions de construction, destruction, augmentation de bâtiments indiquées dans les colonnes destinées aux numéros de folio."@fr,
                  "Special value related to the operation of cadastral documents, for example the mentions of construction, destruction, modifications of buildings indicated in the columns intended for folio numbers."@en;
-    owl:disjointWith cad:EventType, cad:MLClasse, cad:Nature, cad:Source, cad:Taxpayer.
+    owl:disjointWith cad:EventType, cad:Class, cad:MLClasse, cad:Nature, cad:Source, cad:Taxpayer, cad:NamedEntity.
 
 cad:Taxpayer a owl:Class;
     rdfs:label "Taxpayer"@en, "Contribuable"@fr ;
+    skos:prefLabel "Taxpayer"@en, "Contribuable"@fr ;
     skos:altLabel "Owner"@en, "Propriétaire ou usufruitier"@fr ;
     rdfs:comment "Propriétaire ou usufruitier : personne redevable de l'impôt foncier pour les terres dont elle a la pleine propriété ou l'usufruit."@fr ,
                 "Owner or usufructuary: person liable for property tax for land for which they have full ownership or usufruct."@en ;
-    owl:disjointWith cad:EventType, cad:MLClasse, cad:Nature, cad:Source, cad:SpecialCellValue.
+    owl:disjointWith cad:EventType, cad:Class, cad:MLClasse, cad:Nature, cad:Source, cad:SpecialCellValue, cad:NamedEntity.
 
 # ---- Class from other ontologies copied to ease the use of the ontology ----
 skos:Concept a owl:Class .
@@ -413,12 +421,24 @@ prov:wasGeneratedBy a owl:ObjectProperty .
 
 # ---- Datatype properties --- 
 
-cad:taxpayerLabel a owl:DatatypeProperty ;
+# Top level generic property for labels of taxpayers, to allow for different ways to represent the name of a taxpayer (full name or organization name, etc.) while still being able to query for a label of a taxpayer without knowing the specific kind of taxpayer.
+cad:taxpayerLabel a rdf:Property .
+
+cad:taxpayerName a owl:DatatypeProperty ;
+    rdfs:subPropertyOf cad:taxpayerLabel;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Identité complète d'un contribuable : nom de famille (personne physique), raison sociale (personne morale)"@fr,
-                 "Full identity of a taxpayer: name (individual), company name (legal entity)"@en ;
-    rdfs:label "nom"@fr, "name"@en .
+    rdfs:comment "Identité complète d'un contribuable (personne physique) composée d'un nom de famille et d'un ou plusieurs prénoms."@fr,
+                 "Full identity of an individual taxpayer: last name and first names."@en ;
+    rdfs:label "nom"@fr, "name"@en ;
+    owl:equivalentProperty rdfs:label.
+
+cad:taxpayerLastName a owl:DatatypeProperty ;
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Nom de famille d'un contribuable"@fr,
+                 "Last name of a taxpayer"@en ;
+    rdfs:label "nom de famille"@fr, "last name"@en .
 
 cad:taxpayerFirstName a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
@@ -431,10 +451,18 @@ cad:taxpayerFirstName a owl:DatatypeProperty ;
 cad:taxpayerFirstNames a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Prénom(s) d'un contribuable"@fr,
-                 "First name(s) of a taxpayer"@en ;
+    rdfs:comment "Prénom(s) d'un contribuable, généralement présentés sous la forme d'une liste de prénoms dans les documents."@fr,
+                 "First name(s) of a taxpayer, generally presented as a list of first names in documents."@en ;
     rdfs:label "prénom(s)"@fr, "first name(s)"@en ;
     owl:equivalentProperty cad:taxpayerFirstName.
+
+cad:taxpayerOrganisationName a owl:DatatypeProperty ;
+    rdfs:subPropertyOf cad:taxpayerLabel;
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Raison sociale d'un contribuable personne morale"@fr,
+                 "Company name of a legal entity taxpayer"@en ;
+    rdfs:label "raison sociale"@fr, "organisation name"@en .
 
 cad:taxpayerStatus a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
@@ -533,49 +561,74 @@ rico:name a owl:DatatypeProperty .
 cad:CadastreAttributeList a owl:NamedIndividual,
     skos:ConceptScheme ;
     rdfs:comment "Liste des différents rôles spécifique au cadastre pouvant être joués par un attribut, représentés comme une liste de concepts SKOS."@fr ;
-    rdfs:label "Type d'attributs spécifiques aux objets du cadastre"@fr .
+    rdfs:label "Type d'attributs spécifiques aux objets du cadastre"@fr ,
+               "Type of attributes specific to land registry objects"@en ;
+    skos:prefLabel "Type d'attributs spécifiques aux objets du cadastre"@fr ,
+               "Type of attributes specific to land registry objects"@en .
 
 cad:CadastreEventList a owl:NamedIndividual,
     skos:ConceptScheme ;
     rdfs:comment "Liste des types d'évènements pouvant intervenir, représentés comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type d'événements spécifiques au cadastre"@fr ,
+               "Type of event related to the land registry"@en ;
+    skos:prefLabel "Type d'événements spécifiques au cadastre"@fr ,
                "Type of event related to the land registry"@en .
 
 cad:CadastreLandmarkList a owl:NamedIndividual ,
     skos:ConceptScheme ;
     rdfs:comment "Liste des différents rôles pouvant être joués par un repère spécifique au cadastre, représentés comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type de repère spécifiques au cadastre"@fr ,
-                "Type of landmark related to the land registry"@en .
+                "Type of landmark related to the land registry"@en ;
+    skos:prefLabel "Type de repère spécifiques au cadastre"@fr ,
+               "Type of landmark related to the land registry"@en .
 
 cad:CadastreChangeList a owl:NamedIndividual ,
     skos:ConceptScheme ;
     rdfs:comment "Liste des différents changements spécifique au cadastre, représentés comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type de changements spécifiques au cadastre"@fr ,
-              "Type of changes related to the cadastre"@en .
+              "Type of changes related to the cadastre"@en ;
+    skos:prefLabel "Type de changements spécifiques au cadastre"@fr ,
+               "Type of changes related to the cadastre"@en .
 
 cad:NatureList a owl:NamedIndividual ,
     skos:ConceptScheme ;
     rdfs:comment "Liste des différentes natures de parcelles, représentés comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type de natures de parcelles"@fr ,
+               "Type of plot natures"@en ;
+    skos:prefLabel "Type de natures de parcelles"@fr ,
                "Type of plot natures"@en .
 
 cad:MLClassesList a owl:NamedIndividual ,
                   skos:ConceptScheme ;
                   rdfs:comment "Liste des différentes classes pouvant être attribuées à un document ou à une zone dans un document, représentés comme une liste de concepts SKOS."@fr ;
                   rdfs:label "Liste de classes"@fr ,
+                             "List of classes"@en ;
+                skos:prefLabel "Liste de classes"@fr ,
                              "List of classes"@en .
 
 cad:CadastreSourceList a owl:NamedIndividual ,
     skos:ConceptScheme ;
     rdfs:comment "Liste des différentes sources de données, représentées comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type de sources"@fr ,
+               "Type of sources"@en ;
+    skos:prefLabel "Type de sources"@fr ,
                "Type of sources"@en .
 
 cad:SpecialCellValuesList a owl:NamedIndividual ,
     skos:ConceptScheme ;
     rdfs:comment "Liste des différentes valeurs spéciales liées au fonctionnement des documents cadastraux, représentés comme une liste de concepts SKOS."@fr ;
     rdfs:label "Type de valeurs spéciales"@fr ,
+               "Type of special values"@en ;
+    skos:prefLabel "Type de valeurs spéciales"@fr ,
                "Type of special values"@en .
+
+cad:TaxpayerAttributeTypeList a owl:NamedIndividual ,
+    skos:ConceptScheme ;
+    rdfs:comment "Liste des différents types d'attributs liés aux contribuables, représentés comme une liste de concepts SKOS."@fr ;
+    rdfs:label "Type d'attributs liés aux contribuables"@fr ,
+               "Type of attributes related to taxpayers"@en ;
+    skos:prefLabel "Type d'attributs liés aux contribuables"@fr ,
+               "Type of attributes related to taxpayers"@en .
 
 # ---- SKOS Concepts ----
 
