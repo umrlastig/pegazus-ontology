@@ -225,6 +225,15 @@ cad:isTaxpayerOf a owl:ObjectProperty ;
                     rdfs:comment "Relie un contribuable à une version d'attribut."@fr ,
                                 "Links a taxpayer to an attribute version."@en .
 
+cad:taxpayerAddressEntity a owl:ObjectProperty ;
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range owl:Thing ;
+    rdfs:label "a pour adresse"@fr ,
+               "has address"@en ;
+    owl:inverseOf cad:isAddressOfTaxpayer;
+    rdfs:comment "Relie un contribuable à une adresse ou une relation spatiale avec d'autres repères géographiques."@fr ,
+                    "Links a taxpayer to an address or a spatial relation with other geographical landmarks."@en .
+
 cad:hasPlotAddress a owl:ObjectProperty ;
     rdfs:domain addr:AttributeVersion ;
     rdfs:range [ a owl:Class ;
@@ -422,7 +431,7 @@ prov:wasGeneratedBy a owl:ObjectProperty .
 # ---- Datatype properties --- 
 
 # Top level generic property for labels of taxpayers, to allow for different ways to represent the name of a taxpayer (full name or organization name, etc.) while still being able to query for a label of a taxpayer without knowing the specific kind of taxpayer.
-cad:taxpayerLabel a rdf:DatatypeProperty .
+cad:taxpayerLabel a rdf:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
     rdfs:comment "Label d'un contribuable, qui peut être son nom complet (pour une personne physique) ou sa raison sociale (pour une personne morale)."@fr,

@@ -44,17 +44,20 @@ graph
 graph 
     %% 1. Nodes
     TaxpayerNode(("cad:Taxpayer"))
-    AddressEnt(("addr:Landmark"))
+    AddressThingNode(("owl:Thing"))
 
     %% 2. Connect the unique IDs
-    TaxpayerNode == "cad:taxpayerAddressEntity" ==> AddressEnt
+    TaxpayerNode == "cad:taxpayerAddressEntity" ==> AddressThingNode
 
     %% 3. Apply WebVOWL Style
     classDef vowlClass fill:#aaccff,stroke:#3366cc,stroke-width:2px,color:#000,font-weight:bold;
-
+    %% WebVOWL Style for owl:Thing
+    classDef vowlThing fill:#f5f5f5,stroke:#999999,stroke-width:2px,stroke-dasharray: 4,color:#000,font-style:italic;
+    
     class TaxpayerNode,AddressEnt vowlClass;
+    class AddressThingNode vowlThing;
 ```
 ### Note
 * ```cad:taxpayerLabel``` is a super-property for ```cad:taxpayerFullName``` and ```cad:taxpayerOrganisationName```.
-* ```cad:taxpayerAddressEntity``` can be used when the value associated to ```cad:taxpayerAddress``` as been linked to a geographical entity of a KG. For instance, it can be an ```addr:Landmark``` entity.
+* ```cad:taxpayerAddressEntity``` can be used when the value associated to ```cad:taxpayerAddress``` as been linked to any geographical entity of a KG. For instance, it can be an ```addr:Landmark``` entity.
 * Upcomming developpements will create object properties for actitivies, family status and titles.
