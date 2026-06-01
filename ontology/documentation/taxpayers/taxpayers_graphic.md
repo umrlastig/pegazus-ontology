@@ -1,15 +1,19 @@
 # Illustration of Taxpayers
 
-## Ontology
+This page proposes a graphic representation of the ontology.
+Please refer to the ontology to get the full definitions of each property.
 
+## Ontology
 ### Datatype properties
 ```mermaid
-graph LR
+graph 
     %% 1. Nodes
     TaxpayerNode(("cad:Taxpayer"))
+    LabelLit["string"]
     NameLit["string"]
     LastNameLit["string"]
     FirstNamesLit["string"]
+    MaidenNameLit["string"]
     OrganisationNameLit["string"]
     ActivityLit["string"]
     AddressLit["string"]
@@ -17,9 +21,11 @@ graph LR
     TitleLit["string"]
 
     %% 2. Connect the unique IDs
-    NameLit == "cad:taxpayerLabel" ==> TaxpayerNode
+    LabelLit <== "cad:taxpayerLabel" ==> TaxpayerNode
+    NameLit == "cad:taxpayerFullName" ==> TaxpayerNode
     LastNameLit == "cad:taxpayerLastName" ==> TaxpayerNode
     FirstNamesLit == "cad:taxpayerFirstNames" ==> TaxpayerNode
+    MaidenNameLit == "cad:taxpayerMaidenName" ==> TaxpayerNode
     OrganisationNameLit == "cad:taxpayerOrganisationName" ==> TaxpayerNode
     TaxpayerNode == "cad:taxpayerActivity" ==> ActivityLit
     TaxpayerNode == "cad:taxpayerAddress" ==> AddressLit
@@ -31,6 +37,10 @@ graph LR
     classDef vowlLiteral fill:#ffffcc,stroke:#ffcc00,stroke-width:2px,color:#000;
 
     class TaxpayerNode vowlClass;
-    class LabelLit,NameLit,LastNameLit,FirstNamesLit,ActivityLit,AddressLit,TitleLit,OrganisationNameLit,FamilyStatusLit vowlLiteral;
+    class LabelLit,NameLit,LastNameLit,FirstNamesLit,ActivityLit,AddressLit,TitleLit,OrganisationNameLit,MaidenNameLit,FamilyStatusLit vowlLiteral;
 ```
+### Object properties
+
+### Note
+
 ## Examples

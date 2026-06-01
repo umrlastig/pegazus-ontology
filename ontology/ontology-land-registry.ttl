@@ -422,9 +422,14 @@ prov:wasGeneratedBy a owl:ObjectProperty .
 # ---- Datatype properties --- 
 
 # Top level generic property for labels of taxpayers, to allow for different ways to represent the name of a taxpayer (full name or organization name, etc.) while still being able to query for a label of a taxpayer without knowing the specific kind of taxpayer.
-cad:taxpayerLabel a rdf:Property .
+cad:taxpayerLabel a rdf:DatatypeProperty .
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Label d'un contribuable, qui peut être son nom complet (pour une personne physique) ou sa raison sociale (pour une personne morale)."@fr,
+                 "Label of a taxpayer, which can be their full name (for an individual) or their company name (for a legal entity)."@en ;
+    rdfs:label "label de contribuable"@fr, "taxpayer label"@en .
 
-cad:taxpayerName a owl:DatatypeProperty ;
+cad:taxpayerFullName a owl:DatatypeProperty ;
     rdfs:subPropertyOf cad:taxpayerLabel;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
@@ -455,6 +460,14 @@ cad:taxpayerFirstNames a owl:DatatypeProperty ;
                  "First name(s) of a taxpayer, generally presented as a list of first names in documents."@en ;
     rdfs:label "prénom(s)"@fr, "first name(s)"@en ;
     owl:equivalentProperty cad:taxpayerFirstName.
+
+cad:taxpayerMaidenName a owl:DatatypeProperty ;
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Nom de jeune fille d'une contribuable femme mariée (ou veuve)."@fr,
+                 "Maiden name of a married (or widowed) female taxpayer."@en ;
+    rdfs:label "nom de jeune fille"@fr, "maiden name"@en .
+
 
 cad:taxpayerOrganisationName a owl:DatatypeProperty ;
     rdfs:subPropertyOf cad:taxpayerLabel;
