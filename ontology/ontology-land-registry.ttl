@@ -431,7 +431,7 @@ prov:wasGeneratedBy a owl:ObjectProperty .
 # ---- Datatype properties --- 
 
 # Top level generic property for labels of taxpayers, to allow for different ways to represent the name of a taxpayer (full name or organization name, etc.) while still being able to query for a label of a taxpayer without knowing the specific kind of taxpayer.
-cad:taxpayerLabel a rdf:DatatypeProperty ;
+cad:taxpayerLabel a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
     rdfs:comment "Label d'un contribuable, qui peut être son nom complet (pour une personne physique) ou sa raison sociale (pour une personne morale)."@fr,
@@ -439,13 +439,12 @@ cad:taxpayerLabel a rdf:DatatypeProperty ;
     rdfs:label "label de contribuable"@fr, "taxpayer label"@en .
 
 cad:taxpayerFullName a owl:DatatypeProperty ;
-    rdfs:subPropertyOf cad:taxpayerLabel;
+    rdfs:subPropertyOf cad:taxpayerLabel ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Identité complète d'un contribuable (personne physique) composée d'un nom de famille et d'un ou plusieurs prénoms."@fr,
+    rdfs:comment "Identité complète d'un contribuable (personne physique) composée a minima d'un nom de famille et optionnellement d'un ou plusieurs prénoms et d'un statut familial."@fr,
                  "Full identity of an individual taxpayer: last name and first names."@en ;
-    rdfs:label "nom"@fr, "name"@en ;
-    owl:equivalentProperty rdfs:label.
+    rdfs:label "nom complet"@fr, "full name"@en .
 
 cad:taxpayerLastName a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
@@ -457,29 +456,35 @@ cad:taxpayerLastName a owl:DatatypeProperty ;
 cad:taxpayerFirstName a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    cad:isDeprecated true ;
     rdfs:comment "DEPRECIEE EN 03/2025, replacée par cad:taxpayerFirstNames. Prénom(s) d'un contribuable"@fr,
                  "DEPRECATED IN 03/2025, replaced by cad:taxpayerFirstNames. First name(s) of a taxpayer"@en ;
-    rdfs:label "prénom(s)"@fr, "first name(s)"@en .
+    rdfs:label "prénom(s)"@fr, "first name(s)"@en ;
+    owl:deprecated "true"^^xsd:boolean ;
+    dcterms:isReplacedBy cad:taxpayerFirstNames .
 
 cad:taxpayerFirstNames a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Prénom(s) d'un contribuable, généralement présentés sous la forme d'une liste de prénoms dans les documents."@fr,
-                 "First name(s) of a taxpayer, generally presented as a list of first names in documents."@en ;
-    rdfs:label "prénom(s)"@fr, "first name(s)"@en ;
-    owl:equivalentProperty cad:taxpayerFirstName.
+    rdfs:comment "Prénom(s) d'un contribuable, généralement présentés sous la forme d'une liste de prénoms dans les documents. Dans le cas des contribuables ayant le statut familial 'Mme' ou 'Veuve', le prénom indiqué est généralement celui de l'époux."@fr,
+                 "First name(s) of a taxpayer, generally presented as a list of first names in documents. In the case of taxpayers with the family status 'Mrs' or 'Widow', the indicated first name is generally that of the spouse."@en ;
+    rdfs:label "prénom(s)"@fr, "first name(s)"@en .
 
-cad:taxpayerMaidenName a owl:DatatypeProperty ;
+cad:taxpayerBirthName a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Nom de jeune fille d'une contribuable femme mariée (ou veuve)."@fr,
-                 "Maiden name of a married (or widowed) female taxpayer."@en ;
-    rdfs:label "nom de jeune fille"@fr, "maiden name"@en .
+    rdfs:comment "Nom de naissance d'une contribuable. Par exemple, le nom de naissance d'une personne avant son mariage (sans le cas où elle utilise ensuite le nom de son époux/épouse)."@fr,
+                 "Birth name of a taxpayer."@en ;
+    rdfs:label "nom de naissance"@fr, "birth name"@en .
 
+cad:taxpayerSpouseOrChildrenFirstNames a owl:DatatypeProperty ;
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Prénom(s) de l'époux/épouse ou d'un enfant dans un libellé de compte foncier. Généralement indiqués en seconde partie de libellé en complémenant de l'identité d'un contribuable 'racine' (le titulaire initial du compte foncier)."@fr,
+                    "First name(s) of the spouse or a child in a land registry folio label, generally indicated in the second part of the label."@en ;
+    rdfs:label "prénom(s) de l'époux/épouse ou d'un enfant"@fr, "spouse or children first name(s)"@en .
 
 cad:taxpayerOrganisationName a owl:DatatypeProperty ;
-    rdfs:subPropertyOf cad:taxpayerLabel;
+    rdfs:subPropertyOf cad:taxpayerLabel ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
     rdfs:comment "Raison sociale d'un contribuable personne morale"@fr,
@@ -489,17 +494,18 @@ cad:taxpayerOrganisationName a owl:DatatypeProperty ;
 cad:taxpayerStatus a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
-    rdfs:comment "Statut d'un contribuable (M, Mme, Veuve, Veuf, Fils, Fille, Mineur, Héritiers)"@fr ,
-                 "Status of a taxpayer (Mr, Mrs, Widow, Widower, Son, Daughter, Minor, Heirs)"@en ;
-    rdfs:label "statut"@fr, "status"@en .
+    rdfs:comment "DEPRECIEE. Statut d'un contribuable (M, Mme, Veuve, Veuf, Fils, Fille, Mineur, Héritiers)"@fr ,
+                 "DEPRECATED.Status of a taxpayer (Mr, Mrs, Widow, Widower, Son, Daughter, Minor, Heirs)"@en ;
+    rdfs:label "statut"@fr, "status"@en ;
+    owl:deprecated "true"^^xsd:boolean ;
+    dcterms:isReplacedBy cad:taxpayerFamilyStatus .
 
 cad:taxpayerFamilyStatus a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range xsd:string ;
     rdfs:comment "Statut d'un contribuable (M, Mme, Veuve, Veuf, Fils, Fille, Mineur, Héritiers)"@fr ,
                  "Status of a taxpayer (Mr, Mrs, Widow, Widower, Son, Daughter, Minor, Heirs)"@en ;
-    rdfs:label "statut familial"@fr, "family status"@en ;
-    owl:equivalentProperty cad:taxpayerStatus.
+    rdfs:label "statut familial"@fr, "family status"@en .
 
 cad:taxpayerAddress a owl:DatatypeProperty ;
     rdfs:domain cad:Taxpayer ;
@@ -654,7 +660,7 @@ cad:TaxpayerAttributeTypeList a owl:NamedIndividual ,
 
 # ---- SKOS Concepts ----
 
-# ---- CadastreAttributesList ----
+## ---- CadastreAttributesList ----
 cad_atype:PlotAddress a addr:AttributeType,
         owl:NamedIndividual,
         skos:Concept ;
