@@ -11,11 +11,15 @@
   </tr>
   <tr>
     <td>Address (Adresse)</td>
-    <td>Geographic indication of the residence of the owner or usufructuary.</td>
+    <td>Geographic indication of the residence of the taxpayer.</td>
   </tr>
   <tr>
     <td>Assessment (Alivrement)</td>
     <td><i>Fixing the rate of a fee or tax.</i> (<a href="https://www.cnrtl.fr/definition/dmf/ALIVREMENT">CNRTL, Alivrement</a>)</td>
+  </tr>
+  <tr>
+    <td>Taxpayer (Contribuable)</td>
+    <td><i>A person who contributes to public expenditures by paying taxes.</i> (<a href="https://www.cnrtl.fr/definition/contribuable">CNRTL, Contribuable</a>). In the case of the land registry, the taxes are related to the land property.</td>
   </tr>
   <tr>
     <td>Land tax (Contribution foncière)</td>
@@ -28,7 +32,7 @@
   </tr>
   <tr>
     <td>Referential expression (Expression référentielle)</td>
-    <td>A referential expression is a natural language description that uniquely identifies a person. (<a href="https://hal.science/hal-03191525/document">Khajeh Nassiri, 2020</a>)</td>
+    <td>A referential expression is a natural language description that uniquely identifies a person. (<a href="https://hal.science/hal-03191525/document">Khajeh Nassiri, 2020</a>) It may include a name, surname, birthname and family status</td>
   </tr>
   <tr>
     <td>Legal entity (Personne morale)</td>
@@ -48,8 +52,8 @@
     </td>
   </tr>
   <tr>
-    <td>Corporate name (Raison sociale)</td>
-    <td>Name under which a company conducts its activities.</td>
+    <td>Organisation name (Raison sociale)</td>
+    <td>Name under which a company or organisation conducts its activities.</td>
   </tr>
   <tr>
     <td>Usufructuary (Usufruitier)</td>
