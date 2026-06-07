@@ -63,7 +63,7 @@ graph
     class AddressThingNode vowlThing;
 ```
 ### Note
-* ```cad:taxpayerLabel``` is a super-property for ```cad:taxpayerFullName``` (natural person) and ```cad:taxpayerOrganisationName``` (legal person). It can be used when the kind of person is not known.
+* ```cad:taxpayerLabel``` is a super-property for ```cad:taxpayerFullName``` (natural person) and ```cad:taxpayerOrganisationName``` (legal person). It can be used when the kind of taxpayer is not known.
 * ```cad:taxpayerAddressEntity``` can be used when the value associated to ```cad:taxpayerAddress``` as been linked to any geographical entity of a KG. For instance, it can be an ```addr:Landmark``` entity.
 * Upcomming developpements will create object properties for actitivies, family status and titles.
 

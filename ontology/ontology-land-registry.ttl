@@ -1,3 +1,4 @@
+@base <http://rdf.geohistoricaldata.org/def/cadastre#> .
 @prefix addr: <http://rdf.geohistoricaldata.org/def/address#> .
 @prefix cad: <http://rdf.geohistoricaldata.org/def/cadastre#> .
 @prefix cc: <http://creativecommons.org/ns#>.
@@ -81,7 +82,6 @@ skos:broader a owl:AnnotationProperty .
 skos:definition a owl:AnnotationProperty .
 skos:inScheme a owl:AnnotationProperty .
 skos:prefLabel a owl:AnnotationProperty .
-cad:isDeprecated a owl:AnnotationProperty .
 
 # ---- Classes ----
 cad:EventType a owl:Class ;
@@ -212,27 +212,38 @@ cad:hasTaxpayer a owl:ObjectProperty ;
     rdfs:label "a pour contribuable"@fr ,
                 "has taxpayer"@en ;
     owl:inverseOf cad:isTaxpayerOf;
-    rdfs:comment "Relie une version d'attribut à un contribuable."@fr ,
-                    "Links an attribute version to a taxpayer."@en .
+    rdfs:comment "Relie une version d'attribut d'une parcelle à un contribuable redevable de l'impôt foncier pour celle-ci."@fr ,
+                "Links an attribute version of a plot to a taxpayer liable for the property tax for that plot."@en .
 
 
 cad:isTaxpayerOf a owl:ObjectProperty ;
-                    rdfs:domain cad:Taxpayer ;
-                    rdfs:range addr:AttributeVersion ;
-                    rdfs:label "est le contribuable associé à"@fr ,
-                               "is taxpayer of"@en ;
-                    owl:inverseOf cad:hasTaxpayer;
-                    rdfs:comment "Relie un contribuable à une version d'attribut."@fr ,
-                                "Links a taxpayer to an attribute version."@en .
+    rdfs:domain cad:Taxpayer ;
+    rdfs:range addr:AttributeVersion ;
+    rdfs:label "est le contribuable de"@fr ,
+                "is taxpayer of"@en ;
+    skos:altLabel "est le contribuable associé à la version d'attribut"@fr, 
+                    "is taxpayer of attribute version"@en ;
+    owl:inverseOf cad:hasTaxpayer;
+    rdfs:comment "Relie un contribuable à une version d'attribut d'une parcelle."@fr ,
+                "Links a taxpayer to an attribute version of a plot."@en .
 
 cad:taxpayerAddressEntity a owl:ObjectProperty ;
     rdfs:domain cad:Taxpayer ;
     rdfs:range owl:Thing ;
     rdfs:label "a pour adresse"@fr ,
                "has address"@en ;
-    owl:inverseOf cad:isAddressOfTaxpayer;
+    owl:inverseOf cad:isTaxpayerAddressEntityOf;
     rdfs:comment "Relie un contribuable à une adresse ou une relation spatiale avec d'autres repères géographiques."@fr ,
                     "Links a taxpayer to an address or a spatial relation with other geographical landmarks."@en .
+
+cad:isTaxpayerAddressEntityOf a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range cad:Taxpayer ;
+    rdfs:label "est l'adresse (entité) associée à"@fr ,
+               "is address (entity) of"@en ;
+    owl:inverseOf cad:taxpayerAddressEntity;
+    rdfs:comment "Relie une adresse ou une relation spatiale avec d'autres repères géographiques à un contribuable."@fr ,
+                "Links an address or a spatial relation with other geographical landmarks to a taxpayer."@en .
 
 cad:hasPlotAddress a owl:ObjectProperty ;
     rdfs:domain addr:AttributeVersion ;
@@ -352,8 +363,37 @@ cad:takenFrom a owl:ObjectProperty ;
             ] ;
     rdfs:label "tiré de"@fr,
                "taken from"@en ;
-    rdfs:comment "Folio où est décrit l'état de parcelle précédent OU autre information sur l'état précédent d'une parcelle."@fr ,
-                "Folio where the previous plot state is described OR other information about the previous state of a plot."@en .
+    rdfs:comment "DEPRECIE. Folio où est décrit l'état de parcelle précédent OU autre information sur l'état précédent d'une parcelle."@fr ,
+                "DEPRECATED.Folio where the previous plot state is described OR other information about the previous state of a plot."@en ;
+    owl:deprecated true ;
+    dcterms:isReplacedBy cad:hasNextStateinFolio.
+
+cad:hasNextStateinFolio a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range [ a owl:Class ;
+        owl:unionOf ( rico:RecordResource
+                        rico:Instantiation
+                        cad:SpecialCellValue
+                    )
+        ] ;
+    rdfs:label "état suivant renseigné dans le folio"@fr,
+            "next state in folio"@en ;
+    rdfs:comment "Indique le folio où est décrit l'état suivant d'une parcelle."@fr,
+                "Folio where the following state of a plot is described."@en .
+
+cad:nextState a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( rico:RecordResource
+                        rico:Instantiation
+                        cad:SpecialCellValue
+                    )
+        ] ;
+    rdfs:range owl:Thing ;
+    rdfs:label "décrit l'état suivant d'une entité"@fr,
+            "describes the next state of an entity"@en ;
+    skos:altLabel "tiré de"@fr ;
+    rdfs:comment "Folio où est décrit l'état de parcelle suivant OU autre information sur l'état suivant d'une parcelle."@fr,
+                "Folio where the following plot state is described OR other information about the previous or following state of a plot."@en .
 
 cad:passedTo a owl:ObjectProperty;
     rdfs:domain owl:Thing ;
