@@ -8,7 +8,7 @@
 /ontology/documentation/taxpayers/NOTES.md
 # Created folders
 scripts/addresses/tmp_files/
-
+/ontology/others.ttl
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

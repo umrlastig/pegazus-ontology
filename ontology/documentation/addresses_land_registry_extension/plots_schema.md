@@ -4,6 +4,7 @@ This page proposes illustrated representation of the ```Land Registry Landmarks`
 Please refer to the ontology to get the full definitions of each property.
 
 ## Ontology
+### Plot properties
 *Exemple developped with a landmark of type plot. It reprents the additions provided to described land plots.
 For the precise temporal evolution details (changes, events), please refer to the core PeGazUs ontology (temporal evolution sub module).*
 ```mermaid
@@ -13,8 +14,10 @@ graph
     %%SectionNode(("addr:Landmark"))
 
     PlotId["string"]
+    PlotLabel["string"]
     PlotType(("cad_ltype:Plot"))
     addrLandmarkType(("addr:LandmarkType"))
+
     %%PlotSectionLR
     %%SectionId["string"]
     %%SectionType(("cad_ltype:Section"))
@@ -50,6 +53,7 @@ graph
     %% 2. Connect the unique IDs
     
     LandmarkNode == "dcterms:identifier" ==> PlotId 
+    LandmarkNode == "rdfs:label" ==> PlotLabel
     LandmarkNode == "addr:isLandmarkType" ==> PlotType
     PlotType == "rdf:type" ==> addrLandmarkType
 
@@ -87,15 +91,21 @@ graph
 
     classDef vowlThing fill:#f5f5f5,stroke:#999999,stroke-width:2px,stroke-dasharray: 4,color:#000,font-style:italic;
 
-    class LandmarkNode,PlotType,addrLandmarkType,NatureAtt,TaxpayerAtt,AddressAtt,NatureAttV,TaxpayerAttV,AddressAttV,TaxpayerValue,AddressValue,NatureValue,addrAttributeTypeA,addrAttributeTypeT,addrAttributeTypeN vowlClass;
+    class LandmarkNode,PlotType,addrLandmarkType,NatureAtt,TaxpayerAtt,AddressAtt,MentionAtt,NatureAttV,TaxpayerAttV,AddressAttV,MentionAttV,TaxpayerValue,AddressValue,NatureValue,MentionValue,addrAttributeTypeA,addrAttributeTypeT,addrAttributeTypeN,addrAttributeTypeM vowlClass;
 
-    class PlotType,NatureAttT,TaxpayerAttT,AddressAttT,pNature vowlClassInstance;
+    class PlotType,NatureAttT,TaxpayerAttT,AddressAttT,MentionAttT,pNature vowlClassInstance;
 
-    class PlotId vowlLiteral;
+    class PlotId,PlotLabel vowlLiteral;
     %%class  vowlThing;
 ```
+### Plot relations with other landmarks
 
 ### Note
 * ```rdfs:label``` can be used to provide a nice complete label of the plot (including identifier and commune name for instance).
 * ```dcterms:identifier``` is used to provide the plot id.
-* On use, ```cad:Nature``` is replaced by one of its instanciation from the ``````
+* On use, instances of ```cad:Nature``` can be found in ```cad:NatureList``` SKOS concepts schema.
+
+### Upcomming evolution
+* ```cad_atype:PlotMention``` attribute type is going to be deprecated soon, replaced with by an attribute type with a more suitable name.
+* ```cad:takenFrom``` property is going to be deprecated soon, replaced with by a property with a more suitable name.
+* ```cad:passedTo``` property is going to be deprecated soon, replaced with by a property with a more suitable name.
