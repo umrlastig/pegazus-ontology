@@ -4,7 +4,7 @@ This page proposes illustrated representation of the ```Land Registry Landmarks`
 Please refer to the ontology to get the full definitions of each property.
 
 ## Ontology
-### Plot properties
+### Plot description
 *Exemple developped with a landmark of type plot. It reprents the additions provided to described land plots.
 For the precise temporal evolution details (changes, events), please refer to the core PeGazUs ontology (temporal evolution sub module).*
 ```mermaid
@@ -17,6 +17,8 @@ graph
     PlotLabel["string"]
     PlotType(("cad_ltype:Plot"))
     addrLandmarkType(("addr:LandmarkType"))
+    UnionNodePrev(("∪"))
+    UnionNodeNext(("∪"))
 
     %%PlotSectionLR
     %%SectionId["string"]
@@ -49,6 +51,10 @@ graph
     NatureValue(("cad:Nature"))
     AddressValue(("addr:Landmark"))
     MentionValue(("rico:Instantiation"))
+    PrevMentionValue(("rico:Instantiation"))
+    PrevSpecValue(("cad:SpecialCellValue"))
+    NextMentionValue(("rico:Instantiation"))
+    NextSpecValue(("cad:SpecialCellValue"))
 
     %% 2. Connect the unique IDs
     
@@ -80,9 +86,15 @@ graph
     MentionAtt == "addr:isAttributeType" ==> MentionAttT
     MentionAttT == "rdf:type" ==> addrAttributeTypeM
     MentionAtt == "addr:hasAttributeVersion" ==> MentionAttV
+    MentionAttV == "cad:takenFrom" ==> UnionNodePrev
+    UnionNodePrev ====> PrevMentionValue
+    UnionNodePrev ====> PrevSpecValue
     MentionAttV == "cad:isMentionnedIn" ==> MentionValue
+    MentionAttV == "cad:passedTo" ==> UnionNodeNext
+    UnionNodeNext ====> NextMentionValue
+    UnionNodeNext ====> NextSpecValue
 
-    %% 3. Apply WebVOWL Style
+    %% 3. Style
     classDef vowlClass fill:#aaccff,stroke:#3366cc,stroke-width:2px,color:#000,font-weight:bold;
 
     classDef vowlClassInstance fill:#CB8DD6,stroke:#5F2569,stroke-width:2px,color:#000,font-weight:bold;
@@ -91,21 +103,35 @@ graph
 
     classDef vowlThing fill:#f5f5f5,stroke:#999999,stroke-width:2px,stroke-dasharray: 4,color:#000,font-style:italic;
 
-    class LandmarkNode,PlotType,addrLandmarkType,NatureAtt,TaxpayerAtt,AddressAtt,MentionAtt,NatureAttV,TaxpayerAttV,AddressAttV,MentionAttV,TaxpayerValue,AddressValue,NatureValue,MentionValue,addrAttributeTypeA,addrAttributeTypeT,addrAttributeTypeN,addrAttributeTypeM vowlClass;
+    classDef vowlUnion fill:#aaccff,stroke:#3366cc,stroke-width:2px,color:#000,font-weight:bold;
 
-    class PlotType,NatureAttT,TaxpayerAttT,AddressAttT,MentionAttT,pNature vowlClassInstance;
+
+    %% 4. Style attributions
+    class LandmarkNode,PlotType,addrLandmarkType,NatureAtt,TaxpayerAtt,AddressAtt,MentionAtt,NatureAttV,TaxpayerAttV,AddressAttV,MentionAttV,TaxpayerValue,AddressValue,NatureValue,MentionValue,PrevMentionValue,NextMentionValue,PrevSpecValue,NextSpecValue,addrAttributeTypeA,addrAttributeTypeT,addrAttributeTypeN,addrAttributeTypeM vowlClass;
+
+    class PlotType,NatureAttT,TaxpayerAttT,AddressAttT,MentionAttT,pNature, vowlClassInstance;
 
     class PlotId,PlotLabel vowlLiteral;
+
+    class UnionNode vowlUnion;
     %%class  vowlThing;
 ```
+#### Legend
+* Classes are represented by blue circles.
+* Instances are represented by purple cicles.
+* Literals are represented by yellow rectangles.
+
 ### Plot relations with other landmarks
 
 ### Note
 * ```rdfs:label``` can be used to provide a nice complete label of the plot (including identifier and commune name for instance).
 * ```dcterms:identifier``` is used to provide the plot id.
 * On use, instances of ```cad:Nature``` can be found in ```cad:NatureList``` SKOS concepts schema.
+* On use, instances of ```cad:SpecialCellValue``` can be found in ```cad:SpecialCellValuesList``` SKOS concepts schema.
+* ```cad_atype:PlotMention``` attribute is connected with the sub module related to the use of land redistry documents.
 
-### Upcomming evolution
+### Upcoming changes
 * ```cad_atype:PlotMention``` attribute type is going to be deprecated soon, replaced with by an attribute type with a more suitable name.
 * ```cad:takenFrom``` property is going to be deprecated soon, replaced with by a property with a more suitable name.
 * ```cad:passedTo``` property is going to be deprecated soon, replaced with by a property with a more suitable name.
+* ```cad:SpecialCellValue``` class is going to be deprecated soon, replaced with by a class with a more suitable name. Same for the associate skos:ConceptScheme.
