@@ -2,6 +2,10 @@
 
 This repository contains the documentation of the PeGaZus ontology and knowledge graph construction method. 
 
+THIS REPOSITORY IS NO LONGER UPDATED. FOR UPDATED VERSION OF BOTH ONTOLOGY SEE : 
+* [https://charlybernard.github.io/pegazus-paris/](PeGazUs ontology)
+* [https://solenn-tl.github.io/tabulae-ontology/](TABULAE ontology)
+
 ## Abstract
 Gazetteers, as compilation of named places, are central resources on the Web of data, as they provide a common ground to link and integrate many textual or structured resources on the Web.
 Gazetteers usually categorise and associate places names with geospatial coordinates.
