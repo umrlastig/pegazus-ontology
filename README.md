@@ -2,7 +2,7 @@
 
 This repository contains the documentation of the PeGaZus ontology and knowledge graph construction method. 
 
-THIS REPOSITORY IS NO LONGER UPDATED. FOR UPDATED VERSION OF BOTH ONTOLOGY SEE : 
+THIS REPOSITORY IS NO LONGER UPDATED. FOR UPDATED VERSIONS OF BOTH ONTOLOGIES SEE : 
 * [PeGazUs ontology](https://charlybernard.github.io/pegazus-paris/)
 * [TABULAE ontology](https://solenn-tl.github.io/tabulae-ontology/)
 
